@@ -9,7 +9,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 def finalize():
-    file = ROOT / 'src/pages/insights/index.html'
+    file = ROOT / 'insights/index.html'
     soup = BeautifulSoup(file.read_text(), 'html.parser')
     grid = soup.select_one('.pxl-blog-grid')
     grid['data-p10x-news'] = ''
@@ -18,7 +18,7 @@ def finalize():
     existing = {c.select_one('.pxl-post--title a')['href'] for c in cards}
     template = cards[-1]
     for page in json.loads((ROOT / 'docs/migrated-pages.json').read_text()):
-        path = ROOT / 'src/pages' / page['route'].strip('/') / 'index.html'
+        path = ROOT / page['route'].strip('/') / 'index.html'
         article = BeautifulSoup(path.read_text(), 'html.parser')
         post = article.select_one('article.pxl---post')
         if post is None or page['route'] in existing:
@@ -53,10 +53,10 @@ def finalize():
         tag.decompose()
     file.write_text(str(soup))
     # No page needs the former grid's AJAX configuration after static pagination.
-    for page in (ROOT / 'src/pages').rglob('index.html'):
+    for page in [ROOT / r['route'].strip('/') / 'index.html' for r in json.loads((ROOT / 'docs/migrated-pages.json').read_text())]:
         text = page.read_text()
         for tag in BeautifulSoup(text, 'html.parser').select('script[src^="/scripts/"]'):
-            script = ROOT / 'src' / tag['src'].lstrip('/')
+            script = ROOT / tag['src'].lstrip('/')
             if script.exists() and 'sourceURL=pxl-post-grid-js-extra' in script.read_text():
                 text = text.replace(str(tag), '')
         page.write_text(text)

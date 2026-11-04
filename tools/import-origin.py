@@ -11,6 +11,7 @@ from bs4 import BeautifulSoup
 
 ROOT = Path(__file__).resolve().parents[1]
 ORIGIN = 'https://p10xx.flevor.me'
+SITE_ORIGIN = 'https://p10x.flevor.me'
 SLUGS = ['', 'about-us', 'ppf', 'wrapping', 'tinting', 'detailing',
          'window-film', 'faq', 'insights', 'contact-us', 'ppf-cost-malaysia',
          'tesla-ppf', 'nano-ceramic-tint', 'car-coating-price', 'car-coating',
@@ -41,7 +42,7 @@ def read_page(slug):
 
 def emit(folder, text, extension):
     name = hashlib.sha256(text.encode()).hexdigest()[:16] + extension
-    target = ROOT / 'src' / folder / name
+    target = ROOT / folder / name
     target.parent.mkdir(parents=True, exist_ok=True)
     target.write_text(text)
     return f'/{folder}/{name}'
@@ -111,10 +112,10 @@ def migrate(slug, html):
     for tag in soup.select('.e-con.e-parent'):
         tag['class'] = tag.get('class', []) + ['e-lazyloaded']
     for tag in soup.select('link[rel="canonical"]'):
-        tag['href'] = '/' + (slug + '/' if slug else '')
+        tag['href'] = SITE_ORIGIN + '/' + (slug + '/' if slug else '')
     soup.head.append(soup.new_tag('link', rel='stylesheet', href='/styles/site.css'))
     soup.body.append(soup.new_tag('script', src='/scripts/site.js', defer=True))
-    target = ROOT / 'src/pages' / slug / 'index.html'
+    target = ROOT / slug / 'index.html'
     target.parent.mkdir(parents=True, exist_ok=True)
     target.write_text(str(soup))
     return {'route': '/' + (slug + '/' if slug else ''), 'source': ORIGIN + '/' + (slug + '/' if slug else ''), 'title': soup.title.get_text()}
@@ -125,9 +126,9 @@ if __name__ == '__main__':
         pages = list(pool.map(read_page, SLUGS))
     results = [migrate(slug, html) for slug, html in pages]
     # Remove obsolete page-extracted files after a refreshed import.
-    source = '\n'.join(x.read_text() for x in (ROOT / 'src/pages').rglob('*.html'))
+    source = '\n'.join(x.read_text() for x in [ROOT / r['route'].strip('/') / 'index.html' for r in results])
     for folder in ('styles', 'scripts'):
-        for file in (ROOT / 'src' / folder).glob('*'):
+        for file in (ROOT / folder).glob('*'):
             if file.name != ('site.css' if folder == 'styles' else 'site.js') and f'/{folder}/{file.name}' not in source:
                 file.unlink()
     (ROOT / 'docs').mkdir(exist_ok=True)

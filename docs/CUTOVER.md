@@ -1,9 +1,17 @@
-# Hosting cutover
+# Plesk deployment to p10x.flevor.me
 
-1. Build with `SITE_URL=https://your-domain.example npm run build` using Node 20+.
-2. Deploy `dist/` to a separate staging document root in Plesk; enable PHP 8.1+.
-3. Keep the referenced images, videos, fonts, CSS and JavaScript available at `https://p10xx.flevor.me/`. No media directory is included in this repository. Do not remove or overwrite the files at that origin during cutover.
-4. Verify navigation, homepage animations, service pages, FAQ, news, mobile layout and real contact enquiry delivery. The contact handler requires server mail; local checks cannot verify inbox receipt.
-5. Switch the live document root only after staging review. Retain the original directory for rollback and asset hosting.
+The checked-in repository root is directly deployable. No build is required.
 
-If the target domain is `p10xx.flevor.me` itself, a new document root must continue serving the old `/wp-content/` and `/wp-includes/` asset URLs, for example through retained directories or web-server aliases. Otherwise leave the hardcoded site on staging until the necessary assets have been placed at stable URLs.
+1. In Plesk Git, pull `main` and deploy into the document root configured for `p10x.flevor.me`.
+2. Confirm `index.html` is directly inside that folder, beside `styles/`, `scripts/`, `contact.php`, and page folders such as `about-us/`.
+3. Open the homepage and a service page. Enable PHP 8.1+ and verify actual contact enquiry delivery using the host's mail transport.
+
+If the homepage still shows 403, compare the Plesk Git deployment path with the domain's Hosting Settings document root. They must identify the same folder containing `index.html`. This repository does not modify those server settings.
+
+## Assets stay at the existing origin
+
+Images, video, fonts and frontend libraries continue to load from `https://p10xx.flevor.me/`. Keep its referenced `/wp-content/` and `/wp-includes/` assets available. The new domain's Git deployment does not require moving or deleting the old WordPress installation.
+
+## Optional export
+
+For a separate packaged output, run `npm run build` and deploy the contents of `dist/`. That alternative is not needed for the normal Git deployment above.
