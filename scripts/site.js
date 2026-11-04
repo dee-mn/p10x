@@ -1,5 +1,11 @@
 /* Standalone enhancements; no WordPress API or image-upload dependency. */
 document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.pxl-scroll-top').forEach(control => {
+    control.setAttribute('aria-label', 'Back to top');
+    control.setAttribute('title', 'Back to top');
+    control.querySelector('i')?.remove();
+    control.insertAdjacentHTML('afterbegin', '<svg class="p10x-top-arrow" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><polyline points="5 12 12 5 19 12"/><line x1="12" y1="5" x2="12" y2="20"/></svg>');
+  });
   document.querySelectorAll('[aria-required="true"]').forEach(field => {
     field.required = true;
     if (!field.getAttribute('aria-label')) field.setAttribute('aria-label', field.placeholder || field.name);

@@ -31,12 +31,13 @@
   const section=document.querySelector('.elementor-20 .pxl-video-sticky1');
   if(!section||section.dataset.mobileFilmReady)return;
   const inner=section.querySelector('.pxl-video-inner'),frame=section.querySelector('.pxl-item--bg'),video=section.querySelector('video'),toggle=section.querySelector('.pxl-video-toggle');
-  if(!inner||!frame||!video||!toggle)return;
+  if(!inner||!frame||!video)return;
   section.dataset.mobileFilmReady='true';
   const mobile=matchMedia('(max-width:1280px)'),reduced=matchMedia('(prefers-reduced-motion:reduce)');
   let running=false,raf=0,progress=0,target=0,manualPause=false,pending=false,lastVisible=false;
   const clamp=v=>Math.max(0,Math.min(1,v));
   function sync(){
+   if(!toggle)return;
    toggle.setAttribute('aria-label',video.paused?'Play video':'Pause video');
    toggle.setAttribute('aria-pressed',String(!video.paused));
    if(!mobile.matches)return;
@@ -80,7 +81,7 @@
    sync();measure();
    if(window.ScrollTrigger)requestAnimationFrame(()=>ScrollTrigger.refresh());
   }
-  toggle.addEventListener('click',event=>{
+  toggle?.addEventListener('click',event=>{
    if(!mobile.matches)return;
    event.preventDefault();event.stopImmediatePropagation();
    lastVisible=true;manualPause=!video.paused;

@@ -9,3 +9,4 @@
 [data-p10x-news] [hidden]{display:none!important}
 [data-p10x-news-status]:empty{display:none}
 [data-p10x-news-status]{text-align:center;margin:24px 0 0}
+.pxl-scroll-top svg.p10x-top-arrow{position:absolute;inset:0;margin:auto;width:22px;height:22px;display:block;fill:none;stroke:#171717;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;transform:rotate(90deg);pointer-events:none}
