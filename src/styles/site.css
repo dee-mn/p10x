@@ -1,0 +1,11 @@
+/* Native form behavior while preserving the established P10X design. */
+[data-p10x-contact] .wpcf7-response-output{padding:16px!important;margin:20px 0!important;border:1px solid #03c4d5!important;color:inherit!important;line-height:1.5}
+[data-p10x-contact] .wpcf7-response-output:empty{display:none!important}
+[data-p10x-contact] button:disabled{opacity:.6;cursor:wait}
+[data-p10x-contact] .wpcf7-spinner{display:none}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}}
+[data-p10x-news] .pxl-grid-inner{display:flex!important;flex-wrap:wrap;height:auto!important}
+[data-p10x-news] .pxl-grid-item{position:relative!important;left:auto!important;top:auto!important;transform:none!important}
+[data-p10x-news] [hidden]{display:none!important}
+[data-p10x-news-status]:empty{display:none}
+[data-p10x-news-status]{text-align:center;margin:24px 0 0}
