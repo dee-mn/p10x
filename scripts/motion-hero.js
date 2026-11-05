@@ -219,7 +219,7 @@
       hero.classList.toggle('is-scroll-locked', locked);
     }
     hero.dataset.scrollLocked = String(locked);
-    if (hint) hint.textContent = mobile.matches ? (locked ? 'Drag to rotate · tap Learn more to scroll' : 'Drag to rotate') : desktopHint;
+    if (hint) hint.textContent = mobile.matches ? (locked ? 'Tap to discover · drag to rotate · Learn more to scroll' : 'Tap to discover · drag to rotate') : desktopHint;
   }
   function sync() {
     checkFrame = 0;
@@ -241,7 +241,7 @@
     if (!locked || inMenu(event.target) || event.altKey || event.ctrlKey || event.metaKey) return;
     const editable = event.target instanceof Element && event.target.closest('input,textarea,select,[contenteditable="true"]');
     const control = event.target instanceof Element && event.target.closest('a,button,[role="button"]');
-    if (!editable && ['ArrowDown','ArrowUp','PageDown','PageUp','Home','End',' '].includes(event.key) && !(event.key === ' ' && control)) {
+    if (!editable && ['ArrowDown','ArrowUp','PageDown','PageUp','Home','End',' '].includes(event.key) && !(control && (event.key === ' ' || event.target.closest('.pm-stage')))) {
       event.preventDefault(); event.stopImmediatePropagation();
     }
   }, true);
