@@ -49,16 +49,9 @@
       points.push({ x: Math.cos(a) * ring * (r + jitter), y: y * (r + jitter), z: Math.sin(a) * ring * (r + jitter), kind, seed: random(i + kind * 92) * Math.PI * 2 });
     }
   }
-  // A fine, defined globe plus a loose volume of orbiting particles, not a second rim.
+  // Two thin shells with a clear radial gap; keep particles out of the space between them.
   shell(mobile.matches ? 7800 : 11600, 1, 1);
-  for (let i = 0; i < (mobile.matches ? 1800 : 3200); i++) {
-    const p = sphere(i * 1.71 + 1700, 1.045 + Math.pow(random(i + 2921), 1.65) * .31);
-    points.push({x:p[0], y:p[1], z:p[2], kind:2, seed:random(i + 7182) * Math.PI * 2});
-  }
-  for (let i = 0; i < (mobile.matches ? 220 : 400); i++) {
-    const p = sphere(i * 2.13 + 3800, 1.22 + random(i + 4921) * .26);
-    points.push({x:p[0], y:p[1], z:p[2], kind:3, seed:random(i + 5182) * Math.PI * 2});
-  }
+  shell(mobile.matches ? 2900 : 4700, 1.28, 2);
   // Ice highlights, mint, brand turquoise, electric cyan and blue shadow.
   const stops = [[220,255,246],[105,250,235],[3,196,213],[13,151,239],[21,78,187]];
   const palette = Array.from({length:24}, (_, i) => {
@@ -100,7 +93,7 @@
   }
   if(!gl)ctx=canvas.getContext('2d');
   if(!gl&&!ctx)return;
-  canvas.dataset.renderer=gl?'webgl':'canvas2d';canvas.dataset.points=points.length;canvas.dataset.layers='2';
+  canvas.dataset.renderer=gl?'webgl':'canvas2d';canvas.dataset.points=points.length;canvas.dataset.layers='2';canvas.dataset.outerRadius='1.28';
   function draw(){
     const started=performance.now();
     const reveal=paused?1:1-Math.pow(1-clamp((started-entered)/2600),3);
@@ -111,7 +104,7 @@
     for(const p of points){
       let x=p.x,y=p.y,z=p.z;
       if(p.kind===0&&reveal<1){x=p.cloud[0]+(x-p.cloud[0])*reveal;y=p.cloud[1]+(y-p.cloud[1])*reveal;z=p.cloud[2]+(z-p.cloud[2])*reveal;}
-      if(p.kind>0){const loose=p.kind>1;const wave=1+Math.sin(p.y*7+(loose?p.seed:0)+elapsed*(loose?.65:.45))*(loose?.045:.003)+Math.sin(p.x*9+elapsed*.6)*(loose?.025:.002);x*=wave;y*=wave;z*=wave;}
+      if(p.kind>0){const outer=p.kind===2;const wave=1+Math.sin(p.y*7+elapsed*(outer?.6:.45))*(outer?.006:.003)+Math.sin(p.x*9+elapsed*.6)*(outer?.004:.002);x*=wave;y*=wave;z*=wave;}
       const rx=x*cos[p.kind]+z*sin[p.kind],rz=-x*sin[p.kind]+z*cos[p.kind];
       x=rx;z=y*s+rz*c;y=y*c-rz*s;
       let shock=0;
@@ -126,9 +119,8 @@
         alpha=.82+key*.18;size=1.04;color=p.cyan?Math.round(clamp(.37+nx*.13-ny*.13)*23):24;
       }else{
         const outer=p.kind===2;
-        alpha=(outer?.05+rim*.22+key*.15+spec*.28:.10+rim*.50+key*.18+spec*.85)*(nz>0?1:.32)*twinkle;
-        size=(outer?.75+random(p.seed+37)*.65:.68+rim*.85)*(1+shock*.4);
-        if(p.kind===3){alpha=(.025+key*.08)*twinkle;size=.65;}
+        alpha=(outer?.012+Math.pow(rim,3)*.56+spec*.14:.10+rim*.50+key*.18+spec*.85)*(nz>0?1:.32)*twinkle;
+        size=(outer?.62+rim*.52:.68+rim*.85)*(1+shock*.4);
         color=Math.round(clamp(.51+nx*.27-ny*.29-spec*.20+Math.sin(elapsed*.16)*.045)*23);
       }
       alpha=clamp(alpha+shock*.25);const colorRGB=palette[color];
@@ -202,4 +194,83 @@
   document.addEventListener('visibilitychange',()=>{if(document.hidden){cancelAnimationFrame(raf);raf=0;}else start();});
   reduced.addEventListener('change',()=>{paused=reduced.matches;syncPause();});
   resize();syncPause();
+})();
+
+
+/* Mobile opening: reserve swipes for the globe until the visitor chooses to continue. */
+(() => {
+  'use strict';
+  const hero = document.getElementById('p10x-motion-hero');
+  if (!hero) return;
+  const mobile = matchMedia('(max-width: 767px)');
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+  const root = document.documentElement;
+  const hint = hero.querySelector('.pm-interaction-hint');
+  const desktopHint = hint?.textContent;
+  const initialTarget = location.hash && document.getElementById(location.hash.slice(1));
+  let waitingForHash = initialTarget && !hero.contains(initialTarget) && initialTarget !== hero;
+  let locked = false, leaving = false, checkFrame = 0;
+  const inMenu = target => target instanceof Element && !!target.closest('#p10x-mobile-menu,[role="dialog"][aria-modal="true"]');
+  function setLocked(value) {
+    value = value && mobile.matches;
+    if (locked !== value) {
+      locked = value;
+      root.classList.toggle('pm-hero-scroll-locked', locked);
+      hero.classList.toggle('is-scroll-locked', locked);
+    }
+    hero.dataset.scrollLocked = String(locked);
+    if (hint) hint.textContent = mobile.matches ? (locked ? 'Drag to rotate · tap Learn more to scroll' : 'Drag to rotate') : desktopHint;
+  }
+  function sync() {
+    checkFrame = 0;
+    if (!mobile.matches) { leaving = false; setLocked(false); return; }
+    // Do not re-lock at the start of an intentional smooth scroll or a deep-link restoration.
+    if (window.scrollY > 8) { leaving = false; waitingForHash = false; setLocked(false); }
+    else if (window.scrollY <= 2 && !leaving && !waitingForHash && !document.body.classList.contains('p10x-menu-is-open')) setLocked(true);
+  }
+  function schedule() { if (!checkFrame) checkFrame = requestAnimationFrame(sync); }
+  function blockGesture(event) {
+    if (!locked || inMenu(event.target) || (event.touches && event.touches.length > 1)) return;
+    if (event.cancelable) event.preventDefault();
+    // Intercept before the theme's smooth-scroll wheel/touch handlers as well as native scroll.
+    event.stopImmediatePropagation();
+  }
+  window.addEventListener('wheel', blockGesture, { passive: false, capture: true });
+  window.addEventListener('touchmove', blockGesture, { passive: false, capture: true });
+  document.addEventListener('keydown', event => {
+    if (!locked || inMenu(event.target) || event.altKey || event.ctrlKey || event.metaKey) return;
+    const editable = event.target instanceof Element && event.target.closest('input,textarea,select,[contenteditable="true"]');
+    const control = event.target instanceof Element && event.target.closest('a,button,[role="button"]');
+    if (!editable && ['ArrowDown','ArrowUp','PageDown','PageUp','Home','End',' '].includes(event.key) && !(event.key === ' ' && control)) {
+      event.preventDefault(); event.stopImmediatePropagation();
+    }
+  }, true);
+  document.addEventListener('click', event => {
+    if (!mobile.matches || event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    const anchor = event.target instanceof Element && event.target.closest('a[href^="#"]');
+    const href = anchor?.getAttribute('href');
+    const target = href && href.length > 1 && document.getElementById(href.slice(1));
+    if (!target || target === hero || hero.contains(target)) return;
+    // Keep all real same-page exits working, including the contact CTA and menu anchors.
+    if (!locked && !hero.contains(anchor)) return;
+    event.preventDefault(); event.stopImmediatePropagation();
+    leaving = true; waitingForHash = false; setLocked(false);
+    history.pushState(null, '', href);
+    const top = Math.max(0, target.getBoundingClientRect().top + window.scrollY - 80);
+    target.setAttribute('tabindex', '-1'); target.focus({ preventScroll: true });
+    window.scrollTo({ top, behavior: reduced.matches ? 'instant' : 'smooth' });
+  }, true);
+  // Keyboard focus may leave the visual introduction without trapping assistive navigation.
+  document.addEventListener('focusin', event => {
+    const target = event.target;
+    if (locked && target instanceof Element && !hero.contains(target) && !target.closest('header,#p10x-mobile-menu')) {
+      leaving = true; setLocked(false);
+    }
+  });
+  window.addEventListener('scroll', schedule, { passive: true });
+  window.addEventListener('pageshow', schedule);
+  window.addEventListener('load', schedule, { once: true });
+  window.addEventListener('pagehide', () => setLocked(false));
+  mobile.addEventListener('change', sync);
+  sync();
 })();
