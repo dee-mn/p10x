@@ -30,7 +30,7 @@
     const ring = Math.sqrt(1 - y * y);
     return [Math.cos(phi) * ring * r, y * r, Math.sin(phi) * ring * r];
   }
-  // Radius grows 30%; compensating here makes the mark 20% smaller on screen.
+  // Keep the established mark-to-sphere proportion while matching the reference scale.
   const logoScale = .8 / 1.3;
   for (let i = 0; i < (mobile.matches ? 5700 : 8800); i++) {
     const p = samples[Math.floor(random(i + 1) * samples.length)];
@@ -49,12 +49,15 @@
       points.push({ x: Math.cos(a) * ring * (r + jitter), y: y * (r + jitter), z: Math.sin(a) * ring * (r + jitter), kind, seed: random(i + kind * 92) * Math.PI * 2 });
     }
   }
-  // Two separately moving surfaces, with a small luminous halo beyond the outer one.
-  shell(mobile.matches ? 6200 : 9600, .985, 1);
-  shell(mobile.matches ? 3600 : 6700, 1.075, 2);
-  for (let i = 0; i < (mobile.matches ? 450 : 850); i++) {
-    const p = sphere(i + 800, 1.09 + random(i + 921) * .12);
-    points.push({x:p[0], y:p[1], z:p[2], kind:3, seed:random(i + 182) * Math.PI * 2});
+  // A fine, defined globe plus a loose volume of orbiting particles, not a second rim.
+  shell(mobile.matches ? 7800 : 11600, 1, 1);
+  for (let i = 0; i < (mobile.matches ? 1800 : 3200); i++) {
+    const p = sphere(i * 1.71 + 1700, 1.045 + Math.pow(random(i + 2921), 1.65) * .31);
+    points.push({x:p[0], y:p[1], z:p[2], kind:2, seed:random(i + 7182) * Math.PI * 2});
+  }
+  for (let i = 0; i < (mobile.matches ? 220 : 400); i++) {
+    const p = sphere(i * 2.13 + 3800, 1.22 + random(i + 4921) * .26);
+    points.push({x:p[0], y:p[1], z:p[2], kind:3, seed:random(i + 5182) * Math.PI * 2});
   }
   // Ice highlights, mint, brand turquoise, electric cyan and blue shadow.
   const stops = [[220,255,246],[105,250,235],[3,196,213],[13,151,239],[21,78,187]];
@@ -63,8 +66,9 @@
     return stops[k].map((c,j) => Math.round(c + (stops[k+1][j] - c) * t));
   });
   palette.push([239,255,252]);
-  const bins = Array.from({length:palette.length * 10}, () => []);
-  const colors = bins.map((_,i) => `rgba(${palette[Math.floor(i/10)].join(',')},${(i%10+1)/10})`);
+  const alphaSteps = 16;
+  const bins = Array.from({length:palette.length * alphaSteps}, () => []);
+  const colors = bins.map((_,i) => `rgba(${palette[Math.floor(i/alphaSteps)].join(',')},${Math.pow((i%alphaSteps+1)/alphaSteps,2)})`);
   const bufferData = new Float32Array(points.length * 7);
   let width=1,height=1,radius=1,cx=0,cy=0,dpr=1,gl,ctx,buffer;
   let elapsed=0,yaw=0,pitch=.10,velocityX=0,velocityY=0,last=0,raf=0,visible=true,paused=reduced.matches;
@@ -107,7 +111,7 @@
     for(const p of points){
       let x=p.x,y=p.y,z=p.z;
       if(p.kind===0&&reveal<1){x=p.cloud[0]+(x-p.cloud[0])*reveal;y=p.cloud[1]+(y-p.cloud[1])*reveal;z=p.cloud[2]+(z-p.cloud[2])*reveal;}
-      if(p.kind>0){const wave=1+Math.sin(p.y*7+p.seed+elapsed*(p.kind===2?1.1:.7))*.009+Math.sin(p.x*9+elapsed*.9)*.006;x*=wave;y*=wave;z*=wave;}
+      if(p.kind>0){const loose=p.kind>1;const wave=1+Math.sin(p.y*7+(loose?p.seed:0)+elapsed*(loose?.65:.45))*(loose?.045:.003)+Math.sin(p.x*9+elapsed*.6)*(loose?.025:.002);x*=wave;y*=wave;z*=wave;}
       const rx=x*cos[p.kind]+z*sin[p.kind],rz=-x*sin[p.kind]+z*cos[p.kind];
       x=rx;z=y*s+rz*c;y=y*c-rz*s;
       let shock=0;
@@ -122,11 +126,9 @@
         alpha=.82+key*.18;size=1.04;color=p.cyan?Math.round(clamp(.37+nx*.13-ny*.13)*23):24;
       }else{
         const outer=p.kind===2;
-        alpha=(outer?.13+rim*.58+key*.20+spec*.65:.17+rim*.68+key*.23+spec*.75)*(nz>0?1:.40)*twinkle;
-        // Preserve the mark without flattening the whole centre into a dark patch.
-        if(Math.abs(x)<.58&&Math.abs(y)<.19)alpha*=.42;
-        size=(outer?1.00+rim*.95:1.15+rim*.90)*(1+shock*.4);
-        if(p.kind===3){alpha=(.08+key*.15)*twinkle;size=.65;}
+        alpha=(outer?.05+rim*.22+key*.15+spec*.28:.10+rim*.50+key*.18+spec*.85)*(nz>0?1:.32)*twinkle;
+        size=(outer?.75+random(p.seed+37)*.65:.68+rim*.85)*(1+shock*.4);
+        if(p.kind===3){alpha=(.025+key*.08)*twinkle;size=.65;}
         color=Math.round(clamp(.51+nx*.27-ny*.29-spec*.20+Math.sin(elapsed*.16)*.045)*23);
       }
       alpha=clamp(alpha+shock*.25);const colorRGB=palette[color];
@@ -135,7 +137,7 @@
         bufferData[offset++]=colorRGB[0]/255;bufferData[offset++]=colorRGB[1]/255;bufferData[offset++]=colorRGB[2]/255;
         bufferData[offset++]=alpha;bufferData[offset++]=Math.max(1,size*dpr*perspective*1.3);
       }else{
-        const bucket=Math.min(9,Math.floor(alpha*10));bins[color*10+bucket].push(px,py,size*perspective);
+        const bucket=Math.min(alphaSteps-1,Math.max(0,Math.ceil(Math.sqrt(alpha)*alphaSteps)-1));bins[color*alphaSteps+bucket].push(px,py,size*perspective);
       }
     }
     if(gl){gl.clear(gl.COLOR_BUFFER_BIT);gl.bindBuffer(gl.ARRAY_BUFFER,buffer);gl.bufferSubData(gl.ARRAY_BUFFER,0,bufferData);gl.drawArrays(gl.POINTS,0,points.length);}
@@ -149,8 +151,10 @@
   function resize(){
     const b=hero.getBoundingClientRect();width=b.width;height=b.height;dpr=Math.min(devicePixelRatio||1,mobile.matches?1.5:1.6);
     canvas.width=Math.round(width*dpr);canvas.height=Math.round(height*dpr);cx=width/2;cy=height/2;
-    const base=mobile.matches?Math.min(width*.43,height*.22):Math.min(width*.29,height*.30);
-    radius=base*1.3;hero.style.setProperty('--pm-logo-width',`${base*1.83*.8}px`);
+    // The reference's main sphere spans about 55% of the desktop viewport height.
+    // On phones reserve space for the header and bottom copy; keep the halo inside the width.
+    radius=mobile.matches?Math.min(width*.35,height*.22):Math.min(width*.205,height*.275);
+    hero.style.setProperty('--pm-logo-width',`${radius*1.83*logoScale}px`);
     canvas.dataset.radius=radius.toFixed(2);canvas.dataset.center=`${cx},${cy}`;
     if(gl)gl.viewport(0,0,canvas.width,canvas.height);else ctx.setTransform(dpr,0,0,dpr,0,0);
     draw();
@@ -173,7 +177,7 @@
   hero.addEventListener('pointerdown',e=>{
     if(e.button!==0||!e.target.closest('.pm-stage'))return;
     const b=hero.getBoundingClientRect(),x=(e.clientX-b.left-cx)/radius,y=-(e.clientY-b.top-cy)/radius;
-    if(Math.hypot(x,y)>1.25)return;
+    if(Math.hypot(x,y)>1.48)return;
     dragging={id:e.pointerId,x:e.clientX,y:e.clientY,startX:e.clientX,startY:e.clientY,time:performance.now(),hitX:x,hitY:y,moved:false};
     velocityX=velocityY=0;hero.setPointerCapture(e.pointerId);hero.classList.add('is-dragging');canvas.dataset.dragging='true';
   });
