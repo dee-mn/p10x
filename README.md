@@ -1,43 +1,38 @@
 # P10X
 
-Ready-to-deploy HTML, CSS and JavaScript for **https://p10x.flevor.me/**. The repository root is the website root. No build step, Node server or WordPress installation is needed on hosting.
+Company website for P10X: services, company information, news and enquiries.
 
-## Deploy with Plesk Git
+## Development
 
-1. Pull `main` and click **Deploy** into the domain's document root.
-2. The deployment folder must directly contain `index.html`, `styles/`, `scripts/` and the page folders.
-3. Serve that same folder in Plesk Hosting Settings. Do not point the document root at `src/`, `public/` or `dist/`.
-4. Enable PHP 8.1+ for `contact.php`, configure server mail, and verify a real enquiry reaches the inbox.
-
-The pages reuse images, videos, fonts and frontend theme libraries at **https://p10xx.flevor.me/**. Keep that asset origin available. No media or theme directory is copied into this repository.
-
-## Edit
-
-| Content | Location |
-| --- | --- |
-| Homepage | `index.html` |
-| Other pages and articles | `<route>/index.html` |
-| Page styles and scripts | `styles/`, `scripts/` |
-| Shared standalone changes | `styles/site.css`, `scripts/site.js` |
-| Contact handler | `contact.php` |
-| Search metadata | `robots.txt`, `sitemap.xml` |
-| Migrated source pages | `docs/migrated-pages.json` |
-
-There are 30 migrated pages, including 20 articles. The established design, animations, FAQ filtering and page interactions are retained. News Load More and article search run locally without WordPress AJAX.
-
-## Optional local preview and checks
-
-Node.js 20+; no dependencies or installation step.
+Requires Node.js 20 or later. No packages need to be installed.
 
 ```sh
-npm run check
 npm run dev
+npm run check
 ```
 
-`npm run build` is an optional export to `dist/`; Plesk Git deployment does not need it. Set `SITE_URL` for a different canonical domain when exporting. Local preview does not send email; hosting must provide PHP and working mail. The enquiry recipient defaults to `info@p10x.my`, configurable through the server variable `P10X_CONTACT_TO`.
+Pages are plain HTML. Shared styles and scripts are in `styles/` and `scripts/`; images, fonts, video and vendor libraries are in `assets/`.
 
-## Refreshing from WordPress
+| File | Purpose |
+| --- | --- |
+| `index.html` | Homepage |
+| `<route>/index.html` | Pages and articles |
+| `scripts/motion-hero.js` | Globe rendering and mobile scroll controls |
+| `scripts/hero-values.js` | Interactive values and title animation |
+| `styles/motion-hero.css` | Homepage hero styling |
+| `contact.php` | Enquiry delivery |
+| `docs/pages.json` | Page routes and titles |
 
-`tools/import-origin.py` reads the 30 known public pages at the asset origin and replaces the imported HTML and extracted styles/scripts. It downloads no media or theme libraries and never writes to WordPress. Rerunning requires Python, BeautifulSoup and curl; preserve custom edits first. Normal editing requires only HTML, CSS and JavaScript.
+## Deployment
 
-Article wording and dates are retained from the source; this migration does not update their factual content. Existing theme/library licenses continue to apply.
+Deploy the repository root to the domain's document root. It must contain `index.html`, `assets/`, `styles/`, `scripts/`, `contact.php` and the page folders.
+
+For Plesk Git, pull `main` and deploy. Enable PHP 8.1 or later and configure the host's mail transport. Enquiries go to `info@p10x.my`; set `P10X_CONTACT_TO` on the server to use a different inbox. Test delivery after deployment.
+
+`npm run build` exports the site to `dist/` when a separate deployment folder is needed. Set `SITE_URL` when building for another domain.
+
+## Checks
+
+`npm run check` validates page routes, asset references and JavaScript syntax. It also checks that website assets load locally. The same checks run in GitHub Actions, along with the export and PHP syntax check.
+
+Keep vendor copyright and licence notices with their files.
