@@ -40,7 +40,7 @@ Original files were saved and checksum-verified directly on the rebuild branch. 
 2. Build About Us, the five service pages, Insights, FAQ and Contact Us using the same components and current content. Preserve their existing URL paths.
 3. Build the article template and carry over all 20 articles. Search and Load More belong to that stage.
 4. Complete route, responsive and contact delivery verification on the final host.
-5. Perform the final image compression/responsive-format and SEO pass.
+5. Check page metadata and indexing. Do not resize, compress or convert images.
 
 The other 29 routes are not present in this review milestone. Their navigation links retain the intended production paths. Do not merge this branch into `main` or replace the existing deployed site yet.
 

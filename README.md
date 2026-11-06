@@ -27,6 +27,6 @@ The optional build copies the website and assets to `dist/`. The repository root
 | Car Care globe | `scripts/purpose-globe.js` |
 | Images, video and fonts | `assets/` |
 
-Keep one original file per image during development. Compression and responsive exports are reserved for the final media pass. Keep font licence notices with their files.
+Keep one original file per image during development. Image files must remain at their original size, quality and format; image optimization is not part of this work. Keep font licence notices with their files.
 
-This branch is a homepage review milestone. See `docs/PROJECT-CHECKPOINT.md` for completed work and the remaining pages. It is not the production branch.
+This branch contains all 30 website pages. See `docs/PROJECT-CHECKPOINT.md` for completed work and verification limits. It is not the production branch.

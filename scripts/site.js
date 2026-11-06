@@ -2,36 +2,6 @@
   'use strict';
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   const mobile = matchMedia('(max-width: 767px)');
-  const header = document.querySelector('.site-header');
-  const menu = document.getElementById('site-menu');
-  const toggle = document.querySelector('.menu-toggle');
-  function closeMenu() { menu.close(); }
-  toggle.addEventListener('click', () => {
-    menu.showModal();
-    document.documentElement.classList.add('menu-open');
-    document.body.classList.add('p10x-menu-is-open');
-    toggle.setAttribute('aria-expanded', 'true');
-  });
-  menu.querySelector('.menu-close').addEventListener('click', closeMenu);
-  menu.addEventListener('close', () => {
-    document.documentElement.classList.remove('menu-open');
-    document.body.classList.remove('p10x-menu-is-open');
-    toggle.setAttribute('aria-expanded', 'false');
-    toggle.focus({preventScroll: true});
-  });
-  menu.addEventListener('click', e => {
-    if (e.target.closest('a[href]')) closeMenu();
-  });
-  document.addEventListener('keydown', e => {
-    if (e.key !== 'Escape') return;
-    document.querySelectorAll('details[open]').forEach(el => el.removeAttribute('open'));
-  });
-  document.addEventListener('click', e => {
-    document.querySelectorAll('details[open]').forEach(el => {
-      if (!el.contains(e.target)) el.removeAttribute('open');
-    });
-  });
-
   function tabList(root, onSelect) {
     const tabs = [...root.querySelectorAll('[role="tab"]')];
     function select(i, focus = false) {
@@ -112,7 +82,6 @@
   const services = document.querySelector('.services');
   const serviceTrack = document.querySelector('.service-track');
   const film = document.querySelector('.film-section');
-  const backTop = document.querySelector('.back-top');
   const marquee = document.querySelector('.service-marquee');
   const clamp = (v, min=0, max=1) => Math.min(max,Math.max(min,v));
   const revealTitles = [...document.querySelectorAll('[data-reveal]')].map(title => {
@@ -131,8 +100,6 @@
   let queued = false;
   function update() {
     queued = false;
-    header.classList.toggle('is-scrolled',scrollY > 40);
-    backTop.classList.toggle('is-visible',scrollY > innerHeight * .8);
     if (!reduced.matches) {
       revealTitles.forEach(({title,words}) => {
         const b = title.getBoundingClientRect();
@@ -168,18 +135,4 @@
   document.fonts.ready.then(requestTick);
   requestTick();
 
-  const form = document.getElementById('contact-form');
-  const status = form.querySelector('.form-status');
-  form.addEventListener('submit',async e => {
-    e.preventDefault();
-    if(!form.reportValidity())return;
-    const button = form.querySelector('button[type="submit"]');button.disabled=true;status.textContent='Sending your enquiry…';
-    try {
-      const response = await fetch(form.action,{method:'POST',body:new FormData(form),headers:{Accept:'application/json'}});
-      const result = await response.json();
-      status.textContent=result.message || 'Unable to send. Please email info@p10x.my.';
-      if(response.ok && result.ok)form.reset();
-    } catch (_) { status.textContent='Unable to send right now. Please email info@p10x.my.'; }
-    finally {button.disabled=false;}
-  });
 })();

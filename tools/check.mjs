@@ -2,6 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import vm from 'node:vm';
 const root=path.resolve(process.env.P10X_CHECK_ROOT||'.'),errors=[],checked=new Set();
+const routes=JSON.parse(fs.readFileSync('docs/routes.json','utf8'));
 function scan(file){
   if(checked.has(file))return;checked.add(file);
   if(!fs.existsSync(file)){errors.push(`Missing: ${path.relative(root,file)}`);return;}
@@ -13,10 +14,21 @@ function scan(file){
     const relative=decodeURIComponent(m[1]||m[2]);scan(path.join(root,relative));
   }
 }
-scan(path.join(root,'index.html'));
-const html=fs.readFileSync(path.join(root,'index.html'),'utf8');
-const ids=new Set([...html.matchAll(/\bid="([^"]+)"/g)].map(x=>x[1]));
-for(const m of html.matchAll(/href="#([^"]+)"/g))if(!ids.has(m[1]))errors.push(`Missing anchor: ${m[1]}`);
-if(/srcset=/.test(html))errors.push('Responsive image variants are deferred to the final image pass.');
+for(const {route} of routes){
+ const file=path.join(root,route.slice(1),'index.html');scan(file);if(!fs.existsSync(file))continue;
+ const html=fs.readFileSync(file,'utf8');
+ if((html.match(/<h1\b/g)||[]).length!==1)errors.push(`${route}: expected one primary heading`);
+ if(!/<title>[^<]+<\/title>/.test(html))errors.push(`${route}: missing page title`);
+ if(!html.includes(`rel="canonical" href="https://p10x.flevor.me${route}"`))errors.push(`${route}: incorrect canonical URL`);
+ const ids=[...html.matchAll(/\bid="([^"]+)"/g)].map(x=>x[1]),unique=new Set(ids);
+ for(const id of new Set(ids.filter((x,i)=>ids.indexOf(x)!==i)))errors.push(`${route}: duplicate ID ${id}`);
+ for(const m of html.matchAll(/href="#([^"]+)"/g))if(!unique.has(m[1]))errors.push(`${route}: missing anchor ${m[1]}`);
+ for(const m of html.matchAll(/href="(\/[^"?#]*)/g)){
+  const target=decodeURIComponent(m[1]);if(target.startsWith('/assets/')||target.startsWith('/styles/')||target.startsWith('/scripts/'))continue;
+  if(['/contact.php','/sitemap.xml'].includes(target))continue;
+  if(!fs.existsSync(path.join(root,target,'index.html')))errors.push(`${route}: missing destination ${target}`);
+ }
+ if(/srcset=/.test(html))errors.push(`${route}: image variants are not part of this work`);
+}
 if(errors.length){console.error(errors.join('\n'));process.exit(1);}
-console.log(`Checked ${checked.size} homepage source and asset files; local dependencies and anchors resolve.`);
+console.log(`Checked ${routes.length} pages and ${checked.size} source/asset files; routes, anchors, local dependencies and JavaScript syntax resolve.`);

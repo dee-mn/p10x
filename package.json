@@ -4,9 +4,11 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "node tools/serve.mjs",
+    "dev": "node tools/sync-layout.mjs && node tools/serve.mjs",
     "check": "node tools/check.mjs",
     "build": "node tools/build.mjs"
   },
-  "engines": {"node": ">=20"}
+  "engines": {
+    "node": ">=20"
+  }
 }
