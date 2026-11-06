@@ -1,0 +1,6 @@
+.surface-widget-heading .heading-title[class*=surface-size-]>a{color:inherit;font-size:inherit;line-height:inherit}
+.surface-widget-heading .heading-title.surface-size-small{font-size:15px}
+.surface-widget-heading .heading-title.surface-size-medium{font-size:19px}
+.surface-widget-heading .heading-title.surface-size-large{font-size:29px}
+.surface-widget-heading .heading-title.surface-size-xl{font-size:39px}
+.surface-widget-heading .heading-title.surface-size-xxl{font-size:59px}

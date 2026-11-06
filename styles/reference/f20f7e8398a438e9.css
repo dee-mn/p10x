@@ -30,18 +30,22 @@
 #p10x-expert-lab .x-nav small{font-size:10px;margin-right:12px;color:#03c4d5;}
 #p10x-expert-lab :focus-visible{outline:2px solid #03c4d5;outline-offset:5px;}
 #p10x-expert-lab .x-hint{font-size:11px;color:#79888b;display:flex;justify-content:space-between;margin-top:12px;}
-@media(max-width:767px){#p10x-expert-lab{padding:65px 0 45px;}#p10x-expert-lab .x-inner{padding:0 22px;}#p10x-expert-lab .x-body{grid-template-columns:1fr;gap:20px;}#p10x-expert-lab .x-scene{height:340px;grid-row:1;}#p10x-expert-lab .x-copy{min-height:245px;}#p10x-expert-lab .x-nav{gap:14px;}#p10x-expert-lab .x-nav button{font-size:12px;}#p10x-expert-lab .x-nav small{display:block;margin-bottom:5px;}#p10x-expert-lab .x-top{font-size:9px;}}
-@media(prefers-reduced-motion:reduce){#p10x-expert-lab *,#p10x-expert-lab *:before{transition:none!important;animation:none!important;}#p10x-expert-lab .x-deck{transform:none!important;}}
+@media (max-width:767px){#p10x-expert-lab{padding:65px 0 45px;}
+#p10x-expert-lab .x-inner{padding:0 22px;}
+#p10x-expert-lab .x-body{grid-template-columns:1fr;gap:20px;}
+#p10x-expert-lab .x-scene{height:340px;grid-row:1;}
+#p10x-expert-lab .x-copy{min-height:245px;}
+#p10x-expert-lab .x-nav{gap:14px;}
+#p10x-expert-lab .x-nav button{font-size:12px;}
+#p10x-expert-lab .x-nav small{display:block;margin-bottom:5px;}
+#p10x-expert-lab .x-top{font-size:9px;}}
+@media (prefers-reduced-motion:reduce){#p10x-expert-lab *,#p10x-expert-lab *:before{transition:none!important;animation:none!important;}
+#p10x-expert-lab .x-deck{transform:none!important;}}
 #p10x-expert-lab.x-scroll-ready{overflow:visible;padding:0;height:var(--x-runway); }
 #p10x-expert-lab.x-scroll-ready .x-inner{position:sticky;top:var(--x-sticky-top);width:100%;padding-top:35px;padding-bottom:30px;}
-@media(min-width:900px) and (min-height:700px){
-#p10x-expert-lab .x-top{margin-bottom:25px;}
+@media (min-width:900px) and (min-height:700px){#p10x-expert-lab .x-top{margin-bottom:25px;}
 #p10x-expert-lab h2{font-size:clamp(38px,4.2vw,62px);margin-bottom:12px;}
 #p10x-expert-lab .x-body{min-height:390px;}
 #p10x-expert-lab .x-scene{height:390px;}
 #p10x-expert-lab .x-nav{margin-top:20px;}
-#p10x-expert-lab .x-nav button{padding:17px 0!important;}
-}
-
-
-#p10x-expert-lab .x-test{display:inline-flex;align-items:center;gap:9px}#p10x-expert-lab .x-test svg{width:15px;height:15px}
+#p10x-expert-lab .x-nav button{padding:17px 0!important;}}

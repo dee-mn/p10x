@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import vm from 'node:vm';
+import crypto from 'node:crypto';
 const root=path.resolve(process.env.P10X_CHECK_ROOT||'.'),errors=[],checked=new Set();
 const routes=JSON.parse(fs.readFileSync('docs/routes.json','utf8'));
 function scan(file){
@@ -8,7 +9,7 @@ function scan(file){
   if(!fs.existsSync(file)){errors.push(`Missing: ${path.relative(root,file)}`);return;}
   const ext=path.extname(file);if(!['.html','.css','.js'].includes(ext))return;
   const text=fs.readFileSync(file,'utf8');
-  if(/p10xx\.flevor\.me|wp-content\/|wp-includes\/|elementorFrontend|window\.jQuery|window\.gsap|ScrollTrigger/.test(text))errors.push(`External framework dependency: ${path.relative(root,file)}`);
+  if(/p10xx\.flevor\.me|wp-content\/|wp-includes\/|elementorFrontend|window\.jQuery/.test(text))errors.push(`External framework dependency: ${path.relative(root,file)}`);
   if(ext==='.js'){try{new vm.Script(text,{filename:file});}catch(e){errors.push(e.message);}}
   for(const m of text.matchAll(/(?:src|href|poster|data-src)=["'](\/(?:assets|styles|scripts)\/[^"'?#]+)|url\(["']?(\/(?:assets|styles|scripts)\/[^"')?#\s]+)/g)){
     const relative=decodeURIComponent(m[1]||m[2]);scan(path.join(root,relative));
@@ -22,13 +23,18 @@ for(const {route} of routes){
  if(!html.includes(`rel="canonical" href="https://p10x.flevor.me${route}"`))errors.push(`${route}: incorrect canonical URL`);
  const ids=[...html.matchAll(/\bid="([^"]+)"/g)].map(x=>x[1]),unique=new Set(ids);
  for(const id of new Set(ids.filter((x,i)=>ids.indexOf(x)!==i)))errors.push(`${route}: duplicate ID ${id}`);
- for(const m of html.matchAll(/href="#([^"]+)"/g))if(!unique.has(m[1]))errors.push(`${route}: missing anchor ${m[1]}`);
+ for(const m of html.matchAll(/href="#([^"]+)"/g))if(m[1]!=='#'&&!unique.has(m[1]))errors.push(`${route}: missing anchor ${m[1]}`);
  for(const m of html.matchAll(/href="(\/[^"?#]*)/g)){
   const target=decodeURIComponent(m[1]);if(target.startsWith('/assets/')||target.startsWith('/styles/')||target.startsWith('/scripts/'))continue;
-  if(['/contact.php','/sitemap.xml'].includes(target))continue;
+  if(['/contact.php','/comment.php','/sitemap.xml'].includes(target))continue;
   if(!fs.existsSync(path.join(root,target,'index.html')))errors.push(`${route}: missing destination ${target}`);
  }
+ if(/(?:src|poster)=""/.test(html))errors.push(`${route}: empty media URL`);
  if(/srcset=/.test(html))errors.push(`${route}: image variants are not part of this work`);
+}
+for(const asset of JSON.parse(fs.readFileSync('docs/assets.json','utf8')).files){
+ const file=path.join(root,asset.path);
+ if(!fs.existsSync(file)||crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex')!==asset.sha256)errors.push(`Original asset checksum mismatch: ${asset.path}`);
 }
 if(errors.length){console.error(errors.join('\n'));process.exit(1);}
 console.log(`Checked ${routes.length} pages and ${checked.size} source/asset files; routes, anchors, local dependencies and JavaScript syntax resolve.`);

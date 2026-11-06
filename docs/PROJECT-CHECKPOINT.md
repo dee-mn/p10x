@@ -1,57 +1,41 @@
-# P10X project checkpoint
+# P10X checkpoint
 
-Updated: 6 November 2026  
-Active branch: `main`  
-Backup branch: `backup-main-20261106` (`8236829571a9e04179a5c13d3a6639064ed9405e`)
+Updated 6 November 2026. Active branch: `main`.
 
-## Current state
+The previous main is preserved on `backup-main-20261106` at `8236829571a9e04179a5c13d3a6639064ed9405e`.
 
-All 30 routes are present: homepage, About Us, five service pages, Insights, FAQ, Contact Us and 20 articles. The user requested promotion of the completed rebuild to `main`. The previous `main` is preserved exactly on `backup-main-20261106`. Hosting deployment has not been verified in this branch-promotion step.
+## Current direction
 
-The baseline is the latest saved design at `8236829571a9e04179a5c13d3a6639064ed9405e` and the later requests in “P10X Hardcoded”, not the first exported version.
+Match the approved site's layout, content, typography, media placement, responsive rules and interactions. Keep the current homepage particle globe as the sole deliberate design exception. The earlier approximate homepage, redesigned article template and invented FAQ/Insights layouts have been replaced.
 
-The homepage retains the double-shell globe, smaller inner mark, drag/automatic rotation, ten exact value descriptions, hover/tap/keyboard reveals, hidden resting geometry, typewriter title and mobile scroll controls. Current content, Inter, turquoise, tight headings, original-colour footer mark and SVG controls are retained.
+All 30 routes contain their reference structure. Shared header/footer, timeline, service galleries, finish controls, tabs, FAQ search/category controls, article cards, sidebar, contact layout and original section sequence are restored. The old secondary Car Care hero is removed from the lower homepage. The globe remains at the top.
 
-About and the service pages retain their authored content and layouts with native page controls. Timeline years, division tabs, wrapping finishes, detailing thumbnails/previous/next, window-film disclosure panels and photograph inspection work without the former page runtime.
+## Files
 
-The FAQ contains all 119 answers, category filtering, search, empty/reset state and Load More. Insights contains all 20 article cards, search and Load More. All article image/title links lead to the existing route paths.
+- `components/`: shared header and footer, applied by `tools/sync-layout.mjs`.
+- `styles/foundation.css`: the reference variable Inter, existing hero font weights, local Archivo and reference display dimensions for untouched original media.
+- `styles/reference/`: local component, page and authored design rules, retaining their original cascade order.
+- `styles/native.css`: independent control states and media wrappers.
+- `scripts/native.js`: common controls, heading/scroll interactions, search, photo viewer, menus and local forms.
+- `scripts/sections/`: named section controllers using native DOM APIs and locally bundled GSAP.
+- `styles/hero.css`, `scripts/motion-hero.js`, `scripts/hero-values.js`: retained homepage hero.
+- `contact.php`, `comment.php`: server-mail handlers. Comments are sent for review.
+- `docs/assets.json`: media/font checksums. Images must not be optimized, resized, recompressed, converted or duplicated into responsive variants.
 
-## Images: explicit user instruction
+No CMS, jQuery, page-builder or theme JavaScript runtime is required. Media and fonts are local. The existing Google Maps and Vimeo service embeds remain external.
 
-Do not optimize images. Do not resize, compress, re-encode or convert them, and do not create responsive variants.
+## Verified
 
-The working set contains 200 original raster images, the existing vector logo, four original local videos and two local font weights. Asset checksums are recorded in `docs/assets.json`. Source files were copied byte-for-byte and verified before saving.
+Thirty-page checks cover titles, primary headings, canonical URLs, unique IDs, same-page anchors, internal destinations, local assets and JavaScript syntax. Original previously saved asset bytes are unchanged. New originals were copied without transformation and checksum verified.
 
-Image width/height attributes describe the originals for layout; they do not alter image bytes. Google Maps and the existing Vimeo window-film background remain external service embeds, independent of the asset source host.
+Desktop reference measurements match the homepage story/pillars/expert/partners/video/services/CEO/news sections; the About timeline's 7,020 px pin span; PPF hero position, 360 px aside and 5,647 px gallery; the article's 930 px content column; and Contact's 1,300 × 700 px map placement. FAQ retains 119 questions; Insights initially displays twelve cards and expands to twenty.
 
-## Source layout
+Browser checks include desktop layouts, FAQ category/search, Insights Load More, and mobile About layout/menu at 390 × 844. Mobile page bounds do not overflow. Static editorial text matches on 29 routes; Insights additionally contains the eight cards revealed by Load More. The Insights masonry columns use the original shortest-column placement. Exact pixel equivalence on every viewport has not been exhaustively tested.
 
-- `components/header.html` and `components/footer.html` are shared templates.
-- `tools/sync-layout.mjs` applies them to all 30 static pages before development/export.
-- `scripts/shell.js` handles common navigation, back-to-top and enquiries.
-- `scripts/site.js` handles homepage sections; the custom globe scripts remain separate.
-- `scripts/pages.js` handles page tabs, photographs, filters, search and Load More.
-- `styles/pages.css` and `styles/editorial.css` contain interior layouts.
-- `docs/routes.json` and `docs/article-index.json` record the current routes and articles.
-- `npm run build` exports all 30 pages and local assets to `dist/`.
+## Host verification
 
-No dependency/package installation is needed.
-
-## Verification completed
-
-- Thirty-page source and export checks: titles, one H1, canonical URLs, duplicate IDs, same-page anchors, internal routes, local resources and JavaScript syntax.
-- Exact editorial text comparison: all 20 articles and all five service-page bodies match the reference after whitespace/icon normalization.
-- Original asset checksums and image-file integrity verified.
-- Desktop browser checks: hero controls, common navigation, About tabs, wrapping tabs, detailing selection, window-film disclosure, FAQ filters/search/reset/Load More and article search/Load More.
-- Mobile checks at 390 × 844: viewport bounds, About timeline, tinting hero/video, article layout and homepage scroll controls.
-- Repository checks include PHP syntax. No live enquiry has been sent.
-
-## Remaining review
-
-Review appearance and motion on the final host after deploying `main`. Verify real enquiry delivery on the final host. Keep the existing product placeholders and legal labels until actual replacement content is provided.
-
-Image optimization is excluded from remaining work unless the user explicitly changes that instruction.
+Verify appearance and enquiry/comment mail delivery on the final host after deployment. No real enquiry or comment was sent during development. Product placeholders and existing legal labels remain as supplied.
 
 ## Resume
 
-Read this checkpoint and the current branch first. Do not reconstruct the project from old chats or restart the asset transfer. Update the relevant component/page, run its checks, and record the resulting state here.
+Read this file and current Git state first. Work on the relevant page/component; do not restart a whole-site asset transfer. Keep the original images unchanged until the user explicitly authorizes image work.

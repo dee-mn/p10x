@@ -17,3 +17,4 @@ jobs:
       - run: npm run build
       - run: P10X_CHECK_ROOT=dist npm run check
       - run: php -l contact.php
+      - run: php -l comment.php

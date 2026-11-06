@@ -1030,6 +1030,106 @@
       "path": "assets/images/8c25420c46546e22.jpg",
       "bytes": 155403,
       "sha256": "d032f027dc97cb4e90023fd2ff7371c5cd3af434aade111f21b7494ad1ba9fe6"
+    },
+    {
+      "path": "assets/images/p10x-logo-dark.png",
+      "sha256": "a02f5df6d8c3a93605fda9bd137089cd19b1450f88314d6d96b94b9462a38627",
+      "bytes": 675909
+    },
+    {
+      "path": "assets/images/p10x-vibe-16.jpg",
+      "sha256": "61f384b0c77f036f451d99b347560e05fd631ddba4bd2fde7626439ae5c98fc0",
+      "bytes": 9805924
+    },
+    {
+      "path": "assets/images/p10x-vibe-12.jpg",
+      "sha256": "b9ece2621f7bf135c8fbb69abd4277ac3ea595e0da6ef2e14d655bb781038487",
+      "bytes": 159096
+    },
+    {
+      "path": "assets/images/P10X-Aura-product-menu-placeholder.jpg",
+      "sha256": "61f8c112bf3aef6242f1c739980645f2b28a3583fab0b278ca62e887494a2b53",
+      "bytes": 138824
+    },
+    {
+      "path": "assets/images/img-ov1.png",
+      "sha256": "c857a2d146f9c9325dcd48b604641a2ba0aa2e666325f226f64a8c8a594a16d4",
+      "bytes": 961
+    },
+    {
+      "path": "assets/images/pattern6.png",
+      "sha256": "657d1ddd7e54a94ca73e9b0e556c651afd1d25195b380f33680cd078d517b95b",
+      "bytes": 1000
+    },
+    {
+      "path": "assets/images/p10x-logo.svg",
+      "sha256": "7859a552068ff23898290061e0938e1776819c18cd0b55f6334cf3dc53f6bdee",
+      "bytes": 1187
+    },
+    {
+      "path": "assets/images/IMG_0342.jpg",
+      "sha256": "45ad1b521058a60b8ed1f87fc72d34624a2a8fa0283d2b7ec0c853193dd8885f",
+      "bytes": 12026548
+    },
+    {
+      "path": "assets/images/p10x-logo@10x.png",
+      "sha256": "1dd385ad4fba954716f08a6d4aabdbf0f1bd28d1d0876e344792c7d8d487110c",
+      "bytes": 653682
+    },
+    {
+      "path": "assets/images/p10x-about.jpeg",
+      "sha256": "8dc8fa294b663d2931d4f79dae44b85054f6fb5890b4490c84731d1175583d62",
+      "bytes": 1995585
+    },
+    {
+      "path": "assets/images/p10x-world.jpg",
+      "sha256": "6a1ebc47170946f8bbd8483caa944ca2c503c9b938f7ece737b43d168e6adf0f",
+      "bytes": 3719420
+    },
+    {
+      "path": "assets/images/pattern-img6.png",
+      "sha256": "2e02708111dea6d5219d1d82fd22d942fcffed27902b0ad36d7d544afab09b2e",
+      "bytes": 20500
+    },
+    {
+      "path": "assets/images/admin-avatar.jpg",
+      "sha256": "04f5604196ae1eee6a914427222b729dd67594b4db797a07f031b5cc3fed4eca",
+      "bytes": 954
+    },
+    {
+      "path": "assets/fonts/archivo-400.ttf",
+      "sha256": "01170409e32e22123a354fbaa7dcb5ca5300790bb77c05d569ec8fdc394e78c9",
+      "bytes": 110708
+    },
+    {
+      "path": "assets/fonts/archivo-600.ttf",
+      "sha256": "f3a513d89abf3bf1d5aa906b15f21eefe7a7c98a6cf6463929a0a4032639d264",
+      "bytes": 111872
+    },
+    {
+      "path": "assets/fonts/archivo-500.ttf",
+      "sha256": "bf52802dc93c0d9933f92a8d0da0126124f8c37a838b3cc513190036df14587d",
+      "bytes": 112136
+    },
+    {
+      "path": "assets/fonts/inter-normal-latin.woff2",
+      "sha256": "2c295d99e26dcf357d4d01bcf270fd6924b600c9a13dd8c363ef114f4c6976fa",
+      "bytes": 72920
+    },
+    {
+      "path": "assets/fonts/inter-normal-latin-ext.woff2",
+      "sha256": "5e6d4fe9d9f4bff8b2a2469d25ab19576bb85331e22c6ed51398e16f95d56a9c",
+      "bytes": 133336
+    },
+    {
+      "path": "assets/fonts/inter-italic-latin-ext.woff2",
+      "sha256": "cd92c8740f77f482bcd39e831fa7b1445589e9203cc9edb39fd49435d8976257",
+      "bytes": 146460
+    },
+    {
+      "path": "assets/fonts/inter-italic-latin.woff2",
+      "sha256": "c58f9d530baa7e96355f444502eca739d5eefa0f328f3d635b73648373214629",
+      "bytes": 79716
     }
   ]
 }

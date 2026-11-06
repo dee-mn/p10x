@@ -4,7 +4,7 @@ import path from 'node:path';
 const root=process.cwd();
 const portFlag=process.argv.indexOf('--port');
 const port=Number(process.env.PORT || (portFlag>=0?process.argv[portFlag+1]:3000));
-const mime={'.html':'text/html; charset=utf-8','.css':'text/css; charset=utf-8','.js':'text/javascript; charset=utf-8','.svg':'image/svg+xml','.jpg':'image/jpeg','.jpeg':'image/jpeg','.png':'image/png','.ttf':'font/ttf','.mp4':'video/mp4','.json':'application/json'};
+const mime={'.html':'text/html; charset=utf-8','.css':'text/css; charset=utf-8','.js':'text/javascript; charset=utf-8','.svg':'image/svg+xml','.jpg':'image/jpeg','.jpeg':'image/jpeg','.png':'image/png','.ttf':'font/ttf','.woff2':'font/woff2','.mp4':'video/mp4','.json':'application/json'};
 createServer(async(req,res)=>{
   if(req.method!=='GET'&&req.method!=='HEAD'){res.writeHead(503,{'Content-Type':'application/json'});res.end(JSON.stringify({ok:false,message:'Email delivery is unavailable here. Please email info@p10x.my.'}));return;}
   try{

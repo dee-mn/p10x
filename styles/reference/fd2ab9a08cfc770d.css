@@ -1,0 +1,150 @@
+.enquiry .screen-reader-response{
+	position: absolute;
+	overflow: hidden;
+	clip: rect(1px, 1px, 1px, 1px);
+	clip-path: inset(50%);
+	height: 1px;
+	width: 1px;
+	margin: -1px;
+	padding: 0;
+	border: 0;
+	word-wrap: normal !important;
+	word-break: normal !important;
+}
+.enquiry .hidden-fields-container{
+	display: none;
+}
+.enquiry form .enquiry-response-output{
+	margin: 2em 0.5em 1em;
+	padding: 0.2em 1em;
+	border: 2px solid #00a0d2; 
+}
+.enquiry form.init .enquiry-response-output,
+.enquiry form.resetting .enquiry-response-output,
+.enquiry form.submitting .enquiry-response-output{
+	display: none;
+}
+.enquiry form.sent .enquiry-response-output{
+	border-color: #46b450; 
+}
+.enquiry form.failed .enquiry-response-output,
+.enquiry form.aborted .enquiry-response-output{
+	border-color: #dc3232; 
+}
+.enquiry form.spam .enquiry-response-output{
+	border-color: #f56e28; 
+}
+.enquiry form.invalid .enquiry-response-output,
+.enquiry form.unaccepted .enquiry-response-output,
+.enquiry form.payment-required .enquiry-response-output{
+	border-color: #ffb900; 
+}
+.enquiry-form-control-wrap{
+	position: relative;
+}
+.enquiry-not-valid-tip{
+	color: #dc3232; 
+	font-size: 1em;
+	font-weight: normal;
+	display: block;
+}
+.use-floating-validation-tip .enquiry-not-valid-tip{
+	position: relative;
+	top: -2ex;
+	left: 1em;
+	z-index: 100;
+	border: 1px solid #dc3232;
+	background: #fff;
+	padding: .2em .8em;
+	width: 24em;
+}
+.enquiry-list-item{
+	display: inline-block;
+	margin: 0 0 0 1em;
+}
+.enquiry-list-item-label::before,
+.enquiry-list-item-label::after{
+	content: " ";
+}
+.enquiry-spinner{
+	visibility: hidden;
+	display: inline-block;
+	background-color: #23282d; 
+	opacity: 0.75;
+	width: 24px;
+	height: 24px;
+	border: none;
+	border-radius: 100%;
+	padding: 0;
+	margin: 0 24px;
+	position: relative;
+}
+form.submitting .enquiry-spinner{
+	visibility: visible;
+}
+.enquiry-spinner::before{
+	content: "";
+	position: absolute;
+	background-color: #fbfbfc; 
+	top: 4px;
+	left: 4px;
+	width: 6px;
+	height: 6px;
+	border: none;
+	border-radius: 100%;
+	transform-origin: 8px 8px;
+	animation-name: spin;
+	animation-duration: 1000ms;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+}
+@media  (prefers-reduced-motion: reduce) {.enquiry-spinner::before{
+		animation-name: blink;
+		animation-duration: 2000ms;
+	}}
+@keyframes  spin {
+	from {
+		transform: rotate(0deg);
+	}
+
+	to {
+		transform: rotate(360deg);
+	}
+}
+@keyframes  blink {
+	from {
+		opacity: 0;
+	}
+
+	50% {
+		opacity: 1;
+	}
+
+	to {
+		opacity: 0;
+	}
+}
+.enquiry [inert]{
+	opacity: 0.5;
+}
+.enquiry input[type="file"]{
+	cursor: pointer;
+}
+.enquiry input[type="file"]:disabled{
+	cursor: default;
+}
+.enquiry .enquiry-submit:disabled{
+	cursor: not-allowed;
+}
+.enquiry input[type="url"],
+.enquiry input[type="email"],
+.enquiry input[type="tel"]{
+	direction: ltr;
+}
+.enquiry-reflection > output{
+	display: list-item;
+	list-style: none;
+}
+.enquiry-reflection > output[hidden]{
+	display: none;
+}
