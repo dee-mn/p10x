@@ -1,0 +1,144 @@
+@font-face {
+  font-family: 'Archivo';
+  font-style: italic;
+  font-weight: 100;
+  font-stretch: normal;
+  font-display: swap;
+  src: url("/assets/external/fonts.gstatic.com/15ac769fbd310b18.ttf") format('truetype');
+}
+@font-face {
+  font-family: 'Archivo';
+  font-style: italic;
+  font-weight: 200;
+  font-stretch: normal;
+  font-display: swap;
+  src: url("/assets/external/fonts.gstatic.com/b6adca5afa15dfd9.ttf") format('truetype');
+}
+@font-face {
+  font-family: 'Archivo';
+  font-style: italic;
+  font-weight: 300;
+  font-stretch: normal;
+  font-display: swap;
+  src: url("/assets/external/fonts.gstatic.com/dca1928d352fb04a.ttf") format('truetype');
+}
+@font-face {
+  font-family: 'Archivo';
+  font-style: italic;
+  font-weight: 400;
+  font-stretch: normal;
+  font-display: swap;
+  src: url("/assets/external/fonts.gstatic.com/c6c6f1f3e5508175.ttf") format('truetype');
+}
+@font-face {
+  font-family: 'Archivo';
+  font-style: italic;
+  font-weight: 500;
+  font-stretch: normal;
+  font-display: swap;
+  src: url("/assets/external/fonts.gstatic.com/2a99890b8d5f1dd4.ttf") format('truetype');
+}
+@font-face {
+  font-family: 'Archivo';
+  font-style: italic;
+  font-weight: 600;
+  font-stretch: normal;
+  font-display: swap;
+  src: url("/assets/external/fonts.gstatic.com/d6c7d8ee00a06049.ttf") format('truetype');
+}
+@font-face {
+  font-family: 'Archivo';
+  font-style: italic;
+  font-weight: 700;
+  font-stretch: normal;
+  font-display: swap;
+  src: url("/assets/external/fonts.gstatic.com/93722d6ffd69903e.ttf") format('truetype');
+}
+@font-face {
+  font-family: 'Archivo';
+  font-style: italic;
+  font-weight: 800;
+  font-stretch: normal;
+  font-display: swap;
+  src: url("/assets/external/fonts.gstatic.com/2cade1c7fd45a4e5.ttf") format('truetype');
+}
+@font-face {
+  font-family: 'Archivo';
+  font-style: italic;
+  font-weight: 900;
+  font-stretch: normal;
+  font-display: swap;
+  src: url("/assets/external/fonts.gstatic.com/68320ed24e04605a.ttf") format('truetype');
+}
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 100;
+  font-stretch: normal;
+  font-display: swap;
+  src: url("/assets/external/fonts.gstatic.com/6ada2c558c3d951a.ttf") format('truetype');
+}
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 200;
+  font-stretch: normal;
+  font-display: swap;
+  src: url("/assets/external/fonts.gstatic.com/0629c70f866bdd5a.ttf") format('truetype');
+}
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 300;
+  font-stretch: normal;
+  font-display: swap;
+  src: url("/assets/external/fonts.gstatic.com/eca82e6980aa2594.ttf") format('truetype');
+}
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: normal;
+  font-display: swap;
+  src: url("/assets/external/fonts.gstatic.com/36636f3bd025e3ad.ttf") format('truetype');
+}
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 500;
+  font-stretch: normal;
+  font-display: swap;
+  src: url("/assets/external/fonts.gstatic.com/df3f7f7983e14bca.ttf") format('truetype');
+}
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 600;
+  font-stretch: normal;
+  font-display: swap;
+  src: url("/assets/external/fonts.gstatic.com/b2d09106684e5db6.ttf") format('truetype');
+}
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 700;
+  font-stretch: normal;
+  font-display: swap;
+  src: url("/assets/external/fonts.gstatic.com/a0af9c8cc473b287.ttf") format('truetype');
+}
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 800;
+  font-stretch: normal;
+  font-display: swap;
+  src: url("/assets/external/fonts.gstatic.com/5b2f385c09b6bb9d.ttf") format('truetype');
+}
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 900;
+  font-stretch: normal;
+  font-display: swap;
+  src: url("/assets/external/fonts.gstatic.com/8873d05c7774c649.ttf") format('truetype');
+}

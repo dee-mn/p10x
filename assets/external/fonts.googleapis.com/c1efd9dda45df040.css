@@ -1,0 +1,140 @@
+@font-face {
+  font-family: 'Instrument Serif';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/assets/external/fonts.gstatic.com/7e0a56187ecaff85.ttf") format('truetype');
+}
+@font-face {
+  font-family: 'Instrument Serif';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/assets/external/fonts.gstatic.com/c1e7453ea26a1d1e.ttf") format('truetype');
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: italic;
+  font-weight: 100;
+  font-display: swap;
+  src: url("/assets/external/fonts.gstatic.com/cfc1ad02e91c1f73.ttf") format('truetype');
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: italic;
+  font-weight: 200;
+  font-display: swap;
+  src: url("/assets/external/fonts.gstatic.com/e8f4f237d14eb97e.ttf") format('truetype');
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: italic;
+  font-weight: 300;
+  font-display: swap;
+  src: url("/assets/external/fonts.gstatic.com/acdf0c64fdcf14b5.ttf") format('truetype');
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/assets/external/fonts.gstatic.com/abd281d0dad14338.ttf") format('truetype');
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/assets/external/fonts.gstatic.com/f3a0eb876d546f71.ttf") format('truetype');
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: italic;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/assets/external/fonts.gstatic.com/ac0bffb8676d0c1a.ttf") format('truetype');
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/assets/external/fonts.gstatic.com/da92c6a83bd0472b.ttf") format('truetype');
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: italic;
+  font-weight: 800;
+  font-display: swap;
+  src: url("/assets/external/fonts.gstatic.com/85e0e8e4a47ba722.ttf") format('truetype');
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: italic;
+  font-weight: 900;
+  font-display: swap;
+  src: url("/assets/external/fonts.gstatic.com/981d8432eb23e81b.ttf") format('truetype');
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 100;
+  font-display: swap;
+  src: url("/assets/external/fonts.gstatic.com/da69e5d9e9576d30.ttf") format('truetype');
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 200;
+  font-display: swap;
+  src: url("/assets/external/fonts.gstatic.com/2d5523b07e76b595.ttf") format('truetype');
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("/assets/external/fonts.gstatic.com/ee9558be9f8a4d75.ttf") format('truetype');
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/assets/external/fonts.gstatic.com/a699af1dea30b799.ttf") format('truetype');
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/assets/external/fonts.gstatic.com/e45972c7e9f24dc3.ttf") format('truetype');
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/assets/external/fonts.gstatic.com/87e867b52640b3b3.ttf") format('truetype');
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/assets/external/fonts.gstatic.com/6f49e1b28bce7339.ttf") format('truetype');
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("/assets/external/fonts.gstatic.com/2f6c206f7c744148.ttf") format('truetype');
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url("/assets/external/fonts.gstatic.com/861da2b4255e09a6.ttf") format('truetype');
+}
