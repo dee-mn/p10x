@@ -33,4 +33,4 @@ The optional build copies the website and assets to `dist/`. The repository root
 
 Keep one original file per image during development. Image files must remain at their original size, quality and format; image optimization is not part of this work. Keep font licence notices with their files.
 
-This branch contains all 30 website pages. See `docs/PROJECT-CHECKPOINT.md` for completed work and verification limits. It is not the production branch.
+This branch contains all 30 website pages. See `docs/PROJECT-CHECKPOINT.md` for completed work and verification limits. The rebuilt site is on `main`. The previous version is preserved on `backup-main-20261106`.

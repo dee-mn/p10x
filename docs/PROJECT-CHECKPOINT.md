@@ -1,11 +1,12 @@
 # P10X project checkpoint
 
 Updated: 6 November 2026  
-Work branch: `rebuild-20261106`
+Active branch: `main`  
+Backup branch: `backup-main-20261106` (`8236829571a9e04179a5c13d3a6639064ed9405e`)
 
 ## Current state
 
-All 30 routes are present: homepage, About Us, five service pages, Insights, FAQ, Contact Us and 20 articles. Keep this branch separate from `main` while the user reviews it. The existing live site has not been replaced.
+All 30 routes are present: homepage, About Us, five service pages, Insights, FAQ, Contact Us and 20 articles. The user requested promotion of the completed rebuild to `main`. The previous `main` is preserved exactly on `backup-main-20261106`. Hosting deployment has not been verified in this branch-promotion step.
 
 The baseline is the latest saved design at `8236829571a9e04179a5c13d3a6639064ed9405e` and the later requests in “P10X Hardcoded”, not the first exported version.
 
@@ -47,7 +48,7 @@ No dependency/package installation is needed.
 
 ## Remaining review
 
-Review appearance and motion across the completed pages before switching the deployed branch. Verify real enquiry delivery on the final host. Keep the existing product placeholders and legal labels until actual replacement content is provided.
+Review appearance and motion on the final host after deploying `main`. Verify real enquiry delivery on the final host. Keep the existing product placeholders and legal labels until actual replacement content is provided.
 
 Image optimization is excluded from remaining work unless the user explicitly changes that instruction.
 
