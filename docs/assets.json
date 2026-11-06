@@ -1,188 +1,158 @@
 {
-  "assets": [
+  "images": "One original file per image. Responsive exports and compression deferred.",
+  "files": [
     {
       "path": "assets/images/p10x-branch-sunway.jpg",
-      "url": "https://p10xx.flevor.me/wp-content/uploads/2026/09/p10x-branch-sunway.jpg",
       "sha256": "fd0cf53f0b9d670b206e09db237234d7b9043d585f2699292af6e3b8f9ad18d6",
       "bytes": 282904
     },
     {
       "path": "assets/images/p10x-home.jpg",
-      "url": "https://p10xx.flevor.me/wp-content/uploads/2026/09/p10x-home.jpg",
       "sha256": "2d22cdc2e4dfc02dea8a5c1e554699fd06f8570ddb1c3efdbebb71a2e37a0c97",
       "bytes": 494677
     },
     {
       "path": "assets/images/p10x-brand-3m.png",
-      "url": "https://p10xx.flevor.me/wp-content/uploads/2026/09/p10x-brand-3m.png",
       "sha256": "f8269ea45ed484a0d3ebe951e4c1a589ea617ab21c00dfeb71ed48e8c5ecd68d",
       "bytes": 14984
     },
     {
       "path": "assets/images/p10x-brand-quadfilm.png",
-      "url": "https://p10xx.flevor.me/wp-content/uploads/2026/09/p10x-brand-quadfilm.png",
       "sha256": "53b7b24b398e45537576732f1caed2ff597e7dc4c1c0a2bea330cf7432831054",
       "bytes": 15561
     },
     {
       "path": "assets/images/p10x-brand-gyeon.png",
-      "url": "https://p10xx.flevor.me/wp-content/uploads/2026/09/p10x-brand-gyeon.png",
       "sha256": "c99d57c452fd1e77ca5eb9fdcf688bc071d0ab2a0cec1b80eb77b535418a631c",
       "bytes": 9811
     },
     {
       "path": "assets/images/p10x-brand-gtechniq.png",
-      "url": "https://p10xx.flevor.me/wp-content/uploads/2026/09/p10x-brand-gtechniq.png",
       "sha256": "c0680a18026a3be6c707fc0aa38401dda1b971a81417cac40a172b724604e355",
       "bytes": 16923
     },
     {
       "path": "assets/images/p10x-brand-kcx.png",
-      "url": "https://p10xx.flevor.me/wp-content/uploads/2026/09/p10x-brand-kcx.png",
       "sha256": "90c814befb4609a0bbe2be80a0070ba0fc149e2e3ef3a9681e6bf47f5572e1cb",
       "bytes": 4453
     },
     {
       "path": "assets/images/P10X-Five-Pillars-academy.jpg",
-      "url": "https://p10xx.flevor.me/wp-content/uploads/2026/09/P10X-Five-Pillars-—-academy.jpg",
       "sha256": "a9959497bf45159368a3147ba7ece458e97e00f278033ae85c56bdfc97aa3c61",
       "bytes": 437072
     },
     {
       "path": "assets/images/P10X-Five-Pillars-retail.jpg",
-      "url": "https://p10xx.flevor.me/wp-content/uploads/2026/09/P10X-Five-Pillars-—-retail.jpg",
       "sha256": "18105b4939753100923d26c9707421bdaedb361e1789344783ca6b353c191b17",
       "bytes": 560164
     },
     {
       "path": "assets/images/P10X-Five-Pillars-distribution.jpg",
-      "url": "https://p10xx.flevor.me/wp-content/uploads/2026/09/P10X-Five-Pillars-—-distribution.jpg",
       "sha256": "e7aa204502462908315aacc5c9b9f93d692fcd1f1de4b18f36e8b1aeee5ec58f",
       "bytes": 306574
     },
     {
       "path": "assets/images/P10X-Five-Pillars-media.jpg",
-      "url": "https://p10xx.flevor.me/wp-content/uploads/2026/09/P10X-Five-Pillars-—-media.jpg",
       "sha256": "462ff293b7055173e5ef64b2217ec695e215c7f433be6de00de57614564cd591",
       "bytes": 418103
     },
     {
       "path": "assets/images/P10X-Five-Pillars-carcheck.jpg",
-      "url": "https://p10xx.flevor.me/wp-content/uploads/2026/09/P10X-Five-Pillars-—-carcheck.jpg",
       "sha256": "08fec338bf44d00a612d93dcc34021beff866b9169f6169ecfb8d4afe1047209",
       "bytes": 363394
     },
     {
       "path": "assets/images/p10x-workmanship1.jpg",
-      "url": "https://p10xx.flevor.me/wp-content/uploads/2026/09/p10x-workmanship1.jpg",
       "sha256": "9f8003242f1c2185dc74dab464bcc23f1fc0b037dc3803493a754e810e0a2c74",
       "bytes": 541224
     },
     {
       "path": "assets/images/P10X-team-Expert-Match.jpg",
-      "url": "https://p10xx.flevor.me/wp-content/uploads/2026/09/P10X-team-—-Expert-Match.jpg",
       "sha256": "db74c14732ea0d966a0db871201b887041bc28b3a8380841b8f05933a1df4cce",
       "bytes": 634487
     },
     {
       "path": "assets/images/P10X-Driver-Personality-Test.jpg",
-      "url": "https://p10xx.flevor.me/wp-content/uploads/2026/09/P10X-Driver-Personality-Test.jpg",
       "sha256": "9049bf0dacdbe3e3994fe532ab032014af817c5082f7da37fc1f1d88a6578e04",
       "bytes": 622449
     },
     {
       "path": "assets/images/p10x-vibe-ppf.jpg",
-      "url": "https://p10xx.flevor.me/wp-content/uploads/2026/09/p10x-vibe-ppf.jpg",
       "sha256": "9d3181aa68bfafd219e1d246fc0cf14de6b0cfaeb3fd825c16087082711cca06",
       "bytes": 135558
     },
     {
       "path": "assets/images/p10x-vibe-tint.jpg",
-      "url": "https://p10xx.flevor.me/wp-content/uploads/2026/09/p10x-vibe-tint.jpg",
       "sha256": "cc14a20d1ff8ba3ed275a635b1e1d6cc0efa67ff6db96c6b64f25649815365ee",
       "bytes": 218052
     },
     {
       "path": "assets/images/p10x-vibe-wrap.jpg",
-      "url": "https://p10xx.flevor.me/wp-content/uploads/2026/09/p10x-vibe-wrap.jpg",
       "sha256": "c522d788775e88f1781ebeb9b62d6ce89a2937b0ad31b317073a4caee657c0e0",
       "bytes": 163049
     },
     {
       "path": "assets/images/p10x-vibe-detailing.jpg",
-      "url": "https://p10xx.flevor.me/wp-content/uploads/2026/09/p10x-vibe-detailing.jpg",
       "sha256": "224ff9c3836747e4eb36e5d38cce201fd5e639ef6aef5db8e1c949cbad29aed7",
       "bytes": 280772
     },
     {
       "path": "assets/images/p10x-vibe11.jpg",
-      "url": "https://p10xx.flevor.me/wp-content/uploads/2026/09/p10x-vibe11.jpg",
       "sha256": "68a310533080ba7c008d8e739c9899bea53e4af305a4f7614fe840b1290b82bb",
       "bytes": 686438
     },
     {
       "path": "assets/images/William-Lee-P10X-Founder-and-Group-CEO.png",
-      "url": "https://p10xx.flevor.me/wp-content/uploads/2026/09/William-Lee-—-P10X-Founder-and-Group-CEO.png",
       "sha256": "398858cd1dffc6eae4cb8f3d6176c1b55c87c7e8bebaa3448602ec1f75c8dee7",
       "bytes": 1683815
     },
     {
       "path": "assets/images/Car-PPF-Cost-in-Malaysia-Pricing-Packages-Insights.jpg",
-      "url": "https://p10xx.flevor.me/wp-content/uploads/2026/09/Car-PPF-Cost-in-Malaysia-Pricing-Packages-Insights.jpg",
       "sha256": "5418a428400a72a3f95fc6d3b81b5917c5bf1c8633541c80f54e267a0d12e2fe",
       "bytes": 207915
     },
     {
       "path": "assets/images/Why-Tesla-Owners-Are-Choosing-PPF-Before-First-Drive.jpg",
-      "url": "https://p10xx.flevor.me/wp-content/uploads/2026/09/Why-Tesla-Owners-Are-Choosing-PPF-Before-First-Drive.jpg",
       "sha256": "6929d5d0b985d4ddcaba2647d005dede42140ce9ffd284bc498896443c6f350e",
       "bytes": 234243
     },
     {
       "path": "assets/images/What-is-Nano-Ceramic-Film-Example-Benefit-Disadvantage-and-How-to-Choose-The-Right-One.jpg",
-      "url": "https://p10xx.flevor.me/wp-content/uploads/2026/09/What-is-Nano-Ceramic-Film-Example-Benefit-Disadvantage-and-How-to-Choose-The-Right-One.jpg",
       "sha256": "0d89f0123a4a86f13225c5bb1e89019f25193ac63e069a4ac028a23b244567d2",
       "bytes": 175972
     },
     {
       "path": "assets/images/How-Much-Does-Car-Coating-Cost-in-Malaysia-2025-Pricing-Guide.jpg",
-      "url": "https://p10xx.flevor.me/wp-content/uploads/2026/09/How-Much-Does-Car-Coating-Cost-in-Malaysia-2025-Pricing-Guide.jpg",
       "sha256": "387122220c02134070c688c63769f24972751a0eb3dee4bcc0fd2240abde8a6d",
       "bytes": 146409
     },
     {
       "path": "assets/images/Best-Car-Coating-in-Malaysia-2025-Ceramic-vs-Nano-Coating.jpg",
-      "url": "https://p10xx.flevor.me/wp-content/uploads/2026/09/Best-Car-Coating-in-Malaysia-2025-Ceramic-vs-Nano-Coating.jpg",
       "sha256": "e7779a6653d7cb8a6cd1e98fd4edbec808f39479bbddbd0e640d349bdfd4712a",
       "bytes": 231986
     },
     {
       "path": "assets/images/What-is-Ceramic-Coating-Pros-Cons-Is-It-Worth-It-and-How-to-Apply.jpg",
-      "url": "https://p10xx.flevor.me/wp-content/uploads/2026/09/What-is-Ceramic-Coating-Pros-Cons-Is-It-Worth-It-and-How-to-Apply.jpg",
       "sha256": "da939b7b8ab546be46ccdd531d09f5c58831f583b6c2afe9967ea601cf889c4b",
       "bytes": 1366133
     },
     {
       "path": "assets/video/home-hero.mp4",
-      "url": "https://p10xx.flevor.me/wp-content/uploads/2026/09/home-hero.mp4",
       "sha256": "2c6129fcb10ee06f3134ab7fdef2ccd79b58dcfc8cfc77a2853b11e815175b5a",
       "bytes": 26466413
     },
     {
       "path": "assets/video/p10x-home-hero-video.mp4",
-      "url": "https://p10xx.flevor.me/wp-content/uploads/2026/09/p10x-home-hero-video.mp4",
       "sha256": "24980768dd753e9b5b6696b7b9e9b04ba97d4eecf09b4a6206600fbc55819a28",
       "bytes": 1811356
     },
     {
       "path": "assets/fonts/inter-400.ttf",
-      "url": "https://raw.githubusercontent.com/dee-mn/p10x/b1caae5dff575b7286d4625272c014b25a1529bf/assets/external/fonts.gstatic.com/a699af1dea30b799.ttf",
       "sha256": "1b08e7fc267a5c7e1d614100f604b83e7e8a0be241f0f288faa2b3ac93a683ba",
       "bytes": 324820
     },
     {
       "path": "assets/fonts/inter-500.ttf",
-      "url": "https://raw.githubusercontent.com/dee-mn/p10x/b1caae5dff575b7286d4625272c014b25a1529bf/assets/external/fonts.gstatic.com/e45972c7e9f24dc3.ttf",
       "sha256": "8c883f63b2c4157d997319f2c8bc6995ed4357ef371940d31ca159004a4aae63",
       "bytes": 325304
     }

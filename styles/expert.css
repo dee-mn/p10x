@@ -43,3 +43,5 @@
 #p10x-expert-lab .x-nav button{padding:17px 0!important;}
 }
 
+
+#p10x-expert-lab .x-test{display:inline-flex;align-items:center;gap:9px}#p10x-expert-lab .x-test svg{width:15px;height:15px}

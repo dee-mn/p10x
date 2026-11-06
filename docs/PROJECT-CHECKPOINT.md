@@ -18,7 +18,7 @@ Preserved requirements:
 - Current story, mission, vision, five pillars, division tabs, Expert Match, partners, expanding video, services, leadership, Humanity, news, Car Care, contact and footer sequence.
 - Expert Match tabs and Driver Personality Test external link; no new destinations for Workmanship or Team.
 - Original-colour footer logo, inline SVG controls and back-to-top arrow. No Precision in Motion play/pause overlay.
-- William.L label near the natural-colour portrait, P10X logo in the message card, the Character Comes Before Success quote, leadership values and equal-height desktop cards.
+- William.L label near the original portrait, P10X logo in the message card, the Character Comes Before Success quote, leadership values and equal-height desktop cards.
 - Six news cards, clickable images/titles, aligned dates and More News link.
 - Name/phone on one form row and full-width email/message fields. The existing standalone mail handler is retained.
 
@@ -30,7 +30,9 @@ The custom globe renderers were retained; the page structure, scroll handling an
 - JavaScript syntax checks pass.
 - Desktop and 390 × 844 mobile layout inspected in browser.
 - Hero values, menu open/close, division tabs, Expert Match and mobile scroll unlock exercised.
-- The local preview has no mail transport; no enquiry was sent. PHP syntax could not be checked in this environment because PHP is unavailable.
+- The local preview has no mail transport; no enquiry was sent. PHP syntax passed in the repository verification job.
+
+Original files were saved and checksum-verified directly on the rebuild branch. The repository verification job passed source checks, export checks and PHP syntax validation.
 
 ## Remaining work
 
