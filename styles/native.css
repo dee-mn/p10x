@@ -10,3 +10,20 @@
 
 /* Precision in motion: the film plays without an overlaid control. */
 #ui-main .view-20 .ui-video-sticky1 .button-video{display:none!important}
+/* Product dialog: animate the card and scrim rather than a full-screen blur mask. */
+.ui-hidden-panel-popup.product-dialog{clip-path:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;transition:none!important}
+.product-dialog .ui-popup--conent{transition:none!important;will-change:transform,opacity;isolation:isolate}
+.product-dialog .ui-popup--overlay{position:absolute;inset:0;background:rgba(8,10,11,.28);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);transition:none!important;will-change:opacity}
+.product-dialog .ui-close-button{appearance:none;border:0;padding:0;background:#222;color:#fff;font:inherit;cursor:pointer;border-radius:6px}
+.product-dialog :is(button,a):focus-visible{outline:2px solid #03c4d5;outline-offset:4px}
+.product-dialog .product-series-label{margin:0 0 18px;color:#777;font:400 10px/1.5 Inter,sans-serif;letter-spacing:.12em;text-transform:uppercase}
+.product-dialog .ui-products-ready .sub-menu.active:not([hidden]){display:block;visibility:visible;opacity:1;pointer-events:auto;transition:none}
+.product-dialog .ui-products-ready .sub-menu:before{content:'Products';display:block;margin-bottom:12px;color:#777;font:400 10px/1.5 Inter,sans-serif;letter-spacing:.12em;text-transform:uppercase}
+.product-dialog .ui-products-ready a.p10x-preview-active>.ui-text-menu{color:#03c4d5;-webkit-text-fill-color:#03c4d5}
+.product-dialog .p10x-product-layer,.product-dialog .p10x-product-layer img{will-change:transform,opacity}
+@media(prefers-reduced-motion:reduce){.btn .ui-btn-icon,.btn .ui--btn-text{transition:none!important}}
+
+.product-dialog .ui-popup--conent{pointer-events:none}
+.product-dialog :is(.ui-close-button,.block-2093814){pointer-events:auto}
+.product-dialog .ui-products-ready .ui-menu-primary>li>a.active>.ui-text-menu{color:#03c4d5;-webkit-text-fill-color:#03c4d5}
+.product-dialog .ui-products-ready .ui-menu-primary>li.hoverd>a>.ui-text-menu{color:#777;-webkit-text-fill-color:#777}

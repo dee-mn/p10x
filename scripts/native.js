@@ -23,10 +23,7 @@
   function choose(tab){const id=tab.dataset.tab;titles.forEach(t=>{const on=t.dataset.tab===id;t.classList.toggle('is-active',on);t.setAttribute('aria-selected',String(on));t.tabIndex=on?0:-1;});panels.forEach(p=>{const on=p.dataset.tab===id;p.classList.toggle('is-active',on);p.style.display=on?'block':'none';});refresh();}
   titles.forEach((t,i)=>{t.setAttribute('role','tab');t.tabIndex=t.classList.contains('is-active')?0:-1;t.addEventListener('click',()=>choose(t));t.addEventListener('keydown',e=>{if(['ArrowLeft','ArrowRight','Home','End'].includes(e.key)){e.preventDefault();let n=e.key==='Home'?0:e.key==='End'?titles.length-1:(i+(e.key==='ArrowRight'?1:-1)+titles.length)%titles.length;titles[n].focus();choose(titles[n]);}});});
  });
- // Header product panel retains the original navigation and full-width presentation.
- $$('.ui-anchor.side-panel,.ui-anchor').forEach(a=>a.addEventListener('click',e=>{const panel=$('.ui-hidden-panel-popup');if(!panel)return;e.preventDefault();panel.classList.toggle('active');}));
- $$('.ui-hidden-close,.ui-close-popup').forEach(a=>a.addEventListener('click',()=>$('.ui-hidden-panel-popup')?.classList.remove('active')));
- addEventListener('keydown',e=>{if(e.key==='Escape'){$('.ui-hidden-panel-popup')?.classList.remove('active');$('.native-lightbox')?.remove();}});
+ addEventListener('keydown',e=>{if(e.key==='Escape')$('.native-lightbox')?.remove();});
  // Local photo viewer replaces the old media popup endpoint.
  document.addEventListener('click',e=>{const a=e.target.closest('a');if(!a)return;const href=a.getAttribute('href')||'';if(!/^\/assets\/.*\.(jpg|jpeg|png|webp)$/i.test(href))return;e.preventDefault();const box=document.createElement('div');box.className='native-lightbox';box.setAttribute('role','dialog');box.setAttribute('aria-modal','true');box.innerHTML='<button type="button" aria-label="Close photo">×</button><img alt="">';$('img',box).src=href;document.body.append(box);$('button',box).focus();box.addEventListener('click',ev=>{if(ev.target===box||ev.target.closest('button'))box.remove();});});
  // Article listing uses the same initial twelve-card view and reveals the remaining eight.
@@ -64,12 +61,7 @@
  if(location.pathname==='/insights/'){const query=new URLSearchParams(location.search).get('s');if(query){const words=query.toLowerCase().split(/\s+/);$$('.ui-grid-item').forEach(item=>{item.hidden=!words.every(w=>item.textContent.toLowerCase().includes(w));});$('.ui-load-more')?.remove();}}
  $$('form[data-comment]').forEach(form=>form.addEventListener('submit',async e=>{e.preventDefault();if(!form.reportValidity())return;let status=$('[role=status]',form);if(!status){status=document.createElement('p');status.setAttribute('role','status');form.append(status);}const body=new FormData(form);body.set('page',location.pathname);status.textContent='Sending your comment…';try{const response=await fetch('/comment.php',{method:'POST',body}),data=await response.json();status.textContent=data.message;if(data.ok)form.reset();}catch{status.textContent='Unable to send. Please email info@p10x.my.';}}));
 })();
-(() => {
- const panel=document.querySelector('.ui-hidden-panel-popup');if(!panel)return;const triggers=[...document.querySelectorAll('.ui-anchor-button')];let origin,lastFocus;
- function close(){if(!panel.classList.contains('active'))return;panel.classList.remove('active');panel.setAttribute('aria-hidden','true');document.body.style.overflow='';gsap.to(panel,{clipPath:`circle(0px at ${origin.x}px ${origin.y}px)`,duration:.8,onComplete:()=>{panel.style.visibility='hidden';panel.inert=true;lastFocus?.focus({preventScroll:true});}});triggers.forEach(x=>x.setAttribute('aria-expanded','false'));}
- triggers.forEach(trigger=>{trigger.setAttribute('role','button');trigger.tabIndex=0;trigger.setAttribute('aria-label','Open products');trigger.setAttribute('aria-expanded','false');function open(){if(panel.classList.contains('active')){close();return;}const r=trigger.getBoundingClientRect();origin={x:r.x+r.width/2,y:r.y+r.height/2};lastFocus=trigger;panel.inert=false;panel.classList.add('active');panel.setAttribute('role','dialog');panel.setAttribute('aria-modal','true');panel.setAttribute('aria-label','Products');panel.setAttribute('aria-hidden','false');panel.style.visibility='visible';document.body.style.overflow='hidden';trigger.setAttribute('aria-expanded','true');const radius=Math.hypot(innerWidth,innerHeight);gsap.fromTo(panel,{clipPath:`circle(0px at ${origin.x}px ${origin.y}px)`},{clipPath:`circle(${radius}px at ${origin.x}px ${origin.y}px)`,duration:1.2,ease:'none'});}trigger.addEventListener('click',open);trigger.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open();}});});
- panel.inert=true;panel.setAttribute('aria-hidden','true');panel.querySelectorAll('.ui-close-button,.ui-popup--overlay').forEach(x=>x.addEventListener('click',close));addEventListener('keydown',e=>{if(e.key==='Escape')close();});
-})();
+
 (() => {
  const icon='<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><circle cx="10" cy="10" r="6"/><path d="m15 15 5 5"/></svg>';
  document.querySelectorAll('.search-submit,.content-search__button').forEach(button=>{if(!button.querySelector('svg'))button.innerHTML=icon;button.setAttribute('aria-label','Search articles');});
@@ -81,4 +73,20 @@
  function layout(){const columns=innerWidth>=1200?3:innerWidth>=768?2:1,w=grid.clientWidth/columns,heights=Array(columns).fill(0);grid.style.position='relative';grid.style.display='block';for(const item of grid.querySelectorAll('.ui-grid-item')){if(item.hidden)continue;item.style.position='absolute';item.style.width=w+'px';const col=heights.indexOf(Math.min(...heights));item.style.left=(col*w)+'px';item.style.top=heights[col]+'px';heights[col]+=item.getBoundingClientRect().height;}grid.style.height=Math.max(...heights)+'px';ScrollTrigger.refresh();}
  const observer=new ResizeObserver(()=>{if(grid.clientWidth!==width){width=grid.clientWidth;layout();}});observer.observe(grid);document.fonts.ready.then(layout);addEventListener('load',layout,{once:true});
  document.addEventListener('click',e=>{if(e.target.closest('.ui-load-more'))requestAnimationFrame(layout);},true);
+})();
+// Match the reference CTA's arrow/label exchange without its former runtime.
+(() => {
+ const reduced=matchMedia('(prefers-reduced-motion:reduce)');
+ document.querySelectorAll('.btn.btn-default,.ui-button-video.style-button .ui-btn-video,.ui-pricing2 .ui-item--nav').forEach(button=>{
+  const icon=button.querySelector('.ui-btn-icon,.ui-icon,.ui-nav-text'),label=button.querySelector('.ui--btn-text,.ui-button--title,.ui-nav-icon');
+  if(!icon||!label||icon.classList.contains('icon-none'))return;
+  function update(){
+   const active=button.matches(':hover,:focus-visible')||!!button.querySelector(':focus-visible');
+   const direction=button.classList.contains('ui-icon--right')?-1:1,gap=parseFloat(getComputedStyle(button).gap)||0;
+   icon.style.transform=active?`translateX(${direction*(label.offsetWidth+gap)}px)`:'translateX(0)';
+   label.style.transform=active?`translateX(${-direction*(icon.offsetWidth+gap)}px)`:'translateX(0)';
+   if(reduced.matches){icon.style.transition='none';label.style.transition='none';}
+  }
+  ['pointerenter','pointerleave','focusin','focusout'].forEach(name=>button.addEventListener(name,()=>requestAnimationFrame(update)));
+ });
 })();

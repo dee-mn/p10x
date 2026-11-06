@@ -35,10 +35,6 @@
    productSource.className='sub-menu p10x-product-list';
    productSource.removeAttribute('id');
    productSource.querySelectorAll('li').forEach(li=>li.removeAttribute('id'));
-   productSource.querySelectorAll('ul').forEach(ul=>{
-    const links=Array.from(ul.querySelectorAll('a'));
-    if(links.length&&links.every(a=>!a.getAttribute('href')||/^#+$/.test(a.getAttribute('href'))))ul.remove();
-   });
    productSource.querySelectorAll('li').forEach(li=>{if(!li.querySelector('ul'))li.classList.remove('menu-item-has-children');});
    item.append(productSource);
    const services=Array.from(menu.children).find(li=>li.querySelector('a')?.textContent.trim().toLowerCase()==='services');

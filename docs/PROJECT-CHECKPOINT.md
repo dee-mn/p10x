@@ -32,6 +32,12 @@ Desktop reference measurements match the homepage story/pillars/expert/partners/
 
 Browser checks include desktop layouts, FAQ category/search, Insights Load More, and mobile About layout/menu at 390 × 844. Mobile page bounds do not overflow. Static editorial text matches on 29 routes; Insights additionally contains the eight cards revealed by Load More. The Insights masonry columns use the original shortest-column placement. Exact pixel equivalence on every viewport has not been exhaustively tested.
 
+## Latest interaction fixes
+
+CTA arrows and labels exchange positions on hover and keyboard focus, matching the reference. Product navigation has one controller for open/close, focus trapping and scroll restoration. Series reveal their child products on hover or keyboard selection; child hover updates the right-hand preview and caption. All placeholders reuse the same original image. Mobile navigation preserves the series/product levels.
+
+The product reveal uses short transform/opacity transitions instead of a full-screen animated clipping mask. Close, Escape, backdrop dismissal, repeat opening, scroll restoration, hover/reset, series/product previews and both mobile product levels were exercised in the browser. The homepage Precision in motion play overlay stays removed; video behaviour is unchanged.
+
 ## Host verification
 
 Verify appearance and enquiry/comment mail delivery on the final host after deployment. No real enquiry or comment was sent during development. Product placeholders and existing legal labels remain as supplied.
