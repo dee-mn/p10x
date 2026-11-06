@@ -7,3 +7,6 @@
 .view-20 .block-4fd26295 img{display:none}
 
 .ui-menu-primary>.menu-item-has-children>a .ui-icon-menu,.ui-menu-primary>.menu-item-has-children>a .vector-icon{display:none!important}
+
+/* Precision in motion: the film plays without an overlaid control. */
+#ui-main .view-20 .ui-video-sticky1 .button-video{display:none!important}
