@@ -19,6 +19,8 @@ The optional build copies the website and assets to `dist/`. The repository root
 | Area | Files |
 | --- | --- |
 | Homepage | `index.html` |
+| Other pages and articles | `<route>/index.html` |
+| Shared header and footer | `components/` |
 | Layout and responsive styles | `styles/site.css` |
 | Globe presentation | `styles/hero.css`, `scripts/motion-hero.js` |
 | Ten values and title animation | `scripts/hero-values.js` |
@@ -26,6 +28,8 @@ The optional build copies the website and assets to `dist/`. The repository root
 | Navigation, scrolling sections and form | `scripts/site.js` |
 | Car Care globe | `scripts/purpose-globe.js` |
 | Images, video and fonts | `assets/` |
+| Interior page controls | `scripts/pages.js` |
+| Shared navigation and enquiry handling | `scripts/shell.js` |
 
 Keep one original file per image during development. Image files must remain at their original size, quality and format; image optimization is not part of this work. Keep font licence notices with their files.
 

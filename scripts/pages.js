@@ -9,7 +9,7 @@
     const tabs=[...list.querySelectorAll('[role="tab"]')];
     const panels=tabs.map(tab=>document.getElementById(tab.getAttribute('aria-controls')));
     if(!tabs.length||panels.some(p=>!p))return;
-    function choose(i,focus=false){tabs.forEach((tab,n)=>{tab.setAttribute('aria-selected',String(i===n));tab.tabIndex=i===n?0:-1;tab.classList.toggle('is-active',i===n);panels[n].hidden=i!==n;panels[n].classList.toggle('is-active',i===n);});if(focus)tabs[i].focus({preventScroll:true});}
+    function choose(i,focus=false){tabs.forEach((tab,n)=>{tab.setAttribute('aria-selected',String(i===n));tab.removeAttribute('aria-expanded');tab.tabIndex=i===n?0:-1;tab.classList.toggle('is-active',i===n);panels[n].hidden=i!==n;panels[n].classList.toggle('is-active',i===n);});if(focus)tabs[i].focus({preventScroll:true});}
     tabs.forEach((tab,i)=>{tab.addEventListener('click',()=>choose(i));tab.addEventListener('keydown',e=>{const next={ArrowRight:(i+1)%tabs.length,ArrowLeft:(i+tabs.length-1)%tabs.length,Home:0,End:tabs.length-1};if(!(e.key in next))return;e.preventDefault();choose(next[e.key],true);});});
     choose(Math.max(0,tabs.findIndex(t=>t.getAttribute('aria-selected')==='true')));
   });
@@ -22,6 +22,8 @@
   if(thumbs.length&&thumbs.length===detailPanels.length){
     function choose(i){thumbs.forEach((t,n)=>{t.classList.toggle('is-active',n===i);t.setAttribute('aria-pressed',String(n===i));detailPanels[n].classList.toggle('is-active',n===i);detailPanels[n].hidden=n!==i;});}
     thumbs.forEach((t,i)=>{t.setAttribute('role','button');t.tabIndex=0;t.setAttribute('aria-label',t.textContent.trim()||`View detail ${i+1}`);t.addEventListener('click',()=>choose(i));t.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();choose(i);}else if(e.key==='ArrowRight'||e.key==='ArrowLeft'){const n=(i+(e.key==='ArrowRight'?1:-1)+thumbs.length)%thumbs.length;choose(n);thumbs[n].focus({preventScroll:true});}});});choose(0);
+    document.querySelector('.dt-prev')?.addEventListener('click',()=>choose((thumbs.findIndex(t=>t.classList.contains('is-active'))+thumbs.length-1)%thumbs.length));
+    document.querySelector('.dt-next')?.addEventListener('click',()=>choose((thumbs.findIndex(t=>t.classList.contains('is-active'))+1)%thumbs.length));
   }
   const tracks=[['.pp-track','.pp-gallery-prev','.pp-gallery-next'],['.wr-look-track','.wr-gallery-prev','.wr-gallery-next'],['.ab-team-track','.ab-team-prev','.ab-team-next']];
   tracks.forEach(([trackSelector,previous,next])=>{
