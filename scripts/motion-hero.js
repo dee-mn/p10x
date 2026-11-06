@@ -210,7 +210,7 @@
   const initialTarget = location.hash && document.getElementById(location.hash.slice(1));
   let waitingForHash = initialTarget && !hero.contains(initialTarget) && initialTarget !== hero;
   let locked = false, leaving = false, checkFrame = 0;
-  const inMenu = target => target instanceof Element && !!target.closest('#p10x-mobile-menu,[role="dialog"][aria-modal="true"]');
+  const inMenu = target => target instanceof Element && !!target.closest('#site-menu,[role="dialog"][aria-modal="true"]');
   function setLocked(value) {
     value = value && mobile.matches;
     if (locked !== value) {
@@ -263,7 +263,7 @@
   // Keyboard focus may leave the visual introduction without trapping assistive navigation.
   document.addEventListener('focusin', event => {
     const target = event.target;
-    if (locked && target instanceof Element && !hero.contains(target) && !target.closest('header,#p10x-mobile-menu')) {
+    if (locked && target instanceof Element && !hero.contains(target) && !target.closest('header,#site-menu')) {
       leaving = true; setLocked(false);
     }
   });
@@ -274,3 +274,4 @@
   mobile.addEventListener('change', sync);
   sync();
 })();
+

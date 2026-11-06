@@ -1,0 +1,46 @@
+name: Prepare original homepage media
+on:
+  push:
+    branches: [rebuild-20261106]
+    paths: [docs/media-downloads.json, .github/workflows/prepare-media.yml]
+permissions:
+  contents: write
+jobs:
+  media:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: rebuild-20261106
+      - name: Fetch the recorded original files
+        shell: python
+        run: |
+          import concurrent.futures, hashlib, json, pathlib, subprocess, urllib.parse
+          root = pathlib.Path.cwd()
+          entries = json.loads((root / 'docs/media-downloads.json').read_text())['assets']
+          def download(item):
+              path = root / item['path']
+              assert path.resolve().is_relative_to(root / 'assets')
+              if path.exists() and hashlib.sha256(path.read_bytes()).hexdigest() == item['sha256']:
+                  return
+              path.parent.mkdir(parents=True, exist_ok=True)
+              u = urllib.parse.urlsplit(item['url'])
+              assert u.scheme == 'https' and u.netloc in ['p10xx.flevor.me', 'raw.githubusercontent.com']
+              url = urllib.parse.urlunsplit((u.scheme, u.netloc, urllib.parse.quote(u.path, safe='/%:@-._~'), u.query, ''))
+              subprocess.run(['curl', '--fail', '--location', '--silent', '--show-error', '--connect-timeout', '15', '--max-time', '120', '--output', str(path), url], check=True)
+              assert hashlib.sha256(path.read_bytes()).hexdigest() == item['sha256'], item['path']
+          with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool:
+              list(pool.map(download, entries))
+          print(f'Verified {len(entries)} original media and font files.')
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm run check && npm run build && P10X_CHECK_ROOT=dist npm run check && php -l contact.php
+      - name: Save verified files on the rebuild branch
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add assets
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m 'Add verified original homepage media'
+          git push origin HEAD:rebuild-20261106

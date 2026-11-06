@@ -184,3 +184,4 @@
   geometry();measureTitle();syncTypewriter();
   if(document.fonts?.ready)document.fonts.ready.then(measureTitle);
 })();
+

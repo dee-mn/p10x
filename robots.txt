@@ -1,3 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://p10x.flevor.me/sitemap.xml

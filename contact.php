@@ -31,3 +31,4 @@ if ($sent) {rewind($rate);ftruncate($rate,0);fwrite($rate,(string)time());}
 fclose($rate);
 if (!$sent) respond(503,false,'Email delivery is unavailable. Please email info@p10x.my.');
 respond(200,true,'Your enquiry has been sent.');
+
