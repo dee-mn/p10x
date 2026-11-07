@@ -109,3 +109,9 @@
 .view-20 .block-d2db1b3 .ui-post--inner:is(:hover,:focus-within) .ui-post--featured,
 .page-id-7411 .ui-grid-item .ui-post--inner:is(:hover,:focus-within) .ui-post--featured{filter:grayscale(0)}
 @media(prefers-reduced-motion:reduce){.view-20 .block-d2db1b3 .ui-post--featured,.page-id-7411 .ui-grid-item .ui-post--featured{transition:none}}
+
+/* Give News and Insights titles more space than the compact global headings. */
+body.page #ui-wapper .view-20 .block.block-3ab8a9a .heading-title,
+body.page #ui-wapper .view-20 .block.block-d2db1b3 .ui-post--title,
+body.page.page-id-7411 #ui-wapper #ui-main .block-94ecda1 .heading-title,
+body.page.page-id-7411 #ui-wapper #ui-main .ui-post--title{line-height:1em!important}
