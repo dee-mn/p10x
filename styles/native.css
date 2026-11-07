@@ -79,3 +79,6 @@
 #ui-header-elementor .p10x-menu-mark{display:block;width:20px;height:20px;fill:none;color:inherit}
 #ui-header-elementor .p10x-menu-mark path{stroke:currentColor!important}
 #ui-header-elementor #ui-nav-mobile .p10x-menu-mark{color:#fff}
+
+/* Match the partner wordmarks without altering the supplied vector artwork. */
+.view-20 .p10x-colourlock-logo{filter:grayscale(1) brightness(0)}

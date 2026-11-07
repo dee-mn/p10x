@@ -27,11 +27,6 @@
       "bytes": 9811
     },
     {
-      "path": "assets/images/p10x-brand-gtechniq.png",
-      "sha256": "c0680a18026a3be6c707fc0aa38401dda1b971a81417cac40a172b724604e355",
-      "bytes": 16923
-    },
-    {
       "path": "assets/images/p10x-brand-kcx.png",
       "sha256": "90c814befb4609a0bbe2be80a0070ba0fc149e2e3ef3a9681e6bf47f5572e1cb",
       "bytes": 4453
@@ -1130,6 +1125,11 @@
       "path": "assets/fonts/inter-italic-latin.woff2",
       "sha256": "c58f9d530baa7e96355f444502eca739d5eefa0f328f3d635b73648373214629",
       "bytes": 79716
+    },
+    {
+      "path": "assets/images/p10x-brand-colourlock.svg",
+      "sha256": "3d36c984c7d6c616250be8121a5267fa1cd92fb3df5991e611573949122b79d4",
+      "bytes": 24148
     }
   ]
 }

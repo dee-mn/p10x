@@ -74,6 +74,10 @@ Automotive Window Tint now uses /automotive-window-tint/ across canonical/OG met
 
 Desktop Tinting uses a small inline SVG chevron only because it opens a child menu. Service destinations, including Training, have no trailing icons. Font-generated submenu glyphs are suppressed. The Product/mobile menu controls use inline SVG hamburger strokes; Product has no white icon box. Existing product open/close behaviour is retained. Browser checks covered desktop/mobile service navigation, new page URL/canonical, old URL redirection with query/anchor preservation, plain Training labels and Product open/close.
 
+## Colourlock partner logo — 7 November
+
+Colourlock replaces Gtechniq in the homepage partner grid and the matching brand strip. The supplied Colourlock SVG is stored locally with its original bytes and included in the asset checksum manifest. Existing contain sizing, centring and opacity are retained; a CSS filter gives the new logo the same monochrome treatment as the other wordmarks. The unused Gtechniq logo asset is removed.
+
 ## Host verification
 
 Verify appearance and enquiry/comment mail delivery on the final host after deployment. No real enquiry or comment was sent during development. Product placeholders and existing legal labels remain as supplied.
