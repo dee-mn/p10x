@@ -115,3 +115,7 @@ body.page #ui-wapper .view-20 .block.block-3ab8a9a .heading-title,
 body.page #ui-wapper .view-20 .block.block-d2db1b3 .ui-post--title,
 body.page.page-id-7411 #ui-wapper #ui-main .block-94ecda1 .heading-title,
 body.page.page-id-7411 #ui-wapper #ui-main .ui-post--title{line-height:1em!important}
+
+/* Keep the leadership rail aligned left and reveal cards to the right viewport edge. */
+.p10x-about.ab-team{container-type:inline-size}
+.p10x-about.ab-team .ab-shell>.ab-team-track{align-self:flex-start;width:calc(50vw + 50%);width:calc(50cqw + 50%);max-width:none;padding-left:0;padding-right:calc(50cqw - 50%)}
