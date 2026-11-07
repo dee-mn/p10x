@@ -1,6 +1,6 @@
 # P10X checkpoint
 
-Updated 6 November 2026. Active branch: `main`.
+Updated 7 November 2026. Active branch: `main`.
 
 The previous main is preserved on `backup-main-20261106` at `8236829571a9e04179a5c13d3a6639064ed9405e`.
 
@@ -37,6 +37,12 @@ Browser checks include desktop layouts, FAQ category/search, Insights Load More,
 CTA arrows and labels exchange positions on hover and keyboard focus, matching the reference. Product navigation has one controller for open/close, focus trapping and scroll restoration. Series reveal their child products on hover or keyboard selection; child hover updates the right-hand preview and caption. All placeholders reuse the same original image. Mobile navigation preserves the series/product levels.
 
 The product reveal uses short transform/opacity transitions instead of a full-screen animated clipping mask. Close, Escape, backdrop dismissal, repeat opening, scroll restoration, hover/reset, series/product previews and both mobile product levels were exercised in the browser. The homepage Precision in motion play overlay stays removed; video behaviour is unchanged.
+
+## Product menu closed state — 7 November
+
+The complete panel must use the native hidden attribute and display:none while inactive. Visibility:hidden alone is insufficient: preview image layers and the Close control explicitly set visibility:visible and can escape that inherited state. This reproduced the photo appearing before any click and remaining after closing.
+
+The preview now starts only inside the explicit opener. Close synchronously hides the full panel, cancels and invalidates pending previews, restores scrolling and returns focus; it does not wait for an exit animation promise. Browser checks verified initial load without a photo, click-to-open, product selection followed by Close, Escape, repeated reopening/closing and reload. Closed preview bounds are zero and initial image sources are unset.
 
 ## Host verification
 

@@ -27,3 +27,6 @@
 .product-dialog :is(.ui-close-button,.block-2093814){pointer-events:auto}
 .product-dialog .ui-products-ready .ui-menu-primary>li>a.active>.ui-text-menu{color:#03c4d5;-webkit-text-fill-color:#03c4d5}
 .product-dialog .ui-products-ready .ui-menu-primary>li.hoverd>a>.ui-text-menu{color:#777;-webkit-text-fill-color:#777}
+
+/* A hidden ancestor must suppress descendants that explicitly set visibility:visible. */
+.ui-hidden-panel-popup:not(.active),.ui-hidden-panel-popup[hidden]{display:none!important}
