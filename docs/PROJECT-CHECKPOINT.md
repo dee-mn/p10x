@@ -88,13 +88,13 @@ Completion posts through driver-test.php to the original Zapier destination usin
 
 Verification: 300 deterministic answer/car combinations matched the original scoring and celebrity selection; committed golden fixtures cover all three package levels. Browser checks completed all 25 questions on desktop and at 390 px, including multi-select, back/answer restoration, keyboard input, milestones, results, preview-only email update, image download and retake. Mobile bounds are 375/375 px with no horizontal overflow. Development preview sends no external leads; PHP transport tests use a mock. Live Zapier acceptance and downstream email delivery still require verification on the PHP host; no live test lead was sent.
 
-## Six-service homepage layout — 7 November
+## Homepage service discovery — 7 November
 
-The Our Services / The Craft Behind the Care section now uses three columns and two rows above 1100 px, two columns on tablet and one column below 700 px. Each service is a full-card link with a separately clipped photo frame, a visible title/description, service number and SVG arrow. Training reuses the original Academy image with upper-centred cropping so the instructor stays within the frame. Original image files are unchanged.
+The six services use full-bleed photo panels in one desktop strip. The first panel starts expanded; pointer hover or keyboard focus expands a chosen panel and reveals its description. Pointer hover takes priority over a different keyboard focus so only one panel expands at a time. Width expansion takes 550 ms, image movement 650 ms and accent changes 250 ms. Each photo is clipped within its own panel, including the original Academy image for Training. Original media bytes remain unchanged.
 
-The expanding strip and its unused CSS are removed. Hover/focus no longer changes card widths: border/accent responses take 250 ms, the arrow 300 ms and image movement 450 ms. The heading retains its early scroll reveal; reduced-motion visitors receive static text and no card transitions.
+At 1100 px and below the strip becomes horizontally scrollable with snap positions, visible descriptions and a short browsing hint. Focused cards scroll into view; Left/Right and Home/End navigate services. Reduced-motion visitors receive immediate transitions. The existing early heading reveal is retained.
 
-Browser checks verified all six images, three/two/one-column layouts, no horizontal overflow at 390 and 1024 px, visible Training content, keyboard focus accents with stable card widths, the Training link destination and the completed heading reveal.
+Browser checks verified default and hovered panel widths, a single expanded panel with competing pointer/focus states, Training image containment, complete descriptions, and the last service reachable within 390 px and 1024 px viewports without horizontal page overflow. The 32-page build and source checks are retained.
 
 ## Host verification
 
