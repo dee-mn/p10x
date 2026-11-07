@@ -64,6 +64,10 @@ All three authored top-navigation variants group Automotive Window Tint (/tintin
 
 Training is available at /training/ and in all header variants, the footer, the homepage service gallery and the sitemap. The page uses the existing service-page shell and original Academy/workmanship images. It includes keyboard-accessible learning-area tabs, scroll-revealed type, stacked learning-process chapters, audience guidance, native FAQ disclosures and a training enquiry link that pre-fills the existing contact message. Desktop and 390 px browser checks covered tab clicks/keyboard changes, chapter transitions, FAQ open/close, mobile width, homepage/footer links and the contact handoff; no enquiry was submitted. Motion respects reduced-motion preferences; small screens use natural document flow. Course fees, intake dates, entry requirements and qualification details are left for the Academy to confirm.
 
+## Homepage leadership entrances — 7 November
+
+The decorative Archinic word is removed from the Partners background; an empty, inaccessible spacer preserves its original frame. Homepage entrance elements have visible CSS defaults. The new home-reveals controller adds short, one-time viewport animations for copy and images instead of leaving them in hidden entrance classes. Leadership, news and contact heading reveals are excluded from the generic per-line controller and use a whole-heading entry range that completes before the viewport centre. Reduced-motion visitors receive readable static content. Browser checks verified the complete CEO name/role/quote, early title completion, subsequent editorial/news/contact copy, an empty partner word frame, and a 390 px mobile page without horizontal overflow. No media bytes were changed.
+
 ## Host verification
 
 Verify appearance and enquiry/comment mail delivery on the final host after deployment. No real enquiry or comment was sent during development. Product placeholders and existing legal labels remain as supplied.
