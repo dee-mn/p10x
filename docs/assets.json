@@ -1135,6 +1135,11 @@
       "path": "assets/images/p10x-driver-celebrity-avatars.jpg",
       "sha256": "14da0344a2554fb01dd450b8beb024987823b7ea62f90cbd58f9ee5f72e66e0c",
       "bytes": 217662
+    },
+    {
+      "path": "assets/images/William-Lee-P10X-CEO-warm-neutral.png",
+      "sha256": "e0e7ceccef5bc7dbdb6228f1395c2b4bf26904f9fcde43c3f6241dd2fb657e34",
+      "bytes": 1787387
     }
   ]
 }
