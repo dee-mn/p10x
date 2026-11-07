@@ -124,6 +124,12 @@ The homepage Insights heading and article titles, plus the Insights page heading
 
 The first leadership explorer card (William.L / control 01) reuses the homepage warm neutral CEO portrait. Native dimensions are 1011 × 1556; existing card crop, controls, text and other portraits remain unchanged. The card already uses filter:none. Image reference, dimensions, existing asset checksum, 32-page build and diff whitespace checks pass. No new media was created.
 
+## About Us leadership gallery right edge — 7 November
+
+The leadership scroll viewport extends from its existing left content alignment to the right edge of the section. Container-relative sizing follows the page width without adding horizontal document overflow. Trailing padding preserves the content inset when reaching the final card. Existing drag, snap, keyboard and numbered controls are retained.
+
+Desktop browser checks: first card and shell both start at 48px, gallery right edge equals the 1348px viewport, document width remains 1348px, control 07 reaches the final card fully, and Home returns to the first card. The 32-page build and diff whitespace checks pass. Mobile sizing follows the existing shell width; a separate mobile browser check was not performed.
+
 ## Host verification
 
 Verify appearance and enquiry/comment mail delivery on the final host after deployment. No real enquiry or comment was sent during development. Product placeholders and existing legal labels remain as supplied.
