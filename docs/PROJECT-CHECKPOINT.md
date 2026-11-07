@@ -130,6 +130,12 @@ The leadership scroll viewport extends from its existing left content alignment 
 
 Desktop browser checks: first card and shell both start at 48px, gallery right edge equals the 1348px viewport, document width remains 1348px, control 07 reaches the final card fully, and Home returns to the first card. The 32-page build and diff whitespace checks pass. Mobile sizing follows the existing shell width; a separate mobile browser check was not performed.
 
+## About Us character values — 7 November
+
+Character comes before success now contains the five supplied values, numbered 01–05: Be Humble; Gratitude; Zero Negativity; Help Each Other; Always Learn, Always Improve & Always Impress (3A). Paragraph wording is preserved exactly, with pasted line wraps treated as ordinary spaces. The existing responsive row layout, hover treatment and scroll animations apply to all five rows. Every row has unique block/heading identifiers.
+
+Desktop browser checks confirmed all five titles and paragraphs, the longer 3A title wrapping within its own column, animation progress on all five rows, unique IDs, and no horizontal document overflow at 1348px. The 32-page build and HTML diff whitespace checks pass. No separate mobile browser check was performed for this content change.
+
 ## Host verification
 
 Verify appearance and enquiry/comment mail delivery on the final host after deployment. No real enquiry or comment was sent during development. Product placeholders and existing legal labels remain as supplied.
