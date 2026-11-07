@@ -1,6 +1,6 @@
 /* Keep focused service panels in view when the strip scrolls on smaller screens. */
 (()=>{
- const strip=document.querySelector('#services .sc-grid');if(!strip)return;
+ document.querySelectorAll('#services .sc-grid').forEach(strip=>{
  const cards=[...strip.querySelectorAll('.sc-card')];
  strip.addEventListener('focusin',event=>{
   const card=event.target.closest('.sc-card');if(!card||!matchMedia('(max-width:1100px)').matches)return;
@@ -20,5 +20,6 @@
   else if(event.key==='End')next=cards.length-1;
   else return;
   event.preventDefault();cards[next].focus();
+ });
  });
 })();

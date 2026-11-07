@@ -90,11 +90,11 @@ Verification: 300 deterministic answer/car combinations matched the original sco
 
 ## Homepage service discovery — 7 November
 
-The six services use full-bleed photo panels in one desktop strip. The first panel starts expanded; pointer hover or keyboard focus expands a chosen panel and reveals its description. Pointer hover takes priority over a different keyboard focus so only one panel expands at a time. Width expansion takes 550 ms, image movement 650 ms and accent changes 250 ms. Each photo is clipped within its own panel, including the original Academy image for Training. Original media bytes remain unchanged.
+The six services use two independent rows of three full-bleed photo panels: PPF / Automotive Window Tint / Wrapping, then Detailing / Architecture Tint / Training. Desktop panels are 420 px high with a 20 px row gap. The first panel in each row starts expanded; pointer hover or keyboard focus expands a chosen panel and reveals its description within that row. Pointer hover takes priority over a different keyboard focus in the same row. The other row keeps its own state. Expansion takes 550 ms, image movement 650 ms and accent changes 250 ms. Each photo is clipped within its panel, including the original Academy image for Training. Original media bytes remain unchanged.
 
-At 1100 px and below the strip becomes horizontally scrollable with snap positions, visible descriptions and a short browsing hint. Focused cards scroll into view; Left/Right and Home/End navigate services. Reduced-motion visitors receive immediate transitions. The existing early heading reveal is retained.
+At 1100 px and below each three-service row scrolls horizontally with snap positions, visible descriptions and a short browsing hint. Focused cards scroll into view; Left/Right and Home/End navigate within the current row. Reduced-motion visitors receive immediate transitions. The existing early heading reveal is retained.
 
-Browser checks verified default and hovered panel widths, a single expanded panel with competing pointer/focus states, Training image containment, complete descriptions, and the last service reachable within 390 px and 1024 px viewports without horizontal page overflow. The 32-page build and source checks are retained.
+Browser checks verified three panels in each row, independent desktop expansion (658 px selected / 281 px neighbours at a 1252 px row width), Training photo containment, and separate row navigation on 390 px and 1024 px viewports without horizontal page overflow. The final service is fully visible after keyboard navigation on mobile. The 32-page build and source checks are retained.
 
 ## Host verification
 
