@@ -59,7 +59,7 @@
 #ui-header-elementor .menu-p10x-main-container li:focus-within>.sub-menu{visibility:visible;opacity:1;margin-top:0}
 #ui-header-elementor .p10x-tinting-group>.sub-menu{min-width:280px}
 #ui-header-elementor .p10x-tinting-group>a:after{content:none}
-#ui-header-elementor .p10x-submenu-chevron{position:absolute;right:20px;font:22px/1 Inter,sans-serif}
+#ui-header-elementor .p10x-submenu-chevron{position:absolute;right:20px;top:50%;transform:translateY(-50%);display:flex;width:14px;height:14px;pointer-events:none}
 #ui-header-elementor a[role=button]{cursor:pointer}
 #ui-header-elementor a[role=button]:focus-visible{outline:2px solid #03c4d5;outline-offset:-3px}
 .p10x-menu-disclosure .p10x-submenu-chevron{display:none}
@@ -70,3 +70,12 @@
 .view-20 .p10x-partner-space{height:1em}
 /* Entrance effects must never leave homepage copy waiting in a hidden state. */
 .view-20 .wow{visibility:visible!important;animation:none!important}
+
+/* Main navigation has a single vector indicator for a submenu, never a font glyph. */
+#ui-header-elementor .menu-p10x-main-container .sub-menu a:after{content:none!important;display:none!important}
+#ui-header-elementor .p10x-submenu-chevron svg{display:block;width:14px;height:14px;color:inherit}
+#ui-header-elementor .p10x-submenu-chevron path{stroke:currentColor!important}
+#ui-header-elementor .ui-anchor-button .ui-anchor-divider{background:transparent!important;border:0;border-radius:0;padding:0!important;display:grid;place-items:center}
+#ui-header-elementor .p10x-menu-mark{display:block;width:20px;height:20px;fill:none;color:inherit}
+#ui-header-elementor .p10x-menu-mark path{stroke:currentColor!important}
+#ui-header-elementor #ui-nav-mobile .p10x-menu-mark{color:#fff}

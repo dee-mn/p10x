@@ -1,0 +1,2 @@
+# Preserve links to the former service URL.
+RedirectMatch 301 ^/tinting/?$ /automotive-window-tint/

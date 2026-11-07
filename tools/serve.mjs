@@ -8,7 +8,11 @@ const mime={'.html':'text/html; charset=utf-8','.css':'text/css; charset=utf-8',
 createServer(async(req,res)=>{
   if(req.method!=='GET'&&req.method!=='HEAD'){res.writeHead(503,{'Content-Type':'application/json'});res.end(JSON.stringify({ok:false,message:'Email delivery is unavailable here. Please email info@p10x.my.'}));return;}
   try{
-    const url=new URL(req.url,'http://localhost');let relative=decodeURIComponent(url.pathname);
+    const url=new URL(req.url,'http://localhost');
+    if(/^\/tinting\/?$/.test(url.pathname)){
+      res.writeHead(301,{'Location':'/automotive-window-tint/'+url.search});res.end();return;
+    }
+    let relative=decodeURIComponent(url.pathname);
     if(relative.endsWith('/'))relative+='index.html';
     const target=path.resolve(root,'.'+relative);
     if(!target.startsWith(root+path.sep)||target.endsWith('.php')||relative.includes('/.'))throw new Error('Not served');

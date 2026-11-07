@@ -68,6 +68,12 @@ Training is available at /training/ and in all header variants, the footer, the 
 
 The decorative Archinic word is removed from the Partners background; an empty, inaccessible spacer preserves its original frame. Homepage entrance elements have visible CSS defaults. The new home-reveals controller adds short, one-time viewport animations for copy and images instead of leaving them in hidden entrance classes. Leadership, news and contact heading reveals are excluded from the generic per-line controller and use a whole-heading entry range that completes before the viewport centre. Reduced-motion visitors receive readable static content. Browser checks verified the complete CEO name/role/quote, early title completion, subsequent editorial/news/contact copy, an empty partner word frame, and a 390 px mobile page without horizontal overflow. No media bytes were changed.
 
+## Automotive tint URL and menu indicators — 7 November
+
+Automotive Window Tint now uses /automotive-window-tint/ across canonical/OG metadata, the route registry, sitemap, shared navigation/footer, service cards and content links. The former /tinting/ address has an Apache 301 rule, a preview-server redirect and a static redirect fallback; it is excluded from the sitemap. The build includes the redirect files.
+
+Desktop Tinting uses a small inline SVG chevron only because it opens a child menu. Service destinations, including Training, have no trailing icons. Font-generated submenu glyphs are suppressed. The Product/mobile menu controls use inline SVG hamburger strokes; Product has no white icon box. Existing product open/close behaviour is retained. Browser checks covered desktop/mobile service navigation, new page URL/canonical, old URL redirection with query/anchor preservation, plain Training labels and Product open/close.
+
 ## Host verification
 
 Verify appearance and enquiry/comment mail delivery on the final host after deployment. No real enquiry or comment was sent during development. Product placeholders and existing legal labels remain as supplied.
