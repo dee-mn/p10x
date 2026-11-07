@@ -6,6 +6,12 @@ const portFlag=process.argv.indexOf('--port');
 const port=Number(process.env.PORT || (portFlag>=0?process.argv[portFlag+1]:3000));
 const mime={'.html':'text/html; charset=utf-8','.css':'text/css; charset=utf-8','.js':'text/javascript; charset=utf-8','.svg':'image/svg+xml','.jpg':'image/jpeg','.jpeg':'image/jpeg','.png':'image/png','.ttf':'font/ttf','.woff2':'font/woff2','.mp4':'video/mp4','.json':'application/json'};
 createServer(async(req,res)=>{
+  // Exercise the client submission flow locally without sending demonstration leads.
+  if(new URL(req.url,'http://localhost').pathname==='/driver-test.php'&&req.method==='POST'){
+    let body='';for await(const chunk of req){body+=chunk;if(body.length>24000){res.writeHead(413);res.end();return;}}
+    try{const data=JSON.parse(body);if(!data.lead||!data.answers||!data.celebrityId)throw new Error('Incomplete test');res.writeHead(200,{'Content-Type':'application/json','Cache-Control':'no-store'});res.end(JSON.stringify({ok:true,preview:true}));}
+    catch{res.writeHead(422,{'Content-Type':'application/json'});res.end(JSON.stringify({ok:false,message:'Please complete the test.'}));}return;
+  }
   if(req.method!=='GET'&&req.method!=='HEAD'){res.writeHead(503,{'Content-Type':'application/json'});res.end(JSON.stringify({ok:false,message:'Email delivery is unavailable here. Please email info@p10x.my.'}));return;}
   try{
     const url=new URL(req.url,'http://localhost');

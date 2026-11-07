@@ -1130,6 +1130,11 @@
       "path": "assets/images/p10x-brand-colourlock.svg",
       "sha256": "3d36c984c7d6c616250be8121a5267fa1cd92fb3df5991e611573949122b79d4",
       "bytes": 24148
+    },
+    {
+      "path": "assets/images/p10x-driver-celebrity-avatars.jpg",
+      "sha256": "14da0344a2554fb01dd450b8beb024987823b7ea62f90cbd58f9ee5f72e66e0c",
+      "bytes": 217662
     }
   ]
 }

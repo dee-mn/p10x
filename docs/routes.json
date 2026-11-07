@@ -122,5 +122,9 @@
   {
     "route": "/contact-us/",
     "title": "Contact Us"
+  },
+  {
+    "route": "/driver-personality-test/",
+    "title": "Driver Personality Test"
   }
 ]

@@ -78,6 +78,16 @@ Desktop Tinting uses a small inline SVG chevron only because it opens a child me
 
 Colourlock replaces Gtechniq in the homepage partner grid and the matching brand strip. The supplied Colourlock SVG is stored locally with its original bytes and included in the asset checksum manifest. Existing contain sizing, centring and opacity are retained; a CSS filter gives the new logo the same monochrome treatment as the other wordmarks. The unused Gtechniq logo asset is removed.
 
+## Driver Personality Test — 7 November
+
+The new /driver-personality-test/ page preserves the supplied p10x.my test's 25 questions, answer choices, referrer names, 25 celebrity profiles, scoring, car-model weighting, PPF/tint packages and optional email workflow. The original avatar sprite is stored locally without transformation. Homepage and footer links now open the local test.
+
+The native questionnaire uses the current Inter/charcoal/turquoise style, multiple selection on question 3, keyboard controls, answer restoration, four progress milestones, responsive result cards, sharing and a downloadable PNG. Reduced-motion preferences are respected. Personal answers and contact details remain in memory during the test.
+
+Completion posts through driver-test.php to the original Zapier destination using the same 18 result fields. The optional email action sends an update as in the source. The server validates answers and contact fields, recomputes package scores and only acknowledges successful webhook responses. Failed sends can be retried; acknowledged sends are deduplicated for each test run/email.
+
+Verification: 300 deterministic answer/car combinations matched the original scoring and celebrity selection; committed golden fixtures cover all three package levels. Browser checks completed all 25 questions on desktop and at 390 px, including multi-select, back/answer restoration, keyboard input, milestones, results, preview-only email update, image download and retake. Mobile bounds are 375/375 px with no horizontal overflow. Development preview sends no external leads; PHP transport tests use a mock. Live Zapier acceptance and downstream email delivery still require verification on the PHP host; no live test lead was sent.
+
 ## Host verification
 
 Verify appearance and enquiry/comment mail delivery on the final host after deployment. No real enquiry or comment was sent during development. Product placeholders and existing legal labels remain as supplied.
