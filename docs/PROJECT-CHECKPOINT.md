@@ -116,6 +116,10 @@ The homepage leadership section uses a separate colourised portrait, William-Lee
 
 Browser review confirmed the new image loads at its native 1011 × 1556 dimensions, has no CSS grayscale filter and displays cleanly against the existing dark leadership panel. The surrounding content and layout are unchanged.
 
+## News and Insights title spacing — 7 November
+
+The homepage Insights heading and article titles, plus the Insights page heading and article-list titles, use 1em line height. The scoped rule overrides the compact global heading style on desktop and mobile; other headings retain their existing spacing. The 32-page build and diff whitespace check pass. Full source/asset validation could not complete in the resumed workspace because original media files are absent locally; media references and files were not changed.
+
 ## Host verification
 
 Verify appearance and enquiry/comment mail delivery on the final host after deployment. No real enquiry or comment was sent during development. Product placeholders and existing legal labels remain as supplied.
