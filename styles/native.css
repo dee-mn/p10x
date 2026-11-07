@@ -40,3 +40,16 @@
 #ui-wapper .ui-anchor-button{transition:background-color .25s ease,color .25s ease}
 #ui-wapper .ui-anchor-button:is(:hover,:focus-visible) .ui-anchor-inner{color:#222!important}
 #ui-wapper .btn:is(:hover,:focus-visible) .ui-btn-icon :is(i,svg){color:#fff!important}
+
+/* The first panel pins the film and cards together; its runway is not the film's height. */
+.view-20 .p10x-pillar-panel>.p10x-pillar-video{
+ width:100%!important;height:100vh!important;height:100svh!important;max-height:100svh!important;
+ position:absolute!important;inset:0 0 auto!important;overflow:hidden!important;
+}
+.view-20 .p10x-pillar-video>video.section-video{
+ display:block;width:100%!important;height:100%!important;max-height:none!important;
+ object-fit:cover;object-position:center;
+}
+@media(max-width:1024px){
+ .view-20 .p10x-pillar-panel>.p10x-pillar-video{height:100%!important;max-height:100%!important}
+}

@@ -46,6 +46,12 @@ The preview now starts only inside the explicit opener. Close synchronously hide
 
 CTA hover and keyboard focus use the shared turquoise (#03c4d5), including service-page overrides and the Product CTA. Arrow/label movement remains intact, with dark labels and a contrasting white arrow on a dark icon.
 
+## Five-pillar video and title — 7 November
+
+The actual video now lives inside the first card panel's background layer. Its rendered frame is one viewport high on desktop and inherits the existing card-panel pin, instead of stretching across the 4,223 px cards/ecosystem wrapper. On mobile it matches the swipe-card panel. The original video bytes are untouched.
+
+The heading's character reveal uses the stable outer section for its entry range (85% to 20% of viewport height), so it finishes before card rotation. The mobile trigger configuration preserves this reveal. Browser checks covered partial reveal on entrance, full title at the start of pinning, reverse scrolling, the rotating cards with a stationary video frame, the following panel covering the video, and the 390 px mobile frame. Local JavaScript syntax and the thirty-page build pass.
+
 ## Host verification
 
 Verify appearance and enquiry/comment mail delivery on the final host after deployment. No real enquiry or comment was sent during development. Product placeholders and existing legal labels remain as supplied.

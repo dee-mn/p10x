@@ -7,7 +7,7 @@
   const disabled=new Set();
   function configure(){
    if(window.ScrollTrigger&&pillar){
-    if(mq.matches){ScrollTrigger.getAll().forEach(st=>{if(st.trigger instanceof Element&&pillar.contains(st.trigger)&&!st.trigger.closest('.heading,.p10x-pillar-heading')){if(st.enabled){st.disable(true);disabled.add(st);}}});}
+    if(mq.matches){ScrollTrigger.getAll().forEach(st=>{if(st.trigger instanceof Element&&pillar.contains(st.trigger)&&st.vars.id!=='p10x-pillar-title'&&!st.trigger.closest('.heading,.p10x-pillar-heading')){if(st.enabled){st.disable(true);disabled.add(st);}}});}
     else{disabled.forEach(st=>{if(ScrollTrigger.getAll().includes(st))st.enable();});disabled.clear();}
     ScrollTrigger.refresh();
    }
