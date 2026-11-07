@@ -44,6 +44,8 @@ The complete panel must use the native hidden attribute and display:none while i
 
 The preview now starts only inside the explicit opener. Close synchronously hides the full panel, cancels and invalidates pending previews, restores scrolling and returns focus; it does not wait for an exit animation promise. Browser checks verified initial load without a photo, click-to-open, product selection followed by Close, Escape, repeated reopening/closing and reload. Closed preview bounds are zero and initial image sources are unset.
 
+CTA hover and keyboard focus use the shared turquoise (#03c4d5), including service-page overrides and the Product CTA. Arrow/label movement remains intact, with dark labels and a contrasting white arrow on a dark icon.
+
 ## Host verification
 
 Verify appearance and enquiry/comment mail delivery on the final host after deployment. No real enquiry or comment was sent during development. Product placeholders and existing legal labels remain as supplied.

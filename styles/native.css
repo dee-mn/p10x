@@ -30,3 +30,13 @@
 
 /* A hidden ancestor must suppress descendants that explicitly set visibility:visible. */
 .ui-hidden-panel-popup:not(.active),.ui-hidden-panel-popup[hidden]{display:none!important}
+/* Shared CTA hover colour; the existing arrow/label motion remains independent. */
+#ui-wapper .btn:is(:hover,:focus-visible),
+#ui-wapper .ui-anchor-button:is(:hover,:focus-visible),
+#ui-wapper #p10x-motion-hero .pm-actions a:is(:hover,:focus-visible){background:var(--primary-color,#03c4d5)!important;border-color:var(--primary-color,#03c4d5)!important;color:#222!important}
+#ui-wapper .btn:is(:hover,:focus-visible) .ui--btn-text{color:inherit!important}
+#ui-wapper .btn:is(:hover,:focus-visible) .ui-btn-icon{background:#222!important;color:#fff!important}
+#ui-wapper .btn:is(:hover,:focus-visible) .ui-btn-icon svg path{stroke:currentColor!important}
+#ui-wapper .ui-anchor-button{transition:background-color .25s ease,color .25s ease}
+#ui-wapper .ui-anchor-button:is(:hover,:focus-visible) .ui-anchor-inner{color:#222!important}
+#ui-wapper .btn:is(:hover,:focus-visible) .ui-btn-icon :is(i,svg){color:#fff!important}
