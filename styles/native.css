@@ -64,7 +64,6 @@
 #ui-header-elementor a[role=button]:focus-visible{outline:2px solid #03c4d5;outline-offset:-3px}
 .p10x-menu-disclosure .p10x-submenu-chevron{display:none}
 
-@media(min-width:601px) and (max-width:1024px){.p10x-service-discovery .sx-card:last-child{grid-column:auto!important}}
 
 /* Decorative partner lettering is removed while preserving the authored section frame. */
 .view-20 .p10x-partner-space{height:1em}

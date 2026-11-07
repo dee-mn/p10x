@@ -88,6 +88,14 @@ Completion posts through driver-test.php to the original Zapier destination usin
 
 Verification: 300 deterministic answer/car combinations matched the original scoring and celebrity selection; committed golden fixtures cover all three package levels. Browser checks completed all 25 questions on desktop and at 390 px, including multi-select, back/answer restoration, keyboard input, milestones, results, preview-only email update, image download and retake. Mobile bounds are 375/375 px with no horizontal overflow. Development preview sends no external leads; PHP transport tests use a mock. Live Zapier acceptance and downstream email delivery still require verification on the PHP host; no live test lead was sent.
 
+## Six-service homepage layout — 7 November
+
+The Our Services / The Craft Behind the Care section now uses three columns and two rows above 1100 px, two columns on tablet and one column below 700 px. Each service is a full-card link with a separately clipped photo frame, a visible title/description, service number and SVG arrow. Training reuses the original Academy image with upper-centred cropping so the instructor stays within the frame. Original image files are unchanged.
+
+The expanding strip and its unused CSS are removed. Hover/focus no longer changes card widths: border/accent responses take 250 ms, the arrow 300 ms and image movement 450 ms. The heading retains its early scroll reveal; reduced-motion visitors receive static text and no card transitions.
+
+Browser checks verified all six images, three/two/one-column layouts, no horizontal overflow at 390 and 1024 px, visible Training content, keyboard focus accents with stable card widths, the Training link destination and the completed heading reveal.
+
 ## Host verification
 
 Verify appearance and enquiry/comment mail delivery on the final host after deployment. No real enquiry or comment was sent during development. Product placeholders and existing legal labels remain as supplied.
