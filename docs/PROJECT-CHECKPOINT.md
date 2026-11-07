@@ -60,6 +60,10 @@ About Us leadership order: William.L, Max Yong, Salwani Nor, Nick Ng, Nadzmi Zah
 
 All three authored top-navigation variants group Automotive Window Tint (/tinting/) and Architecture Tint (/window-film/) under Services > Tinting. Footer lists the two services directly. Window film wording is replaced throughout visible copy, article/FAQ text, metadata and alt descriptions, including the split homepage service heading. Routes and original media filenames/bytes remain unchanged.
 
+## Training service — 7 November
+
+Training is available at /training/ and in all header variants, the footer, the homepage service gallery and the sitemap. The page uses the existing service-page shell and original Academy/workmanship images. It includes keyboard-accessible learning-area tabs, scroll-revealed type, stacked learning-process chapters, audience guidance, native FAQ disclosures and a training enquiry link that pre-fills the existing contact message. Desktop and 390 px browser checks covered tab clicks/keyboard changes, chapter transitions, FAQ open/close, mobile width, homepage/footer links and the contact handoff; no enquiry was submitted. Motion respects reduced-motion preferences; small screens use natural document flow. Course fees, intake dates, entry requirements and qualification details are left for the Academy to confirm.
+
 ## Host verification
 
 Verify appearance and enquiry/comment mail delivery on the final host after deployment. No real enquiry or comment was sent during development. Product placeholders and existing legal labels remain as supplied.

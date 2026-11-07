@@ -33,6 +33,11 @@
   function move(n){const shown=innerWidth<768?1:innerWidth<992?2:3;index=Math.max(0,Math.min(n,slides.length-shown));const step=(slides[0]?.getBoundingClientRect().width||0)+30;track.style.transform=`translateX(${-index*step}px)`;}
   $$('.ui-swiper-arrow-next,.ui-swiper-button-next',host).forEach(x=>x.addEventListener('click',()=>move(index+1)));$$('.ui-swiper-arrow-prev,.ui-swiper-button-prev',host).forEach(x=>x.addEventListener('click',()=>move(index-1)));let start=0;root.addEventListener('pointerdown',e=>start=e.clientX);root.addEventListener('pointerup',e=>{if(Math.abs(e.clientX-start)>40)move(index+(e.clientX<start?1:-1));});addEventListener('resize',()=>move(index));
  });
+ // Preserve the visitor's training interest when continuing to the contact page.
+ if(new URLSearchParams(location.search).get('service')==='training'){
+  const message=document.querySelector('form[data-enquiry] textarea');
+  if(message&&!message.value)message.value="I am interested in P10X Academy training.\n\nMy experience: \nLearning area of interest: \nMy training goals: ";
+ }
  // Native local contact handler reports success only after server acknowledgement.
  $$('form[data-enquiry]').forEach(form=>form.addEventListener('submit',async e=>{e.preventDefault();if(!form.reportValidity())return;let status=$('[role=status]',form);if(!status){status=document.createElement('p');status.className='native-form-status';status.setAttribute('role','status');form.append(status);}const button=$('[type=submit]',form);if(button)button.disabled=true;status.textContent='Sending your enquiry…';try{const response=await fetch('/contact.php',{method:'POST',body:new FormData(form)}),data=await response.json();status.textContent=data.message;if(data.ok)form.reset();}catch{status.textContent='Unable to send. Please email info@p10x.my.';}finally{if(button)button.disabled=false;}}));
  function initMotion(){

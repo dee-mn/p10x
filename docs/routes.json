@@ -28,6 +28,10 @@
     "title": "Architecture Tint"
   },
   {
+    "route": "/training/",
+    "title": "Training — P10X Academy"
+  },
+  {
     "route": "/faq/",
     "title": "FAQ"
   },
