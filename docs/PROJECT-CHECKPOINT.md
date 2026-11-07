@@ -104,6 +104,12 @@ The section keeps its existing presentation and More News link. Its native contr
 
 Browser checks verified the initial visible cards and covers, navigation to all six articles, disabled controls at the ends, article image and title destinations, and the More News destination with all twenty listing entries. Mobile (390 px) and tablet (820 px) show one and two cards respectively; all articles remain reachable and page bounds do not overflow. Original cover-image checksums, the build and repository validation are checked separately.
 
+## Blog image colour interaction — 7 November
+
+Homepage article covers and the Insights list use a CSS grayscale filter by default. Hovering or focusing any link within a card restores its original colour over 350 ms. Text, author avatars and article-page images are unaffected. Reduced-motion visitors receive an immediate colour change. This also applies to cards revealed by Load More; no media files are transformed.
+
+Browser checks verified grayscale defaults, full colour on pointer hover, return to grayscale off hover, and keyboard focus restoration on the Insights list.
+
 ## Host verification
 
 Verify appearance and enquiry/comment mail delivery on the final host after deployment. No real enquiry or comment was sent during development. Product placeholders and existing legal labels remain as supplied.

@@ -102,3 +102,10 @@
 @media(max-width:991px){.view-20 .block-d2db1b3 .ui-swiper-slide{flex-basis:calc((100% - 30px)/2)}}
 @media(max-width:767px){.view-20 .block-d2db1b3 .ui-swiper-slide{flex-basis:100%}}
 @media(prefers-reduced-motion:reduce){.view-20 .block-d2db1b3 .ui-swiper-wrapper,.view-20 .block-d2db1b3 .ui-post--featured img{transition:none}}
+
+/* Article covers regain their original colour when the card is explored. */
+.view-20 .block-d2db1b3 .ui-post--featured,
+.page-id-7411 .ui-grid-item .ui-post--featured{filter:grayscale(1);transition:filter .35s ease}
+.view-20 .block-d2db1b3 .ui-post--inner:is(:hover,:focus-within) .ui-post--featured,
+.page-id-7411 .ui-grid-item .ui-post--inner:is(:hover,:focus-within) .ui-post--featured{filter:grayscale(0)}
+@media(prefers-reduced-motion:reduce){.view-20 .block-d2db1b3 .ui-post--featured,.page-id-7411 .ui-grid-item .ui-post--featured{transition:none}}
