@@ -120,6 +120,10 @@ Browser review confirmed the new image loads at its native 1011 × 1556 dimensio
 
 The homepage Insights heading and article titles, plus the Insights page heading and article-list titles, use 1em line height. The scoped rule overrides the compact global heading style on desktop and mobile; other headings retain their existing spacing. The 32-page build and diff whitespace check pass. Full source/asset validation could not complete in the resumed workspace because original media files are absent locally; media references and files were not changed.
 
+## About Us CEO portrait — 7 November
+
+The first leadership explorer card (William.L / control 01) reuses the homepage warm neutral CEO portrait. Native dimensions are 1011 × 1556; existing card crop, controls, text and other portraits remain unchanged. The card already uses filter:none. Image reference, dimensions, existing asset checksum, 32-page build and diff whitespace checks pass. No new media was created.
+
 ## Host verification
 
 Verify appearance and enquiry/comment mail delivery on the final host after deployment. No real enquiry or comment was sent during development. Product placeholders and existing legal labels remain as supplied.
