@@ -29,7 +29,7 @@
  // Article listing uses the same initial twelve-card view and reveals the remaining eight.
  $$('.ui-load-more,.ui-loadmore,.ui--loadmore,.ui-grid-loadmore,.ui-post-loadmore').forEach(button=>button.addEventListener('click',e=>{e.preventDefault();$$('[data-more-article]').forEach(x=>x.hidden=false);button.closest('.ui-loadmore')?.remove();button.hidden=true;refresh();}));
  // Theme-independent card sliders preserve the original three/two/one-column breakpoints.
- $$('.ui-swiper-container').forEach(root=>{root.classList.add('native-carousel');const track=$('.ui-swiper-wrapper',root);if(!track)return;const slides=$$('.ui-swiper-slide',track);let index=0;const host=root.closest('.ui-swiper-slider')||root;
+ $$('.ui-swiper-container:not([data-home-insights])').forEach(root=>{root.classList.add('native-carousel');const track=$('.ui-swiper-wrapper',root);if(!track)return;const slides=$$('.ui-swiper-slide',track);let index=0;const host=root.closest('.ui-swiper-slider')||root;
   function move(n){const shown=innerWidth<768?1:innerWidth<992?2:3;index=Math.max(0,Math.min(n,slides.length-shown));const step=(slides[0]?.getBoundingClientRect().width||0)+30;track.style.transform=`translateX(${-index*step}px)`;}
   $$('.ui-swiper-arrow-next,.ui-swiper-button-next',host).forEach(x=>x.addEventListener('click',()=>move(index+1)));$$('.ui-swiper-arrow-prev,.ui-swiper-button-prev',host).forEach(x=>x.addEventListener('click',()=>move(index-1)));let start=0;root.addEventListener('pointerdown',e=>start=e.clientX);root.addEventListener('pointerup',e=>{if(Math.abs(e.clientX-start)>40)move(index+(e.clientX<start?1:-1));});addEventListener('resize',()=>move(index));
  });

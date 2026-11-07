@@ -1,3 +1,4 @@
+import './sync-home-insights.mjs';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 const routes=JSON.parse(await fs.readFile('docs/routes.json','utf8'));

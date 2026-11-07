@@ -96,6 +96,14 @@ At 1100 px and below each three-service row scrolls horizontally with snap posit
 
 Browser checks verified three panels in each row, independent desktop expansion (658 px selected / 281 px neighbours at a 1252 px row width), Training photo containment, and separate row navigation on 390 px and 1024 px viewports without horizontal page overflow. The final service is fully visible after keyboard navigation on mobile. The 32-page build and source checks are retained.
 
+## Homepage Insights — 7 November
+
+The homepage article carousel had six valid article links but inherited an opacity:0 rule, leaving the complete block invisible. A scoped visible default now keeps the article content readable. The homepage cards are regenerated from the first six entries in docs/article-index.json by tools/sync-home-insights.mjs, invoked during shared-layout synchronization and builds. Article titles, excerpts, dates, original images and routes stay in the shared metadata collection.
+
+The section keeps its existing presentation and More News link. Its native controller displays three/two/one cards, supports previous/next buttons, swipe gestures and keyboard navigation, announces the visible range and excludes offscreen links from keyboard navigation. Images and titles both open the article; More News opens /insights/. Dates remain right-aligned and cards share a common height. Motion respects reduced-motion preferences. No image files were changed.
+
+Browser checks verified the initial visible cards and covers, navigation to all six articles, disabled controls at the ends, article image and title destinations, and the More News destination with all twenty listing entries. Mobile (390 px) and tablet (820 px) show one and two cards respectively; all articles remain reachable and page bounds do not overflow. Original cover-image checksums, the build and repository validation are checked separately.
+
 ## Host verification
 
 Verify appearance and enquiry/comment mail delivery on the final host after deployment. No real enquiry or comment was sent during development. Product placeholders and existing legal labels remain as supplied.

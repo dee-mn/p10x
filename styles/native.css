@@ -81,3 +81,24 @@
 
 /* Match the partner wordmarks without altering the supplied vector artwork. */
 .view-20 .p10x-colourlock-logo{filter:grayscale(1) brightness(0)}
+
+/* Homepage articles are readable by default, without a hidden slider initializer. */
+.view-20 .block-d2db1b3 .ui-swiper-slider{opacity:1}
+.view-20 .block-d2db1b3 .ui-swiper-container{margin:0;padding:4px;touch-action:pan-y;outline-offset:2px}
+.view-20 .block-d2db1b3 .ui-swiper-wrapper{height:auto;gap:30px;transition:transform .45s cubic-bezier(.2,.7,.2,1)}
+.view-20 .block-d2db1b3 .ui-swiper-slide{flex:0 0 calc((100% - 60px)/3);min-width:0;padding:0}
+.view-20 .block-d2db1b3 .ui-post--featured{overflow:hidden}
+.view-20 .block-d2db1b3 .ui-post--featured img{display:block;width:100%;height:100%;object-fit:cover;object-position:left center;transition:transform .45s ease}
+.view-20 .block-d2db1b3 .ui-post--featured a:is(:hover,:focus-visible) img{transform:scale(1.035)}
+.view-20 .block-d2db1b3 .ui-item-meta{justify-content:flex-end}
+.view-20 .block-d2db1b3 .home-insights-controls{display:flex;align-items:center;justify-content:flex-end;gap:10px;margin-top:24px;padding:4px}
+.home-insights-status{margin-right:10px;font:400 12px/1.5 Inter,Arial,sans-serif;color:#657173}
+.home-insights-controls button{display:grid;place-items:center;width:44px;height:44px;padding:0;border:1px solid #b5c1c2;border-radius:50%;background:transparent;color:#161c1d;cursor:pointer;transition:background-color .25s,color .25s,border-color .25s}
+.home-insights-controls button svg{display:block;width:20px;height:20px}
+.home-insights-prev svg{transform:rotate(180deg)}
+.home-insights-controls button:is(:hover,:focus-visible):not(:disabled){background:#03c4d5;border-color:#03c4d5;color:#111314}
+.home-insights-controls button:disabled{opacity:.35;cursor:default}
+[data-home-insights]:focus-visible,.home-insights-controls button:focus-visible{outline:2px solid #03c4d5;outline-offset:3px}
+@media(max-width:991px){.view-20 .block-d2db1b3 .ui-swiper-slide{flex-basis:calc((100% - 30px)/2)}}
+@media(max-width:767px){.view-20 .block-d2db1b3 .ui-swiper-slide{flex-basis:100%}}
+@media(prefers-reduced-motion:reduce){.view-20 .block-d2db1b3 .ui-swiper-wrapper,.view-20 .block-d2db1b3 .ui-post--featured img{transition:none}}
