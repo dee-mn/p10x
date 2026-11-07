@@ -52,6 +52,10 @@ The actual video now lives inside the first card panel's background layer. Its r
 
 The heading's character reveal uses the stable outer section for its entry range (85% to 20% of viewport height), so it finishes before card rotation. The mobile trigger configuration preserves this reveal. Browser checks covered partial reveal on entrance, full title at the start of pinning, reverse scrolling, the rotating cards with a stationary video frame, the following panel covering the video, and the 390 px mobile frame. Local JavaScript syntax and the thirty-page build pass.
 
+## Leadership names and order — 7 November
+
+About Us leadership order: William.L, Max Yong, Salwani Nor, Nick Ng, Nadzmi Zahin, Abraham Chai, Fabian Ong. Nick and Fabian's complete cards were exchanged, retaining their own roles. Numbered navigation labels and positional anchors match that order; monograms reflect the corrected names.
+
 ## Host verification
 
 Verify appearance and enquiry/comment mail delivery on the final host after deployment. No real enquiry or comment was sent during development. Product placeholders and existing legal labels remain as supplied.
