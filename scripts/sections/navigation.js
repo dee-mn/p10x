@@ -1,6 +1,14 @@
 (function(){
  'use strict';
  function init(){
+  // Desktop category controls open their child links with the keyboard as well as hover.
+  document.querySelectorAll('.menu-p10x-main-container a[role="button"]').forEach(control=>{
+   control.addEventListener('keydown',event=>{
+    if(!['Enter',' ','ArrowDown'].includes(event.key))return;
+    const child=control.nextElementSibling?.querySelector('a');
+    if(child){event.preventDefault();child.focus();}
+   });
+  });
   if(document.body.classList.contains('surface-editor-active'))return;
   const source=document.querySelector('.p10x-mobile-content');
   const panel=document.querySelector('#ui-header-mobile .ui-header-menu');

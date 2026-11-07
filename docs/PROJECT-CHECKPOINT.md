@@ -56,6 +56,10 @@ The heading's character reveal uses the stable outer section for its entry range
 
 About Us leadership order: William.L, Max Yong, Salwani Nor, Nick Ng, Nadzmi Zahin, Abraham Chai, Fabian Ong. Nick and Fabian's complete cards were exchanged, retaining their own roles. Numbered navigation labels and positional anchors match that order; monograms reflect the corrected names.
 
+## Tint navigation and terminology — 7 November
+
+All three authored top-navigation variants group Automotive Window Tint (/tinting/) and Architecture Tint (/window-film/) under Services > Tinting. Footer lists the two services directly. Window film wording is replaced throughout visible copy, article/FAQ text, metadata and alt descriptions, including the split homepage service heading. Routes and original media filenames/bytes remain unchanged.
+
 ## Host verification
 
 Verify appearance and enquiry/comment mail delivery on the final host after deployment. No real enquiry or comment was sent during development. Product placeholders and existing legal labels remain as supplied.

@@ -53,3 +53,13 @@
 @media(max-width:1024px){
  .view-20 .p10x-pillar-panel>.p10x-pillar-video{height:100%!important;max-height:100%!important}
 }
+
+/* Services > Tinting: the two tint services share a keyboard-accessible flyout. */
+#ui-header-elementor .menu-p10x-main-container .p10x-tinting-group{position:relative}
+#ui-header-elementor .menu-p10x-main-container li:focus-within>.sub-menu{visibility:visible;opacity:1;margin-top:0}
+#ui-header-elementor .p10x-tinting-group>.sub-menu{min-width:280px}
+#ui-header-elementor .p10x-tinting-group>a:after{content:none}
+#ui-header-elementor .p10x-submenu-chevron{position:absolute;right:20px;font:22px/1 Inter,sans-serif}
+#ui-header-elementor a[role=button]{cursor:pointer}
+#ui-header-elementor a[role=button]:focus-visible{outline:2px solid #03c4d5;outline-offset:-3px}
+.p10x-menu-disclosure .p10x-submenu-chevron{display:none}
