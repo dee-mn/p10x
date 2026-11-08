@@ -144,6 +144,14 @@ The original five images and pillar descriptions are retained. Original image ch
 
 Desktop browser checks covered all five selectors, counters/panels, Home/ArrowDown navigation and Next. A 390px iframe (375px content viewport including scrollbar) verified horizontal selector navigation to Car Check, keyboard return/advance, all five image loads and 375px document bounds. A physical touch swipe was not exercised. The 32-page build, JavaScript syntax and diff whitespace checks pass. Full source checking reports only the previously absent original local media, with no other source errors.
 
+## General FAQ category — 8 November
+
+FAQ includes a General filter with eight questions covering Quad Film, Academy, CarCheck, the founder, P10X story, Retail, Media and Distribution. The seven supplied answers retain their exact wording and paragraph breaks; pasted line wraps are treated as spaces. The Distribution answer was drafted from the site's existing film-distribution description because no answer accompanied that question.
+
+All 119 previous questions remain: 95 PPF, 12 Coating, 12 Tinting. Total count is 127. Category badges and result headings recognise General, and filter counts are derived from the current question collection. General entries are included in the shared search and accordion keyboard controls.
+
+Desktop browser checks verified General's eight results, expanded Quad Film and founder answers, answer-text search for corporate scholarship returning the founder question, clear/reset and category restoration. Build, JavaScript syntax, 127-category counts, unique IDs and changed-file whitespace checks pass. This content change did not receive a separate mobile browser check.
+
 ## Host verification
 
 Verify appearance and enquiry/comment mail delivery on the final host after deployment. No real enquiry or comment was sent during development. Product placeholders and existing legal labels remain as supplied.

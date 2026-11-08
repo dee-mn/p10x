@@ -16,11 +16,12 @@
    while(title.firstChild)button.append(title.firstChild);title.append(button);
    button.setAttribute('aria-controls',panel.id);button.setAttribute('aria-expanded','false');
    panel.setAttribute('aria-labelledby',button.id);
-   const number=item.querySelector('.ui-item--number');if(number){number.setAttribute('aria-hidden','true');const label=document.createElement('span');label.className='fq-item-topic';label.textContent=category==='ppf'?'PPF':category==='coating'?'Coating':'Tinting';number.append(label);}
+   const number=item.querySelector('.ui-item--number');if(number){number.setAttribute('aria-hidden','true');const label=document.createElement('span');label.className='fq-item-topic';label.textContent=category==='general'?'General':category==='ppf'?'PPF':category==='coating'?'Coating':'Tinting';number.append(label);}
    button.addEventListener('keydown',event=>{const visible=buttons.filter((b,n)=>!items[n].hidden);let n=visible.indexOf(button);if(event.key==='ArrowDown')n=(n+1)%visible.length;else if(event.key==='ArrowUp')n=(n+visible.length-1)%visible.length;else if(event.key==='Home')n=0;else if(event.key==='End')n=visible.length-1;else return;event.preventDefault();visible[n].focus();});
    panel.addEventListener('click',event=>event.stopPropagation());
    return button;
   });
+  filters.forEach(filter=>{const count=filter.querySelector('.fq-filter-count');if(!count)return;const total=items.filter(item=>filter.dataset.fqTopic==='all'||item.dataset.fqCategory===filter.dataset.fqTopic).length;count.textContent=String(total);count.setAttribute('aria-label',total+' question'+(total===1?'':'s'));});
   function sync(){items.forEach((item,i)=>buttons[i].setAttribute('aria-expanded',String(item.classList.contains('active'))));}
   new MutationObserver(sync).observe(accordion,{attributes:true,subtree:true,attributeFilter:['class']});sync();
   accordion.addEventListener('click',()=>setTimeout(refresh,460));
@@ -29,7 +30,7 @@
    const words=normalize(input.value).split(' ').filter(Boolean);
    matches=items.filter(item=>(topic==='all'||item.dataset.fqCategory===topic)&&words.every(word=>item.dataset.fqSearch.includes(word)));
    const visible=new Set(matches.slice(0,limit));items.forEach(item=>item.hidden=!visible.has(item));
-   const labels={all:'All questions',ppf:'Paint protection film',coating:'Coating',tinting:'Tinting'};
+   const labels={all:'All questions',general:'General',ppf:'Paint protection film',coating:'Coating',tinting:'Tinting'};
    heading.textContent=words.length?'Search results':labels[topic];
    filters.forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.fqTopic===topic)));
    status.textContent=matches.length?'Showing '+Math.min(limit,matches.length)+' of '+matches.length+' question'+(matches.length===1?'':'s'):'No matching questions';
