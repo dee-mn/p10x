@@ -96,7 +96,7 @@ cleanups.push(function(){card.removeEventListener('pointermove',move);card.remov
 ST.refresh();
 }
 var tabs=document.querySelector('.ab-pillar-tabs');
-tabs.addEventListener('click',function(e){if(reduced.matches||!e.target.closest('[role="tab"]'))return;requestAnimationFrame(function(){var panel=tabs.querySelector('.surface-tab-content.is-active');if(panel)gs.fromTo(panel,{opacity:.35,x:25,rotationY:5},{opacity:1,x:0,rotationY:0,duration:.55,ease:'power3.out',clearProps:'transform,opacity',overwrite:true});});});
+if(tabs)tabs.addEventListener('click',function(e){if(reduced.matches||!e.target.closest('[role="tab"]'))return;requestAnimationFrame(function(){var panel=tabs.querySelector('.surface-tab-content.is-active');if(panel)gs.fromTo(panel,{opacity:.35,x:25,rotationY:5},{opacity:1,x:0,rotationY:0,duration:.55,ease:'power3.out',clearProps:'transform,opacity',overwrite:true});});});
 buildMotion();
 function motionChange(){buildMotion();}
 if(reduced.addEventListener){reduced.addEventListener('change',motionChange);desktop.addEventListener('change',motionChange);fine.addEventListener('change',motionChange);}

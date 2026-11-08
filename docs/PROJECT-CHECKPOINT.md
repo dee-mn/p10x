@@ -136,6 +136,14 @@ Character comes before success now contains the five supplied values, numbered 0
 
 Desktop browser checks confirmed all five titles and paragraphs, the longer 3A title wrapping within its own column, animation progress on all five rows, unique IDs, and no horizontal document overflow at 1348px. The 32-page build and HTML diff whitespace checks pass. No separate mobile browser check was performed for this content change.
 
+## Interactive About Us ecosystem — 8 November
+
+The five pillars now use a large image stage with an adjacent numbered selector. Hovering or clicking a division changes its image and original description with a 600ms crossfade and gentle image settling. Previous/next controls wrap through all five divisions; keyboard arrows and Home/End select tabs. Mobile uses a horizontally scrollable selector above the image, with selected items brought into view. Touch horizontal swipes change the pillar while vertical page scrolling remains available. There is no automatic cycling.
+
+The original five images and pillar descriptions are retained. Original image checksums are unchanged. Tabs expose one active panel, inactive panels are inert, selection is announced on deliberate controls, reduced-motion preferences remove transitions, and the five panels remain readable without JavaScript. The About motion controller tolerates removal of the former tab widget. Other About Us sections are unchanged.
+
+Desktop browser checks covered all five selectors, counters/panels, Home/ArrowDown navigation and Next. A 390px iframe (375px content viewport including scrollbar) verified horizontal selector navigation to Car Check, keyboard return/advance, all five image loads and 375px document bounds. A physical touch swipe was not exercised. The 32-page build, JavaScript syntax and diff whitespace checks pass. Full source checking reports only the previously absent original local media, with no other source errors.
+
 ## Host verification
 
 Verify appearance and enquiry/comment mail delivery on the final host after deployment. No real enquiry or comment was sent during development. Product placeholders and existing legal labels remain as supplied.
