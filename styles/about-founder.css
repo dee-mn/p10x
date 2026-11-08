@@ -1,0 +1,29 @@
+/* The founder's portrait opens into a story within the leadership section. */
+.p10x-about .ab-founder .founder-story-toggle{position:absolute;inset:0;z-index:3;display:block;width:100%;height:100%;padding:0;border:0;background:transparent;border-radius:inherit;color:#fff;cursor:pointer;text-align:left;font-family:Inter,sans-serif}
+.fs-toggle-pill{position:absolute;top:20px;left:20px;right:20px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px;background:#161616c9;border:1px solid #ffffff45;border-radius:2px;backdrop-filter:blur(8px);font:400 11px/1.4 Inter,sans-serif}
+.founder-story-toggle svg,.fs-return svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.founder-story-toggle .fs-close-icon{display:none}.founder-story-toggle:hover .fs-toggle-pill{border-color:#03c4d5;color:#03c4d5}.founder-story-toggle:focus-visible{outline:2px solid #03c4d5;outline-offset:-5px}
+.p10x-about.ab-team .ab-shell>.ab-team-track.is-founder-expanded{display:block;width:100%;max-width:100%;overflow:visible!important;scroll-snap-type:none;padding-right:0;perspective:none;cursor:auto;touch-action:auto}
+.p10x-about .ab-team-track.is-founder-expanded>.ab-person:not(.ab-founder){display:none!important}
+.p10x-about .ab-team-track.is-founder-expanded .ab-founder{display:block!important;width:100%;max-width:none;height:auto;min-height:0;padding:0!important;overflow:visible;transform:none!important;transition:none;scroll-margin-top:110px;background:#252525;isolation:isolate}
+.p10x-about .ab-founder.is-expanded:before,.p10x-about .ab-founder.is-expanded:after{display:none}
+.p10x-about .ab-founder.is-expanded>.ab-portrait,.p10x-about .ab-founder.is-expanded>.ab-person-name,.p10x-about .ab-founder.is-expanded>.ab-person-role,.p10x-about .ab-founder.is-expanded>.ab-person-quote{display:none!important}
+.p10x-about .ab-founder.is-expanded .founder-story-toggle{inset:20px 24px auto auto;width:135px;height:42px;border-radius:2px;z-index:4}
+.ab-founder.is-expanded .fs-toggle-pill{inset:0;padding:10px 12px;background:#252525;backdrop-filter:none}.ab-founder.is-expanded .fs-arrow{display:none}.ab-founder.is-expanded .fs-close-icon{display:block}
+.founder-story{display:grid;grid-template-columns:minmax(240px,.8fr) minmax(0,1.4fr);gap:clamp(32px,5vw,72px);padding:88px 40px 44px;animation:fs-open .55s ease both;color:#fff}
+.fs-profile{position:sticky;top:110px;align-self:start;min-width:0}
+.fs-profile-photo{position:relative;height:clamp(330px,38vw,520px);overflow:hidden;background:#303030}
+.fs-profile-photo img{display:block;width:100%;height:100%;object-fit:contain;object-position:center bottom}
+.fs-profile-caption{padding-top:24px}.fs-profile-caption>span{font:400 30px/.95 Inter,sans-serif;letter-spacing:-.04em}.fs-profile-caption p{font:400 12px/1.5 Inter,sans-serif;color:#bfbfbf;margin:12px 0 20px}.fs-profile-caption blockquote{font:400 17px/1.4 Inter,sans-serif;letter-spacing:-.02em;border:0;border-top:1px solid #555;padding:20px 0 0;margin:0;color:#fff;background:transparent;box-shadow:none;border-radius:0}
+.fs-narrative{min-width:0}.fs-eyebrow{font:500 10px/1.5 Inter,sans-serif;letter-spacing:.13em;text-transform:uppercase;color:#03c4d5;margin:0 0 22px}
+body.page #ui-wapper .fs-narrative h2{font:400 clamp(34px,3.2vw,52px)/.9em Inter,sans-serif;letter-spacing:-.045em;margin:0 0 44px;color:#fff;outline:none}
+.fs-chapter{margin-top:36px;padding-top:24px;border-top:1px solid #555}.fs-chapter-label{display:flex;align-items:baseline;gap:16px;margin-bottom:20px}.fs-chapter-label>span{font:400 10px/1.4 Inter,sans-serif;color:#03c4d5}
+body.page #ui-wapper .fs-chapter h3{font:400 22px/1 Inter,sans-serif;letter-spacing:-.03em;color:#fff;margin:0}
+.fs-chapter p{font:400 15px/1.8 Inter,sans-serif;letter-spacing:-.01em;margin:0 0 18px;color:#c6c6c6}.fs-chapter p:last-child{margin-bottom:0}
+.fs-return{display:flex;align-items:center;justify-content:space-between;gap:22px;width:100%;margin:36px 0 0;padding:20px 0;border:0;border-top:1px solid #555;background:transparent;color:#03c4d5;font:400 13px/1.5 Inter,sans-serif;text-align:left;cursor:pointer}.fs-return:focus-visible{outline:2px solid #03c4d5;outline-offset:5px}.fs-return:hover{color:#fff}
+@keyframes fs-open{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:1024px){.founder-story{grid-template-columns:minmax(200px,.8fr) minmax(0,1.3fr);gap:28px;padding:84px 28px 32px}.fs-profile-photo{height:340px}}
+@media(max-width:767px){.founder-story{grid-template-columns:minmax(0,1fr);gap:36px;padding:80px 22px 28px}.fs-profile{position:static;display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1fr);align-items:end;gap:20px}.fs-profile-photo{height:250px}.fs-profile-caption{padding:0}.fs-profile-caption>span{font-size:26px}.fs-profile-caption blockquote{font-size:14px;margin-top:12px;padding-top:14px}.fs-profile-caption p{font-size:11px}.p10x-about .ab-founder.is-expanded .founder-story-toggle{top:20px;right:20px}.fs-chapter{margin-top:28px;padding-top:22px}.fs-chapter p{font-size:15px;line-height:1.75}body.page #ui-wapper .fs-narrative h2{font-size:36px;margin-bottom:32px}body.page #ui-wapper .fs-chapter h3{font-size:21px}}
+@media(prefers-reduced-motion:reduce){.founder-story{animation:none}.founder-story-toggle *{transition:none!important}}
+
+.fs-profile-caption blockquote:before,.fs-profile-caption blockquote:after{display:none}

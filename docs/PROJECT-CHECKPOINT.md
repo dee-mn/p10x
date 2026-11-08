@@ -152,6 +152,16 @@ All 119 previous questions remain: 95 PPF, 12 Coating, 12 Tinting. Total count i
 
 Desktop browser checks verified General's eight results, expanded Quad Film and founder answers, answer-text search for corporate scholarship returning the founder question, clear/reset and category restoration. Build, JavaScript syntax, 127-category counts, unique IDs and changed-file whitespace checks pass. This content change did not receive a separate mobile browser check.
 
+## Architecture Tint and founder story — 8 November
+
+Architecture Tint uses /architecture-tint/. The former /window-film/ and /window-tint/ URLs redirect to the new route in Apache, the preview server and static fallbacks. Site links, canonicals, sitemap, route registry and build outputs follow the new route; Automotive Window Tint retains /automotive-window-tint/.
+
+The external Vimeo hero player is wrapped, centred and sized to cover its measured section. Existing Beyond the car overview paragraphs and the Your space / Our starting point photograph were present but hidden by entrance styles; scoped visible defaults restore them. Energy Saving and the supplied energy-use description replace Solar comfort. The new film-selection guide contains four keyboard-accessible disclosures covering heat, daylight/glare, privacy and film/glass suitability. Original media bytes are unchanged.
+
+The About Us founder card opens into a full-width narrative within the leadership gallery, with a portrait, four reading chapters and all ten complete supplied paragraphs. The corrupted final line was omitted. Close, Escape, the return control and numbered leader navigation restore the gallery. Expanded mode disables gallery dragging, arrow handling and scroll selection updates, so story text and keyboard reading remain usable. Focus moves to the story heading on open and returns to the trigger on close.
+
+Browser checks covered hero coverage (1348px desktop and 375px narrow content viewport), restored image load/visibility, guide disclosures, old-route redirects with query/anchor preservation, founder opening/closing, Escape, changing leader, mobile return control, all ten story paragraphs and no horizontal overflow. Vimeo imagery was visible in the hero. The 32-page build, changed JS syntax, unique IDs and diff whitespace checks pass. Full source/asset verification is limited by original videos absent from the sparse local checkout; no media was altered.
+
 ## Host verification
 
 Verify appearance and enquiry/comment mail delivery on the final host after deployment. No real enquiry or comment was sent during development. Product placeholders and existing legal labels remain as supplied.

@@ -18,6 +18,9 @@ createServer(async(req,res)=>{
     if(/^\/tinting\/?$/.test(url.pathname)){
       res.writeHead(301,{'Location':'/automotive-window-tint/'+url.search});res.end();return;
     }
+    if(/^\/(?:window-film|window-tint)\/?$/.test(url.pathname)){
+      res.writeHead(301,{'Location':'/architecture-tint/'+url.search});res.end();return;
+    }
     let relative=decodeURIComponent(url.pathname);
     if(relative.endsWith('/'))relative+='index.html';
     const target=path.resolve(root,'.'+relative);
