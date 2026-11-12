@@ -143,9 +143,9 @@
   function resize(){
     const b=hero.getBoundingClientRect();width=b.width;height=b.height;dpr=Math.min(devicePixelRatio||1,mobile.matches?1.5:1.6);
     canvas.width=Math.round(width*dpr);canvas.height=Math.round(height*dpr);cx=width/2;cy=height/2;
-    // The reference's main sphere spans about 55% of the desktop viewport height.
+    // Enlarge the full globe by 10% on desktop; retain tablet and phone sizing.
     // On phones reserve space for the header and bottom copy; keep the halo inside the width.
-    radius=mobile.matches?Math.min(width*.35,height*.22):Math.min(width*.205,height*.275);
+    radius=(mobile.matches?Math.min(width*.35,height*.22):Math.min(width*.205,height*.275))*(width>1024?1.1:1);
     hero.style.setProperty('--pm-logo-width',`${radius*1.83*logoScale}px`);
     canvas.dataset.radius=radius.toFixed(2);canvas.dataset.center=`${cx},${cy}`;
     if(gl)gl.viewport(0,0,canvas.width,canvas.height);else ctx.setTransform(dpr,0,0,dpr,0,0);

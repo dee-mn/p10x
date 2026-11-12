@@ -188,6 +188,12 @@ The About Us P definition now cycles through the ten supplied words with the hom
 
 Browser checks confirmed both grey logos with no extra captions, live typing/deleting into later words, pause stability and keyboard resume. The typewriter and all ten source terms were verified at desktop width and within a 390px iframe (375px content viewport), without horizontal overflow. JavaScript syntax and the 32-page build pass. Reduced-motion/no-JavaScript fallback was checked in source rather than by changing browser preferences. Git's diff command encountered a local segmentation fault; publication verification compares the five source files and checkpoint by blob hash instead.
 
+## Desktop hero globe size — 12 November
+
+The full homepage globe is 10% larger above 1024px. The renderer scales its radius by 1.1, so the main sphere, outer particles, identity mark and published interaction radius stay aligned. Tablet and phone sizing use their original formulas.
+
+Browser measurement at 1348 × 936 confirmed radius 283.14px against the original 257.4px, exactly 10% larger. A 390 × 844 iframe confirmed the unchanged mobile radius of 136.5px and no horizontal overflow. JavaScript syntax and the 32-page build pass.
+
 ## Host verification
 
 Verify appearance and enquiry/comment mail delivery on the final host after deployment. No real enquiry or comment was sent during development. Product placeholders and existing legal labels remain as supplied.
