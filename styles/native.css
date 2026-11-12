@@ -129,3 +129,17 @@ body.page.page-id-7411 #ui-wapper #ui-main .ui-post--title{line-height:1em!impor
 /* Keep the leadership rail aligned left and reveal cards to the right viewport edge. */
 .p10x-about.ab-team{container-type:inline-size}
 .p10x-about.ab-team .ab-shell>.ab-team-track{align-self:flex-start;width:calc(50vw + 50%);width:calc(50cqw + 50%);max-width:none;padding-left:0;padding-right:calc(50cqw - 50%)}
+
+/* Bring the homepage founder portrait and message inward within the dark card. */
+@media(min-width:1025px){
+ body.page-id-20 .view-20 .block.block-77963bd{padding-left:60px!important;padding-right:60px!important}
+ body.page-id-20 .view-20 .block.block-4ee1816{right:30px!important}
+}
+@media(min-width:768px) and (max-width:1024px){
+ body.page-id-20 .view-20 .block.block-77963bd{padding-left:40px!important;padding-right:40px!important}
+ body.page-id-20 .view-20 .block.block-4ee1816{width:calc(100% + 40px)!important;margin-left:-20px!important;margin-right:-20px!important}
+}
+@media(max-width:767px){
+ body.page-id-20 .view-20 .block.block-77963bd{padding-left:32px!important;padding-right:32px!important}
+ body.page-id-20 .view-20 .block.block-4ee1816{width:calc(100% + 24px)!important;margin-left:-12px!important;margin-right:-12px!important}
+}

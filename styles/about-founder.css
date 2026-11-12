@@ -27,3 +27,11 @@ body.page #ui-wapper .fs-chapter h3{font:400 22px/1 Inter,sans-serif;letter-spac
 @media(prefers-reduced-motion:reduce){.founder-story{animation:none}.founder-story-toggle *{transition:none!important}}
 
 .fs-profile-caption blockquote:before,.fs-profile-caption blockquote:after{display:none}
+
+/* Keep the mobile portrait clear: the story control shows only its icon. */
+@media(max-width:767px){
+ .p10x-about .ab-founder .founder-story-toggle .fs-toggle-label{display:none}
+ .p10x-about .ab-founder .fs-toggle-pill{inset:16px 16px auto auto;width:44px;height:44px;justify-content:center;padding:10px;background:transparent;border:0;border-radius:0;backdrop-filter:none}
+ .p10x-about .ab-founder.is-expanded .founder-story-toggle{inset:16px 16px auto auto;width:44px;height:44px}
+ .p10x-about .ab-founder.is-expanded .fs-toggle-pill{inset:0}
+}

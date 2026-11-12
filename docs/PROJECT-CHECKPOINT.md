@@ -194,6 +194,14 @@ The full homepage globe is 10% larger above 1024px. The renderer scales its radi
 
 Browser measurement at 1348 × 936 confirmed radius 283.14px against the original 257.4px, exactly 10% larger. A 390 × 844 iframe confirmed the unchanged mobile radius of 136.5px and no horizontal overflow. JavaScript syntax and the 32-page build pass.
 
+## CEO card spacing and mobile founder CTA — 12 November
+
+The homepage leadership card has more horizontal breathing room. Desktop text padding increases from 30px to 60px per side and the portrait moves 30px inward from the right edge. Tablet copy uses 40px padding, mobile copy uses 32px, and the narrower portrait layouts retain a 20px right inset.
+
+On About Us below 768px, the founder-story pill background, border and text are removed, leaving the arrow as the visible CTA. The card remains clickable and keyboard accessible with its original accessible name. Expanded mode uses a 44px icon-only close control above the photo; the story, return control and desktop CTA are unchanged.
+
+Browser checks confirmed the desktop quote's 60px left inset and portrait's 30px right inset, plus 32px/20px on the 375px mobile content viewport. Both pages remain within document bounds. Mobile story opening, icon closing and Escape closing work; the expanded close control clears the photo by 20px. The 32-page build passes. No media or JavaScript changes were needed.
+
 ## Host verification
 
 Verify appearance and enquiry/comment mail delivery on the final host after deployment. No real enquiry or comment was sent during development. Product placeholders and existing legal labels remain as supplied.
