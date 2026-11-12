@@ -172,6 +172,14 @@ The layout follows the site's Inter typography, turquoise accents, rounded light
 
 Desktop checks confirmed the five-pillar integration, Distribution selection, Inter typography, ten terms, two-column layout and animation progress. A 390px iframe with a 375px content viewport confirmed the stacked layout, keyboard pillar selection and no horizontal document overflow. The 32-page build, new JavaScript syntax and diff whitespace checks pass. Full source checking reports only eight original media files unavailable in the sparse checkout, with no other source errors.
 
+## Homepage institutional partners — 12 November
+
+The homepage Our partners grid now includes JPK (Jabatan Pembangunan Kemahiran), identified beneath its logo as Kementerian Sumber Manusia, and BERNAMA. The existing paragraph is extended with skills development, knowledge sharing and industry awareness. Seven logos and the existing closing text occupy eight cells: four columns on desktop, two on tablet/mobile. Existing heading motion, section background, CTA and other partner artwork remain intact.
+
+JPK's paths were extracted from the JPK lockup in the official bilingual AI vector master, supplied in https://mpkm.dsd.gov.my/images/03-perkhidmatan/penguatkuasaan-kawal-selia/guideline-logo-jpk/3.%20Guideline%20Logo%20JPK.zip (linked by the department's advertising resources page). BERNAMA's PNG is unchanged from https://www.bernama.com/corporate/assets/img/bernama.png. Both assets are local; CSS applies the section's grayscale/0.6-opacity treatment. The ministry caption belongs to JPK; BERNAMA remains a separate organisation.
+
+Browser checks confirmed a four-column desktop grid, all eight cells, both new logo loads and no horizontal overflow at 1348px. A 390px iframe with a 375px content viewport confirmed two columns, logo loads, a readable wrapping ministry caption and no horizontal overflow. The 32-page build, unique IDs and diff whitespace checks pass. Original media and unrelated pages are unchanged.
+
 ## Host verification
 
 Verify appearance and enquiry/comment mail delivery on the final host after deployment. No real enquiry or comment was sent during development. Product placeholders and existing legal labels remain as supplied.
