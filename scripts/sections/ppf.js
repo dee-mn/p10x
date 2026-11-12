@@ -4,7 +4,14 @@
   const root=document.querySelector('.p10x-ppf');if(!root||root.dataset.ppReady)return;root.dataset.ppReady='true';
   const reduced=window.matchMedia('(prefers-reduced-motion: reduce)');
   const fine=window.matchMedia('(hover:hover) and (pointer:fine)');
-  // Native Archinic heading colour, image entrance and tilt effects initialise themselves.
+  // Keep photos and copy visible by default; run each entrance once as it comes into view.
+  if(!reduced.matches&&window.IntersectionObserver){
+   const entrances=new IntersectionObserver(entries=>entries.forEach(entry=>{
+    if(!entry.isIntersecting)return;entrances.unobserve(entry.target);
+    entry.target.animate([{opacity:.15,transform:'translateY(18px)'},{opacity:1,transform:'translateY(0)'}],{duration:750,easing:'cubic-bezier(.16,1,.3,1)'});
+   }),{rootMargin:'0px 0px -4% 0px',threshold:0});
+   root.querySelectorAll('[data-pp-reveal]').forEach(el=>entrances.observe(el));
+  }
   root.querySelectorAll('.heading-title').forEach(el=>{if(!el.hasAttribute('aria-label'))el.setAttribute('aria-label',el.innerText.replace(/\s+/g,' ').trim());});
   const track=root.querySelector('.pp-track'),slides=Array.from(root.querySelectorAll('.pp-slide'));
   const prev=root.querySelector('.pp-gallery-prev'),next=root.querySelector('.pp-gallery-next'),status=root.querySelector('.pp-gallery-status'),progress=root.querySelector('.pp-gallery-progress span');

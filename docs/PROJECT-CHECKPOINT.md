@@ -202,6 +202,16 @@ On About Us below 768px, the founder-story pill background, border and text are 
 
 Browser checks confirmed the desktop quote's 60px left inset and portrait's 30px right inset, plus 32px/20px on the 375px mobile content viewport. Both pages remain within document bounds. Mobile story opening, icon closing and Escape closing work; the expanded close control clears the photo by 20px. The 32-page build passes. No media or JavaScript changes were needed.
 
+## Desktop founder CTA and PPF entrance repair — 12 November
+
+The About Us founder control now uses the same icon-only treatment at every viewport size: arrow to open, close icon when expanded, without the pill background or visible label. Existing accessible names, full-card opening, 44px close target, Escape handling and story content remain.
+
+PPF's three overview mosaic photos and six supporting text blocks still carried entrance classes whose visibility remained hidden without their former initializer. Those nine wrappers now have readable defaults and data-pp-reveal markers. The page controller gives them the same 750ms upward/fade entrance used elsewhere, once on entry. Reduced-motion users and browsers without the observer retain visible content. Existing photo hover effects, stage selection and gallery controls are unchanged.
+
+The full reference page at https://p10xx.flevor.me/ppf/ was retrieved and checked through WPVibe and against the local PPF content. All 21 image placements have local equivalents; all 81 paragraph/heading blocks match apart from the already-approved Tinting → Automotive Window Tint and Window Film → Architecture Tint names. No content or media needed importing, and no media bytes were changed.
+
+Desktop checks confirmed the arrow-only founder card, opening and Escape close, and a 44px expanded close control 28px above the photo. The PPF mosaic's three images load visibly at desktop and 375px mobile content width; all nine repaired elements have visible computed styles and neither layout overflows horizontally. JavaScript syntax and the 32-page build pass.
+
 ## Host verification
 
 Verify appearance and enquiry/comment mail delivery on the final host after deployment. No real enquiry or comment was sent during development. Product placeholders and existing legal labels remain as supplied.
