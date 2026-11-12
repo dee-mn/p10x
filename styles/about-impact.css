@@ -22,6 +22,20 @@ body.page #ui-wapper .p10x-about.ab-impact .ai-heading{font:400 clamp(46px,5vw,7
 .ai-terms li{display:flex;align-items:baseline;gap:12px;min-width:0;padding:12px 0;border-top:1px solid #d8dddc}
 .ai-term-number{font:400 9px/1.5 Inter,sans-serif;letter-spacing:.03em;color:#80908f;flex-shrink:0}
 .ai-term-word{display:block;font:400 clamp(18px,1.7vw,26px)/1.1 Inter,sans-serif;letter-spacing:-.035em;transition:color .25s,transform .3s}
+.ai-typewriter{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:112px;margin-top:12px;border-bottom:1px solid #d8dddc}
+.ai-type-word{min-width:0;white-space:nowrap;color:#008f9d;font:400 clamp(30px,4.2vw,56px)/1.15 Inter,sans-serif;letter-spacing:-.05em}
+.ai-type-word:after{content:"";display:inline-block;width:1px;height:.78em;margin-left:.06em;background:currentColor;animation:ai-type-caret 1s steps(1,end) infinite}
+.ai-type-toggle{flex:0 0 32px;display:grid;place-items:center;width:32px;height:32px;padding:9px;border:1px solid #bac4c3;border-radius:50%;background:transparent;color:#657371;cursor:pointer;transition:background .25s,color .25s}
+.ai-type-toggle:hover{background:#e0e8e7;color:#222}
+.ai-type-toggle:focus-visible{outline:2px solid #008f9d;outline-offset:4px}
+.ai-type-toggle svg{display:block;width:12px;height:12px}
+.ai-type-toggle .ai-type-play,.ai-type-toggle[aria-pressed=true] .ai-type-pause{display:none}
+.ai-type-toggle[aria-pressed=true] .ai-type-play{display:block}
+.ai-purpose.is-typing .ai-terms{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
+.ai-purpose.is-type-paused .ai-type-word:after{animation:none;opacity:0}
+@keyframes ai-type-caret{0%,48%{opacity:1}49%,100%{opacity:0}}
+@media(max-width:767px){.ai-typewriter{min-height:94px}.ai-type-word{font-size:clamp(26px,8.8vw,42px)}}
+@media(prefers-reduced-motion:reduce){.ai-type-word:after{animation:none}.ai-type-toggle{transition:none}}
 .ai-terms li:hover .ai-term-word{color:#008d9b!important;transform:translateX(4px)}
 .ai-outlook{margin-top:36px;padding-top:26px;border-top:1px solid #d8dddc}
 .ai-outlook-line{display:block;width:36px;height:2px;background:#03b2c2;margin-bottom:20px}

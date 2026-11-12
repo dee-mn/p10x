@@ -180,6 +180,14 @@ JPK's paths were extracted from the JPK lockup in the official bilingual AI vect
 
 Browser checks confirmed a four-column desktop grid, all eight cells, both new logo loads and no horizontal overflow at 1348px. A 390px iframe with a 375px content viewport confirmed two columns, logo loads, a readable wrapping ministry caption and no horizontal overflow. The 32-page build, unique IDs and diff whitespace checks pass. Original media and unrelated pages are unchanged.
 
+## Partner logo consistency and About P typewriter — 12 November
+
+The new JPK and BERNAMA partner logos now match the existing neutral grey, 0.6-opacity treatment. The additional ministry caption is removed; no separate text labels appear beneath either logo. BERNAMA's filter preserves the white symbol within its grey square. Local artwork bytes, the paragraph and responsive grid remain unchanged.
+
+The About Us P definition now cycles through the ten supplied words with the homepage hero's type/delete cadence: 85ms typing, 45ms deletion, a 280ms empty interval and a 2200ms hold. A fixed-height word area avoids layout shifts. The visible static list gives way to the animated line while remaining available to assistive technology. Without JavaScript or with reduced motion, the complete list is displayed. A small keyboard-accessible pause/resume control is included. Cycling pauses outside the viewport and while the document is hidden. Existing P/10X typography, content and scroll entrances remain.
+
+Browser checks confirmed both grey logos with no extra captions, live typing/deleting into later words, pause stability and keyboard resume. The typewriter and all ten source terms were verified at desktop width and within a 390px iframe (375px content viewport), without horizontal overflow. JavaScript syntax and the 32-page build pass. Reduced-motion/no-JavaScript fallback was checked in source rather than by changing browser preferences. Git's diff command encountered a local segmentation fault; publication verification compares the five source files and checkpoint by blob hash instead.
+
 ## Host verification
 
 Verify appearance and enquiry/comment mail delivery on the final host after deployment. No real enquiry or comment was sent during development. Product placeholders and existing legal labels remain as supplied.
