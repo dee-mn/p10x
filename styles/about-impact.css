@@ -1,0 +1,36 @@
+/* The ecosystem's everyday impact leads into the ambition behind the name. */
+.p10x-about.ab-ecosystem .ae-impact-intro{max-width:none!important;width:100%}
+.ae-impact-intro .text-block{display:grid;grid-template-columns:1fr 1fr;gap:22px 64px;max-width:1160px}
+.ae-impact-intro .text-block p{font:400 17px/1.75 Inter,sans-serif;letter-spacing:-.015em;color:#b8b8b8;margin:0}
+.ae-impact-intro .text-block p:last-child{grid-column:1/-1;color:#e7e7e7;font-size:15px;line-height:1.65}
+.ae-impact-bridge{width:100%;max-width:1000px;padding-top:36px;margin-top:10px;border-top:1px solid #ffffff30}
+.ae-impact-bridge p{font:400 19px/1.65 Inter,sans-serif;letter-spacing:-.025em;color:#b8b8b8;margin:0;text-wrap:pretty}
+.p10x-about.ab-impact{width:calc(100% - 32px);margin:0 16px;background:#f4f4f4;border-radius:28px;color:#222;--ui-title-color-start:#aaa;--ui-title-color-end:#222;--ab-muted:#666;--ab-ink:#222}
+.p10x-about.ab-impact .ai-shell{width:min(1440px,calc(100% - 64px));display:block}
+.ai-intro{position:relative;margin-bottom:64px}
+.ai-eyebrow{font:500 10px/1.5 Inter,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#647171;margin:0 0 26px}
+body.page #ui-wapper .p10x-about.ab-impact .ai-heading{font:400 clamp(46px,5vw,76px)/.9em Inter,sans-serif;letter-spacing:-.05em;margin:0;color:#222}
+.ai-opening{font:400 17px/1.6 Inter,sans-serif;color:#666;margin:26px 0 0;letter-spacing:-.02em}
+.ai-equation{display:grid;grid-template-columns:1fr 1fr;gap:clamp(48px,7vw,110px)}
+.ai-pillar{min-width:0;position:relative;padding-top:32px;border-top:1px solid #bcc4c3}
+.ai-pillar:before{content:"";position:absolute;top:-1px;left:0;width:var(--impact-progress,0%);max-width:100%;height:2px;background:#03b2c2}
+.ai-symbol{font:400 clamp(130px,15vw,220px)/.85 Inter,sans-serif;letter-spacing:-.075em;margin:0 0 36px;white-space:nowrap;color:#222}
+.ai-symbol-mark{display:inline-block;font-size:.36em;vertical-align:top;margin:8px 0 0 36px;font-weight:300;color:#c7cdcc}
+.ai-times{color:#03b2c2}
+.ai-definition{font:400 16px/1.75 Inter,sans-serif;letter-spacing:-.015em;margin:0;color:#596564;max-width:480px}
+.ai-terms{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 24px;list-style:none;padding:0;margin:28px 0 0;counter-reset:none}
+.ai-terms li{display:flex;align-items:baseline;gap:12px;min-width:0;padding:12px 0;border-top:1px solid #d8dddc}
+.ai-term-number{font:400 9px/1.5 Inter,sans-serif;letter-spacing:.03em;color:#80908f;flex-shrink:0}
+.ai-term-word{display:block;font:400 clamp(18px,1.7vw,26px)/1.1 Inter,sans-serif;letter-spacing:-.035em;transition:color .25s,transform .3s}
+.ai-terms li:hover .ai-term-word{color:#008d9b!important;transform:translateX(4px)}
+.ai-outlook{margin-top:36px;padding-top:26px;border-top:1px solid #d8dddc}
+.ai-outlook-line{display:block;width:36px;height:2px;background:#03b2c2;margin-bottom:20px}
+.ai-outlook p{font:400 18px/1.65 Inter,sans-serif;letter-spacing:-.025em;color:#333;margin:0;max-width:500px}
+.ai-signoff{display:flex;flex-direction:column;align-items:flex-start;margin:72px 0 0;padding-top:38px;border-top:1px solid #bcc4c3;font:400 clamp(30px,3.6vw,52px)/1.05 Inter,sans-serif;letter-spacing:-.045em;color:#222}
+.ai-signoff-brand{font:500 11px/1.5 Inter,sans-serif;letter-spacing:.04em;color:#008f9d;margin-bottom:24px}
+@media(min-width:768px){.ai-signoff{padding-left:calc(50% + clamp(48px,7vw,110px)/2);position:relative}.ai-signoff-brand{position:absolute;left:0;top:42px;font-size:18px;letter-spacing:-.04em}}
+@media(max-width:1024px){.ae-impact-intro .text-block{gap:20px 32px}.ai-intro{margin-bottom:50px}.ai-equation{gap:40px}.ai-symbol{font-size:150px}.ai-terms{gap:0 16px}.ai-term-word{font-size:21px}.ai-term-number{font-size:8px}.ai-terms li{gap:8px}.ai-outlook p{font-size:17px}.ai-signoff{margin-top:56px}}
+@media(min-width:768px) and (max-width:1024px){.p10x-about.ab-impact .ai-shell{width:calc(100% - 32px)}.ai-signoff{padding-left:calc(50% + 20px)}.ai-terms{grid-template-columns:minmax(0,1fr);margin-top:24px}.ai-terms li{padding:9px 0}}
+@media(max-width:767px){.ae-impact-intro .text-block{grid-template-columns:minmax(0,1fr);gap:18px}.ae-impact-intro .text-block p{font-size:16px;line-height:1.75}.ae-impact-intro .text-block p:last-child{font-size:14px}.ae-impact-bridge{padding-top:26px;margin-top:0}.ae-impact-bridge p{font-size:16px;line-height:1.75}.p10x-about.ab-impact{width:calc(100% - 16px);margin:0 8px;border-radius:18px}.p10x-about.ab-impact .ai-shell{width:calc(100% - 24px);padding-top:60px;padding-bottom:60px}.ai-intro{margin-bottom:38px}.ai-eyebrow{margin-bottom:22px}body.page #ui-wapper .p10x-about.ab-impact .ai-heading{font-size:46px}.ai-opening{font-size:15px;margin-top:22px}.ai-equation{grid-template-columns:minmax(0,1fr);gap:44px}.ai-pillar{padding-top:28px}.ai-symbol{font-size:140px;margin-bottom:26px}.ai-symbol-mark{margin-left:26px}.ai-definition{font-size:15px}.ai-terms{margin-top:22px;gap:0 14px}.ai-terms li{gap:9px;padding:12px 0}.ai-term-word{font-size:21px}.ai-term-number{font-size:8px}.ai-outlook{margin-top:26px;padding-top:24px}.ai-outlook p{font-size:17px}.ai-signoff{margin-top:42px;padding-top:28px;font-size:32px;line-height:1.1}.ai-signoff-brand{margin-bottom:20px}}
+@media(max-width:360px){.ai-term-word{font-size:18px}.ai-terms{column-gap:10px}}
+@media(prefers-reduced-motion:reduce){.ai-term-word{transition:none}.ai-terms li:hover .ai-term-word{transform:none}}

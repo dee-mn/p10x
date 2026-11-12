@@ -162,6 +162,16 @@ The About Us founder card opens into a full-width narrative within the leadershi
 
 Browser checks covered hero coverage (1348px desktop and 375px narrow content viewport), restored image load/visibility, guide disclosures, old-route redirects with query/anchor preservation, founder opening/closing, Escape, changing leader, mobile return control, all ten story paragraphs and no horizontal overflow. Vimeo imagery was visible in the hero. The 32-page build, changed JS syntax, unique IDs and diff whitespace checks pass. Full source/asset verification is limited by original videos absent from the sparse local checkout; no media was altered.
 
+## P10X impact and brand meaning — 12 November
+
+The About Us ecosystem now opens with the supplied everyday-impact introduction. Each existing interactive pillar carries its corresponding supplied “Through…” statement; the current Distribution panel uses Distribution consistently. The supplied paragraph connecting workshop learning, training, shared knowledge and partnerships closes the ecosystem.
+
+A new “Multiply the impact.” section follows the ecosystem and precedes Why P10X. It explains P through the ten supplied ambitions, then explains 10X and the ambition to grow their impact from Malaysia into new markets. The supplied closing line completes the section. All wording is retained, with the ten P terms presented as a numbered list and pasted line wraps treated as spaces. Existing section numbers, including 06 leadership, are retained.
+
+The layout follows the site's Inter typography, turquoise accents, rounded light panels and scroll rhythm. The P/10X columns, sequential word colour and progress lines respond to scroll; a reduced-motion query skips these animations. Content remains visible without JavaScript. The columns stack on narrow screens and use the original ecosystem photography; no media was added or altered.
+
+Desktop checks confirmed the five-pillar integration, Distribution selection, Inter typography, ten terms, two-column layout and animation progress. A 390px iframe with a 375px content viewport confirmed the stacked layout, keyboard pillar selection and no horizontal document overflow. The 32-page build, new JavaScript syntax and diff whitespace checks pass. Full source checking reports only eight original media files unavailable in the sparse checkout, with no other source errors.
+
 ## Host verification
 
 Verify appearance and enquiry/comment mail delivery on the final host after deployment. No real enquiry or comment was sent during development. Product placeholders and existing legal labels remain as supplied.
