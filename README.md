@@ -4,7 +4,7 @@ Company website for P10X. Static HTML, CSS and JavaScript with local photographs
 
 ## Development
 
-Node.js 20 or later. No package installation is needed.
+Node.js 20 or later. Install the locked build dependencies once with `npm ci`.
 
 ```sh
 npm run dev
@@ -29,3 +29,9 @@ The build writes the complete site to `dist/`. The repository root can also be s
 | Route and article index | `docs/routes.json`, `docs/article-index.json` |
 
 The navigation and footer templates are applied before development and export. Keep image files in their original format, dimensions and quality. Display crops belong in CSS. Keep third-party licence notices with their files.
+
+## Delivery
+
+The build generates versioned CSS bundles, sharing the largest library between pages, retaining the original source rules and their order. Edit the source CSS files listed in `docs/style-manifest.json`, then run `npm run build`; generated files should not be edited by hand. New stylesheet links are incorporated on the next build. Original media dimensions and file quality are preserved; `docs/image-dimensions.json` supplies missing HTML size attributes.
+
+The repository root and `dist/` both contain the optimised pages. Hashed CSS may be cached immutably; HTML and unversioned scripts must revalidate. Apache compression/cache directives are included in `.htaccess`. If Plesk/Nginx serves static files directly, equivalent headers and text compression must be enabled in the host configuration.

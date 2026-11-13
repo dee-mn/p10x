@@ -41,7 +41,7 @@
   if(restoreFocus&&lastFocus?.isConnected)lastFocus.focus({preventScroll:true});
  }
  triggers.forEach(trigger=>{
-  trigger.setAttribute('role','button');trigger.tabIndex=0;trigger.setAttribute('aria-label','Open products');trigger.setAttribute('aria-controls',panel.id);trigger.setAttribute('aria-expanded','false');
+  trigger.setAttribute('role','button');trigger.tabIndex=0;trigger.setAttribute('aria-label','Product — open menu');trigger.setAttribute('aria-controls',panel.id);trigger.setAttribute('aria-expanded','false');
   trigger.addEventListener('click',event=>{event.preventDefault();open(trigger);});
   trigger.addEventListener('keydown',event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();open(trigger);}});
  });

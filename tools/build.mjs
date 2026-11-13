@@ -1,4 +1,5 @@
-import './sync-layout.mjs';
+await import('./sync-layout.mjs');
+await import('./optimize-pages.mjs');
 import {mkdir,cp,rm,readFile} from 'node:fs/promises';
 await rm('dist',{recursive:true,force:true});await mkdir('dist',{recursive:true});
 for(const name of ['index.html','.htaccess','tinting','window-film','window-tint','contact.php','comment.php','driver-test.php','data','styles','scripts','assets','robots.txt','sitemap.xml'])await cp(name,`dist/${name}`,{recursive:true});

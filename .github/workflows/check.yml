@@ -13,6 +13,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - run: npm ci
       - run: node tools/check-driver-test.mjs
       - run: php -l driver-test.php
       - run: php tools/test-driver-test.php

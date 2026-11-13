@@ -220,6 +220,14 @@ The remaining legacy image-entrance candidates were checked against normal-motio
 
 Targeted browser checks confirmed both repaired images have visible computed styles and nonzero dimensions; the Detailing photo loaded and was visually confirmed. This was a full source/file/HTTP audit with targeted browser visibility checks, rather than a manual scroll through every page and interaction. The 32-page build and changed-file whitespace checks pass.
 
+## Nonvisual SEO and delivery optimisation — 13 November
+
+See docs/SEO-AUDIT.md for the pre-change PageSpeed results, implementation and verification limits. All 32 pages now use ordered, hashed CSS bundles with the largest library shared across pages. Source stylesheet lists are retained in docs/style-manifest.json; edit those sources and run npm run build. npm ci is now required for the pinned PostCSS build dependencies and is included in CI. The optimiser also fills missing image dimensions from docs/image-dimensions.json and preloads the original fonts.
+
+Homepage offscreen videos load near their sections or on first interaction, keeping their original files, autoplay, muted and loop settings. Nonvisual accessible labels/heading roles and Organization/WebSite structured data were added. Apache lossless compression/cache rules are provided; Plesk/Nginx direct static headers still need host verification. No assets under assets/ were changed, and no post-deployment PageSpeed score is claimed.
+
+Desktop before/after component-style comparisons were run on all 32 routes, with settled styles matching. The mobile homepage comparison matched all 196 components. Menu controls and video activation were exercised. Source/export validation and the 32-page build pass. Contrast is unchanged to honour the appearance constraint.
+
 ## Host verification
 
 Verify appearance and enquiry/comment mail delivery on the final host after deployment. No real enquiry or comment was sent during development. Product placeholders and existing legal labels remain as supplied.
