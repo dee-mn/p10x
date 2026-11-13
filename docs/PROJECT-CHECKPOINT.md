@@ -212,6 +212,14 @@ The full reference page at https://p10xx.flevor.me/ppf/ was retrieved and checke
 
 Desktop checks confirmed the arrow-only founder card, opening and Escape close, and a 44px expanded close control 28px above the photo. The PPF mosaic's three images load visibly at desktop and 375px mobile content width; all nine repaired elements have visible computed styles and neither layout overflows horizontally. JavaScript syntax and the 32-page build pass.
 
+## Site-wide image audit — 13 November
+
+Audited all 32 registered pages: 427 HTML image placements and 208 unique image references including CSS backgrounds and srcset entries. All 208 local files exist and pass raster integrity/SVG parsing checks. All 208 corresponding live image URLs returned successful HEAD responses with image content types. No missing/corrupt files or broken live image URLs were found.
+
+The remaining legacy image-entrance candidates were checked against normal-motion styles. Homepage candidates already have visible defaults; the Architecture Tint photo is visible. Two photos were still hidden: IMG_0259.jpg on Automotive Window Tint and IMG_0342-1.jpg on Detailing. Their unused wow/skewIn wrapper classes were removed, preserving the images and layout. No media bytes were changed.
+
+Targeted browser checks confirmed both repaired images have visible computed styles and nonzero dimensions; the Detailing photo loaded and was visually confirmed. This was a full source/file/HTTP audit with targeted browser visibility checks, rather than a manual scroll through every page and interaction. The 32-page build and changed-file whitespace checks pass.
+
 ## Host verification
 
 Verify appearance and enquiry/comment mail delivery on the final host after deployment. No real enquiry or comment was sent during development. Product placeholders and existing legal labels remain as supplied.
