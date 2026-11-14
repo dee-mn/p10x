@@ -24,6 +24,16 @@ If the task is manageable here, do it here. Keep `CURRENT-TASKS.md` updated at m
 
 **Branch preference:** the owner works alone and prefers `main` without routine feature-branch/PR overhead. Use direct `main` commits for ordinary authorized work where supported. For risky/destructive changes or where the platform requires a branch/PR, explain the shortest safe workflow; never assume a Codex Publish action automatically updates `main` or deploys the live site.
 
+## Choosing ChatGPT or Codex
+
+The owner primarily works on iPhone and iPad. Keep the workflow efficient: ChatGPT with GitHub tools is the default for routine website updates.
+
+Before a complex request, assess whether Codex would materially help. Recommend Codex for tasks requiring extensive multi-file refactoring, running a browser, debugging difficult animations, or comprehensive testing. Explain the specific benefit and let the owner choose. Do not require Codex for routine CSS, content, or documentation work.
+
+Avoid duplicate planning: if Codex is appropriate, provide one concise task prompt referring to existing project documentation, rather than rewriting the same plan into Markdown first. Update handover notes at meaningful milestones, not after every minor adjustment.
+
+The owner prefers working directly on `main` for ordinary authorized changes. Explain when a branch or pull request is necessary for safety or required by the platform. Publishing a Codex task does not necessarily update `main` or deploy the website.
+
 ## Hard constraints
 
 - Preserve approved visual design, responsive behaviour, copy, media fidelity and interactions unless explicitly instructed otherwise.
