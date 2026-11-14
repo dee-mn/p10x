@@ -12,6 +12,18 @@ Use this file for Codex or any coding agent working on this repository.
 
 The **latest user instruction** and **current source** take precedence over stale notes. The README is the quick entry point; do not assume a prior chat is available.
 
+## ChatGPT versus Codex: choose per task
+
+The owner primarily works from iPhone/iPad and wants **one conversation, minimal handoffs, minimal duplicated planning and token usage**. ChatGPT with connected GitHub tools is the default for normal P10X development, including planning, content, targeted HTML/CSS/JS fixes and direct repository updates when supported.
+
+Before starting a **complex** request, assess whether a full runnable coding environment would materially improve quality. If yes, **proactively suggest Codex for that particular task**, briefly explaining the specific reason (e.g. running builds/browser tests, multi-file refactoring, Three.js/GSAP debugging, difficult regressions or production-impacting changes). Do this **before** duplicating planning or editing documentation. Do not route every task to Codex merely because it involves code; the user decides whether to switch.
+
+When Codex is recommended, provide **one concise ready-to-paste instruction** referencing the current repository files and acceptance checks. Avoid first updating Markdown solely to relay the same task, then making the user wait again in Codex. A separate Codex session is not automatically controlled from ChatGPT; be explicit about tool limits.
+
+If the task is manageable here, do it here. Keep `CURRENT-TASKS.md` updated at meaningful milestones or handoffs, not for every tiny CSS/text adjustment. Maintain durable design/rules docs only when an enduring decision changes. This policy applies when a new chat starts and older conversations are unavailable.
+
+**Branch preference:** the owner works alone and prefers `main` without routine feature-branch/PR overhead. Use direct `main` commits for ordinary authorized work where supported. For risky/destructive changes or where the platform requires a branch/PR, explain the shortest safe workflow; never assume a Codex Publish action automatically updates `main` or deploys the live site.
+
 ## Hard constraints
 
 - Preserve approved visual design, responsive behaviour, copy, media fidelity and interactions unless explicitly instructed otherwise.
