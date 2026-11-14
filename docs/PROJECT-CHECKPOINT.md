@@ -4,17 +4,15 @@ Updated 14 November 2026. Active branch: `main`.
 
 ## Resume status — 14 November 2026
 
-The current site has 32 registered routes. Website implementation is saved in `1ac36c822b3af2b9bd4b95551e0fefcde17fa088` (13 November SEO/delivery work). The README now collects the current project constraints, approved UX/copy, route names, source map and validation workflow. Read it before the historical entries below; later decisions supersede earlier counts, route names and controls.
+The project handover is now split into focused Markdown documents so work can continue across ChatGPT mobile/web/desktop and Codex without relying on a single conversation. Start with [CURRENT-TASKS.md](CURRENT-TASKS.md), followed by [PROJECT-CONTEXT.md](PROJECT-CONTEXT.md), [DESIGN-SYSTEM.md](DESIGN-SYSTEM.md) and [DEVELOPMENT-RULES.md](DEVELOPMENT-RULES.md); [../AGENTS.md](../AGENTS.md) gives coding agents the same read order. The root README is now a short index.
 
-No website code or media changes are part of this documentation update. Original image/video dimensions, quality and bytes remain protected unless the user explicitly authorises changes. Performance work must preserve the approved appearance and interactions.
+This change is documentation-only. It does not change website code, media or deployment. The last documented website implementation baseline remains [`1ac36c8`](https://github.com/dee-mn/p10x/commit/1ac36c822b3af2b9bd4b95551e0fefcde17fa088), with 32 registered routes. Pending live-host checks are listed in CURRENT-TASKS and the dated SEO measurements in [SEO-AUDIT.md](SEO-AUDIT.md). These checks have not been claimed as completed.
 
-Pending: verify the deployed host, actual compression/cache headers and a fresh PageSpeed result after deployment; enquiry/comment mail delivery still needs host verification. These checks are not established by a GitHub commit.
+Historical entries follow. They record what was implemented and tested at that time; newer approved decisions and current source supersede old details. The previous main backup remains `backup-main-20261106` at `8236829571a9e04179a5c13d3a6639064ed9405e`.
 
-For future work, update this opening status and save a concise dated checkpoint after meaningful milestones or changed decisions, and before a pause/handoff. Record the request, changed files/areas, source commit when known, checks actually run, limitations, remaining work and next step. Keep enduring rules in the README and measurements in docs/SEO-AUDIT.md; avoid duplicating full code or chat history.
+## Documentation reorganisation — 14 November 2026
 
-Documentation checks: README links resolve to repository files, Markdown fences/whitespace are valid, and the previous checkpoint history is retained. Only README.md and this checkpoint are changed; website tests are not required for these documentation edits.
-
-The previous main is preserved on `backup-main-20261106` at `8236829571a9e04179a5c13d3a6639064ed9405e`.
+Separated project context, design rules, coding rules and live handoff status from the former long README. Preserved the previously curated technical and visual decisions, plus this complete historical checkpoint. Added a compact Codex/agent entry point. No website source, media, build or host configuration changes. Documentation links and section extraction were checked before publication; no browser/host checks were needed for a documentation-only update.
 
 ## Initial restoration — 7 November 2026
 
