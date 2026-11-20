@@ -4,6 +4,8 @@ P10X's standalone company website, built with Astro 4.16.19, CSS, JavaScript and
 
 **Public site:** https://p10x.flevor.me · **Repository:** `dee-mn/p10x` · **Working branch:** `main`
 
+**How to publish an Insights post** — [src/content/insights/_how-to-publish.txt](src/content/insights/_how-to-publish.txt). The guide sits beside the article template and covers writing, publishing, editing and withdrawing a post.
+
 ## Start or resume here
 
 This repository is the durable record for work that moves between iPhone, iPad, desktop, ChatGPT and Codex. **Do not rely on any single chat as the only project memory.**
