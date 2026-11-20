@@ -1165,6 +1165,11 @@
       "path": "assets/images/team-fabian-ong.png",
       "sha256": "b0ebf6bf9f6341902c3b3f21064c3c767fc3809e46ea1dd100c81a7e87af8b11",
       "bytes": 1458649
+    },
+    {
+      "path": "assets/video/ppf-p10x.mp4",
+      "sha256": "0b00943fda261d1bd26276eb3f7ca4f6743c61ab6e0bd24927accc51aa1670a9",
+      "bytes": 17130938
     }
   ]
 }
