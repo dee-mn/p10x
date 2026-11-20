@@ -1,0 +1,10 @@
+.surface-column .surface-spacer-inner{height:var(--spacer-size)}
+.layout{--container-widget-width:100%}
+.layout-inner>.surface-widget-spacer,.layout>.surface-widget-spacer{width:var(--container-widget-width,var(--spacer-size));--align-self:var( --container-widget-align-self,initial );--flex-shrink:0}
+.layout-inner>.surface-widget-spacer>.component-content,.layout>.surface-widget-spacer>.component-content{height:100%;width:100%}
+.layout-inner>.surface-widget-spacer>.component-content>.surface-spacer,.layout>.surface-widget-spacer>.component-content>.surface-spacer{height:100%}
+.layout-inner>.surface-widget-spacer>.component-content>.surface-spacer>.surface-spacer-inner,.layout>.surface-widget-spacer>.component-content>.surface-spacer>.surface-spacer-inner{height:var(--container-widget-height,var(--spacer-size))}
+.layout-inner>.surface-widget-spacer:not(:has(>.component-content))>.surface-spacer,.layout>.surface-widget-spacer:not(:has(>.component-content))>.surface-spacer{height:100%}
+.layout-inner>.surface-widget-spacer:not(:has(>.component-content))>.surface-spacer>.surface-spacer-inner,.layout>.surface-widget-spacer:not(:has(>.component-content))>.surface-spacer>.surface-spacer-inner{height:var(--container-widget-height,var(--spacer-size))}
+.layout-inner>.surface-widget-spacer.surface-widget-empty,.layout>.surface-widget-spacer.surface-widget-empty{min-height:22px;min-width:22px;position:relative}
+.layout-inner>.surface-widget-spacer.surface-widget-empty .surface-widget-empty-icon,.layout>.surface-widget-spacer.surface-widget-empty .surface-widget-empty-icon{height:22px;inset:0;margin:auto;padding:0;position:absolute;width:22px}

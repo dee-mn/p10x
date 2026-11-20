@@ -1,0 +1,734 @@
+/* Local interaction states and media containers. Visual layout comes from each page's authored rules. */
+
+[hidden] {
+  display: none!important
+}
+
+.reveal-pending {
+  visibility: visible!important
+}
+
+.section-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none
+}
+
+.surface-background-video-container {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0
+}
+
+.surface-background-video-container iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  transform: scale(1.35)
+}
+
+.ui-accordion--title {
+  cursor: pointer
+}
+
+.ui-accordion--title button {
+  font-family: inherit;
+  color: inherit
+}
+
+.ui-accordion--content {
+  display: none
+}
+
+.ui--item.active>.ui-accordion--content {
+  display: block
+}
+
+.surface-tab-title {
+  cursor: pointer
+}
+
+.surface-tab-content:not(.is-active) {
+  display: none
+}
+
+.surface-tab-content.is-active {
+  display: block
+}
+
+.native-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  display: grid;
+  place-items: center;
+  background: #000e;
+  padding: 48px
+}
+
+.native-lightbox img {
+  max-width: 100%;
+  max-height: 90vh;
+  object-fit: contain
+}
+
+.native-lightbox button {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  color: white;
+  background: none;
+  border: 0;
+  font-size: 30px
+}
+
+.native-carousel {
+  overflow: hidden
+}
+
+.native-carousel .ui-swiper-wrapper {
+  display: flex;
+  gap: 30px;
+  transition: transform .5s
+}
+
+.native-carousel .ui-swiper-slide {
+  flex: 0 0 calc((100% - 60px)/3);
+  min-width: 0
+}
+
+.ui-swiper-pagination {
+  display: flex;
+  justify-content: center;
+  gap: 8px
+}
+
+.ui-swiper-pagination button {
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: #aaa;
+  width: 8px;
+  height: 8px
+}
+
+.ui-swiper-pagination button[aria-current=true] {
+  background: #222
+}
+
+.ui-accordion--title .vector-icon {
+  width: 1em!important;
+  height: 1em!important
+}
+
+.ui-scroll-top {
+  cursor: pointer
+}
+
+.enquiry-response-output:empty {
+  display: none
+}
+
+.ui-hidden-panel-popup {
+  visibility: hidden
+}
+
+.ui-hidden-panel-popup.active {
+  visibility: visible
+}
+
+.ui-hidden-panel-popup.active .ui-hidden-panel-wrap {
+  transform: translateY(0)
+}
+
+.native-form-status {
+  font-size: 14px;
+  line-height: 1.5;
+  margin-top: 12px
+}
+
+.ui--loadmore {
+  cursor: pointer
+}
+
+.ui-header-elementor-sticky.ui-header-fixed {
+  visibility: visible;
+  opacity: 1
+}
+
+.ui-video-sticky1 .ui-video-inner video {
+  object-fit: cover;
+  width: 100%;
+  height: 100%
+}
+
+.surface a[href^="javascript:"] {
+  cursor: default
+}
+
+@media(max-width:991px) {
+  .native-carousel .ui-swiper-slide {
+    flex-basis: calc((100% - 30px)/2)
+  }
+}
+
+@media(max-width:767px) {
+  .native-carousel .ui-swiper-slide {
+    flex-basis: 100%
+  }
+}
+
+.ui-grid-inner>.grid-sizer {
+  display: none
+}
+
+.search-submit:after,.content-search__button:after {
+  content: none!important
+}
+
+.search-submit svg,.content-search__button svg {
+  display: inline-block;
+  vertical-align: middle
+}
+
+.ui-menu-primary .menu-plus {
+  font-family: Inter,Arial,sans-serif;
+  font-size: 12px
+}
+
+.ui-menu-primary>li>a>.ui-icon-menu {
+  display: none
+}
+
+.p10x-menu-disclosure .menu-plus {
+  display: none
+}
+
+.view-20 .block-4fd26295 img {
+  display: none
+}
+
+.ui-menu-primary>.menu-item-has-children>a .ui-icon-menu,.ui-menu-primary>.menu-item-has-children>a .vector-icon {
+  display: none!important
+}
+/* Precision in motion: the film plays without an overlaid control. */
+
+#ui-main .view-20 .ui-video-sticky1 .button-video {
+  display: none!important
+}
+/* Product dialog: animate the card and scrim rather than a full-screen blur mask. */
+
+.ui-hidden-panel-popup.product-dialog {
+  clip-path: none!important;
+  backdrop-filter: none!important;
+  -webkit-backdrop-filter: none!important;
+  transition: none!important
+}
+
+.product-dialog .ui-popup--conent {
+  transition: none!important;
+  will-change: transform,opacity;
+  isolation: isolate
+}
+
+.product-dialog .ui-popup--overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(8,10,11,.28);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  transition: none!important;
+  will-change: opacity
+}
+
+.product-dialog .ui-close-button {
+  appearance: none;
+  border: 0;
+  padding: 0;
+  background: #222;
+  color: #fff;
+  font: inherit;
+  cursor: pointer;
+  border-radius: 6px
+}
+
+.product-dialog :is(button,a):focus-visible {
+  outline: 2px solid #03c4d5;
+  outline-offset: 4px
+}
+
+.product-dialog .product-series-label {
+  margin: 0 0 18px;
+  color: #777;
+  font: 400 10px/1.5 Inter,sans-serif;
+  letter-spacing: .12em;
+  text-transform: uppercase
+}
+
+.product-dialog .ui-products-ready .sub-menu.active:not([hidden]) {
+  display: block;
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+  transition: none
+}
+
+.product-dialog .ui-products-ready .sub-menu:before {
+  content: 'Products';
+  display: block;
+  margin-bottom: 12px;
+  color: #777;
+  font: 400 10px/1.5 Inter,sans-serif;
+  letter-spacing: .12em;
+  text-transform: uppercase
+}
+
+.product-dialog .ui-products-ready a.p10x-preview-active>.ui-text-menu {
+  color: #03c4d5;
+  -webkit-text-fill-color: #03c4d5
+}
+
+.product-dialog .p10x-product-layer,.product-dialog .p10x-product-layer img {
+  will-change: transform,opacity
+}
+
+@media(prefers-reduced-motion:reduce) {
+  .btn .ui-btn-icon,.btn .ui--btn-text {
+    transition: none!important
+  }
+}
+
+.product-dialog .ui-popup--conent {
+  pointer-events: none
+}
+
+.product-dialog :is(.ui-close-button,.block-2093814) {
+  pointer-events: auto
+}
+
+.product-dialog .ui-products-ready .ui-menu-primary>li>a.active>.ui-text-menu {
+  color: #03c4d5;
+  -webkit-text-fill-color: #03c4d5
+}
+
+.product-dialog .ui-products-ready .ui-menu-primary>li.hoverd>a>.ui-text-menu {
+  color: #777;
+  -webkit-text-fill-color: #777
+}
+/* A hidden ancestor must suppress descendants that explicitly set visibility:visible. */
+
+.ui-hidden-panel-popup:not(.active),.ui-hidden-panel-popup[hidden] {
+  display: none!important
+}
+/* Shared CTA hover colour; the existing arrow/label motion remains independent. */
+
+#ui-wapper .btn:is(:hover,:focus-visible),
+#ui-wapper .ui-anchor-button:is(:hover,:focus-visible),
+#ui-wapper #p10x-motion-hero .pm-actions a:is(:hover,:focus-visible) {
+  background: var(--primary-color,#03c4d5)!important;
+  border-color: var(--primary-color,#03c4d5)!important;
+  color: #222!important
+}
+
+#ui-wapper .btn:is(:hover,:focus-visible) .ui--btn-text {
+  color: inherit!important
+}
+
+#ui-wapper .btn:is(:hover,:focus-visible) .ui-btn-icon {
+  background: #222!important;
+  color: #fff!important
+}
+
+#ui-wapper .btn:is(:hover,:focus-visible) .ui-btn-icon svg path {
+  stroke: currentColor!important
+}
+
+#ui-wapper .ui-anchor-button {
+  transition: background-color .25s ease,color .25s ease
+}
+
+#ui-wapper .ui-anchor-button:is(:hover,:focus-visible) .ui-anchor-inner {
+  color: #222!important
+}
+
+#ui-wapper .btn:is(:hover,:focus-visible) .ui-btn-icon :is(i,svg) {
+  color: #fff!important
+}
+/* The first panel pins the film and cards together; its runway is not the film's height. */
+
+.view-20 .p10x-pillar-panel>.p10x-pillar-video {
+  width: 100%!important;
+  height: 100vh!important;
+  height: 100svh!important;
+  max-height: 100svh!important;
+  position: absolute!important;
+  inset: 0 0 auto!important;
+  overflow: hidden!important;
+}
+
+.view-20 .p10x-pillar-video>video.section-video {
+  display: block;
+  width: 100%!important;
+  height: 100%!important;
+  max-height: none!important;
+  object-fit: cover;
+  object-position: center;
+}
+
+@media(max-width:1024px) {
+  .view-20 .p10x-pillar-panel>.p10x-pillar-video {
+    height: 100%!important;
+    max-height: 100%!important
+  }
+}
+/* Services > Tinting: the two tint services share a keyboard-accessible flyout. */
+
+#ui-header-elementor .menu-p10x-main-container .p10x-tinting-group {
+  position: relative
+}
+
+#ui-header-elementor .menu-p10x-main-container li:focus-within>.sub-menu {
+  visibility: visible;
+  opacity: 1;
+  margin-top: 0
+}
+
+#ui-header-elementor .p10x-tinting-group>.sub-menu {
+  min-width: 280px
+}
+
+#ui-header-elementor .p10x-tinting-group>a:after {
+  content: none
+}
+
+#ui-header-elementor .p10x-submenu-chevron {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  width: 14px;
+  height: 14px;
+  pointer-events: none
+}
+
+#ui-header-elementor a[role=button] {
+  cursor: pointer
+}
+
+#ui-header-elementor a[role=button]:focus-visible {
+  outline: 2px solid #03c4d5;
+  outline-offset: -3px
+}
+
+.p10x-menu-disclosure .p10x-submenu-chevron {
+  display: none
+}
+/* Decorative partner lettering is removed while preserving the authored section frame. */
+
+.view-20 .p10x-partner-space {
+  height: 1em
+}
+/* Entrance effects must never leave homepage copy waiting in a hidden state. */
+
+.view-20 .wow {
+  visibility: visible!important;
+  animation: none!important
+}
+/* Main navigation has a single vector indicator for a submenu, never a font glyph. */
+
+#ui-header-elementor .menu-p10x-main-container .sub-menu a:after {
+  content: none!important;
+  display: none!important
+}
+
+#ui-header-elementor .p10x-submenu-chevron svg {
+  display: block;
+  width: 14px;
+  height: 14px;
+  color: inherit
+}
+
+#ui-header-elementor .p10x-submenu-chevron path {
+  stroke: currentColor!important
+}
+
+#ui-header-elementor .ui-anchor-button .ui-anchor-divider {
+  background: transparent!important;
+  border: 0;
+  border-radius: 0;
+  padding: 0!important;
+  display: grid;
+  place-items: center
+}
+
+#ui-header-elementor .p10x-menu-mark {
+  display: block;
+  width: 20px;
+  height: 20px;
+  fill: none;
+  color: inherit
+}
+
+#ui-header-elementor .p10x-menu-mark path {
+  stroke: currentColor!important
+}
+
+#ui-header-elementor #ui-nav-mobile .p10x-menu-mark {
+  color: #fff
+}
+/* Match the partner wordmarks without altering the supplied vector artwork. */
+
+.view-20 .p10x-colourlock-logo {
+  filter: grayscale(1) brightness(0)
+}
+/* Eight partner cells keep the product and institutional marks in one balanced grid. */
+
+body.page-id-20 .view-20 .block.block-pa20001 {
+  display: grid!important;
+  grid-template-columns: repeat(4,minmax(0,1fr))
+}
+
+body.page-id-20 .view-20 .block-pa20001>.layout {
+  width: 100%!important;
+  min-width: 0;
+  min-height: 112px;
+  padding: 16px 12px!important
+}
+
+.view-20 .p10x-institution-partner {
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid #dbdbdb
+}
+
+.view-20 .p10x-partner-lockup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  width: 100%
+}
+
+body.page-id-20 .view-20 .block-pa20001 .p10x-partner-lockup img {
+  display: block;
+  width: auto;
+  height: 70px;
+  max-width: 100%;
+  object-fit: contain;
+  filter: grayscale(1) brightness(0);
+  opacity: .6
+}
+
+body.page-id-20 .view-20 .block-pa20001 .p10x-partner-bernama img {
+  filter: grayscale(1) brightness(.55) contrast(10)
+}
+
+@media(max-width:1024px) {
+  body.page-id-20 .view-20 .block.block-pa20001 {
+    grid-template-columns: repeat(2,minmax(0,1fr))
+  }
+}
+
+@media(max-width:767px) {
+  body.page-id-20 .view-20 .block-pa20001 .p10x-partner-lockup img {
+    height: 60px
+  }
+}
+/* Homepage articles are readable by default, without a hidden slider initializer. */
+
+.view-20 .block-d2db1b3 .ui-swiper-slider {
+  opacity: 1
+}
+
+.view-20 .block-d2db1b3 .ui-swiper-container {
+  margin: 0;
+  padding: 4px;
+  touch-action: pan-y;
+  outline-offset: 2px
+}
+
+.view-20 .block-d2db1b3 .ui-swiper-wrapper {
+  height: auto;
+  gap: 30px;
+  transition: transform .45s cubic-bezier(.2,.7,.2,1)
+}
+
+.view-20 .block-d2db1b3 .ui-swiper-slide {
+  flex: 0 0 calc((100% - 60px)/3);
+  min-width: 0;
+  padding: 0
+}
+
+.view-20 .block-d2db1b3 .ui-post--featured {
+  overflow: hidden
+}
+
+.view-20 .block-d2db1b3 .ui-post--featured img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: left center;
+  transition: transform .45s ease
+}
+
+.view-20 .block-d2db1b3 .ui-post--featured a:is(:hover,:focus-visible) img {
+  transform: scale(1.035)
+}
+
+.view-20 .block-d2db1b3 .ui-item-meta {
+  justify-content: flex-end
+}
+
+.view-20 .block-d2db1b3 .home-insights-controls {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 24px;
+  padding: 4px
+}
+
+.home-insights-status {
+  margin-right: 10px;
+  font: 400 12px/1.5 Inter,Arial,sans-serif;
+  color: #657173
+}
+
+.home-insights-controls button {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid #b5c1c2;
+  border-radius: 50%;
+  background: transparent;
+  color: #161c1d;
+  cursor: pointer;
+  transition: background-color .25s,color .25s,border-color .25s
+}
+
+.home-insights-controls button svg {
+  display: block;
+  width: 20px;
+  height: 20px
+}
+
+.home-insights-prev svg {
+  transform: rotate(180deg)
+}
+
+.home-insights-controls button:is(:hover,:focus-visible):not(:disabled) {
+  background: #03c4d5;
+  border-color: #03c4d5;
+  color: #111314
+}
+
+.home-insights-controls button:disabled {
+  opacity: .35;
+  cursor: default
+}
+
+[data-home-insights]:focus-visible,.home-insights-controls button:focus-visible {
+  outline: 2px solid #03c4d5;
+  outline-offset: 3px
+}
+
+@media(max-width:991px) {
+  .view-20 .block-d2db1b3 .ui-swiper-slide {
+    flex-basis: calc((100% - 30px)/2)
+  }
+}
+
+@media(max-width:767px) {
+  .view-20 .block-d2db1b3 .ui-swiper-slide {
+    flex-basis: 100%
+  }
+}
+
+@media(prefers-reduced-motion:reduce) {
+  .view-20 .block-d2db1b3 .ui-swiper-wrapper,.view-20 .block-d2db1b3 .ui-post--featured img {
+    transition: none
+  }
+}
+/* Article covers regain their original colour when the card is explored. */
+
+.view-20 .block-d2db1b3 .ui-post--featured,
+.page-id-7411 .ui-grid-item .ui-post--featured {
+  filter: grayscale(1);
+  transition: filter .35s ease
+}
+
+.view-20 .block-d2db1b3 .ui-post--inner:is(:hover,:focus-within) .ui-post--featured,
+.page-id-7411 .ui-grid-item .ui-post--inner:is(:hover,:focus-within) .ui-post--featured {
+  filter: grayscale(0)
+}
+
+@media(prefers-reduced-motion:reduce) {
+  .view-20 .block-d2db1b3 .ui-post--featured,.page-id-7411 .ui-grid-item .ui-post--featured {
+    transition: none
+  }
+}
+/* Give News and Insights titles more space than the compact global headings. */
+
+body.page #ui-wapper .view-20 .block.block-3ab8a9a .heading-title,
+body.page #ui-wapper .view-20 .block.block-d2db1b3 .ui-post--title,
+body.page.page-id-7411 #ui-wapper #ui-main .block-94ecda1 .heading-title,
+body.page.page-id-7411 #ui-wapper #ui-main .ui-post--title {
+  line-height: 1em!important
+}
+/* Keep the leadership rail aligned left and reveal cards to the right viewport edge. */
+
+.p10x-about.ab-team {
+  container-type: inline-size
+}
+
+.p10x-about.ab-team .ab-shell>.ab-team-track {
+  align-self: flex-start;
+  width: calc(50vw + 50%);
+  width: calc(50cqw + 50%);
+  max-width: none;
+  padding-left: 0;
+  padding-right: calc(50cqw - 50%)
+}
+/* Bring the homepage founder portrait and message inward within the dark card. */
+
+@media(min-width:1025px) {
+  body.page-id-20 .view-20 .block.block-77963bd {
+    padding-left: 60px!important;
+    padding-right: 60px!important
+  }
+  body.page-id-20 .view-20 .block.block-4ee1816 {
+    right: 30px!important
+  }
+}
+
+@media(min-width:768px) and (max-width:1024px) {
+  body.page-id-20 .view-20 .block.block-77963bd {
+    padding-left: 40px!important;
+    padding-right: 40px!important
+  }
+  body.page-id-20 .view-20 .block.block-4ee1816 {
+    width: calc(100% + 40px)!important;
+    margin-left: -20px!important;
+    margin-right: -20px!important
+  }
+}
+
+@media(max-width:767px) {
+  body.page-id-20 .view-20 .block.block-77963bd {
+    padding-left: 32px!important;
+    padding-right: 32px!important
+  }
+  body.page-id-20 .view-20 .block.block-4ee1816 {
+    width: calc(100% + 24px)!important;
+    margin-left: -12px!important;
+    margin-right: -12px!important
+  }
+}

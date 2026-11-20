@@ -1,0 +1,655 @@
+/* P10X identity field. Independent renderer using the existing P10X vector mark. */
+(() => {
+  'use strict';
+  const hero = document.getElementById('p10x-motion-hero');
+  if (!hero) return;
+  let canvas = hero.querySelector('.pm-canvas');
+  const mark = hero.querySelector('.pm-mark-fallback svg');
+  const pause = hero.querySelector('.pm-pause');
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+  const mobile = matchMedia('(max-width: 767px)');
+  const clamp = (n, a = 0, b = 1) => Math.min(b, Math.max(a, n));
+  const random = (n) => {
+    const v = Math.sin(n * 127.1 + 311.7) * 43758.5453;
+    return v - Math.floor(v);
+  };
+  const points = [];
+  const mask = document.createElement('canvas');
+  mask.width = 704;
+  mask.height = 205;
+  const mc = mask.getContext('2d', { willReadFrequently: true });
+  if (!mc || typeof Path2D === 'undefined') return;
+  mc.scale(mask.width / 1761.07, mask.height / 513.31);
+  mark.querySelectorAll('path').forEach((path) => {
+    mc.fillStyle = path.getAttribute('fill');
+    mc.fill(new Path2D(path.getAttribute('d')));
+  });
+  const pixels = mc.getImageData(0, 0, mask.width, mask.height).data,
+    samples = [];
+  for (let y = 0; y < mask.height; y += 2)
+    for (let x = 0; x < mask.width; x += 2) {
+      const k = (y * mask.width + x) * 4;
+      if (pixels[k + 3] > 160) samples.push([x, y, pixels[k] < 100]);
+    }
+  if (!samples.length) return;
+  function sphere(seed, r) {
+    const y = 1 - 2 * random(seed + 2),
+      phi = random(seed + 7) * Math.PI * 2;
+    const ring = Math.sqrt(1 - y * y);
+    return [Math.cos(phi) * ring * r, y * r, Math.sin(phi) * ring * r];
+  }
+  // Keep the established mark-to-sphere proportion while matching the reference scale.
+  const logoScale = 0.8 / 1.3;
+  for (let i = 0; i < (mobile.matches ? 5700 : 8800); i++) {
+    const p = samples[Math.floor(random(i + 1) * samples.length)];
+    points.push({
+      x: ((p[0] + random(i + 9) * 1.8) / mask.width - 0.5) * 1.83 * logoScale,
+      y:
+        -((p[1] + random(i + 19) * 1.8) / mask.height - 0.5) *
+        0.534 *
+        logoScale,
+      z: (random(i + 29) - 0.5) * 0.17 * logoScale,
+      kind: 0,
+      cyan: p[2],
+      seed: random(i + 82) * Math.PI * 2,
+      cloud: sphere(i * 2.7 + 23, 1.03)
+    });
+  }
+  const golden = Math.PI * (3 - Math.sqrt(5));
+  function shell(count, r, kind) {
+    for (let i = 0; i < count; i++) {
+      const y = 1 - ((i + 0.5) / count) * 2,
+        ring = Math.sqrt(1 - y * y),
+        a = golden * i;
+      const jitter = (random(i + kind * 493) - 0.5) * 0.012;
+      points.push({
+        x: Math.cos(a) * ring * (r + jitter),
+        y: y * (r + jitter),
+        z: Math.sin(a) * ring * (r + jitter),
+        kind,
+        seed: random(i + kind * 92) * Math.PI * 2
+      });
+    }
+  }
+  // Two thin shells with a clear radial gap; keep particles out of the space between them.
+  shell(mobile.matches ? 7800 : 11600, 1, 1);
+  shell(mobile.matches ? 2900 : 4700, 1.28, 2);
+  // Ice highlights, mint, brand turquoise, electric cyan and blue shadow.
+  const stops = [
+    [220, 255, 246],
+    [105, 250, 235],
+    [3, 196, 213],
+    [13, 151, 239],
+    [21, 78, 187]
+  ];
+  const palette = Array.from({ length: 24 }, (_, i) => {
+    const v = (i / 23) * 4,
+      k = Math.min(3, Math.floor(v)),
+      t = v - k;
+    return stops[k].map((c, j) => Math.round(c + (stops[k + 1][j] - c) * t));
+  });
+  palette.push([239, 255, 252]);
+  const alphaSteps = 16;
+  const bins = Array.from({ length: palette.length * alphaSteps }, () => []);
+  const colors = bins.map(
+    (_, i) =>
+      `rgba(${palette[Math.floor(i / alphaSteps)].join(',')},${Math.pow(((i % alphaSteps) + 1) / alphaSteps, 2)})`
+  );
+  const bufferData = new Float32Array(points.length * 7);
+  let width = 1,
+    height = 1,
+    radius = 1,
+    cx = 0,
+    cy = 0,
+    dpr = 1,
+    gl,
+    ctx,
+    buffer;
+  let elapsed = 0,
+    yaw = 0,
+    pitch = 0.1,
+    velocityX = 0,
+    velocityY = 0,
+    last = 0,
+    raf = 0,
+    visible = true,
+    paused = reduced.matches;
+  let dragging = null,
+    dragCount = 0,
+    lastDraw = 0,
+    frames = 0,
+    drawTotal = 0,
+    measureAt = 0;
+  const impacts = [];
+  const entered = performance.now();
+  function shader(type, source) {
+    const s = gl.createShader(type);
+    gl.shaderSource(s, source);
+    gl.compileShader(s);
+    if (!gl.getShaderParameter(s, gl.COMPILE_STATUS))
+      throw new Error('Shader unavailable');
+    return s;
+  }
+  try {
+    gl = canvas.getContext('webgl', {
+      alpha: false,
+      antialias: false,
+      powerPreference: 'low-power'
+    });
+    if (gl) {
+      const program = gl.createProgram();
+      gl.attachShader(
+        program,
+        shader(
+          gl.VERTEX_SHADER,
+          `precision highp float;attribute vec2 aPosition;attribute vec4 aColor;attribute float aSize;varying vec4 vColor;void main(){gl_Position=vec4(aPosition,0.,1.);gl_PointSize=aSize;vColor=aColor;}`
+        )
+      );
+      gl.attachShader(
+        program,
+        shader(
+          gl.FRAGMENT_SHADER,
+          `precision mediump float;varying vec4 vColor;void main(){float r=length(gl_PointCoord-vec2(.5));gl_FragColor=vec4(vColor.rgb,vColor.a*smoothstep(.5,.18,r));}`
+        )
+      );
+      gl.linkProgram(program);
+      if (!gl.getProgramParameter(program, gl.LINK_STATUS))
+        throw new Error('Program unavailable');
+      gl.useProgram(program);
+      buffer = gl.createBuffer();
+      gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
+      gl.bufferData(gl.ARRAY_BUFFER, bufferData.byteLength, gl.DYNAMIC_DRAW);
+      [
+        ['aPosition', 2, 0],
+        ['aColor', 4, 8],
+        ['aSize', 1, 24]
+      ].forEach(([name, size, offset]) => {
+        const location = gl.getAttribLocation(program, name);
+        gl.enableVertexAttribArray(location);
+        gl.vertexAttribPointer(location, size, gl.FLOAT, false, 28, offset);
+      });
+      gl.enable(gl.BLEND);
+      gl.blendFunc(gl.SRC_ALPHA, gl.ONE);
+      gl.clearColor(8 / 255, 9 / 255, 11 / 255, 1);
+    }
+  } catch (_) {
+    const replacement = canvas.cloneNode(false);
+    canvas.replaceWith(replacement);
+    canvas = replacement;
+    gl = null;
+  }
+  if (!gl) ctx = canvas.getContext('2d');
+  if (!gl && !ctx) return;
+  canvas.dataset.renderer = gl ? 'webgl' : 'canvas2d';
+  canvas.dataset.points = points.length;
+  canvas.dataset.layers = '2';
+  canvas.dataset.outerRadius = '1.28';
+  function draw() {
+    const started = performance.now();
+    const reveal = paused
+      ? 1
+      : 1 - Math.pow(1 - clamp((started - entered) / 2600), 3);
+    // Indexed by particle kind: logo, inner shell, outer shell.
+    const angles = [
+      yaw - (1 - reveal) * 1.15,
+      yaw + elapsed * 0.035,
+      yaw - elapsed * 0.025
+    ];
+    const cos = angles.map(Math.cos),
+      sin = angles.map(Math.sin),
+      c = Math.cos(pitch),
+      s = Math.sin(pitch);
+    if (!gl) bins.forEach((b) => (b.length = 0));
+    const colourDrift = Math.sin(elapsed * 0.16) * 0.045;
+    while (impacts.length && elapsed - impacts[0].time > 3.5) impacts.shift();
+    let offset = 0;
+    for (const p of points) {
+      let x = p.x,
+        y = p.y,
+        z = p.z;
+      if (p.kind === 0 && reveal < 1) {
+        x = p.cloud[0] + (x - p.cloud[0]) * reveal;
+        y = p.cloud[1] + (y - p.cloud[1]) * reveal;
+        z = p.cloud[2] + (z - p.cloud[2]) * reveal;
+      }
+      if (p.kind > 0) {
+        const outer = p.kind === 2;
+        const wave =
+          1 +
+          Math.sin(p.y * 7 + elapsed * (outer ? 0.6 : 0.45)) *
+            (outer ? 0.006 : 0.003) +
+          Math.sin(p.x * 9 + elapsed * 0.6) * (outer ? 0.004 : 0.002);
+        x *= wave;
+        y *= wave;
+        z *= wave;
+      }
+      const rx = x * cos[p.kind] + z * sin[p.kind],
+        rz = -x * sin[p.kind] + z * cos[p.kind];
+      x = rx;
+      z = y * s + rz * c;
+      y = y * c - rz * s;
+      let shock = 0;
+      for (const hit of impacts) {
+        const age = elapsed - hit.time;
+        const delta = Math.hypot(x - hit.x, y - hit.y) - age * 0.85;
+        shock += Math.exp(-delta * delta * 80 - age * 1.4);
+      }
+      const displacement = 1 + shock * 0.07;
+      x *= displacement;
+      y *= displacement;
+      z *= displacement;
+      const perspective = 1 / (1 - z * 0.1),
+        px = cx + x * radius * perspective,
+        py = cy - y * radius * perspective;
+      const norm = Math.sqrt(x * x + y * y + z * z) || 1,
+        nx = x / norm,
+        ny = y / norm,
+        nz = z / norm;
+      const key = clamp(0.36 - nx * 0.36 + ny * 0.36 + nz * 0.24);
+      let alpha, size, color;
+      if (p.kind === 0) {
+        alpha = 0.82 + key * 0.18;
+        size = 1.04;
+        color = p.cyan
+          ? Math.round(clamp(0.37 + nx * 0.13 - ny * 0.13) * 23)
+          : 24;
+      } else {
+        const outer = p.kind === 2;
+        const rim = Math.pow(1 - Math.abs(nz), 1.45);
+        const keySquared = key * key;
+        const spec = keySquared * keySquared * key;
+        const twinkle = 0.83 + 0.17 * Math.sin(p.seed + elapsed * 1.4);
+        alpha =
+          (outer
+            ? 0.012 + rim * rim * rim * 0.56 + spec * 0.14
+            : 0.1 + rim * 0.5 + key * 0.18 + spec * 0.85) *
+          (nz > 0 ? 1 : 0.32) *
+          twinkle;
+        size =
+          (outer ? 0.62 + rim * 0.52 : 0.68 + rim * 0.85) * (1 + shock * 0.4);
+        color = Math.round(
+          clamp(
+            0.51 +
+              nx * 0.27 -
+              ny * 0.29 -
+              spec * 0.2 +
+              colourDrift
+          ) * 23
+        );
+      }
+      alpha = clamp(alpha + shock * 0.25);
+      const colorRGB = palette[color];
+      if (gl) {
+        bufferData[offset++] = (px / width) * 2 - 1;
+        bufferData[offset++] = 1 - (py / height) * 2;
+        bufferData[offset++] = colorRGB[0] / 255;
+        bufferData[offset++] = colorRGB[1] / 255;
+        bufferData[offset++] = colorRGB[2] / 255;
+        bufferData[offset++] = alpha;
+        bufferData[offset++] = Math.max(1, size * dpr * perspective * 1.3);
+      } else {
+        const bucket = Math.min(
+          alphaSteps - 1,
+          Math.max(0, Math.ceil(Math.sqrt(alpha) * alphaSteps) - 1)
+        );
+        bins[color * alphaSteps + bucket].push(px, py, size * perspective);
+      }
+    }
+    if (gl) {
+      gl.clear(gl.COLOR_BUFFER_BIT);
+      gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
+      gl.bufferSubData(gl.ARRAY_BUFFER, 0, bufferData);
+      gl.drawArrays(gl.POINTS, 0, points.length);
+    } else {
+      ctx.clearRect(0, 0, width, height);
+      ctx.globalCompositeOperation = 'lighter';
+      bins.forEach((bin, i) => {
+        if (!bin.length) return;
+        ctx.beginPath();
+        for (let k = 0; k < bin.length; k += 3)
+          ctx.rect(bin[k], bin[k + 1], bin[k + 2], bin[k + 2]);
+        ctx.fillStyle = colors[i];
+        ctx.fill();
+      });
+    }
+    canvas.dataset.ready = 'true';
+    canvas.dataset.rotation = ((yaw * 180) / Math.PI).toFixed(2);
+    canvas.dataset.pitch = pitch.toFixed(3);
+    canvas.dataset.dragCount = dragCount;
+    hero.classList.add('is-rendered');
+    drawTotal += performance.now() - started;
+    frames++;
+  }
+  function resize() {
+    const b = hero.getBoundingClientRect();
+    const nextDpr = Math.min(devicePixelRatio || 1, mobile.matches ? 1.5 : 1.6);
+    if (canvas.dataset.ready && width === b.width && height === b.height && dpr === nextDpr) return;
+    width = b.width;
+    height = b.height;
+    dpr = nextDpr;
+    canvas.width = Math.round(width * dpr);
+    canvas.height = Math.round(height * dpr);
+    cx = width / 2;
+    cy = height / 2;
+    // Enlarge the full globe by 10% on desktop; retain tablet and phone sizing.
+    // On phones reserve space for the header and bottom copy; keep the halo inside the width.
+    radius =
+      (mobile.matches
+        ? Math.min(width * 0.35, height * 0.22)
+        : Math.min(width * 0.205, height * 0.275)) * (width > 1024 ? 1.1 : 1);
+    hero.style.setProperty('--pm-logo-width', `${radius * 1.83 * logoScale}px`);
+    canvas.dataset.radius = radius.toFixed(2);
+    canvas.dataset.center = `${cx},${cy}`;
+    if (gl) gl.viewport(0, 0, canvas.width, canvas.height);
+    else ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    draw();
+  }
+  function tick(now) {
+    raf = 0;
+    if (paused || !visible || document.hidden) return;
+    const dt = Math.min((now - last) / 1000, 1);
+    last = now;
+    elapsed += dt;
+    if (!dragging) {
+      yaw += dt * (0.13 + velocityX);
+      pitch = clamp(pitch + velocityY * dt, -0.9, 0.9);
+      const decay = Math.exp(-dt * 4);
+      velocityX *= decay;
+      velocityY *= decay;
+    }
+    if (gl || now - lastDraw > 30) {
+      draw();
+      lastDraw = now;
+    }
+    if (now - measureAt > 1500) {
+      canvas.dataset.renderMs = (drawTotal / Math.max(1, frames)).toFixed(2);
+      canvas.dataset.fps = ((frames * 1000) / (now - measureAt)).toFixed(1);
+      frames = 0;
+      drawTotal = 0;
+      measureAt = now;
+    }
+    raf = requestAnimationFrame(tick);
+  }
+  function start() {
+    if (!raf && !paused && visible && !document.hidden) {
+      last = performance.now();
+      measureAt = last;
+      raf = requestAnimationFrame(tick);
+    }
+  }
+  function syncPause() {
+    pause.setAttribute('aria-pressed', String(paused));
+    pause.setAttribute(
+      'aria-label',
+      paused ? 'Play hero animation' : 'Pause hero animation'
+    );
+    pause.innerHTML = paused
+      ? '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 5 11 7-11 7Z"/></svg>'
+      : '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14M16 5v14"/></svg>';
+    if (paused) {
+      cancelAnimationFrame(raf);
+      raf = 0;
+      draw();
+    } else start();
+  }
+  pause.addEventListener('click', () => {
+    paused = !paused;
+    syncPause();
+  });
+  hero.addEventListener('pointerdown', (e) => {
+    if (e.button !== 0 || !e.target.closest('.pm-stage')) return;
+    const b = hero.getBoundingClientRect(),
+      x = (e.clientX - b.left - cx) / radius,
+      y = -(e.clientY - b.top - cy) / radius;
+    if (Math.hypot(x, y) > 1.48) return;
+    dragging = {
+      id: e.pointerId,
+      x: e.clientX,
+      y: e.clientY,
+      startX: e.clientX,
+      startY: e.clientY,
+      time: performance.now(),
+      hitX: x,
+      hitY: y,
+      moved: false
+    };
+    velocityX = velocityY = 0;
+    hero.setPointerCapture(e.pointerId);
+    hero.classList.add('is-dragging');
+    canvas.dataset.dragging = 'true';
+  });
+  hero.addEventListener('pointermove', (e) => {
+    if (!dragging || dragging.id !== e.pointerId) return;
+    const now = performance.now(),
+      dt = Math.max(0.016, (now - dragging.time) / 1000),
+      dx = e.clientX - dragging.x,
+      dy = e.clientY - dragging.y;
+    yaw += dx * 0.006;
+    pitch = clamp(pitch + dy * 0.004, -0.9, 0.9);
+    velocityX = clamp((dx * 0.006) / dt, -2, 2);
+    velocityY = clamp((dy * 0.004) / dt, -1, 1);
+    if (
+      Math.hypot(e.clientX - dragging.startX, e.clientY - dragging.startY) > 4
+    )
+      dragging.moved = true;
+    dragging.x = e.clientX;
+    dragging.y = e.clientY;
+    dragging.time = now;
+    if (paused) draw();
+  });
+  function release(e) {
+    if (!dragging || dragging.id !== e.pointerId) return;
+    if (e.type !== 'pointercancel') {
+      if (dragging.moved) dragCount++;
+      else {
+        impacts.push({ x: dragging.hitX, y: dragging.hitY, time: elapsed });
+        if (impacts.length > 4) impacts.shift();
+      }
+    }
+    dragging = null;
+    hero.classList.remove('is-dragging');
+    canvas.dataset.dragging = 'false';
+    draw();
+  }
+  hero.addEventListener('pointerup', release);
+  hero.addEventListener('pointercancel', release);
+  hero.addEventListener('lostpointercapture', release);
+  new ResizeObserver(resize).observe(hero);
+  new IntersectionObserver(
+    (entries) => {
+      visible = entries[0].isIntersecting;
+      if (visible) start();
+      else {
+        cancelAnimationFrame(raf);
+        raf = 0;
+      }
+    },
+    { threshold: 0.01 }
+  ).observe(hero);
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      cancelAnimationFrame(raf);
+      raf = 0;
+    } else start();
+  });
+  reduced.addEventListener('change', () => {
+    paused = reduced.matches;
+    syncPause();
+  });
+  resize();
+  syncPause();
+})();
+
+/* Mobile opening: reserve swipes for the globe until the visitor chooses to continue. */
+(() => {
+  'use strict';
+  const hero = document.getElementById('p10x-motion-hero');
+  if (!hero) return;
+  const mobile = matchMedia('(max-width: 767px)');
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+  const root = document.documentElement;
+  const hint = hero.querySelector('.pm-interaction-hint');
+  const desktopHint = hint?.textContent;
+  const initialTarget =
+    location.hash && document.getElementById(location.hash.slice(1));
+  let waitingForHash =
+    initialTarget && !hero.contains(initialTarget) && initialTarget !== hero;
+  let locked = false,
+    leaving = false,
+    checkFrame = 0;
+  const inMenu = (target) =>
+    target instanceof Element &&
+    !!target.closest('#site-menu,[role="dialog"][aria-modal="true"]');
+  function setLocked(value) {
+    value = value && mobile.matches;
+    if (locked !== value) {
+      locked = value;
+      root.classList.toggle('pm-hero-scroll-locked', locked);
+      hero.classList.toggle('is-scroll-locked', locked);
+    }
+    hero.dataset.scrollLocked = String(locked);
+    if (hint)
+      hint.textContent = mobile.matches
+        ? locked
+          ? 'Tap to discover · drag to rotate · Learn more to scroll'
+          : 'Tap to discover · drag to rotate'
+        : desktopHint;
+  }
+  function sync() {
+    checkFrame = 0;
+    if (!mobile.matches) {
+      leaving = false;
+      setLocked(false);
+      return;
+    }
+    // Do not re-lock at the start of an intentional smooth scroll or a deep-link restoration.
+    if (window.scrollY > 8) {
+      leaving = false;
+      waitingForHash = false;
+      setLocked(false);
+    } else if (
+      window.scrollY <= 2 &&
+      !leaving &&
+      !waitingForHash &&
+      !document.body.classList.contains('p10x-menu-is-open')
+    )
+      setLocked(true);
+  }
+  function schedule() {
+    if (!checkFrame) checkFrame = requestAnimationFrame(sync);
+  }
+  function blockGesture(event) {
+    if (
+      !locked ||
+      inMenu(event.target) ||
+      (event.touches && event.touches.length > 1)
+    )
+      return;
+    if (event.cancelable) event.preventDefault();
+    // Intercept before the theme's smooth-scroll wheel/touch handlers as well as native scroll.
+    event.stopImmediatePropagation();
+  }
+  window.addEventListener('wheel', blockGesture, {
+    passive: false,
+    capture: true
+  });
+  window.addEventListener('touchmove', blockGesture, {
+    passive: false,
+    capture: true
+  });
+  document.addEventListener(
+    'keydown',
+    (event) => {
+      if (
+        !locked ||
+        inMenu(event.target) ||
+        event.altKey ||
+        event.ctrlKey ||
+        event.metaKey
+      )
+        return;
+      const editable =
+        event.target instanceof Element &&
+        event.target.closest('input,textarea,select,[contenteditable="true"]');
+      const control =
+        event.target instanceof Element &&
+        event.target.closest('a,button,[role="button"]');
+      if (
+        !editable &&
+        [
+          'ArrowDown',
+          'ArrowUp',
+          'PageDown',
+          'PageUp',
+          'Home',
+          'End',
+          ' '
+        ].includes(event.key) &&
+        !(control && (event.key === ' ' || event.target.closest('.pm-stage')))
+      ) {
+        event.preventDefault();
+        event.stopImmediatePropagation();
+      }
+    },
+    true
+  );
+  document.addEventListener(
+    'click',
+    (event) => {
+      if (
+        !mobile.matches ||
+        event.defaultPrevented ||
+        event.button !== 0 ||
+        event.metaKey ||
+        event.ctrlKey ||
+        event.shiftKey ||
+        event.altKey
+      )
+        return;
+      const anchor =
+        event.target instanceof Element && event.target.closest('a[href^="#"]');
+      const href = anchor?.getAttribute('href');
+      const target =
+        href && href.length > 1 && document.getElementById(href.slice(1));
+      if (!target || target === hero || hero.contains(target)) return;
+      // Keep all real same-page exits working, including the contact CTA and menu anchors.
+      if (!locked && !hero.contains(anchor)) return;
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      leaving = true;
+      waitingForHash = false;
+      setLocked(false);
+      history.pushState(null, '', href);
+      const top = Math.max(
+        0,
+        target.getBoundingClientRect().top + window.scrollY - 80
+      );
+      target.setAttribute('tabindex', '-1');
+      target.focus({ preventScroll: true });
+      window.scrollTo({
+        top,
+        behavior: reduced.matches ? 'instant' : 'smooth'
+      });
+    },
+    true
+  );
+  // Keyboard focus may leave the visual introduction without trapping assistive navigation.
+  document.addEventListener('focusin', (event) => {
+    const target = event.target;
+    if (
+      locked &&
+      target instanceof Element &&
+      !hero.contains(target) &&
+      !target.closest('header,#site-menu,#site-search')
+    ) {
+      leaving = true;
+      setLocked(false);
+    }
+  });
+  window.addEventListener('scroll', schedule, { passive: true });
+  window.addEventListener('pageshow', schedule);
+  window.addEventListener('load', schedule, { once: true });
+  window.addEventListener('pagehide', () => setLocked(false));
+  mobile.addEventListener('change', sync);
+  sync();
+})();

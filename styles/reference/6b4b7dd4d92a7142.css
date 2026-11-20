@@ -1,0 +1,12 @@
+.layout.layout-parent:nth-of-type(n/**/+4):not(.background-ready):not(.e-no-lazyload),
+				.layout.layout-parent:nth-of-type(n/**/+4):not(.background-ready):not(.e-no-lazyload) *{
+					background-image: none !important;
+				}
+@media  screen and (max-height: 1024px) {.layout.layout-parent:nth-of-type(n/**/+3):not(.background-ready):not(.e-no-lazyload),
+					.layout.layout-parent:nth-of-type(n/**/+3):not(.background-ready):not(.e-no-lazyload) *{
+						background-image: none !important;
+					}}
+@media  screen and (max-height: 640px) {.layout.layout-parent:nth-of-type(n/**/+2):not(.background-ready):not(.e-no-lazyload),
+					.layout.layout-parent:nth-of-type(n/**/+2):not(.background-ready):not(.e-no-lazyload) *{
+						background-image: none !important;
+					}}

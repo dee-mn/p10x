@@ -1,0 +1,4 @@
+.surface-widget-image{text-align:center}
+.surface-widget-image a{display:inline-block}
+.surface-widget-image a img[src$=".svg"]{width:48px}
+.surface-widget-image img{display:inline-block;vertical-align:middle}

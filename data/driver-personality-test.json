@@ -1,0 +1,1097 @@
+{
+  "questions": [
+    {
+      "id": 1,
+      "section": "Your Driving Life",
+      "text": "How often do you drive your car?",
+      "answers": [
+        {
+          "text": "Daily",
+          "score": 3
+        },
+        {
+          "text": "A few times a week",
+          "score": 2
+        },
+        {
+          "text": "Rarely (weekends / show car)",
+          "score": 1
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "section": "Your Driving Life",
+      "text": "Where do you usually park your car?",
+      "answers": [
+        {
+          "text": "Garage (covered)",
+          "score": 1
+        },
+        {
+          "text": "Open parking (exposed to sun/rain)",
+          "score": 2
+        },
+        {
+          "text": "Street parking (high risk of scratches/swirls)",
+          "score": 3
+        },
+        {
+          "text": "Half shaded (landed property with half shelter)",
+          "score": 2
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "section": "Your Driving Life",
+      "text": "Describe your car's parking situation. (Choose all that apply)",
+      "allowMultiple": true,
+      "answers": [
+        {
+          "text": "Narrow parking spaces (tight between other cars)",
+          "score": 3
+        },
+        {
+          "text": "Exposed to people passing by (kids, deliveries, motorcycles)",
+          "score": 2
+        },
+        {
+          "text": "Exposed to water splash (sprinklers, pipe leaks, rain runoff)",
+          "score": 2
+        },
+        {
+          "text": "Near industrial area or construction sites with debris",
+          "score": 3
+        },
+        {
+          "text": "Fully shaded indoor parking (mall / condo)",
+          "score": 1
+        },
+        {
+          "text": "Outdoor parking near or under trees",
+          "score": 2
+        },
+        {
+          "text": "None of the above",
+          "score": 1
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "section": "Your Driving Life",
+      "text": "What bothers you most about your car's appearance?",
+      "answers": [
+        {
+          "text": "Swirl marks & light scratches",
+          "score": 3
+        },
+        {
+          "text": "Water spots & stains",
+          "score": 2
+        },
+        {
+          "text": "Rock chips & road debris damage",
+          "score": 2
+        },
+        {
+          "text": "Dirt & dust buildup",
+          "score": 1
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "section": "Your Driving Life",
+      "text": "How often do you wash your car?",
+      "answers": [
+        {
+          "text": "Weekly",
+          "score": 1
+        },
+        {
+          "text": "Bi-weekly (once every 2 weeks)",
+          "score": 2
+        },
+        {
+          "text": "Monthly",
+          "score": 3
+        },
+        {
+          "text": "Only when visibly dirty or before a special occasion",
+          "score": 3
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "section": "Your Driving Life",
+      "text": "How do you view your car?",
+      "answers": [
+        {
+          "text": "\"My pride and joy — I love keeping it perfect.\"",
+          "score": 3
+        },
+        {
+          "text": "\"A valuable asset that needs protection.\"",
+          "score": 2
+        },
+        {
+          "text": "\"A tool to get from A to B.\"",
+          "score": 1
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "section": "Your Driving Life",
+      "text": "How do you react when your car gets a scratch or dent?",
+      "answers": [
+        {
+          "text": "I fix it immediately — it really bothers me.",
+          "score": 3
+        },
+        {
+          "text": "I'll get it fixed eventually, but it's not urgent.",
+          "score": 2
+        },
+        {
+          "text": "As long as it runs fine, I don't care.",
+          "score": 1
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "section": "Your Driving Life",
+      "text": "Do you enjoy cleaning or detailing your car yourself?",
+      "answers": [
+        {
+          "text": "Yes, it's therapeutic!",
+          "score": 1
+        },
+        {
+          "text": "I do it when necessary, but prefer professionals.",
+          "score": 2
+        },
+        {
+          "text": "I avoid it as much as possible.",
+          "score": 3
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "section": "Your Driving Life",
+      "text": "How would you describe your driving style?",
+      "answers": [
+        {
+          "text": "Fast. I enjoy speed and performance.",
+          "score": 3
+        },
+        {
+          "text": "Efficient. I waste no time getting to my destination.",
+          "score": 3
+        },
+        {
+          "text": "Smooth and cautious with occasional speed ups.",
+          "score": 2
+        },
+        {
+          "text": "Mostly normal city driving with stop-and-go traffic.",
+          "score": 1
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "section": "Your Driving Life",
+      "text": "What are your usual driving conditions?",
+      "answers": [
+        {
+          "text": "Gravel roads, construction zones, or off-roading",
+          "score": 3
+        },
+        {
+          "text": "Mostly highway driving",
+          "score": 2
+        },
+        {
+          "text": "Mostly urban, smaller roads",
+          "score": 1
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "section": "Your Driving Life",
+      "text": "How important are first impressions with your car?",
+      "answers": [
+        {
+          "text": "Not at all. Function over looks.",
+          "score": 1
+        },
+        {
+          "text": "Very important — I want it to always look brand new.",
+          "score": 3
+        },
+        {
+          "text": "Somewhat important. Clean is good, but I'm not obsessed.",
+          "score": 2
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "section": "Your Driving Life",
+      "text": "When choosing a car protection service, what matters most?",
+      "answers": [
+        {
+          "text": "Quality & long-term results",
+          "score": 3
+        },
+        {
+          "text": "Convenience & speed",
+          "score": 2
+        },
+        {
+          "text": "Price",
+          "score": 1
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "section": "Your Driving Life",
+      "text": "Are you loyal to specific brands or products for car protection?",
+      "answers": [
+        {
+          "text": "Yes, I trust certain brands for their durability.",
+          "score": 3
+        },
+        {
+          "text": "I'm open to trying new things if reviews are good.",
+          "score": 2
+        },
+        {
+          "text": "I don't care — as long as there's protection done.",
+          "score": 1
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "section": "Your Driving Life",
+      "text": "Do you accept OEM brand products or prefer high-end aftermarket solutions?",
+      "answers": [
+        {
+          "text": "OEM brands are fine, as long as price suits my budget.",
+          "score": 2
+        },
+        {
+          "text": "I trust only well-known & established brands.",
+          "score": 3
+        },
+        {
+          "text": "I just want no warranty issues — I'm not sure about brands.",
+          "score": 1
+        },
+        {
+          "text": "I'm open to anything but I'll do my research first.",
+          "score": 2
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "section": "Your Driving Life",
+      "text": "Is preserving resale value a major concern for you?",
+      "answers": [
+        {
+          "text": "Yes — I plan to sell or trade it later.",
+          "score": 3
+        },
+        {
+          "text": "No — I'll keep it long-term.",
+          "score": 1
+        },
+        {
+          "text": "Unsure — let's see how it goes.",
+          "score": 2
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "section": "Heat & Comfort",
+      "text": "How often does the intense Malaysian sun affect your driving comfort?",
+      "answers": [
+        {
+          "text": "Extremely — my car feels like an oven.",
+          "score": 3
+        },
+        {
+          "text": "Moderately — the AC struggles to cool the cabin.",
+          "score": 2
+        },
+        {
+          "text": "Rarely — I don't notice much.",
+          "score": 1
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "section": "Heat & Comfort",
+      "text": "Are you concerned about UV rays damaging your skin or car interior?",
+      "answers": [
+        {
+          "text": "Yes — I worry about sunburn and dashboard cracking.",
+          "score": 3
+        },
+        {
+          "text": "Somewhat — I know it's a risk but don't think much about it.",
+          "score": 2
+        },
+        {
+          "text": "No — not a main priority for me.",
+          "score": 1
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "section": "Heat & Comfort",
+      "text": "Does your current tint effectively block heat?",
+      "answers": [
+        {
+          "text": "No — it's either too light or old and peeling.",
+          "score": 3
+        },
+        {
+          "text": "Somewhat — better than nothing, but could be improved.",
+          "score": 2
+        },
+        {
+          "text": "Yes — I'm satisfied.",
+          "score": 1
+        },
+        {
+          "text": "This is my first time buying a car.",
+          "score": 2
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "section": "Visibility & Safety",
+      "text": "Do you struggle with glare during sunrise/sunset or heavy rain?",
+      "answers": [
+        {
+          "text": "Yes — it's dangerous, especially on highways.",
+          "score": 3
+        },
+        {
+          "text": "Sometimes — annoying but manageable.",
+          "score": 2
+        },
+        {
+          "text": "No — doesn't bother me.",
+          "score": 1
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "section": "Visibility & Safety",
+      "text": "How important is night driving visibility for you?",
+      "answers": [
+        {
+          "text": "Critical — I drive often at night.",
+          "score": 3
+        },
+        {
+          "text": "Moderate — occasionally.",
+          "score": 2
+        },
+        {
+          "text": "Not important — I rarely drive after dark.",
+          "score": 1
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "section": "Visibility & Safety",
+      "text": "Are you sensitive to tint that causes haze or reduced clarity?",
+      "answers": [
+        {
+          "text": "Yes — if it's blurry or bubbled, it gives me headaches.",
+          "score": 3
+        },
+        {
+          "text": "A little — not perfect but usable.",
+          "score": 2
+        },
+        {
+          "text": "No — it doesn't bother me.",
+          "score": 1
+        }
+      ]
+    },
+    {
+      "id": 22,
+      "section": "Visibility & Safety",
+      "text": "Have you experienced tint with bubbles before?",
+      "answers": [
+        {
+          "text": "Yes — especially on the rear windscreen.",
+          "score": 3
+        },
+        {
+          "text": "A little — maybe just small ones.",
+          "score": 2
+        },
+        {
+          "text": "No — none of my past cars had bubbled tint.",
+          "score": 1
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "section": "Privacy & Security",
+      "text": "Are you concerned about car break-ins or theft?",
+      "answers": [
+        {
+          "text": "Yes — especially in city parking.",
+          "score": 3,
+          "meta": "security"
+        },
+        {
+          "text": "A little — I take precautions.",
+          "score": 2,
+          "meta": "security"
+        },
+        {
+          "text": "No — it doesn't really happen much these days.",
+          "score": 1,
+          "meta": "non-security"
+        }
+      ]
+    },
+    {
+      "id": 24,
+      "section": "Privacy & Security",
+      "text": "Would you prefer a tint that makes it harder to see inside?",
+      "answers": [
+        {
+          "text": "Yes — maximum privacy.",
+          "score": 3,
+          "meta": "dark"
+        },
+        {
+          "text": "Moderate — some darkness is fine.",
+          "score": 2,
+          "meta": "grey"
+        },
+        {
+          "text": "No — I like it clear.",
+          "score": 1,
+          "meta": "jpj"
+        }
+      ]
+    },
+    {
+      "id": 25,
+      "section": "Brand & Quality",
+      "text": "On a scale of 1–10, do you prefer a well-known branded tint or would you accept an OEM brand?",
+      "answers": [
+        {
+          "text": "1–3: OEM brand is totally fine for me.",
+          "score": 1
+        },
+        {
+          "text": "4–7: I'd consider either option.",
+          "score": 2
+        },
+        {
+          "text": "8–10: I strongly prefer a famous, well-established brand.",
+          "score": 3
+        }
+      ]
+    }
+  ],
+  "celebrities": [
+    {
+      "id": "kim_kardashian",
+      "name": "Kim Kardashian",
+      "category": "Business Mogul",
+      "categoryColor": "#e879f9",
+      "categoryBg": "#3b0764",
+      "nationality": "American",
+      "personalityTraits": [
+        "Perfectionist",
+        "Detail-Obsessed",
+        "Luxury-Driven",
+        "Flawless"
+      ],
+      "description": "You treat your car like a prized possession — every fingerprint bothers you. Like Kim, you demand flawless perfection and settle for nothing less than the absolute best protection.",
+      "carPersonality": "Every panel spotless, every detail immaculate",
+      "ppfProfile": "full",
+      "protectionScore": "high",
+      "tintGrade": "high",
+      "gridIndex": 0
+    },
+    {
+      "id": "cristiano_ronaldo",
+      "name": "Cristiano Ronaldo",
+      "category": "Sports Legend",
+      "categoryColor": "#22d3ee",
+      "categoryBg": "#0c4a6e",
+      "nationality": "Portuguese",
+      "personalityTraits": [
+        "Elite",
+        "Performance-Driven",
+        "Disciplined",
+        "Status-Conscious"
+      ],
+      "description": "You go all-in on everything — including your car. Like CR7, you invest in the best, train hard for peak results, and refuse to let your prized asset degrade.",
+      "carPersonality": "Only the elite package will do — no compromises",
+      "ppfProfile": "full",
+      "protectionScore": "high",
+      "tintGrade": "high",
+      "gridIndex": 1
+    },
+    {
+      "id": "david_beckham",
+      "name": "David Beckham",
+      "category": "Style Icon",
+      "categoryColor": "#a78bfa",
+      "categoryBg": "#2e1065",
+      "nationality": "British",
+      "personalityTraits": [
+        "Stylish",
+        "Meticulous",
+        "Sophisticated",
+        "Detail-Focused"
+      ],
+      "description": "You have an impeccable sense of style and your car reflects it. Like Beckham, you're a collector at heart who values presentation as much as performance.",
+      "carPersonality": "A showroom-worthy finish at all times",
+      "ppfProfile": "full",
+      "protectionScore": "high",
+      "tintGrade": "high",
+      "gridIndex": 2
+    },
+    {
+      "id": "jay_chou",
+      "name": "Jay Chou",
+      "category": "Music Legend",
+      "categoryColor": "#fbbf24",
+      "categoryBg": "#451a03",
+      "nationality": "Taiwanese",
+      "personalityTraits": [
+        "Passionate Collector",
+        "Sentimental",
+        "Artistic",
+        "Classic-Loving"
+      ],
+      "description": "Your car is more than transport — it's an extension of your identity. Like Jay Chou, you're deeply passionate about every detail and protect your prized cars like irreplaceable art.",
+      "carPersonality": "Obsessive care for a car that tells your story",
+      "ppfProfile": "full",
+      "protectionScore": "high",
+      "tintGrade": "high",
+      "gridIndex": 3
+    },
+    {
+      "id": "beyonce",
+      "name": "Beyoncé",
+      "category": "Global Pop Icon",
+      "categoryColor": "#facc15",
+      "categoryBg": "#3b2900",
+      "nationality": "American",
+      "personalityTraits": [
+        "Perfectionist",
+        "Commanding",
+        "Strategic",
+        "High-Standards"
+      ],
+      "description": "You run a tight ship — from your schedule to your car. Like Beyoncé, you're a perfectionist who ensures everything is flawless and always performs at the highest level.",
+      "carPersonality": "Strategically maintained, always impressive",
+      "ppfProfile": "full",
+      "protectionScore": "high",
+      "tintGrade": "medium",
+      "gridIndex": 4
+    },
+    {
+      "id": "elon_musk",
+      "name": "Elon Musk",
+      "category": "Tech Visionary",
+      "categoryColor": "#34d399",
+      "categoryBg": "#064e3b",
+      "nationality": "American",
+      "personalityTraits": [
+        "Innovative",
+        "Forward-Thinking",
+        "Quality-Obsessed",
+        "Data-Driven"
+      ],
+      "description": "You protect your tech investment with maximum coverage. Like Elon, you see your car as a depreciating asset worth defending — and you choose science over trends.",
+      "carPersonality": "Maximum protection through innovation and logic",
+      "ppfProfile": "full",
+      "protectionScore": "high",
+      "tintGrade": "medium",
+      "gridIndex": 5
+    },
+    {
+      "id": "lebron_james",
+      "name": "LeBron James",
+      "category": "Sports Icon",
+      "categoryColor": "#f97316",
+      "categoryBg": "#431407",
+      "nationality": "American",
+      "personalityTraits": [
+        "Champion",
+        "Investment-Minded",
+        "Powerful",
+        "Long-Game Thinker"
+      ],
+      "description": "You play the long game. Like LeBron, you invest big upfront because you know that protecting your asset now pays off for years. Your car is part of your empire.",
+      "carPersonality": "Protecting the investment like a championship trophy",
+      "ppfProfile": "full",
+      "protectionScore": "high",
+      "tintGrade": "medium",
+      "gridIndex": 6
+    },
+    {
+      "id": "taylor_swift",
+      "name": "Taylor Swift",
+      "category": "Global Pop Star",
+      "categoryColor": "#f0abfc",
+      "categoryBg": "#4a044e",
+      "nationality": "American",
+      "personalityTraits": [
+        "Curated",
+        "Privacy-Conscious",
+        "Strategic",
+        "Image-Aware"
+      ],
+      "description": "You curate every detail with purpose. Like Taylor, you're image-conscious and privacy-savvy — smart front-line protection plus premium tint keeps things on your terms.",
+      "carPersonality": "Strategic protection with a perfectly polished image",
+      "ppfProfile": "hybrid",
+      "protectionScore": "medium",
+      "tintGrade": "high",
+      "gridIndex": 7
+    },
+    {
+      "id": "rihanna",
+      "name": "Rihanna",
+      "category": "Fashion Mogul",
+      "categoryColor": "#fb7185",
+      "categoryBg": "#4c0519",
+      "nationality": "Barbadian",
+      "personalityTraits": [
+        "Bold",
+        "Business-Savvy",
+        "Fearless",
+        "Trend-Setting"
+      ],
+      "description": "You protect what matters and look amazing doing it. Like Rihanna, you're bold and business-smart — you know exactly where to invest for maximum impact.",
+      "carPersonality": "Smart protection that turns heads",
+      "ppfProfile": "hybrid",
+      "protectionScore": "medium",
+      "tintGrade": "high",
+      "gridIndex": 8
+    },
+    {
+      "id": "jackie_chan",
+      "name": "Jackie Chan",
+      "category": "Action Legend",
+      "categoryColor": "#60a5fa",
+      "categoryBg": "#1e3a5f",
+      "nationality": "Hong Kong",
+      "personalityTraits": [
+        "Enthusiast",
+        "Generous",
+        "Experienced",
+        "Adventure-Loving"
+      ],
+      "description": "You have a deep love for cars that's hard to explain. Like Jackie Chan — a known car gifter and enthusiast — you protect your fleet with solid coverage and enjoy the ride.",
+      "carPersonality": "A true car enthusiast who protects what he loves",
+      "ppfProfile": "hybrid",
+      "protectionScore": "medium",
+      "tintGrade": "high",
+      "gridIndex": 9
+    },
+    {
+      "id": "jungkook",
+      "name": "Jungkook",
+      "category": "K-Pop Icon",
+      "categoryColor": "#818cf8",
+      "categoryBg": "#1e1b4b",
+      "nationality": "South Korean",
+      "personalityTraits": [
+        "Meticulous",
+        "Stylish",
+        "Dedicated",
+        "Perfectionist"
+      ],
+      "description": "You're the golden standard of dedication. Like Jungkook, everything you do reflects effort and precision — your car is always pristine and protected at the right level.",
+      "carPersonality": "Meticulous care with an eye for perfection",
+      "ppfProfile": "hybrid",
+      "protectionScore": "medium",
+      "tintGrade": "high",
+      "gridIndex": 10
+    },
+    {
+      "id": "tom_cruise",
+      "name": "Tom Cruise",
+      "category": "Hollywood Legend",
+      "categoryColor": "#ef4444",
+      "categoryBg": "#7f1d1d",
+      "nationality": "American",
+      "personalityTraits": [
+        "Charismatic",
+        "Practical",
+        "Disciplined",
+        "Reliable"
+      ],
+      "description": "You're action-oriented and know what matters. Like Tom, you're charismatic yet practical — smart about protecting your investments while keeping life moving at full throttle.",
+      "carPersonality": "Action-ready protection with effortless cool",
+      "ppfProfile": "hybrid",
+      "protectionScore": "medium",
+      "tintGrade": "medium",
+      "gridIndex": 11
+    },
+    {
+      "id": "messi",
+      "name": "Lionel Messi",
+      "category": "Football Legend",
+      "categoryColor": "#a3e635",
+      "categoryBg": "#1a2e05",
+      "nationality": "Argentine",
+      "personalityTraits": [
+        "Elegant",
+        "Precise",
+        "Consistent",
+        "Graceful"
+      ],
+      "description": "You take care of things with quiet precision. Like Messi, you don't need to shout about it — your approach is elegant, methodical, and delivers consistently excellent results.",
+      "carPersonality": "Precision care with effortless elegance",
+      "ppfProfile": "hybrid",
+      "protectionScore": "medium",
+      "tintGrade": "medium",
+      "gridIndex": 12
+    },
+    {
+      "id": "lee_chong_wei",
+      "name": "Lee Chong Wei",
+      "category": "Malaysia's Pride",
+      "categoryColor": "#38bdf8",
+      "categoryBg": "#0c4a6e",
+      "nationality": "Malaysian",
+      "personalityTraits": [
+        "Disciplined",
+        "Proud",
+        "Resilient",
+        "Dedicated"
+      ],
+      "description": "You're disciplined and fiercely proud of what you own. Like Dato' Lee, you represent excellence and hold your standards high — protecting your car is just part of who you are.",
+      "carPersonality": "Disciplined protection with national pride",
+      "ppfProfile": "hybrid",
+      "protectionScore": "medium",
+      "tintGrade": "medium",
+      "gridIndex": 13
+    },
+    {
+      "id": "justin_bieber",
+      "name": "Justin Bieber",
+      "category": "Pop Star",
+      "categoryColor": "#c084fc",
+      "categoryBg": "#3b0764",
+      "nationality": "Canadian",
+      "personalityTraits": [
+        "Trendy",
+        "Custom-Loving",
+        "Active",
+        "Young at Heart"
+      ],
+      "description": "You love customising your ride and keeping it fresh. Like Bieber, you're into the culture around cars — smart front protection keeps your custom-wrapped gem looking mint.",
+      "carPersonality": "Trendy and fresh with smart protection",
+      "ppfProfile": "hybrid",
+      "protectionScore": "medium",
+      "tintGrade": "medium",
+      "gridIndex": 14
+    },
+    {
+      "id": "priyanka_chopra",
+      "name": "Priyanka Chopra",
+      "category": "Global Star",
+      "categoryColor": "#f472b6",
+      "categoryBg": "#500724",
+      "nationality": "Indian",
+      "personalityTraits": [
+        "Smart",
+        "Sophisticated",
+        "Ambitious",
+        "World-Class"
+      ],
+      "description": "You're a global thinker with high standards. Like Priyanka, you invest in quality strategically — solid protection where it counts, with the elegance to match your lifestyle.",
+      "carPersonality": "Smart, sophisticated, world-class care",
+      "ppfProfile": "hybrid",
+      "protectionScore": "medium",
+      "tintGrade": "medium",
+      "gridIndex": 15
+    },
+    {
+      "id": "ryan_reynolds",
+      "name": "Ryan Reynolds",
+      "category": "Hollywood Actor",
+      "categoryColor": "#fb923c",
+      "categoryBg": "#431407",
+      "nationality": "Canadian",
+      "personalityTraits": [
+        "Witty",
+        "Practical",
+        "No-Nonsense",
+        "Smart Investor"
+      ],
+      "description": "You're too smart to overpay and too clever to underprepare. Like Ryan Reynolds, you balance humour and practicality — protected where it matters, effortless everywhere else.",
+      "carPersonality": "Smart, no-nonsense protection with a side of charm",
+      "ppfProfile": "hybrid",
+      "protectionScore": "medium",
+      "tintGrade": "standard",
+      "gridIndex": 16
+    },
+    {
+      "id": "the_rock",
+      "name": "Dwayne Johnson",
+      "category": "Action Star",
+      "categoryColor": "#fbbf24",
+      "categoryBg": "#1c1917",
+      "nationality": "American",
+      "personalityTraits": [
+        "Power",
+        "Practical",
+        "Hard-Working",
+        "No-Fuss"
+      ],
+      "description": "You work hard and expect your car to keep up. Like The Rock, you want solid, reliable protection without the fuss — built tough and ready for whatever the day brings.",
+      "carPersonality": "Hard-wearing protection for a hard-working lifestyle",
+      "ppfProfile": "hybrid",
+      "protectionScore": "medium",
+      "tintGrade": "standard",
+      "gridIndex": 17
+    },
+    {
+      "id": "keanu_reeves",
+      "name": "Keanu Reeves",
+      "category": "Hollywood Icon",
+      "categoryColor": "#94a3b8",
+      "categoryBg": "#0f172a",
+      "nationality": "Canadian",
+      "personalityTraits": [
+        "Calm",
+        "Genuine",
+        "Down-to-Earth",
+        "Unpretentious"
+      ],
+      "description": "You're chill about it all — no drama, no fuss, just solid choices. Like Keanu, you're genuinely cool without trying, and your car care reflects that grounded simplicity.",
+      "carPersonality": "Effortlessly chill with sensible protection",
+      "ppfProfile": "hybrid",
+      "protectionScore": "medium",
+      "tintGrade": "standard",
+      "gridIndex": 18
+    },
+    {
+      "id": "angelina_jolie",
+      "name": "Angelina Jolie",
+      "category": "Hollywood Icon",
+      "categoryColor": "#e879f9",
+      "categoryBg": "#2e1065",
+      "nationality": "American",
+      "personalityTraits": [
+        "Sophisticated",
+        "Bold",
+        "Iconic",
+        "Glamorous"
+      ],
+      "description": "Your car is a statement of elegance. Like Angelina, you prioritise that timeless, sophisticated appearance with dark mysterious tint. Smart ceramic coat maintains the luxury appeal.",
+      "carPersonality": "Iconic elegance with minimal fuss",
+      "ppfProfile": "ceramic",
+      "protectionScore": "low",
+      "tintGrade": "high",
+      "gridIndex": 19
+    },
+    {
+      "id": "adele",
+      "name": "Adele",
+      "category": "Music Icon",
+      "categoryColor": "#f472b6",
+      "categoryBg": "#500724",
+      "nationality": "British",
+      "personalityTraits": [
+        "Soulful",
+        "Timeless",
+        "Powerful",
+        "Refined"
+      ],
+      "description": "Your car reflects your refined taste. Like Adele, you choose quality and substance over flash — a smart ceramic coat with balanced tint keeps your car looking effortlessly sophisticated.",
+      "carPersonality": "Refined protection with timeless elegance",
+      "ppfProfile": "ceramic",
+      "protectionScore": "low",
+      "tintGrade": "high",
+      "gridIndex": 20
+    },
+    {
+      "id": "mark_zuckerberg",
+      "name": "Mark Zuckerberg",
+      "category": "Tech Billionaire",
+      "categoryColor": "#60a5fa",
+      "categoryBg": "#1e3a8a",
+      "nationality": "American",
+      "personalityTraits": [
+        "Minimalist",
+        "Logical",
+        "Efficient",
+        "Practical"
+      ],
+      "description": "You optimise for function, not status. Like Zuckerberg and his same-grey-shirt wardrobe, you eliminate decisions and choose the most efficient protection package available.",
+      "carPersonality": "Minimal, logical, no unnecessary features",
+      "ppfProfile": "ceramic",
+      "protectionScore": "low",
+      "tintGrade": "medium",
+      "gridIndex": 21
+    },
+    {
+      "id": "billie_eilish",
+      "name": "Billie Eilish",
+      "category": "Alternative Pop Star",
+      "categoryColor": "#4ade80",
+      "categoryBg": "#052e16",
+      "nationality": "American",
+      "personalityTraits": [
+        "Eco-Conscious",
+        "Anti-Excess",
+        "Authentic",
+        "Unconventional"
+      ],
+      "description": "You keep it real and skip the excess. Like Billie, you're eco-minded and genuine — a quality ceramic coat with moderate tint is all you need. No waste, no fuss.",
+      "carPersonality": "Eco-friendly, authentic, no-excess care",
+      "ppfProfile": "ceramic",
+      "protectionScore": "low",
+      "tintGrade": "medium",
+      "gridIndex": 22
+    },
+    {
+      "id": "mbappe",
+      "name": "Kylian Mbappé",
+      "category": "Football Superstar",
+      "categoryColor": "#facc15",
+      "categoryBg": "#1c1917",
+      "nationality": "French",
+      "personalityTraits": [
+        "Dynamic",
+        "Ambitious",
+        "Energetic",
+        "Modern"
+      ],
+      "description": "You live for performance and forward motion. Like Mbappé, you're driven and dynamic — your car gets smart, efficient protection that keeps pace with your lifestyle.",
+      "carPersonality": "Dynamic performance with modern protection",
+      "ppfProfile": "ceramic",
+      "protectionScore": "low",
+      "tintGrade": "medium",
+      "gridIndex": 23
+    },
+    {
+      "id": "gordon_ramsay",
+      "name": "Gordon Ramsay",
+      "category": "Celebrity Chef",
+      "categoryColor": "#f97316",
+      "categoryBg": "#431407",
+      "nationality": "British",
+      "personalityTraits": [
+        "No-Nonsense",
+        "High Standards",
+        "Efficient",
+        "Straight-Talking"
+      ],
+      "description": "You don't mess around. Like Gordon, you have sky-high standards but zero patience for unnecessary complications — get the job done right, efficiently, first time.",
+      "carPersonality": "No-nonsense execution with high standards",
+      "ppfProfile": "ceramic",
+      "protectionScore": "low",
+      "tintGrade": "standard",
+      "gridIndex": 24
+    }
+  ],
+  "ppfPackages": {
+    "full": {
+      "title": "Full Car PPF",
+      "subtitle": "Maximum Protection Package",
+      "description": "Ideal for perfectionists, luxury car owners, and high-mileage daily drivers who demand chip-proof protection on every panel.",
+      "includes": [
+        "Full body Paint Protection Film",
+        "Interior coating",
+        "Windscreen coating",
+        "Headlight protection"
+      ],
+      "badge": "Premium",
+      "color": "#00d4ff"
+    },
+    "hybrid": {
+      "title": "Hybrid PPF Package",
+      "subtitle": "Full Front PPF + Ceramic Coating",
+      "description": "The sweet spot for daily drivers who want both shine and protection with moderate upkeep. Front panels get the strongest defence, the rest gets ceramic shine.",
+      "includes": [
+        "Full front PPF (bonnet, fenders, bumper, mirrors)",
+        "Ceramic coating on remaining panels",
+        "Wheel arch protection",
+        "Door edge guards"
+      ],
+      "badge": "Popular",
+      "color": "#7c3aed"
+    },
+    "ceramic": {
+      "title": "Ceramic Coating",
+      "subtitle": "Smart Protection Package",
+      "description": "Perfect for budget-conscious owners who still want top-tier protection and that deep, glossy shine. Low maintenance and high impact.",
+      "includes": [
+        "Full body ceramic coating",
+        "3–4 month maintenance schedule",
+        "Hydrophobic protection",
+        "UV & oxidation shield"
+      ],
+      "badge": "Great Value",
+      "color": "#10b981"
+    }
+  },
+  "tintPackages": {
+    "high": {
+      "title": "High Grade Window Tint",
+      "description": "Premium nano-ceramic or carbon series tint with superior heat rejection, crystal clarity, and maximum UV protection.",
+      "heatRejection": "Up to 98% IR rejection",
+      "uvBlock": "99% UV protection"
+    },
+    "medium": {
+      "title": "Medium Grade Window Tint",
+      "description": "Excellent performance carbon tint that balances heat rejection, visibility, and value. A top choice for most Malaysian drivers.",
+      "heatRejection": "Up to 95% IR rejection",
+      "uvBlock": "99% UV protection"
+    },
+    "standard": {
+      "title": "Standard Grade Window Tint",
+      "description": "Reliable base-level tint that blocks heat and UV while keeping costs sensible. Great for light users and secondary vehicles.",
+      "heatRejection": "Up to 65% IR rejection",
+      "uvBlock": "95% UV protection"
+    }
+  },
+  "referrers": [
+    "Kelvin Cheen",
+    "Kelvin Lee",
+    "LC",
+    "Jareer",
+    "Fabian",
+    "Others"
+  ]
+}
