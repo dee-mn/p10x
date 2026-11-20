@@ -9,6 +9,8 @@
 
 ## Current state
 
+- **Header search (20 November)** — The desktop and mobile icons open a full-screen search with photo shortcuts and live results. Pagefind indexes all 32 canonical routes after each build. Source and export checks passed. Chromium checks covered 320–1440 px, touch, keyboard, reduced motion, focus restoration, pagination and retry. Confirm the search on the production host after deployment.
+
 - **Homepage PageSpeed and search metadata (20 November)** — The [SEO review](SEO-AUDIT.md) records both report baselines, measured CSS and font savings, and the follow-up measurement after deployment.
 
 - **Source maintenance (20 November)** — Pushed five cleanup commits to `main`, from `0ec590f` through `4b5a6bd`, on top of PPF video commit `0d3f93d`. They stabilize build output, share the 20 article comment forms and mail handling, consolidate training styles, and remove unused animation state. Photo commit `67d302e` remains separate.

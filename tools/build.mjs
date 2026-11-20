@@ -1,5 +1,6 @@
 await import('./sync-layout.mjs');
 await import('./optimize-pages.mjs');
+import { buildSearch } from './build-search.mjs';
 import { mkdir, cp, rm, readFile } from 'node:fs/promises';
 await rm('dist', { recursive: true, force: true });
 await mkdir('dist', { recursive: true });
@@ -26,4 +27,8 @@ for (const { route } of pages) {
   if (route === '/') continue;
   await cp(route.slice(1), `dist/${route.slice(1)}`, { recursive: true });
 }
+await buildSearch('dist');
+// Root hosting uses the same generated files as the export.
+await rm('pagefind', { recursive: true, force: true });
+await cp('dist/pagefind', 'pagefind', { recursive: true });
 console.log(`Exported ${pages.length} pages and local assets to dist/.`);

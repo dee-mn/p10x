@@ -51,6 +51,8 @@ npm run build
 P10X_CHECK_ROOT=dist npm run check
 ```
 
+The header search uses Pagefind. Both `npm run dev` and `npm run build` index the main content of the pages in `docs/routes.json`. The build writes the static search bundle to `dist/pagefind/` and copies it to `pagefind/` for sites served from the repository root. Include the regenerated bundle when publishing content changes.
+
 The build updates shared layout and content-hashed styles. Review the generated diff and test affected desktop/mobile behaviour as needed. PHP forms and host configuration require their own verification.
 
 **Current implementation baseline:** 32 registered routes at the last reviewed checkpoint (14 November 2026). See [current tasks](docs/CURRENT-TASKS.md) for the latest verified status and outstanding checks.

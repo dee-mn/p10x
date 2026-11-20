@@ -2,6 +2,10 @@
 
 Updated 20 November 2026. Active branch: `main`.
 
+## Full-screen header search — 20 November 2026
+
+Added a native search dialog to the shared header, with a curtain reveal, photo links and highlighted results. Pagefind 1.6.0 builds a static index from the registered routes. Its runtime loads on the first query. The root and export bundles matched, and a repeat build reproduced the same index. Browser checks covered both header layouts, the desktop sticky header, typing, empty results, loading more, retrying after a failed fragment request, following a result, closing with Escape, returning focus and preserving the mobile homepage scroll lock. Production verification is pending.
+
 ## Homepage performance and search metadata — 20 November 2026
 
 All 32 pages now have distinct search descriptions. The homepage reuses the preloaded Inter font, loads less shared CSS and avoids unnecessary particle work. The desktop home link and arrow-bearing text links retain meaningful accessible names. All 429 existing image elements and all image assets were preserved. See the [SEO review](SEO-AUDIT.md) for the original mobile and desktop measurements and build-size comparison.

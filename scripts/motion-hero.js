@@ -640,7 +640,7 @@
       locked &&
       target instanceof Element &&
       !hero.contains(target) &&
-      !target.closest('header,#site-menu')
+      !target.closest('header,#site-menu,#site-search')
     ) {
       leaving = true;
       setLocked(false);
