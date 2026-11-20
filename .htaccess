@@ -1,31 +1,44 @@
 # Source-only drafts on hosts still serving the repository root.
 RedirectMatch 404 ^/src/content(?:/|$)
 
+RewriteEngine On
+# Handle bare legacy directories before DirectorySlash can add an extra hop.
+RewriteOptions AllowNoSlash
+
 # Preserve links to the former service URL.
-RedirectMatch 301 ^/tinting/?$ /automotive-window-tint/
-RedirectMatch 301 ^/(window-film|window-tint)/?$ /architecture-tint/
+RewriteRule ^tinting(?:/index\.html|/)?$ /automotive-window-tint/ [R=301,L]
+RewriteRule ^(window-film|window-tint)(?:/index\.html|/)?$ /architecture-tint/ [R=301,L]
 
 # Preserve published blog URLs, including direct index.html bookmarks.
-RedirectMatch 301 ^/ppf-cost-malaysia(?:/index\.html|/)?$ /insights/ppf-cost-malaysia/
-RedirectMatch 301 ^/tesla-ppf(?:/index\.html|/)?$ /insights/tesla-ppf/
-RedirectMatch 301 ^/nano-ceramic-tint(?:/index\.html|/)?$ /insights/nano-ceramic-tint/
-RedirectMatch 301 ^/car-coating-price(?:/index\.html|/)?$ /insights/car-coating-price/
-RedirectMatch 301 ^/car-coating(?:/index\.html|/)?$ /insights/car-coating/
-RedirectMatch 301 ^/ceramic-coating(?:/index\.html|/)?$ /insights/ceramic-coating/
-RedirectMatch 301 ^/zeekr-7x-ppf(?:/index\.html|/)?$ /insights/zeekr-7x-ppf/
-RedirectMatch 301 ^/best-car-tint-malaysia(?:/index\.html|/)?$ /insights/best-car-tint-malaysia/
-RedirectMatch 301 ^/how-long-does-car-window-tinting-take(?:/index\.html|/)?$ /insights/how-long-does-car-window-tinting-take/
-RedirectMatch 301 ^/types-of-car-tint(?:/index\.html|/)?$ /insights/types-of-car-tint/
-RedirectMatch 301 ^/jpj-tinted-rules-specification(?:/index\.html|/)?$ /insights/jpj-tinted-rules-specification/
-RedirectMatch 301 ^/car-tint-price-malaysia(?:/index\.html|/)?$ /insights/car-tint-price-malaysia/
-RedirectMatch 301 ^/ppf-thickness(?:/index\.html|/)?$ /insights/ppf-thickness/
-RedirectMatch 301 ^/car-tint-malaysia(?:/index\.html|/)?$ /insights/car-tint-malaysia/
-RedirectMatch 301 ^/tpu-tph-pvc-ppf-film(?:/index\.html|/)?$ /insights/tpu-tph-pvc-ppf-film/
-RedirectMatch 301 ^/how-to-install-ppf(?:/index\.html|/)?$ /insights/how-to-install-ppf/
-RedirectMatch 301 ^/pre-cut-vs-hand-cut-ppf-guide(?:/index\.html|/)?$ /insights/pre-cut-vs-hand-cut-ppf-guide/
-RedirectMatch 301 ^/best-ppf-film-malaysia(?:/index\.html|/)?$ /insights/best-ppf-film-malaysia/
-RedirectMatch 301 ^/ppf-film-types(?:/index\.html|/)?$ /insights/ppf-film-types/
-RedirectMatch 301 ^/is-ppf-worth-it(?:/index\.html|/)?$ /insights/is-ppf-worth-it/
+RewriteRule ^ppf-cost-malaysia(?:/index\.html|/)?$ /insights/ppf-cost-malaysia/ [R=301,L]
+RewriteRule ^tesla-ppf(?:/index\.html|/)?$ /insights/tesla-ppf/ [R=301,L]
+RewriteRule ^nano-ceramic-tint(?:/index\.html|/)?$ /insights/nano-ceramic-tint/ [R=301,L]
+RewriteRule ^car-coating-price(?:/index\.html|/)?$ /insights/car-coating-price/ [R=301,L]
+RewriteRule ^car-coating(?:/index\.html|/)?$ /insights/car-coating/ [R=301,L]
+RewriteRule ^ceramic-coating(?:/index\.html|/)?$ /insights/ceramic-coating/ [R=301,L]
+RewriteRule ^zeekr-7x-ppf(?:/index\.html|/)?$ /insights/zeekr-7x-ppf/ [R=301,L]
+RewriteRule ^best-car-tint-malaysia(?:/index\.html|/)?$ /insights/best-car-tint-malaysia/ [R=301,L]
+RewriteRule ^how-long-does-car-window-tinting-take(?:/index\.html|/)?$ /insights/how-long-does-car-window-tinting-take/ [R=301,L]
+RewriteRule ^types-of-car-tint(?:/index\.html|/)?$ /insights/types-of-car-tint/ [R=301,L]
+RewriteRule ^jpj-tinted-rules-specification(?:/index\.html|/)?$ /insights/jpj-tinted-rules-specification/ [R=301,L]
+RewriteRule ^car-tint-price-malaysia(?:/index\.html|/)?$ /insights/car-tint-price-malaysia/ [R=301,L]
+RewriteRule ^ppf-thickness(?:/index\.html|/)?$ /insights/ppf-thickness/ [R=301,L]
+RewriteRule ^car-tint-malaysia(?:/index\.html|/)?$ /insights/car-tint-malaysia/ [R=301,L]
+RewriteRule ^tpu-tph-pvc-ppf-film(?:/index\.html|/)?$ /insights/tpu-tph-pvc-ppf-film/ [R=301,L]
+RewriteRule ^how-to-install-ppf(?:/index\.html|/)?$ /insights/how-to-install-ppf/ [R=301,L]
+RewriteRule ^pre-cut-vs-hand-cut-ppf-guide(?:/index\.html|/)?$ /insights/pre-cut-vs-hand-cut-ppf-guide/ [R=301,L]
+RewriteRule ^best-ppf-film-malaysia(?:/index\.html|/)?$ /insights/best-ppf-film-malaysia/ [R=301,L]
+RewriteRule ^ppf-film-types(?:/index\.html|/)?$ /insights/ppf-film-types/ [R=301,L]
+RewriteRule ^is-ppf-worth-it(?:/index\.html|/)?$ /insights/is-ppf-worth-it/ [R=301,L]
+
+# Redirect an explicit index.html request, never an internal DirectoryIndex lookup.
+RewriteCond %{THE_REQUEST} \s/+[^?\s]*index\.html[?\s]
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule ^((?:[a-z0-9-]+/)*)index\.html$ /$1 [R=301,L]
+
+# Only directory-style pages get a slash. Files and unknown paths pass through.
+RewriteCond %{REQUEST_FILENAME}/index.html -f
+RewriteRule ^([a-z0-9-]+(?:/[a-z0-9-]+)*)$ /$1/ [R=301,L]
 
 # Text compression is lossless; original photo and video files are untouched.
 <IfModule mod_deflate.c>
