@@ -42,8 +42,13 @@ The route, asset, font/image-dimension, article and stylesheet manifests remain 
 
 Use Node 22. Run `npm ci`, then `npm run dev` for a built preview with Pagefind and simulated form responses. After editing, run `npm run build && npm run check`.
 
-The blog index lives at `/insights/`. Put article bodies in `src/fragments/insights/<slug>.html` and register their `/insights/<slug>/` URLs in the route and article manifests.
-
 Edit page bodies in `src/fragments/`, metadata and script order in `src/data/pages.json`, and shared markup in `components/`. Astro generates the URLs in `docs/routes.json`. The build generates optimized CSS and Pagefind in `dist/` and copies original media, redirects and PHP handlers into the export.
 
 GitHub Actions validates pushes to `main` and publishes the built files to `plesk-deploy`. In Plesk Git, select that branch and deploy its root to the site's existing document root. Keep the existing PHP handler and mail configuration. Until the branch is switched, a host tracking `main` serves its previous HTML snapshot. Future edits belong in the Astro sources.
+
+### Writing an Insights post
+
+1. Copy the [article template](src/fragments/insights/_template.html.example) into the same folder as `your-article-slug.html`. Fill in the headline, author, date and body. The template itself stays outside the published site.
+2. When the article is ready, add `/insights/your-article-slug/` to `docs/routes.json`, `src/data/pages.json`, `docs/style-manifest.json` and `sitemap.xml`. Use an existing article as the example for scripts and styles, and set the new article’s own SEO title, description and social image.
+3. Add the published article to `docs/article-index.json` in date order and add its card to `src/fragments/insights.html`. The homepage uses the first six index entries. Pagefind picks up the new route on the next build.
+4. Run `npm run build && npm run check` and preview the article before pushing.
