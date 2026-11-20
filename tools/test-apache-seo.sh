@@ -3,6 +3,8 @@ set -euo pipefail
 root=$(mktemp -d)
 pid=''
 trap 'if [[ -n "$pid" ]]; then kill "$pid" 2>/dev/null || true; fi; rm -rf "$root"' EXIT
+# Serve the export in isolation so Apache cannot inherit the source checkout's .htaccess.
+cp -a --reflink=auto dist "$root/site"
 cat > "$root/httpd.conf" <<EOF
 ServerRoot "$root"
 PidFile "$root/server.pid"
@@ -14,9 +16,13 @@ LoadModule authz_core_module /usr/lib/apache2/modules/mod_authz_core.so
 LoadModule dir_module /usr/lib/apache2/modules/mod_dir.so
 LoadModule alias_module /usr/lib/apache2/modules/mod_alias.so
 LoadModule rewrite_module /usr/lib/apache2/modules/mod_rewrite.so
-DocumentRoot "$PWD/dist"
+DocumentRoot "$root/site"
 DirectoryIndex index.html
-<Directory "$PWD/dist">
+<Directory "/">
+  AllowOverride None
+  Require all denied
+</Directory>
+<Directory "$root/site">
   Options FollowSymLinks
   AllowOverride All
   Require all granted
