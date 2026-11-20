@@ -9,7 +9,9 @@
 
 ## Current state
 
-- **Maintenance follow-up (20 November):** Started at `0d3f93d` with the PPF hero video. Fixed machine-readable homepage dates drifting across timezones and repeated writes of unchanged layout, stylesheet bundles and their manifest. The Malaysia-time build and 32-route source/export checks passed. The enquiry and comment endpoints now share their delivery code and the browser submission handler. The 20 matching article forms have a shared component. Local PHP transport and desktop/mobile browser checks passed. The contact response element was already hidden on `0d3f93d`; its text updates but is invisible. Final repeat-build checks follow. The pending photo commit `67d302e` is separate.
+- **Source maintenance (20 November)** — Pushed five cleanup commits to `main`, from `0ec590f` through `4b5a6bd`, on top of PPF video commit `0d3f93d`. They stabilize build output, share the 20 article comment forms and mail handling, consolidate training styles, and remove unused animation state. Photo commit `67d302e` remains separate.
+- **Verification** — Source and export checks passed on 32 routes. Builds in Kuala Lumpur and Los Angeles timezones produced 401 byte-identical export files. The second build did not rewrite any tracked file. Driver scoring, PHP lint, mocked submissions and browser checks passed. See [the checkpoint](PROJECT-CHECKPOINT.md) for coverage.
+- **Open form issue** — On the contact page the response element stays hidden after its text updates. Reproduced with both the original and cleaned-up scripts. Live mail delivery and production deployment are unverified.
 
 - **Source cleanup (20 November):** Formatted 89 first-party source files. Shared layout and homepage card generation now preserve indentation across builds. The generated stylesheets match the prior release byte for byte. See the [checkpoint](PROJECT-CHECKPOINT.md) for checks.
 

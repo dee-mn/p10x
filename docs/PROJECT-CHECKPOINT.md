@@ -2,6 +2,12 @@
 
 Updated 20 November 2026. Active branch: `main`.
 
+## First-party source maintenance — 20 November 2026
+
+Five commits on `main` follow the formatting pass and PPF video update. `0ec590f` fixes timezone-dependent article dates and redundant build writes. `e3f7c9d` shares mail dispatch and per-form throttling. `fe38365` consolidates article form markup and browser submission handling. `29e49d5` removes unused controller state and arguments. `4b5a6bd` consolidates training styles and regenerates the affected bundle. All media match `0d3f93d`. Photo edits in `67d302e` are pending separately.
+
+Both builds passed the 32-route checks. The second build left tracked files untouched and reproduced all 401 exported files byte for byte across timezones. PHP lint, driver scoring fixtures and mocked driver delivery passed. Both source and exported PHP mail endpoints passed local success, failure, retry and throttle tests with a fake mail transport. Chromium at 390 and 1366 px exercised enquiry and comment validation, pending state, error handling and successful reset. The reduced-motion globe matched the baseline pixel for pixel, and globe keyboard discovery and wrapping keyboard tabs passed. Training colors and grids matched the previous bundle at 390, 900 and 1366 px. The pre-existing hidden enquiry response on the contact page, live delivery and production deployment are recorded in [CURRENT-TASKS.md](CURRENT-TASKS.md).
+
 ## Site-wide source formatting — 20 November 2026
 
 Reformatted page and component HTML, first-party CSS and JavaScript, build tools, and PHP handlers and fixtures. Shared navigation, footer, homepage article cards, and stylesheet links retain readable markup after regeneration. The source and export checks passed on all 32 routes. Repeating the build produced the same tracked files and the existing CSS bundle hashes. Driver scoring checks, PHP lint and mocked submission tests passed. Driver Start/Back, About pillar navigation and FAQ search/clear passed in local Chromium at 390 and 1440 px. Production deployment is unverified.
