@@ -7,6 +7,7 @@ body.page-training #ui-main {
 
 .tr-page {
   --tr-accent: #03c4d5;
+  --tr-accent-dark: #008a95;
   --tr-ink: #eff2f1;
   --tr-muted: #a9b1b2;
   --tr-line: #ffffff26;
@@ -254,7 +255,7 @@ body.page-training #ui-main {
 }
 
 .tr-inline-link:hover {
-  color: #008a95
+  color: var(--tr-accent-dark)
 }
 
 .tr-principles {
@@ -271,7 +272,7 @@ body.page-training #ui-main {
 
 .tr-principles span {
   font-size: 10px;
-  color: #008a95
+  color: var(--tr-accent-dark)
 }
 
 .tr-principles h3 {
@@ -486,12 +487,9 @@ body.page-training #ui-main {
   font-size: 10px
 }
 
-.tr-process-nav a[aria-current=step] {
-  color: #008a95
-}
-
+.tr-process-nav a[aria-current=step],
 .tr-process-nav a:hover {
-  color: #008a95
+  color: var(--tr-accent-dark)
 }
 
 .tr-step {
@@ -525,7 +523,7 @@ body.page-training #ui-main {
   font-weight: 400;
   line-height: 1;
   letter-spacing: -.07em;
-  color: #008a95
+  color: var(--tr-accent-dark)
 }
 
 .tr-step figure {
@@ -662,7 +660,7 @@ body.page-training #ui-main {
   content: '+';
   font-size: 25px;
   font-weight: 300;
-  color: #008a95
+  color: var(--tr-accent-dark)
 }
 
 .tr-page details[open] summary:after {
@@ -789,9 +787,7 @@ body.page-training #ui-main {
   .tr-step {
     min-height: 0
   }
-  .tr-intro-grid {
-    gap: 7%
-  }
+  .tr-intro-grid,
   .tr-audience .tr-shell {
     gap: 7%
   }
