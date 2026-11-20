@@ -1,0 +1,24 @@
+name: Prepare Astro migration lockfile
+on:
+  push:
+    branches: [migration/astro-4-16]
+    paths: ['.github/workflows/astro-lock.yml']
+permissions:
+  contents: write
+jobs:
+  lock:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm install --package-lock-only --ignore-scripts --no-audit --no-fund
+      - name: Save the resolved lockfile on the migration branch
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- package-lock.json
+          git diff --cached --quiet && exit 0
+          git commit -m "Lock Astro 4.16.19 and its build dependencies"
+          git push origin HEAD:refs/heads/migration/astro-4-16
