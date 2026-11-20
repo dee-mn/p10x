@@ -13,7 +13,7 @@ export function getStaticPaths() {
 }
 
 const { route } = Astro.props;
-const fragments = import.meta.glob('../fragments/*.html', { eager: true, query: '?raw', import: 'default' });
+const fragments = import.meta.glob('../fragments/**/*.html', { eager: true, query: '?raw', import: 'default' });
 const name = Astro.params.slug ?? 'home';
 const fragment = fragments[`../fragments/${name}.html`];
 if (typeof fragment !== 'string' || !pages[route]) throw new Error(`Missing page source for ${route}`);

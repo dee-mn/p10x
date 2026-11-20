@@ -14,7 +14,7 @@ if (
     preg_match('/[\r\n]/', $email) ||
     !$comment ||
     strlen($comment) > 8000 ||
-    !preg_match('~^/[a-z0-9-]+/$~', $page)
+    !preg_match('~^/(?:insights/)?[a-z0-9-]+/$~D', $page)
 ) {
     formResponse(
         422,

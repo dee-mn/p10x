@@ -2,6 +2,14 @@ import { createServer } from 'node:http';
 import { readFile, stat } from 'node:fs/promises';
 import path from 'node:path';
 const root = path.resolve('dist');
+// Mirror the site's permanent Apache redirects in the static preview.
+const redirects = (await readFile(path.join(root, '.htaccess'), 'utf8'))
+  .split('\n')
+  .filter((line) => line.startsWith('RedirectMatch 301 '))
+  .map((line) => {
+    const [, , pattern, target] = line.split(/\s+/);
+    return { pattern: new RegExp(pattern), target };
+  });
 const portFlag = process.argv.indexOf('--port');
 const port = Number(
   process.env.PORT || (portFlag >= 0 ? process.argv[portFlag + 1] : 3000)
@@ -64,13 +72,9 @@ createServer(async (req, res) => {
   }
   try {
     const url = new URL(req.url, 'http://localhost');
-    if (/^\/tinting\/?$/.test(url.pathname)) {
-      res.writeHead(301, { Location: '/automotive-window-tint/' + url.search });
-      res.end();
-      return;
-    }
-    if (/^\/(?:window-film|window-tint)\/?$/.test(url.pathname)) {
-      res.writeHead(301, { Location: '/architecture-tint/' + url.search });
+    const redirect = redirects.find(({ pattern }) => pattern.test(url.pathname));
+    if (redirect) {
+      res.writeHead(301, { Location: redirect.target + url.search });
       res.end();
       return;
     }
@@ -84,6 +88,11 @@ createServer(async (req, res) => {
     )
       throw new Error('Not served');
     const info = await stat(target);
+    if (info.isDirectory()) {
+      res.writeHead(301, { Location: url.pathname + '/' + url.search });
+      res.end();
+      return;
+    }
     if (!info.isFile()) throw new Error('Not a file');
     const type = mime[path.extname(target)] || 'application/octet-stream';
     const range = req.headers.range?.match(/^bytes=(\d+)-(\d*)$/);
