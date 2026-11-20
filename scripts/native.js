@@ -178,36 +178,6 @@
       message.value =
         'I am interested in P10X Academy training.\n\nMy experience: \nLearning area of interest: \nMy training goals: ';
   }
-  // Native local contact handler reports success only after server acknowledgement.
-  $$('form[data-enquiry]').forEach((form) =>
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      if (!form.reportValidity()) return;
-      let status = $('[role=status]', form);
-      if (!status) {
-        status = document.createElement('p');
-        status.className = 'native-form-status';
-        status.setAttribute('role', 'status');
-        form.append(status);
-      }
-      const button = $('[type=submit]', form);
-      if (button) button.disabled = true;
-      status.textContent = 'Sending your enquiry…';
-      try {
-        const response = await fetch('/contact.php', {
-            method: 'POST',
-            body: new FormData(form)
-          }),
-          data = await response.json();
-        status.textContent = data.message;
-        if (data.ok) form.reset();
-      } catch {
-        status.textContent = 'Unable to send. Please email info@p10x.my.';
-      } finally {
-        if (button) button.disabled = false;
-      }
-    })
-  );
   function initMotion() {
     // Circular five-pillar names use the same radius, arc and rotation as the reference.
     const slider = $('.ui-icon-list1 .ui-inner-content');
@@ -398,29 +368,37 @@
       $('.ui-load-more')?.remove();
     }
   }
-  $$('form[data-comment]').forEach((form) =>
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
+  // Both mail handlers return { ok, message }; the article handler also needs its page URL.
+  $$('form[data-enquiry], form[data-comment]').forEach((form) => {
+    const isComment = form.hasAttribute('data-comment');
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
       if (!form.reportValidity()) return;
+
       let status = $('[role=status]', form);
       if (!status) {
         status = document.createElement('p');
         status.setAttribute('role', 'status');
+        if (!isComment) status.className = 'native-form-status';
         form.append(status);
       }
-      const body = new FormData(form);
-      body.set('page', location.pathname);
-      status.textContent = 'Sending your comment…';
+      const button = isComment ? null : $('[type=submit]', form);
+      if (button) button.disabled = true;
+      status.textContent = isComment ? 'Sending your comment…' : 'Sending your enquiry…';
       try {
-        const response = await fetch('/comment.php', { method: 'POST', body }),
-          data = await response.json();
-        status.textContent = data.message;
-        if (data.ok) form.reset();
+        const body = new FormData(form);
+        if (isComment) body.set('page', location.pathname);
+        const response = await fetch(form.action, { method: 'POST', body });
+        const result = await response.json();
+        status.textContent = result.message;
+        if (result.ok) form.reset();
       } catch {
         status.textContent = 'Unable to send. Please email info@p10x.my.';
+      } finally {
+        if (button) button.disabled = false;
       }
-    })
-  );
+    });
+  });
 })();
 
 (() => {

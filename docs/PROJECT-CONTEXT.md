@@ -25,7 +25,7 @@ Older checkpoint entries describe earlier stages. Later dated entries supersede 
 ## Architecture and dependencies
 
 - Site pages are route folders containing `index.html`, plus the homepage `index.html`.
-- Shared header/footer source lives in `components/`. `tools/sync-layout.mjs` applies them; homepage insights also sync from `docs/article-index.json`.
+- Shared header, footer and article comment form markup lives in `components/`. `tools/sync-layout.mjs` applies them; homepage insights also sync from `docs/article-index.json`.
 - Named page/section styles and interaction controllers live in `styles/` and `scripts/sections/`; use the existing controllers to avoid duplicate listeners.
 - `tools/optimize-pages.mjs` generates content-hashed CSS using `docs/style-manifest.json`. `tools/build.mjs` exports the complete site to `dist/`.
 - Enquiries and comments use `contact.php` and `comment.php`. The driver personality test uses `driver-test.php`, its JSON data, and `scripts/driver-test*.js`.
