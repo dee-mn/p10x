@@ -1,6 +1,6 @@
 # Current tasks and handover
 
-**Updated:** 14 November 2026
+**Updated:** 20 November 2026
 **Working repository:** `dee-mn/p10x`
 **Primary branch:** `main`
 **Live origin:** https://p10x.flevor.me
@@ -13,7 +13,7 @@
 - **Documentation:** Organised into README, project context, design system, development rules, this status file, historical checkpoint and SEO audit. `AGENTS.md` points coding agents to them.
 - **Media:** The 13 November source/URL image audit found no missing image files or broken image URLs. It was not an exhaustive human scroll-through of every possible page state.
 - **Performance work:** Dated 13 November changes cover CSS delivery, offscreen-video loading, font preload, image dimensions and selected accessibility/structured-data items. Original media bytes and approved presentation were protected.
-- **Recent user request:** Documentation/handover structure only. No site code, assets or deployment configuration were changed for this task.
+- **Latest website change (20 November):** Tidied the Driver Personality Test welcome screen. Verified the responsive layout at 320, 390, 768 and 1280 px frame widths, keyboard Start and Back, the build, source/export checks and driver-test scoring fixtures. Deployment verification is pending.
 
 ## Pending verification — not yet confirmed
 
