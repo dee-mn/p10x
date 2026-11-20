@@ -5,8 +5,20 @@ import afterFooter from '../../components/after-footer.html?raw';
 import organization from '../data/organization.json';
 import styles from '../../docs/style-manifest.json';
 
-const { route, page, stylesheets = styles[Astro.props.route] } = Astro.props;
+const { route, page, articleSchema, stylesheets = styles[Astro.props.route] } = Astro.props;
 const canonical = new URL(route, Astro.site).href;
+const title = page.socialTitle ?? page.title;
+const description = page.socialDescription ?? page.description;
+const imageAlt = page.imageAlt?.trim() || ('Cover for ' + title);
+const pageType = { '/about-us/': 'AboutPage', '/contact-us/': 'ContactPage', '/insights/': 'CollectionPage' }[route] ?? 'WebPage';
+const webPage = {
+  '@type': pageType, '@id': canonical + '#webpage', url: canonical, name: page.title,
+  description: page.description, inLanguage: 'en-MY', isPartOf: { '@id': new URL('/#website', Astro.site).href }
+};
+const schema = articleSchema ?? {
+  '@context': 'https://schema.org',
+  '@graph': route === '/' ? [...organization['@graph'], webPage] : [webPage]
+};
 ---
 <!doctype html>
 <html lang="en">
@@ -18,16 +30,23 @@ const canonical = new URL(route, Astro.site).href;
     <link rel="canonical" href={canonical} />
     <link rel="icon" href="/assets/images/p10x-logo.svg" />
     {stylesheets.map((href) => <link is:inline rel="stylesheet" href={href} />)}
-    <meta property="og:title" content={page.socialTitle ?? page.title} />
-    <meta property="og:description" content={page.socialDescription ?? page.description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content="P10X" />
+    <meta property="og:locale" content="en_MY" />
     <meta property="og:type" content={page.ogType} />
     <meta property="og:image" content={page.ogImage} />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={page.ogImage} />
+    <meta property="og:image:alt" content={imageAlt} />
+    <meta name="twitter:image:alt" content={imageAlt} />
     <link rel="preload" href="/assets/fonts/inter-normal-latin.woff2" as="font" type="font/woff2" crossorigin />
     {route.startsWith('/insights/') && <link rel="alternate" type="application/rss+xml" href="/insights/feed.xml" title="P10X Insights" />}
     <slot name="head" />
-    {route === '/' && <script is:inline type="application/ld+json" id="p10x-org-schema" set:html={JSON.stringify(organization)}></script>}
+    <script is:inline type="application/ld+json" id={route === '/' ? 'p10x-org-schema' : undefined} set:html={JSON.stringify(schema).replace(/</g, '\\u003c')}></script>
   </head>
   <body class={page.bodyClass}>
     <div class="ui-wapper" id="ui-wapper">

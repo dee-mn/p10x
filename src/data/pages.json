@@ -25,13 +25,14 @@
       "/scripts/sections/service-discovery.js",
       "/scripts/sections/home-insights.js",
       "/scripts/sections/media-loading.js"
-    ]
+    ],
+    "imageAlt": "A technician working on the glossy bonnet of a car"
   },
   "/about-us/": {
     "title": "About P10X | Automotive Care & People Development",
     "description": "Meet the people behind P10X and explore the five pillars that connect automotive care, distribution, CarCheck, media, retail and training in Malaysia.",
     "bodyClass": "page-template-default page page-id-26 ui-redux-page heading-default-font ui-font-default bd-px-header--is-fixed site-color-gradient p10x surface-default theme-tokens surface-page surface-page-26",
-    "ogImage": "https://p10x.flevor.me/assets/images/p10x-home.jpg",
+    "ogImage": "https://p10x.flevor.me/assets/images/p10x-building.jpg",
     "ogType": "website",
     "scripts": [
       "/assets/lib/gsap/gsap.min.js",
@@ -47,13 +48,14 @@
       "/scripts/sections/vector-icons.js",
       "/scripts/sections/products.js",
       "/scripts/sections/about-impact.js"
-    ]
+    ],
+    "imageAlt": "The glass-fronted P10X location at dusk"
   },
   "/ppf/": {
     "title": "Paint Protection Film (PPF) in Malaysia | P10X",
     "description": "Explore P10X paint protection film for your car. Learn how coverage, film selection and installation work together to protect the painted finish.",
     "bodyClass": "page-template page-template-elementor_header_footer page page-id-7368 ui-redux-page heading-default-font ui-font-default bd-px-header--is-fixed site-color-gradient p10x surface-default surface-template-full-width theme-tokens surface-page surface-page-7368",
-    "ogImage": "https://p10x.flevor.me/assets/images/p10x-home.jpg",
+    "ogImage": "https://p10x.flevor.me/assets/images/IMG_9812.jpg",
     "ogType": "website",
     "scripts": [
       "/assets/lib/gsap/gsap.min.js",
@@ -64,13 +66,14 @@
       "/scripts/sections/ppf.js",
       "/scripts/sections/vector-icons.js",
       "/scripts/sections/products.js"
-    ]
+    ],
+    "imageAlt": "Gloved hands fitting protective film to a vehicle panel"
   },
   "/automotive-window-tint/": {
     "title": "Automotive Window Tinting in Malaysia | P10X",
     "description": "Explore automotive window tinting at P10X. Discuss heat, glare, visibility and film options for your vehicle and the way you drive in Malaysia.",
     "bodyClass": "page-template page-template-elementor_header_footer page page-id-7375 ui-redux-page heading-default-font ui-font-default bd-px-header--is-fixed site-color-gradient p10x surface-default surface-template-full-width theme-tokens surface-page surface-page-7375",
-    "ogImage": "https://p10x.flevor.me/assets/images/p10x-home.jpg",
+    "ogImage": "https://p10x.flevor.me/assets/images/IMG_8049.jpg",
     "ogType": "website",
     "scripts": [
       "/assets/lib/gsap/gsap.min.js",
@@ -81,13 +84,14 @@
       "/scripts/sections/tinting.js",
       "/scripts/sections/vector-icons.js",
       "/scripts/sections/products.js"
-    ]
+    ],
+    "imageAlt": "A technician working on a side window from inside the cabin"
   },
   "/wrapping/": {
     "title": "Vehicle Wrapping & Colour Change | P10X",
     "description": "Explore vehicle wrapping with P10X. See how colour, finish, material choice and installation shape a change to your car’s appearance.",
     "bodyClass": "page-template page-template-elementor_header_footer page page-id-7377 ui-redux-page heading-default-font ui-font-default bd-px-header--is-fixed site-color-gradient p10x surface-default surface-template-full-width theme-tokens surface-page surface-page-7377",
-    "ogImage": "https://p10x.flevor.me/assets/images/p10x-home.jpg",
+    "ogImage": "https://p10x.flevor.me/assets/images/p10x-vibe-wrap.jpg",
     "ogType": "website",
     "scripts": [
       "/assets/lib/gsap/gsap.min.js",
@@ -98,13 +102,14 @@
       "/scripts/sections/wrapping.js",
       "/scripts/sections/vector-icons.js",
       "/scripts/sections/products.js"
-    ]
+    ],
+    "imageAlt": "Close-up of a dark satin-finish vehicle bonnet"
   },
   "/detailing/": {
     "title": "Car Detailing & Interior Care | P10X",
     "description": "See how P10X approaches exterior and interior detailing, from caring for painted surfaces to cleaning cabin trim, controls and everyday touchpoints.",
     "bodyClass": "page-template page-template-elementor_header_footer page page-id-7373 ui-redux-page heading-default-font ui-font-default bd-px-header--is-fixed site-color-gradient p10x surface-default surface-template-full-width theme-tokens surface-page surface-page-7373",
-    "ogImage": "https://p10x.flevor.me/assets/images/p10x-home.jpg",
+    "ogImage": "https://p10x.flevor.me/assets/images/detailing-attention-to-surface.jpg",
     "ogType": "website",
     "scripts": [
       "/assets/lib/gsap/gsap.min.js",
@@ -115,13 +120,14 @@
       "/scripts/sections/detailing.js",
       "/scripts/sections/vector-icons.js",
       "/scripts/sections/products.js"
-    ]
+    ],
+    "imageAlt": "A P10X technician detailing a vehicle bonnet"
   },
   "/architecture-tint/": {
     "title": "Architectural Window Tint for Buildings | P10X",
     "description": "Explore architectural window film for homes and commercial spaces. Talk to P10X about glare, indoor comfort and energy use for your building.",
     "bodyClass": "page-template page-template-elementor_header_footer page page-id-7379 ui-redux-page heading-default-font ui-font-default bd-px-header--is-fixed site-color-gradient p10x surface-default surface-template-full-width theme-tokens surface-page surface-page-7379",
-    "ogImage": "https://p10x.flevor.me/assets/images/p10x-home.jpg",
+    "ogImage": "https://p10x.flevor.me/assets/images/project-post2.jpg",
     "ogType": "website",
     "scripts": [
       "/assets/lib/gsap/gsap.min.js",
@@ -132,7 +138,8 @@
       "/scripts/sections/window-film.js",
       "/scripts/sections/vector-icons.js",
       "/scripts/sections/products.js"
-    ]
+    ],
+    "imageAlt": "Curved glass office towers beneath a clear sky"
   },
   "/training/": {
     "title": "Training & Automotive Skills — P10X Academy",
@@ -150,7 +157,8 @@
       "/scripts/sections/vector-icons.js",
       "/scripts/sections/products.js"
     ],
-    "socialDescription": "Build practical automotive skills and a thoughtful approach to workmanship with P10X Academy."
+    "socialDescription": "Build practical automotive skills and a thoughtful approach to workmanship with P10X Academy.",
+    "imageAlt": "An instructor addressing two seated trainees"
   },
   "/faq/": {
     "title": "Car Care, Film & Training FAQs | P10X",
@@ -167,7 +175,8 @@
       "/scripts/sections/faq.js",
       "/scripts/sections/vector-icons.js",
       "/scripts/sections/products.js"
-    ]
+    ],
+    "imageAlt": "A technician working on the glossy bonnet of a car"
   },
   "/insights/": {
     "title": "Malaysian Car Care Guides & P10X News | P10X",
@@ -183,7 +192,8 @@
       "/scripts/sections/navigation.js",
       "/scripts/sections/vector-icons.js",
       "/scripts/sections/products.js"
-    ]
+    ],
+    "imageAlt": "A technician working on the glossy bonnet of a car"
   },
   "/contact-us/": {
     "title": "Contact P10X | Automotive Care in Bandar Sunway",
@@ -199,7 +209,8 @@
       "/scripts/sections/navigation.js",
       "/scripts/sections/vector-icons.js",
       "/scripts/sections/products.js"
-    ]
+    ],
+    "imageAlt": "A technician working on the glossy bonnet of a car"
   },
   "/driver-personality-test/": {
     "title": "Driver Personality Test — P10X",
@@ -217,6 +228,7 @@
       "/scripts/driver-test.js",
       "/scripts/sections/vector-icons.js",
       "/scripts/sections/products.js"
-    ]
+    ],
+    "imageAlt": "A laptop displaying the driver personality test"
   }
 }

@@ -48,6 +48,12 @@ Edit page bodies in `src/fragments/`, metadata and script order in `src/data/pag
 
 GitHub Actions validates pushes to `main` and publishes the built files to `main-deploy`. In Plesk Git, select that branch and deploy its root to the site's existing document root. Keep the existing PHP handler and mail configuration. Until the branch is switched, a host tracking `main` serves its previous HTML snapshot. Future edits belong in the Astro sources.
 
+### SEO and permanent redirects
+
+Astro generates one canonical URL per published page, always ending in a slash. The same routes populate `/sitemap.xml`. Social titles, descriptions and existing preview images come from `src/data/pages.json` or the article frontmatter. The shared layout emits Open Graph, Twitter cards and JSON-LD.
+
+For a moved page, add its old path to the permanent redirect block in `.htaccess` and point directly to the final slash URL. Match the old bare path, trailing slash and direct `index.html` form. Keep these rules above the general normalization rules. Plesk must pass page requests through Apache with rewrite support for these rules to apply.
+
 ### Writing an Insights post
 
 Each post lives in a single Markdown file in [src/content/insights](src/content/insights). You can write it in GitHub’s file editor or your usual text editor.

@@ -5,7 +5,7 @@ excerpt: "Looking for the best type of car tint? Compare dyed, metalized, carbon
 author: "Fabian"
 published: "2025-10-25"
 cover: "/assets/images/Window-Tint-Guide-5-Types-of-Car-Tint-Compared.jpg"
-coverAlt: ""
+coverAlt: "Illustrated guide comparing five types of automotive window tint"
 seoTitle: "5 Different Types of Car Tints: Detailed Comparison – P10X – Professional 10 Times"
 draft: false
 ---

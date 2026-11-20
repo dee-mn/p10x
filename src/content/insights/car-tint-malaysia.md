@@ -5,7 +5,7 @@ excerpt: "Tinting your car windows might seem like a simple upgrade but in Malay
 author: "Fabian"
 published: "2025-09-23"
 cover: "/assets/images/Car-Tint-in-Malaysia-9-Factors-to-Consider-Before-Installing.png"
-coverAlt: ""
+coverAlt: "A technician fitting film to a vehicle window"
 seoTitle: "Car Tint in Malaysia: 9 Factors to Consider Before Installing – P10X – Professional 10 Times"
 draft: false
 ---

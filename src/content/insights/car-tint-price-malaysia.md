@@ -5,7 +5,7 @@ excerpt: "Learn about car tint prices in Malaysia. Find out factors that affect 
 author: "Fabian"
 published: "2025-09-29"
 cover: "/assets/images/Car-Tint-Price-2025-How-Much-Does-Car-Tinting-Cost-in-Malaysia.png"
-coverAlt: ""
+coverAlt: "A technician installing tint beside an image of Malaysian banknotes"
 seoTitle: "Car Tint Price 2025: How Much Does Car Tinting Cost in Malaysia? – P10X – Professional 10 Times"
 draft: false
 ---

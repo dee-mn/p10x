@@ -16,20 +16,19 @@ const { Content } = await post.render();
 const { title, description, author, published, cover, coverAlt, seoTitle } = post.data;
 const route = postUrl(post);
 const image = new URL(cover, Astro.site).href;
-const page = { ...layout, title: seoTitle ?? title + ' | P10X Insights', socialTitle: title, description, ogType: 'article', ogImage: image };
+const page = { ...layout, title: seoTitle ?? title + ' | P10X Insights', socialTitle: title, description, ogType: 'article', ogImage: image, imageAlt: coverAlt };
 const schema = {
   '@context': 'https://schema.org', '@type': 'BlogPosting', headline: title, description,
   image, datePublished: published.toISOString().slice(0, 10),
   author: { '@type': 'Person', name: author },
-  publisher: { '@type': 'Organization', name: 'P10X' },
+  publisher: { '@type': 'Organization', '@id': new URL('/#organization', Astro.site).href, name: 'P10X' },
   mainEntityOfPage: new URL(route, Astro.site).href
 };
 ---
-<SiteLayout {route} {page} stylesheets={layout.styles}>
+<SiteLayout {route} {page} stylesheets={layout.styles} articleSchema={schema}>
   <Fragment slot="head">
     <meta property="article:published_time" content={published.toISOString()} />
     <meta name="author" content={author} />
-    <script type="application/ld+json" is:inline set:html={JSON.stringify(schema).replace(/</g, '\\u003c')}></script>
   </Fragment>
   <main id="ui-main" class="insights-post" tabindex="-1">
     <div class="container">

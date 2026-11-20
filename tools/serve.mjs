@@ -5,9 +5,9 @@ const root = path.resolve('dist');
 // Mirror the site's permanent Apache redirects in the static preview.
 const redirects = (await readFile(path.join(root, '.htaccess'), 'utf8'))
   .split('\n')
-  .filter((line) => line.startsWith('RedirectMatch 301 '))
+  .filter((line) => /^RewriteRule \S+ \/[a-z0-9/-]+ \[R=301,L\]$/.test(line))
   .map((line) => {
-    const [, , pattern, target] = line.split(/\s+/);
+    const [, pattern, target] = line.split(/\s+/);
     return { pattern: new RegExp(pattern), target };
   });
 const portFlag = process.argv.indexOf('--port');
@@ -25,6 +25,7 @@ const mime = {
   '.ttf': 'font/ttf',
   '.woff2': 'font/woff2',
   '.mp4': 'video/mp4',
+  '.xml': 'application/xml',
   '.json': 'application/json'
 };
 createServer(async (req, res) => {
@@ -72,7 +73,7 @@ createServer(async (req, res) => {
   }
   try {
     const url = new URL(req.url, 'http://localhost');
-    const redirect = redirects.find(({ pattern }) => pattern.test(url.pathname));
+    const redirect = redirects.find(({ pattern }) => pattern.test(url.pathname.slice(1)));
     if (redirect) {
       res.writeHead(301, { Location: redirect.target + url.search });
       res.end();
@@ -90,6 +91,11 @@ createServer(async (req, res) => {
     const info = await stat(target);
     if (info.isDirectory()) {
       res.writeHead(301, { Location: url.pathname + '/' + url.search });
+      res.end();
+      return;
+    }
+    if (url.pathname.endsWith('/index.html') && info.isFile()) {
+      res.writeHead(301, { Location: url.pathname.slice(0, -'index.html'.length) + url.search });
       res.end();
       return;
     }

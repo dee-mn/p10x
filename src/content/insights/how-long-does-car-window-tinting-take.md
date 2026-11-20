@@ -5,7 +5,7 @@ excerpt: "Understand how long it takes to tint car windows. Learn about prep tim
 author: "Fabian"
 published: "2025-10-25"
 cover: "/assets/images/How-Long-Does-Car-Window-Tinting-Take-Process-Time-Key-Factors.jpg"
-coverAlt: ""
+coverAlt: "A technician handling window film against a backdrop of clocks"
 seoTitle: "How Long Does it Take to Tint Car Windows? – P10X – Professional 10 Times"
 draft: false
 ---

@@ -5,7 +5,7 @@ excerpt: "If you’ve been thinking about protecting your car’s paint, you’v
 author: "Fabian"
 published: "2025-09-17"
 cover: "/assets/images/TPU-vs-TPH-vs-PVC-PPF-Film-Which-is-Best-for-Your-Car.png"
-coverAlt: ""
+coverAlt: "Examples of TPU, TPH and PVC paint protection films side by side"
 seoTitle: "TPU vs TPH vs PVC PPF Film: Which is Best for Your Car? – P10X – Professional 10 Times"
 draft: false
 ---
