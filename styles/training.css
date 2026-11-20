@@ -129,19 +129,17 @@ body.page-training #ui-main {
 
 .tr-hero-photo {
   position: absolute;
-  right: 0;
-  top: 0;
-  width: 59%;
-  height: 100%;
+  inset: 0;
   overflow: hidden
 }
 
 .tr-hero-photo img {
+  display: block;
   width: 100%!important;
   height: 100%;
   max-width: none;
   object-fit: cover;
-  object-position: 58% center;
+  object-position: 58% 16%;
   filter: brightness(.8)
 }
 
@@ -149,7 +147,7 @@ body.page-training #ui-main {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg,#111617 3%,#111617f0 31%,#11161750 60%,#11161708),linear-gradient(0deg,#111617d9,transparent 30%);
+  background: linear-gradient(90deg,#111617d9 0%,#111617ba 31%,#11161756 58%,#11161708 85%),linear-gradient(0deg,#111617d9,transparent 30%);
   pointer-events: none
 }
 
@@ -158,6 +156,10 @@ body.page-training #ui-main {
   z-index: 1;
   padding: 160px 0 130px;
   margin: 0 auto
+}
+
+.tr-hero .tr-button {
+  background: var(--tr-accent)
 }
 
 .tr-hero .tr-eyebrow {
@@ -814,17 +816,11 @@ body.page-training #ui-main {
   .tr-hero-inner {
     padding: 145px 0 130px
   }
-  .tr-hero-photo {
-    width: 100%;
-    height: 64%;
-    top: auto;
-    bottom: 0
-  }
   .tr-hero-photo img {
-    object-position: 50% 25%
+    object-position: 46% center
   }
   .tr-hero:after {
-    background: linear-gradient(180deg,#111617 7%,#111617ed 37%,#11161744 68%,#111617cc)
+    background: linear-gradient(180deg,#11161788 0%,#111617bb 26%,#111617ab 47%,#11161732 70%,#111617cc)
   }
   .tr-hero .tr-eyebrow {
     margin-bottom: 28px
