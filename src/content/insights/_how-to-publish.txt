@@ -1,0 +1,23 @@
+P10X Insights — how to publish a post
+
+1. Open _template.md in this folder and copy its contents. In GitHub, choose
+   Add file > Create new file, then paste the template into the new file.
+
+2. Name the file using lowercase words separated by hyphens. For example,
+   caring-for-ceramic-coating.md becomes /insights/caring-for-ceramic-coating/.
+   Keep the filename once the post is live so existing links keep working.
+
+3. Between the two --- lines, fill in the title, description, author and
+   publication date (YYYY-MM-DD). Set cover to an existing image path such as
+   /assets/images/p10x-home.jpg. In coverAlt, describe what the image shows.
+
+4. Write the article below the second --- line. Use ## for section headings
+   and a blank line between paragraphs. Keep draft: true while you write.
+   You can commit a draft to main and come back to it later.
+
+5. When ready, change draft: true to draft: false and commit to main.
+   The build updates the Insights list, search and feed automatically.
+   The post goes live when Plesk deploys the build.
+
+To update a published post, edit the same file. To withdraw it, change draft
+back to true and commit. It drops off the site on the next deployment.
