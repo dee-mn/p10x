@@ -11,6 +11,33 @@ try {
   for (const width of [390, 1440]) {
     const page = await browser.newPage({ viewport: { width, height: 900 } });
     await page.goto(origin + '/insights/', { waitUntil: 'load' });
+    const search = page.locator('#ui-header-elementor .site-search-trigger:visible');
+    const mobile = width < 768;
+    const logo = page.locator(mobile ? '#ui-header-mobile .ui-header-branding img' : '.block-52f9b71 .ui-logo img');
+    const preceding = page.locator(mobile ? '#ui-nav-mobile' : '.block-e1a2d64 .ui-anchor-button');
+    const before = await logo.boundingBox();
+    for (const y of [0, 400]) {
+      if (y) {
+        await page.evaluate(() => window.scrollTo({ top: 400, behavior: 'instant' }));
+        await page.waitForSelector(mobile ? '#ui-header-mobile.ui-header-mobile-fixed' : '.ui-header-elementor-main.is-fixed');
+        const sticky = await logo.boundingBox();
+        assert.ok(sticky.height <= 24 && sticky.height < before.height, 'Sticky logo shrinks');
+      }
+      const icon = await search.boundingBox();
+      const action = await preceding.boundingBox();
+      assert.ok(icon.x >= action.x + action.width - 1 && icon.x + icon.width <= width, 'Search fits on the right');
+      assert.equal(await search.evaluate(el => getComputedStyle(el).backgroundColor), 'rgba(0, 0, 0, 0)');
+      if (!mobile) {
+        const nav = await page.locator('.block-ed4be5c .surface-widget-pxl_menu:visible').boundingBox();
+        const gap = action.x - (nav.x + nav.width);
+        assert.ok(gap >= 12 && gap <= 40, 'Navigation and CTA spacing: ' + gap);
+      }
+    }
+    await search.click();
+    await page.locator('#site-search[open]').waitFor();
+    await page.keyboard.press('Escape');
+    await page.locator('#site-search').waitFor({ state: 'hidden' });
+    await page.evaluate(() => window.scrollTo({ top: 0, behavior: 'instant' }));
     const cards = page.locator('.ui-grid-item');
     const count = await cards.count();
     assert.equal(await page.locator('.ui-grid-item:visible').count(), Math.min(count, 12));

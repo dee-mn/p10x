@@ -2,15 +2,32 @@
 #ui-header-elementor .site-search-trigger {
   display: inline-grid; place-items: center; flex: 0 0 44px; width: 44px; height: 44px;
   min-width: 0; padding: 0; border: 0; border-radius: 50%;
-  background: rgba(16,20,22,.82); color: #eff5f5; cursor: pointer;
-  transition: color .2s, background-color .2s;
+  background: transparent; color: #eff5f5; cursor: pointer;
+  transition: color .2s;
 }
 #ui-header-elementor .site-search-trigger:is(:hover,:focus-visible) {
-  color: #03c4d5; background: rgba(3,196,213,.12);
+  color: #03c4d5;
 }
 #ui-header-elementor .site-search-trigger:focus-visible { outline: 2px solid #03c4d5; }
+#ui-header-elementor .block-ed4be5c {
+  column-gap: 8px;
+}
+#ui-header-elementor .block-ed4be5c > .surface-widget-pxl_menu {
+  margin-inline-end: clamp(8px, 1vw, 16px);
+}
+#ui-header-elementor .ui-header-elementor-main.is-fixed .ui-logo img,
+#ui-header-elementor #ui-header-mobile.ui-header-mobile-fixed .ui-header-branding img {
+  max-height: 24px;
+  width: auto;
+}
+#ui-header-elementor #ui-header-mobile.ui-header-mobile-fixed .ui-header-branding img {
+  height: 18px;
+}
+#ui-header-elementor #ui-header-mobile #ui-nav-mobile {
+  right: calc(8vw + 48px);
+}
 #ui-header-elementor #ui-header-mobile .site-search-trigger {
-  position: absolute; top: 50%; right: calc(8vw + 46px); transform: translateY(-50%); margin: 0;
+  position: absolute; top: 50%; right: 8vw; transform: translateY(-50%); margin: 0;
 }
 html.site-search-open { overflow: hidden; }
 .site-search:not([open]), .site-search [hidden] { display: none !important; }
