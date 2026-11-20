@@ -2,6 +2,10 @@
 
 Updated 20 November 2026. Active branch: `main`.
 
+## Insights publishing — 20 November 2026
+
+Moved the 20 blog posts to an Astro content collection. Public routes, listings, author credits, metadata, search, RSS and sitemap now follow each post’s Markdown file and draft status.
+
 ## Astro static build — 20 November 2026
 
 Page fragments, shared layout and route metadata now generate the static site through Astro. The separate deployment branch contains the public files and PHP handlers. The migration PR compares its output against the previous main snapshot.

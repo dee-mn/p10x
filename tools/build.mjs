@@ -6,7 +6,7 @@ await build({});
 for (const name of [
   '.htaccess', 'tinting', 'window-film', 'window-tint',
   'contact.php', 'comment.php', 'driver-test.php', 'includes', 'data',
-  'styles', 'scripts', 'assets', 'robots.txt', 'sitemap.xml'
+  'styles', 'scripts', 'assets', 'robots.txt'
 ]) {
   await cp(name, `dist/${name}`, { recursive: true });
 }

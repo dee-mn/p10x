@@ -9,7 +9,7 @@
 
 ## Current state
 
-- The 20 blog articles now share the `/insights/<slug>/` path and `src/fragments/insights/` source folder. Apache redirects their former URLs permanently.
+- Insights uses the Astro Markdown collection in `src/content/insights/`. Publishing one post updates the archive, article, homepage, recent posts, search, RSS and sitemap. Existing posts retain their `/insights/<slug>/` URLs. Apache redirects their former URLs permanently.
 
 - Astro 4.16.19 generates all registered routes. CI validates `dist/` and publishes `plesk-deploy` after a successful main build. Confirm the Plesk branch selection and check the public site separately.
 
