@@ -1,9 +1,10 @@
 import './sync-home-insights.mjs';
 import fs from 'node:fs/promises';
+import { addImageDimensions } from './image-dimensions.mjs';
 import path from 'node:path';
 const routes = JSON.parse(await fs.readFile('docs/routes.json', 'utf8'));
-const header = (await fs.readFile('components/header.html', 'utf8')).trim();
-const footer = (await fs.readFile('components/footer.html', 'utf8')).trim();
+const header = addImageDimensions((await fs.readFile('components/header.html', 'utf8')).trim());
+const footer = addImageDimensions((await fs.readFile('components/footer.html', 'utf8')).trim());
 // Keep shared markup aligned with the wrapper on each page.
 function insertComponent(html, pattern, component) {
   return html.replace(pattern, (_, indent) =>
@@ -16,9 +17,9 @@ function insertComponent(html, pattern, component) {
 
 for (const { route } of routes) {
   const file = path.join('.', route.slice(1), 'index.html');
-  let html = await fs.readFile(file, 'utf8');
-  html = insertComponent(
-    html,
+  const previousHtml = await fs.readFile(file, 'utf8');
+  let html = insertComponent(
+    previousHtml,
     /([ \t]*)<header\b[^>]*id="ui-header-elementor"[\s\S]*?<\/header>/,
     header
   );
@@ -27,6 +28,6 @@ for (const { route } of routes) {
     /([ \t]*)<footer\b[^>]*id="ui-footer-elementor"[\s\S]*?<\/footer>/,
     footer
   );
-  await fs.writeFile(file, html);
+  if (html !== previousHtml) await fs.writeFile(file, html);
 }
 console.log(`Shared header and footer applied to ${routes.length} pages.`);

@@ -9,6 +9,8 @@
 
 ## Current state
 
+- **Maintenance follow-up (20 November):** Started at `0d3f93d` with the PPF hero video. Fixed machine-readable homepage dates drifting across timezones and repeated writes of unchanged layout, stylesheet bundles and their manifest. The Malaysia-time build and 32-route source/export checks passed. Form cleanup and final repeat-build checks follow. The pending photo commit `67d302e` is separate.
+
 - **Source cleanup (20 November):** Formatted 89 first-party source files. Shared layout and homepage card generation now preserve indentation across builds. The generated stylesheets match the prior release byte for byte. See the [checkpoint](PROJECT-CHECKPOINT.md) for checks.
 
 - **Website implementation:** Last documented site baseline is [`1ac36c8`](https://github.com/dee-mn/p10x/commit/1ac36c822b3af2b9bd4b95551e0fefcde17fa088). The checkpoint records 32 registered routes and the visual/interaction state as of 13–14 November.

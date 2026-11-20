@@ -6,29 +6,31 @@ import zlib from 'node:zlib';
 import postcss from 'postcss';
 import selectorParser from 'postcss-selector-parser';
 import valueParser from 'postcss-value-parser';
+import { addImageDimensions, attribute } from './image-dimensions.mjs';
+
 const routes = JSON.parse(await fs.readFile('docs/routes.json', 'utf8'));
-const dimensions = JSON.parse(
-  await fs.readFile('docs/image-dimensions.json', 'utf8')
-);
 const manifestPath = 'docs/style-manifest.json';
-let manifest = {};
-try {
-  manifest = JSON.parse(await fs.readFile(manifestPath, 'utf8'));
-} catch (e) {
-  if (e.code !== 'ENOENT') throw e;
+async function readOptionalText(file) {
+  try {
+    return await fs.readFile(file, 'utf8');
+  } catch (error) {
+    if (error.code !== 'ENOENT') throw error;
+  }
 }
+
+const previousManifest = await readOptionalText(manifestPath);
+const manifest = JSON.parse(previousManifest ?? '{}');
 await fs.mkdir('styles/generated', { recursive: true });
 const sourceCache = new Map(),
   stats = [];
-function attr(tag, name) {
-  return tag.match(new RegExp('(?:^|\\s)' + name + '=["\\\']([^"\\\']*)'))?.[1];
-}
+const checkedBundles = new Set();
 for (const { route } of routes) {
   const file = route === '/' ? 'index.html' : route.slice(1) + 'index.html';
-  let html = await fs.readFile(file, 'utf8');
+  const previousHtml = await fs.readFile(file, 'utf8');
+  let html = previousHtml;
   const links = [...html.matchAll(/<link\b[^>]*rel="stylesheet"[^>]*>/g)];
   const extra = links
-    .map((m) => attr(m[0], 'href'))
+    .map((m) => attribute(m[0], 'href'))
     .filter((h) => !h.startsWith('/styles/generated/'));
   const sources = links.some((m) => m[0].includes('/styles/generated/'))
     ? [
@@ -137,15 +139,26 @@ for (const { route } of routes) {
       .digest('hex')
       .slice(0, 12);
     const bundle = '/styles/generated/site-' + hash + '.css';
-    await fs.writeFile('.' + bundle, code);
+    if (!checkedBundles.has(bundle)) {
+      const existing = await readOptionalText('.' + bundle);
+      if (existing !== code) await fs.writeFile('.' + bundle, code);
+      checkedBundles.add(bundle);
+    }
     bundles.push(bundle);
   }
-  // Preserve the position of the first stylesheet relative to any inline styles.
-  const currentBundles = links.map(([tag]) => attr(tag, 'href'));
+  // Replace existing bundle URLs in place to preserve indentation and cascade order.
+  const currentBundles = links.map(([tag]) => attribute(tag, 'href'));
   if (
-    bundles.length !== currentBundles.length ||
-    bundles.some((href, i) => href !== currentBundles[i])
+    bundles.length === currentBundles.length &&
+    currentBundles.every((href) => href.startsWith('/styles/generated/'))
   ) {
+    let index = 0;
+    html = html.replace(/<link\b[^>]*rel="stylesheet"[^>]*>/g, (tag) => {
+      const updatedTag = tag.replace(currentBundles[index], bundles[index]);
+      index++;
+      return updatedTag;
+    });
+  } else {
     let first = true;
     html = html.replace(
       /([ \t]*)<link\b[^>]*rel="stylesheet"[^>]*>/g,
@@ -158,14 +171,7 @@ for (const { route } of routes) {
       }
     );
   }
-  html = html.replace(/<img\b[^>]*>/g, (tag) => {
-    const size = dimensions[attr(tag, 'src')];
-    if (!size) return tag;
-    let attrs = '';
-    if (!attr(tag, 'width')) attrs += ' width="' + size[0] + '"';
-    if (!attr(tag, 'height')) attrs += ' height="' + size[1] + '"';
-    return attrs ? tag.replace(/\/?>(?=$)/, (m) => attrs + m) : tag;
-  });
+  html = addImageDimensions(html);
   if (!html.includes('as="font"'))
     html = html.replace(
       '</head>',
@@ -184,7 +190,7 @@ for (const { route } of routes) {
             weight +
             '.ttf" as="font" type="font/ttf" crossorigin></head>'
         );
-  await fs.writeFile(file, html);
+  if (html !== previousHtml) await fs.writeFile(file, html);
   stats.push({
     route,
     stylesheetsBefore: sources.length,
@@ -203,7 +209,8 @@ const used = new Set(
 for (const name of await fs.readdir('styles/generated'))
   if (name.endsWith('.css') && !used.has(name))
     await fs.unlink('styles/generated/' + name);
-await fs.writeFile(manifestPath, JSON.stringify(manifest, null, 2) + '\n');
+const nextManifest = JSON.stringify(manifest, null, 2) + '\n';
+if (nextManifest !== previousManifest) await fs.writeFile(manifestPath, nextManifest);
 await fs.mkdir('qa', { recursive: true });
 await fs.writeFile(
   'qa/style-optimization.json',
