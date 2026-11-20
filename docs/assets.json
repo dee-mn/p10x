@@ -303,33 +303,33 @@
     },
     {
       "path": "assets/images/IMG_4532.jpg",
-      "bytes": 5009776,
-      "sha256": "90079ae1fc9b6f3ccddeca0a53c752606cd292579b4adddb41a05539b177a61b"
+      "bytes": 118251,
+      "sha256": "a8aaf17980992cefb6eb1dfda1b5a42a06f6e9ba5e8cbe5aa5bc23be0baf4edb"
     },
     {
       "path": "assets/images/IMG_4554.jpg",
-      "bytes": 4858083,
-      "sha256": "a15db76b053de193dfdd4c3aada0d7ee64f5ace796b9761bf78d7daffae9e6ff"
+      "bytes": 92816,
+      "sha256": "759ab1afbf03d991b069e6786a0b142a01f11300c59125d2bbca4d624386f76e"
     },
     {
       "path": "assets/images/IMG_4533.jpg",
-      "bytes": 4842540,
-      "sha256": "1b9647932aeb2d00253f08546bba2e35818988512c94b2613aad7580b5229e12"
+      "bytes": 105185,
+      "sha256": "261f9bebb9fe4d9a0dfc9489b34c7dcf68ca2afd689748cdec0968983305003d"
     },
     {
       "path": "assets/images/IMG_4504.jpg",
-      "bytes": 4194644,
-      "sha256": "75384db2abacdc48f601831f7c8d4e8b2efeb4ab6ea55a562490d0f8019f3796"
+      "bytes": 95137,
+      "sha256": "5afe8ce1069d1161a5ee0926cd304a7757067d98c557fa9e3a21b6dd11274297"
     },
     {
       "path": "assets/images/IMG_4600.jpg",
-      "bytes": 4148212,
-      "sha256": "8af747ed58c09a5925adfae0d613c68538358e968f3bedf0ae447ae5bf3e2e70"
+      "bytes": 85624,
+      "sha256": "96d29e8a62899da884d84647d5c51cbae9e0756b7f5d4242d5395e79bdc065d9"
     },
     {
       "path": "assets/images/IMG_4597.jpg",
-      "bytes": 4432965,
-      "sha256": "94a57f13d8f4ae669d9b54298144cb9b8b0a97be104b66911d76aea1611efe6f"
+      "bytes": 86835,
+      "sha256": "a83811bd997f785cc12755c14567ff76a3f2053384c298f5d2c69804280caee6"
     },
     {
       "path": "assets/images/IMG_0342-1.jpg",
@@ -338,8 +338,8 @@
     },
     {
       "path": "assets/images/IMG_0392.jpg",
-      "bytes": 13030696,
-      "sha256": "02cc2205fdaa6d346e1515262f4e0d484bc30f9b0cea334f1f4aed89e9823ec7"
+      "bytes": 13684104,
+      "sha256": "34b5fe5a6e78139f88ca895c2aef41a479361634c093d70104a039678a2394ab"
     },
     {
       "path": "assets/images/project-post5.jpg",
@@ -1033,8 +1033,8 @@
     },
     {
       "path": "assets/images/p10x-vibe-16.jpg",
-      "sha256": "61f384b0c77f036f451d99b347560e05fd631ddba4bd2fde7626439ae5c98fc0",
-      "bytes": 9805924
+      "sha256": "a018a75b3861abdb8bbcaffd51578e527e185a6d5a0b9dd58927c58b1ab9fc19",
+      "bytes": 10215041
     },
     {
       "path": "assets/images/p10x-vibe-12.jpg",
@@ -1175,6 +1175,16 @@
       "path": "assets/images/detailing-attention-to-surface.jpg",
       "sha256": "15aa7dacd057f9910b658bef634f71f97cc9dec700940311bcb4f1997bbfd465",
       "bytes": 373467
+    },
+    {
+      "path": "assets/video/detailing1-p10x.mp4",
+      "sha256": "cfff282c501189230feafb659f0bb75dbeb0fcc1307298b17a1b9269ef64a807",
+      "bytes": 3445716
+    },
+    {
+      "path": "assets/images/detailing-interior-care-poster.jpg",
+      "sha256": "9e27eae16d82242e020f940aa09413dd9a7e1b45c01e8853e2444e194d33c05a",
+      "bytes": 71721
     }
   ]
 }

@@ -9,9 +9,33 @@
       panels = Array.from(root.querySelectorAll('.dt-panel'));
     const grid = root.querySelector('.dt-thumb-grid'),
       count = root.querySelector('.dt-view-count');
+    const video = panels[0].querySelector('video');
     let current = 0;
+    let videoInView = false;
+
+    function syncVideo() {
+      if (!video) return;
+      if (current !== 0 || !videoInView || document.hidden) {
+        video.pause();
+      } else if (!reduced.matches) {
+        video.play().catch(() => {}); // Native controls remain available if autoplay is blocked.
+      }
+    }
+
+    if (video && 'IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(([entry]) => {
+        videoInView = entry.isIntersecting && entry.intersectionRatio >= 0.25;
+        syncVideo();
+      }, { threshold: 0.25 });
+      observer.observe(video);
+      document.addEventListener('visibilitychange', syncVideo);
+      reduced.addEventListener('change', () => {
+        if (reduced.matches) video.pause();
+        else syncVideo();
+      });
+    }
     grid.setAttribute('role', 'tablist');
-    grid.setAttribute('aria-label', 'Interior detail photographs');
+    grid.setAttribute('aria-label', 'Interior detailing gallery');
     const buttons = thumbs.map((thumb, i) => {
       const button = document.createElement('button');
       button.type = 'button';
@@ -60,9 +84,10 @@
         p.inert = i !== index;
       });
       count.textContent = String(index + 1).padStart(2, '0') + ' / 06';
+      if (changed) syncVideo();
       if (changed && window.gsap && !reduced.matches)
         gsap.fromTo(
-          panels[index].querySelector('img'),
+          panels[index].querySelector('img, video'),
           { scale: 1.035 },
           { scale: 1, duration: 0.75, ease: 'power2.out', overwrite: true }
         );
@@ -82,6 +107,7 @@
       );
     root.querySelectorAll('.dt-panel').forEach((panel, i) => {
       const a = panel.querySelector('.dt-view-photo a');
+      if (!a) return;
       a.setAttribute('data-elementor-lightbox-slideshow', 'p10x-detail-cabin');
       a.setAttribute(
         'data-elementor-lightbox-title',
