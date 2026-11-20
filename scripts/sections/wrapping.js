@@ -4,7 +4,6 @@
     const root = document.querySelector('.p10x-wrap');
     if (!root || root.dataset.wrReady) return;
     root.dataset.wrReady = 'true';
-    const reduced = window.matchMedia('(prefers-reduced-motion:reduce)');
     const tabs = Array.from(
       root.querySelectorAll('.wr-finish-tabs [role="tab"]')
     );
@@ -47,7 +46,7 @@
       if (!el.hasAttribute('aria-label'))
         el.setAttribute('aria-label', el.innerText.replace(/\s+/g, ' ').trim());
     });
-    root.querySelectorAll('.wr-look-item').forEach((item, i) => {
+    root.querySelectorAll('.wr-look-item').forEach((item) => {
       const link = item.querySelector('.wr-look-photo a');
       if (!link) return;
       const caption = item

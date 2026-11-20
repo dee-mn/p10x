@@ -450,7 +450,7 @@
         });
       document
         .querySelectorAll('.p10x-about .ab-standard')
-        .forEach(function (card, i) {
+        .forEach(function (card) {
           addTween(
             gs.fromTo(
               card,

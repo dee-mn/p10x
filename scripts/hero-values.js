@@ -33,8 +33,7 @@
     pending = null,
     pendingTimer = 0,
     hoverFrame = 0;
-  let visible = true,
-    keyboard = false;
+  let visible = true;
   function geometry() {
     bounds = hero.getBoundingClientRect();
     cx = bounds.width / 2;
@@ -64,7 +63,6 @@
     pendingTimer = 0;
     pending = null;
     active = -1;
-    keyboard = false;
     hero.classList.remove('is-value-revealed');
     layer.setAttribute('aria-hidden', 'true');
     delete hero.dataset.activeValue;
@@ -148,7 +146,6 @@
     if (!visible) return;
     const value = values[index];
     active = index;
-    keyboard = fromKeyboard;
     word.textContent = value.word;
     description.textContent = value.description;
     number.textContent = `${String(index + 1).padStart(2, '0')} / ${String(values.length).padStart(2, '0')}`;

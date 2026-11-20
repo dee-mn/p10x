@@ -43,7 +43,7 @@
   // Accordion state is shared with the authored accessible question controls.
   $$('.ui-accordion').forEach((root) => {
     const items = $$('.ui--item', root);
-    items.forEach((item, i) => {
+    items.forEach((item) => {
       const title = $('.ui-accordion--title', item),
         content = $('.ui-accordion--content', item);
       if (!title || !content) return;

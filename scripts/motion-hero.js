@@ -189,11 +189,11 @@
     const reveal = paused
       ? 1
       : 1 - Math.pow(1 - clamp((started - entered) / 2600), 3);
+    // Indexed by particle kind: logo, inner shell, outer shell.
     const angles = [
       yaw - (1 - reveal) * 1.15,
       yaw + elapsed * 0.035,
-      yaw - elapsed * 0.025,
-      yaw + elapsed * 0.018
+      yaw - elapsed * 0.025
     ];
     const cos = angles.map(Math.cos),
       sin = angles.map(Math.sin),
