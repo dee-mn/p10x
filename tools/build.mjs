@@ -11,6 +11,7 @@ for (const name of [
   'window-tint',
   'contact.php',
   'comment.php',
+  'includes',
   'driver-test.php',
   'data',
   'styles',
