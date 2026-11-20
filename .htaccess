@@ -2,6 +2,8 @@
 RedirectMatch 404 ^/src/content(?:/|$)
 
 RewriteEngine On
+# Handle bare legacy directories before DirectorySlash can add an extra hop.
+RewriteOptions AllowNoSlash
 
 # Preserve links to the former service URL.
 RewriteRule ^tinting(?:/index\.html|/)?$ /automotive-window-tint/ [R=301,L]
