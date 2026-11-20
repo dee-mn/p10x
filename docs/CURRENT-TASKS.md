@@ -9,6 +9,8 @@
 
 ## Current state
 
+- **Source cleanup (20 November):** Formatted 89 first-party source files. Shared layout and homepage card generation now preserve indentation across builds. The generated stylesheets match the prior release byte for byte. See the [checkpoint](PROJECT-CHECKPOINT.md) for checks.
+
 - **Website implementation:** Last documented site baseline is [`1ac36c8`](https://github.com/dee-mn/p10x/commit/1ac36c822b3af2b9bd4b95551e0fefcde17fa088). The checkpoint records 32 registered routes and the visual/interaction state as of 13–14 November.
 - **Documentation:** Organised into README, project context, design system, development rules, this status file, historical checkpoint and SEO audit. `AGENTS.md` points coding agents to them.
 - **Media:** The 13 November source/URL image audit found no missing image files or broken image URLs. It was not an exhaustive human scroll-through of every possible page state.

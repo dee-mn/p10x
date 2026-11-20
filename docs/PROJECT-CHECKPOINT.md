@@ -1,6 +1,10 @@
 # P10X checkpoint
 
-Updated 14 November 2026. Active branch: `main`.
+Updated 20 November 2026. Active branch: `main`.
+
+## Site-wide source formatting — 20 November 2026
+
+Reformatted page and component HTML, first-party CSS and JavaScript, build tools, and PHP handlers and fixtures. Shared navigation, footer, homepage article cards, and stylesheet links retain readable markup after regeneration. The source and export checks passed on all 32 routes. Repeating the build produced the same tracked files and the existing CSS bundle hashes. Driver scoring checks, PHP lint and mocked submission tests passed. Driver Start/Back, About pillar navigation and FAQ search/clear passed in local Chromium at 390 and 1440 px. Production deployment is unverified.
 
 ## About Us leadership portraits — 20 November 2026
 
