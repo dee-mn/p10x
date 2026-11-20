@@ -9,6 +9,8 @@
 
 ## Current state
 
+- **Homepage PageSpeed and search metadata (20 November)** — The [SEO review](SEO-AUDIT.md) records both report baselines, measured CSS and font savings, and the follow-up measurement after deployment.
+
 - **Source maintenance (20 November)** — Pushed five cleanup commits to `main`, from `0ec590f` through `4b5a6bd`, on top of PPF video commit `0d3f93d`. They stabilize build output, share the 20 article comment forms and mail handling, consolidate training styles, and remove unused animation state. Photo commit `67d302e` remains separate.
 - **Verification** — Source and export checks passed on 32 routes. Builds in Kuala Lumpur and Los Angeles timezones produced 401 byte-identical export files. The second build did not rewrite any tracked file. Driver scoring, PHP lint, mocked submissions and browser checks passed. See [the checkpoint](PROJECT-CHECKPOINT.md) for coverage.
 - **Open form issue** — On the contact page the response element stays hidden after its text updates. Reproduced with both the original and cleaned-up scripts. Live mail delivery and production deployment are unverified.

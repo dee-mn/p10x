@@ -2,6 +2,10 @@
 
 Updated 20 November 2026. Active branch: `main`.
 
+## Homepage performance and search metadata — 20 November 2026
+
+All 32 pages now have distinct search descriptions. The homepage reuses the preloaded Inter font, loads less shared CSS and avoids unnecessary particle work. The desktop home link and arrow-bearing text links retain meaningful accessible names. All 429 existing image elements and all image assets were preserved. See the [SEO review](SEO-AUDIT.md) for the original mobile and desktop measurements and build-size comparison.
+
 ## First-party source maintenance — 20 November 2026
 
 Five commits on `main` follow the formatting pass and PPF video update. `0ec590f` fixes timezone-dependent article dates and redundant build writes. `e3f7c9d` shares mail dispatch and per-form throttling. `fe38365` consolidates article form markup and browser submission handling. `29e49d5` removes unused controller state and arguments. `4b5a6bd` consolidates training styles and regenerates the affected bundle. All media match `0d3f93d`. Photo edits in `67d302e` are pending separately.

@@ -1,3 +1,22 @@
+# Homepage PageSpeed review — 20 November 2026
+
+The supplied [mobile report](https://pagespeed.web.dev/analysis/https-p10x-flevor-me/128gndut86?form_factor=mobile) and [desktop report](https://pagespeed.web.dev/analysis/https-p10x-flevor-me/128gndut86?form_factor=desktop) measured the homepage before this change. The report contained no CrUX field data.
+
+| Lab metric | Mobile | Desktop |
+| --- | ---: | ---: |
+| SEO | 100 | 100 |
+| Performance | 86 | 62 |
+| Accessibility | 97 | 94 |
+| Best practices | 100 | 100 |
+| Largest contentful paint | 2.2 s | 0.6 s |
+| Total blocking time | 90 ms | 880 ms |
+
+The homepage now uses the existing variable Inter WOFF2 for its hero. This removes two TTF requests totaling 650,694 transferred bytes in each audit. The build excludes rules that require absent shop classes, keeping pseudo-class branches and other shared styles. Homepage CSS across three bundles fell from 1,460,305 to 1,325,629 bytes, or from 181,589 to 167,625 bytes in a local gzip comparison.
+
+The globe skips shell lighting calculations for logo particles. The Mission field allocates its particle grid on approach and limits decorative redraws. The logo link has a name, and decorative arrow replacement preserves existing link text. Thirty pages now have individual search descriptions. The Training and Driver Personality Test pages already had their own. No image assets or image markup changed.
+
+The counts above describe source and build output. Measure both devices again after deployment for updated Lighthouse scores.
+
 # SEO and delivery review — 13 November 2026
 
 The supplied mobile PageSpeed report reports SEO 100, best practices 100, accessibility 96 and performance 83. A separate fresh mobile audit returned SEO 100, best practices 100, accessibility 96 and performance 84, with lab LCP 2.4s, CLS 0.004 and TBT 120ms. These are pre-change lab measurements; no post-deployment score is claimed. No CrUX field data was available.

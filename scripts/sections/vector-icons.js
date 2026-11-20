@@ -65,7 +65,8 @@
         control &&
         !control.hasAttribute('aria-label') &&
         !control.hasAttribute('aria-labelledby') &&
-        control.textContent.trim() === value.trim()
+        control.textContent.trim() === value.trim() &&
+        !value.replace(expression, '').trim()
       ) {
         var label = {
           '←': 'Previous',

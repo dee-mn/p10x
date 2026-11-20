@@ -60,30 +60,25 @@ for (const { route } of routes) {
     originalGzipSum += zlib.gzipSync(text).length;
     const ast = postcss.parse(text, { from: src });
     ast.walkAtRules('charset', (n) => n.remove());
-    if (!shared)
-      ast.walkRules((rule) => {
-        const selectors = selectorParser().astSync(rule.selector);
-        selectors.each((selector) => {
-          let impossible = false;
-          selector.walkClasses((n) => {
-            // Only positive, top-level page/root classes are invariant; leave pseudo states untouched.
-            if (n.parent?.parent?.type !== 'root') return;
-            if (
-              /^(view-\d+|page-id-\d+|p10x-(about|ppf|tint|detail|window|wrap|faq))$/.test(
-                n.value
-              ) &&
-              !classes.has(n.value)
-            )
-              impossible = true;
-          });
-          if (impossible) {
-            selector.remove();
-            removed++;
-          }
+    ast.walkRules((rule) => {
+      const selectors = selectorParser().astSync(rule.selector);
+      selectors.each((selector) => {
+        let impossible = false;
+        selector.walkClasses((n) => {
+          // Only positive, top-level page/root classes are invariant; leave pseudo states untouched.
+          if (n.parent?.parent?.type !== 'root') return;
+          const pageRoot = !shared && /^(view-\d+|page-id-\d+|p10x-(about|ppf|tint|detail|window|wrap|faq))$/.test(n.value);
+          const shopRoot = /^(single-product|woocommerce(?:-cart|-checkout|-page)?|widget_product_categories)$/.test(n.value);
+          if ((pageRoot || shopRoot) && !classes.has(n.value)) impossible = true;
         });
-        if (selectors.nodes.length) rule.selector = selectors.toString();
-        else rule.remove();
+        if (impossible) {
+          selector.remove();
+          removed++;
+        }
       });
+      if (selectors.nodes.length) rule.selector = selectors.toString();
+      else rule.remove();
+    });
     ast.walkDecls((decl) => {
       const value = valueParser(decl.value);
       value.walk((node) => {
@@ -177,19 +172,6 @@ for (const { route } of routes) {
       '</head>',
       '<link rel="preload" href="/assets/fonts/inter-normal-latin.woff2" as="font" type="font/woff2" crossorigin></head>'
     );
-  if (route === '/')
-    for (const weight of [400, 500])
-      if (
-        !html.includes(
-          'rel="preload" href="/assets/fonts/inter-' + weight + '.ttf"'
-        )
-      )
-        html = html.replace(
-          '</head>',
-          '<link rel="preload" href="/assets/fonts/inter-' +
-            weight +
-            '.ttf" as="font" type="font/ttf" crossorigin></head>'
-        );
   if (html !== previousHtml) await fs.writeFile(file, html);
   stats.push({
     route,

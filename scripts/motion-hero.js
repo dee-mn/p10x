@@ -199,7 +199,9 @@
       sin = angles.map(Math.sin),
       c = Math.cos(pitch),
       s = Math.sin(pitch);
-    bins.forEach((b) => (b.length = 0));
+    if (!gl) bins.forEach((b) => (b.length = 0));
+    const colourDrift = Math.sin(elapsed * 0.16) * 0.045;
+    while (impacts.length && elapsed - impacts[0].time > 3.5) impacts.shift();
     let offset = 0;
     for (const p of points) {
       let x = p.x,
@@ -229,7 +231,6 @@
       let shock = 0;
       for (const hit of impacts) {
         const age = elapsed - hit.time;
-        if (age < 0 || age > 3.5) continue;
         const delta = Math.hypot(x - hit.x, y - hit.y) - age * 0.85;
         shock += Math.exp(-delta * delta * 80 - age * 1.4);
       }
@@ -244,10 +245,7 @@
         nx = x / norm,
         ny = y / norm,
         nz = z / norm;
-      const rim = Math.pow(1 - Math.abs(nz), 1.45),
-        key = clamp(0.36 - nx * 0.36 + ny * 0.36 + nz * 0.24);
-      const spec = Math.pow(key, 5),
-        twinkle = 0.83 + 0.17 * Math.sin(p.seed + elapsed * 1.4);
+      const key = clamp(0.36 - nx * 0.36 + ny * 0.36 + nz * 0.24);
       let alpha, size, color;
       if (p.kind === 0) {
         alpha = 0.82 + key * 0.18;
@@ -257,9 +255,13 @@
           : 24;
       } else {
         const outer = p.kind === 2;
+        const rim = Math.pow(1 - Math.abs(nz), 1.45);
+        const keySquared = key * key;
+        const spec = keySquared * keySquared * key;
+        const twinkle = 0.83 + 0.17 * Math.sin(p.seed + elapsed * 1.4);
         alpha =
           (outer
-            ? 0.012 + Math.pow(rim, 3) * 0.56 + spec * 0.14
+            ? 0.012 + rim * rim * rim * 0.56 + spec * 0.14
             : 0.1 + rim * 0.5 + key * 0.18 + spec * 0.85) *
           (nz > 0 ? 1 : 0.32) *
           twinkle;
@@ -271,7 +273,7 @@
               nx * 0.27 -
               ny * 0.29 -
               spec * 0.2 +
-              Math.sin(elapsed * 0.16) * 0.045
+              colourDrift
           ) * 23
         );
       }
@@ -320,9 +322,11 @@
   }
   function resize() {
     const b = hero.getBoundingClientRect();
+    const nextDpr = Math.min(devicePixelRatio || 1, mobile.matches ? 1.5 : 1.6);
+    if (canvas.dataset.ready && width === b.width && height === b.height && dpr === nextDpr) return;
     width = b.width;
     height = b.height;
-    dpr = Math.min(devicePixelRatio || 1, mobile.matches ? 1.5 : 1.6);
+    dpr = nextDpr;
     canvas.width = Math.round(width * dpr);
     canvas.height = Math.round(height * dpr);
     cx = width / 2;
@@ -431,7 +435,7 @@
     dragging.x = e.clientX;
     dragging.y = e.clientY;
     dragging.time = now;
-    draw();
+    if (paused) draw();
   });
   function release(e) {
     if (!dragging || dragging.id !== e.pointerId) return;

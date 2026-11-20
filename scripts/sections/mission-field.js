@@ -21,9 +21,12 @@
       time = 0;
     var reduced = matchMedia('(prefers-reduced-motion: reduce)');
     function resize() {
-      w = root.clientWidth;
-      h = root.clientHeight;
+      if (!visible) return;
+      var width = root.clientWidth, height = root.clientHeight;
       var d = Math.min(devicePixelRatio || 1, 1.5);
+      if (w === width && h === height && canvas.width === Math.round(width * d)) return;
+      w = width;
+      h = height;
       canvas.width = Math.round(w * d);
       canvas.height = Math.round(h * d);
       ctx.setTransform(d, 0, 0, d, 0, 0);
@@ -69,9 +72,12 @@
     function frame(now) {
       raf = 0;
       if (!visible || document.hidden || reduced.matches) return;
-      var dt = last ? Math.min((now - last) / 1000, 0.05) : 0;
-      last = now;
-      draw(dt);
+      // The slow background field needs fewer draws than the interactive globe.
+      if (!last || now - last >= 32) {
+        var dt = last ? Math.min((now - last) / 1000, 0.1) : 0;
+        last = now;
+        draw(dt);
+      }
       raf = requestAnimationFrame(frame);
     }
     function sync() {
@@ -80,12 +86,13 @@
       last = 0;
       if (visible && !document.hidden && !reduced.matches)
         raf = requestAnimationFrame(frame);
-      else if (reduced.matches) draw(0);
+      else if (visible && reduced.matches) draw(0);
     }
     new ResizeObserver(resize).observe(root);
     new IntersectionObserver(
       function (entries) {
         visible = entries[0].isIntersecting;
+        if (visible) resize();
         sync();
       },
       { rootMargin: '80px' }
@@ -105,7 +112,6 @@
     });
     document.addEventListener('visibilitychange', sync);
     reduced.addEventListener('change', sync);
-    resize();
   }
   if (document.readyState === 'loading')
     document.addEventListener('DOMContentLoaded', init, { once: true });

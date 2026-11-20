@@ -122,21 +122,3 @@ img[width] {
 .surface img[data-display-ratio] {
   width: var(--source-width,auto)
 }
-
-@font-face {
-  font-family: InterHero;
-  src: url('/assets/fonts/inter-400.ttf') format('truetype');
-  font-weight: 100 450;
-  font-display: swap
-}
-
-@font-face {
-  font-family: InterHero;
-  src: url('/assets/fonts/inter-500.ttf') format('truetype');
-  font-weight: 451 900;
-  font-display: swap
-}
-
-#p10x-motion-hero.pm-hero {
-  font-family: InterHero,Arial,sans-serif
-}
