@@ -13,7 +13,8 @@
 - **Documentation:** Organised into README, project context, design system, development rules, this status file, historical checkpoint and SEO audit. `AGENTS.md` points coding agents to them.
 - **Media:** The 13 November source/URL image audit found no missing image files or broken image URLs. It was not an exhaustive human scroll-through of every possible page state.
 - **Performance work:** Dated 13 November changes cover CSS delivery, offscreen-video loading, font preload, image dimensions and selected accessibility/structured-data items. Original media bytes and approved presentation were protected.
-- **Latest website change (20 November):** Tidied the Driver Personality Test welcome screen. Verified the responsive layout at 320, 390, 768 and 1280 px frame widths, keyboard Start and Back, the build, source/export checks and driver-test scoring fixtures. Deployment verification is pending.
+- **About leadership (20 November):** Five named portraits replace the initials on the About Us cards. The source and export checks passed. The five image mappings and desktop/mobile crop previews were checked. Live verification is pending.
+- **Driver Personality Test (20 November):** Tidied the Driver Personality Test welcome screen. Verified the responsive layout at 320, 390, 768 and 1280 px frame widths, keyboard Start and Back, the build, source/export checks and driver-test scoring fixtures. Deployment verification is pending.
 
 ## Pending verification — not yet confirmed
 

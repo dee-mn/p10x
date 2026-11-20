@@ -2,6 +2,10 @@
 
 Updated 14 November 2026. Active branch: `main`.
 
+## About Us leadership portraits — 20 November 2026
+
+On `main`, the About Us gallery uses the supplied transparent PNGs for Max Yong, Salwani Nor, Nick Ng, Nadzmi Zahin and Fabian Ong. The images are registered in both asset manifests. Source and exported-site checks passed for all 32 routes. The five card mappings and portrait crops at 360 × 520 and 320 × 480 were checked. Local Chromium was unable to launch for a full browser check.
+
 ## Resume status — 14 November 2026
 
 The project handover is now split into focused Markdown documents so work can continue across ChatGPT mobile/web/desktop and Codex without relying on a single conversation. Start with [CURRENT-TASKS.md](CURRENT-TASKS.md), followed by [PROJECT-CONTEXT.md](PROJECT-CONTEXT.md), [DESIGN-SYSTEM.md](DESIGN-SYSTEM.md) and [DEVELOPMENT-RULES.md](DEVELOPMENT-RULES.md); [../AGENTS.md](../AGENTS.md) gives coding agents the same read order. The root README is now a short index.

@@ -1140,6 +1140,31 @@
       "path": "assets/images/William-Lee-P10X-CEO-warm-neutral.png",
       "sha256": "e0e7ceccef5bc7dbdb6228f1395c2b4bf26904f9fcde43c3f6241dd2fb657e34",
       "bytes": 1787387
+    },
+    {
+      "path": "assets/images/team-max-yong.png",
+      "sha256": "f97228ec418cd52dfb65bda14375eeac738f7852ee778581bc5deb7f78fc549b",
+      "bytes": 1408940
+    },
+    {
+      "path": "assets/images/team-salwani-nor.png",
+      "sha256": "9c07c92dab4b754d623c0b882fea1644cb4d36278cba924d68e044aa50df4e10",
+      "bytes": 1541830
+    },
+    {
+      "path": "assets/images/team-nick-ng.png",
+      "sha256": "5473507ea4861c8359975b5a4b3c43d6ca1ae0cb66737f039690286eafe5689b",
+      "bytes": 1524384
+    },
+    {
+      "path": "assets/images/team-nadzmi-zahin.png",
+      "sha256": "2629444d4250773c316b6c320ae73688829ad639dfb180342862cb9d2a69ecf5",
+      "bytes": 1357845
+    },
+    {
+      "path": "assets/images/team-fabian-ong.png",
+      "sha256": "b0ebf6bf9f6341902c3b3f21064c3c767fc3809e46ea1dd100c81a7e87af8b11",
+      "bytes": 1458649
     }
   ]
 }
