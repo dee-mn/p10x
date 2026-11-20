@@ -36,8 +36,8 @@ Older checkpoint entries describe earlier stages. Later dated entries supersede 
 
 | Area | Source |
 | --- | --- |
-| Homepage and other pages | `index.html`, `<route>/index.html` |
-| Shared navigation and footer | `components/`, applied by `tools/sync-layout.mjs` |
+| Homepage and other pages | `src/fragments/`, `src/data/pages.json`, `src/pages/[...slug].astro` |
+| Shared navigation and footer | `components/`, rendered by `src/layouts/SiteLayout.astro` |
 | Typography and original media display sizes | `styles/foundation.css` |
 | Original page styles and their order | `docs/style-manifest.json`, `styles/reference/` and the named page styles |
 | Shared controls and forms | `scripts/native.js`, `contact.php`, `comment.php`, `driver-test.php` |
