@@ -2,15 +2,13 @@
 
 Use this file for Codex or any coding agent working on this repository.
 
-## Read order
+## Routine page and media edits
 
-1. [docs/CURRENT-TASKS.md](docs/CURRENT-TASKS.md) — current handoff and outstanding checks.
-2. [docs/PROJECT-CONTEXT.md](docs/PROJECT-CONTEXT.md) — architecture, routes, hosting and file map.
-3. [docs/DESIGN-SYSTEM.md](docs/DESIGN-SYSTEM.md) — approved visuals, content and interactive behaviour.
-4. [docs/DEVELOPMENT-RULES.md](docs/DEVELOPMENT-RULES.md) — non-negotiable editing and verification rules.
-5. [docs/PROJECT-CHECKPOINT.md](docs/PROJECT-CHECKPOINT.md) and [docs/SEO-AUDIT.md](docs/SEO-AUDIT.md) only where history or measurements matter.
+Start from current `main`. Locate the named section and its asset references, including other uses when a shared replacement is requested. Read the matching source excerpts and only the project notes needed for that change. Use the broader reading order in the README for work spanning components.
 
-The **latest user instruction** and **current source** take precedence over stale notes. The README is the quick entry point; do not assume a prior chat is available.
+- Inspect images as images and transfer media as files. Keep encoded media, complete HTML pages and successful build logs out of the conversation. Report the affected paths and any actionable error.
+- Check the affected section at desktop and mobile sizes for visual changes. For an asset-only swap or an existing asset URL change, use the regular GitHub Actions run for the full build and route checks. Run the build locally when it produces tracked files required by the change, or when investigating a failure.
+- After an interruption, check the target paths on current `main` for the intended change before retrying. Record the verified commit and CI result separately from the live-site result. An unfinished task belongs in [the handover](docs/CURRENT-TASKS.md) when its next step cannot be recovered from Git.
 
 ## ChatGPT versus Codex: choose per task
 
@@ -23,16 +21,6 @@ When Codex is recommended, provide **one concise ready-to-paste instruction** re
 If the task is manageable here, do it here. Keep `CURRENT-TASKS.md` updated at meaningful milestones or handoffs, not for every tiny CSS/text adjustment. Maintain durable design/rules docs only when an enduring decision changes. This policy applies when a new chat starts and older conversations are unavailable.
 
 **Branch preference:** the owner works alone and prefers `main` without routine feature-branch/PR overhead. Use direct `main` commits for ordinary authorized work where supported. For risky/destructive changes or where the platform requires a branch/PR, explain the shortest safe workflow; never assume a Codex Publish action automatically updates `main` or deploys the live site.
-
-## Choosing ChatGPT or Codex
-
-The owner primarily works on iPhone and iPad. Keep the workflow efficient: ChatGPT with GitHub tools is the default for routine website updates.
-
-Before a complex request, assess whether Codex would materially help. Recommend Codex for tasks requiring extensive multi-file refactoring, running a browser, debugging difficult animations, or comprehensive testing. Explain the specific benefit and let the owner choose. Do not require Codex for routine CSS, content, or documentation work.
-
-Avoid duplicate planning: if Codex is appropriate, provide one concise task prompt referring to existing project documentation, rather than rewriting the same plan into Markdown first. Update handover notes at meaningful milestones, not after every minor adjustment.
-
-The owner prefers working directly on `main` for ordinary authorized changes. Explain when a branch or pull request is necessary for safety or required by the platform. Publishing a Codex task does not necessarily update `main` or deploy the website.
 
 ## Hard constraints
 

@@ -14,12 +14,12 @@
 
 ## Working process
 
-1. Read [CURRENT-TASKS.md](CURRENT-TASKS.md), [PROJECT-CONTEXT.md](PROJECT-CONTEXT.md), and [DESIGN-SYSTEM.md](DESIGN-SYSTEM.md). Consult [PROJECT-CHECKPOINT.md](PROJECT-CHECKPOINT.md) for prior implementation evidence.
+1. For routine page or media edits, use the [focused workflow](../AGENTS.md#routine-page-and-media-edits). For cross-component work, read [CURRENT-TASKS.md](CURRENT-TASKS.md), [PROJECT-CONTEXT.md](PROJECT-CONTEXT.md), and [DESIGN-SYSTEM.md](DESIGN-SYSTEM.md). Consult [PROJECT-CHECKPOINT.md](PROJECT-CHECKPOINT.md) for prior implementation evidence.
 2. Inspect the current repository branch and relevant source, then identify the smallest affected set of files. Do not recreate work already in the current source.
 3. For a substantial or risky site change, use a feature branch/review before merging. Keep `main` stable; don't force-push. Small, explicitly requested documentation-only updates may be committed directly.
 4. Change focused source files. Keep unrelated layouts, content, media, code and generated files unchanged unless the build necessarily updates them.
 5. Run the applicable checks and, where interaction/appearance changes, inspect the resulting desktop/mobile browser behaviour. Report what was **actually** checked versus what remains unverified.
-6. Record the result in [CURRENT-TASKS.md](CURRENT-TASKS.md) and add a dated milestone to [PROJECT-CHECKPOINT.md](PROJECT-CHECKPOINT.md). Include changed files, commit or branch, tests and specific next step.
+6. Use the commit and CI result as the record of a completed routine edit. Update [CURRENT-TASKS.md](CURRENT-TASKS.md) for meaningful milestones or pending handoffs. Add dated [checkpoint](PROJECT-CHECKPOINT.md) entries for substantive changes.
 7. Never make unrequested site-wide optimizations, rewrite source paragraphs from summaries, or conduct a whole-site asset transfer to fix one page.
 
 ## Development and validation
@@ -31,7 +31,7 @@ npm ci
 npm run dev
 ```
 
-For website changes:
+For changes requiring local build validation, use the commands below. For routine media changes the push workflow runs the full suite, and the affected page still needs a visual check.
 
 ```sh
 npm run check

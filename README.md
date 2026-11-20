@@ -8,11 +8,13 @@ P10X's standalone company website, built with static HTML, CSS, JavaScript and l
 
 This repository is the durable record for work that moves between iPhone, iPad, desktop, ChatGPT and Codex. **Do not rely on any single chat as the only project memory.**
 
+For a routine photo, copy or page edit, start with the [focused workflow in AGENTS.md](AGENTS.md#routine-page-and-media-edits) and the affected source on `main`. For broader work or a project handoff, use the following reading order.
+
 1. Read [current tasks and handover](docs/CURRENT-TASKS.md) first to see the latest recorded work, limits and next action.
 2. Read [project context](docs/PROJECT-CONTEXT.md) for the architecture, routes, hosting and file map.
 3. Read [design system](docs/DESIGN-SYSTEM.md) and [development rules](docs/DEVELOPMENT-RULES.md) before modifying a component.
 4. Check current `main`, recent commits and the actual source before editing. The latest user instruction and current code take precedence over historical notes.
-5. Make a focused change, validate what you can, and update [current tasks](docs/CURRENT-TASKS.md). Add a concise entry to [project checkpoint](docs/PROJECT-CHECKPOINT.md) for meaningful milestones.
+5. Make a focused change, validate what you can, and update [current tasks](docs/CURRENT-TASKS.md) when a milestone or pending handoff needs recording. Add a concise entry to [project checkpoint](docs/PROJECT-CHECKPOINT.md) for meaningful milestones.
 
 ## Documentation map
 
