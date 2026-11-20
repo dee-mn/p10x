@@ -1,3 +1,4 @@
+import { publishedRoutes } from './published-routes.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
 import vm from 'node:vm';
@@ -5,7 +6,7 @@ import crypto from 'node:crypto';
 const root = path.resolve(process.env.P10X_CHECK_ROOT || 'dist'),
   errors = [],
   checked = new Set();
-const routes = JSON.parse(fs.readFileSync('docs/routes.json', 'utf8'));
+const routes = publishedRoutes(root);
 function scan(file) {
   if (checked.has(file)) return;
   checked.add(file);
@@ -62,7 +63,8 @@ for (const { route } of routes) {
       target.startsWith('/scripts/')
     )
       continue;
-    if (['/contact.php', '/comment.php', '/sitemap.xml'].includes(target))
+    if (target.endsWith('.xml') && fs.existsSync(path.join(root, target))) continue;
+    if (['/contact.php', '/comment.php'].includes(target))
       continue;
     if (!fs.existsSync(path.join(root, target, 'index.html')))
       errors.push(`${route}: missing destination ${target}`);

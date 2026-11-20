@@ -21,6 +21,15 @@ jobs:
       - run: npm run check
       - run: |
           for file in dist/*.php dist/includes/*.php; do php -l "$file"; done
+      - name: Exercise Insights on mobile and desktop
+        env:
+          QA_PREFIX: ${{ runner.temp }}/p10x-qa
+        run: |
+          npm install --prefix "$QA_PREFIX" --no-audit --no-fund playwright-core@1.55.1
+          php -S 127.0.0.1:4173 -t dist > "$RUNNER_TEMP/insights-preview.log" 2>&1 &
+          preview_pid=$!
+          trap 'kill "$preview_pid" 2>/dev/null || true' EXIT
+          node tools/test-insights-browser.mjs
       - name: Check out the pre-migration site
         if: github.event_name == 'pull_request' && github.head_ref == 'migration/astro-4-16'
         uses: actions/checkout@v4

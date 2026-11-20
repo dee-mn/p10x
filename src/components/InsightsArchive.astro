@@ -1,0 +1,36 @@
+---
+import { publishedPosts, postUrl, dateLabel } from '../lib/insights';
+const posts = await publishedPosts();
+---
+<div class="insights-archive-tools">
+  <form action="/insights/" method="get" role="search">
+    <label for="archive-query">Search Insights</label>
+    <div><input id="archive-query" name="s" type="search" /><button type="submit">Search</button></div>
+  </form>
+  <a href="/insights/feed.xml">RSS feed</a>
+</div>
+<div class="ui-grid ui-blog-grid ui-blog-grid1" id="ui_post_grid-9768e7c-8146">
+  <div class="ui-grid-inner ui-grid-masonry row" data-gutter="15">
+    <div class="grid-sizer col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12"></div>
+    {posts.map((post, index) => (
+      <article class="ui-grid-item col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12 p10x-insights" data-more-article={index >= 12 ? '' : undefined}>
+        <div class="ui-post--inner">
+          <div class="ui-post--featured ui-item--img hover-imge-ripple" style={`background-image:url("${post.data.cover}")`}>
+            <a class="ui-img-link" href={postUrl(post)} aria-label={'Read ' + post.data.title}></a>
+          </div>
+          <div class="ui-item-content">
+            <h2 class="ui-post--title title-hover-line"><a href={postUrl(post)}>{post.data.title}</a></h2>
+            <div class="ui-item--excerpt">{post.data.excerpt ?? post.data.description}</div>
+            <div class="ui-item-meta">
+              <span class="ui-author-name">{post.data.author}</span>
+              <time class="ui-item--date" datetime={post.data.published.toISOString().slice(0,10)}>{dateLabel(post.data.published)}</time>
+            </div>
+          </div>
+        </div>
+      </article>
+    ))}
+  </div>
+  {posts.length > 12 && <div class="ui-load-more" hidden><button class="btn" type="button">Load More</button></div>}
+  {posts.length === 0 && <p>There are no published articles yet.</p>}
+  <p data-no-insights hidden>No articles match your search. <a href="/insights/">View all Insights</a></p>
+</div>

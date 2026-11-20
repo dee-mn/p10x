@@ -1,0 +1,7 @@
+.insights-archive-tools { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 1rem; margin-block-end: 2rem; }
+.insights-archive-tools form { width: min(100%, 28rem); }
+.insights-archive-tools label { display: block; margin-block-end: .4rem; }
+.insights-archive-tools form div { display: flex; gap: .5rem; }
+.insights-archive-tools input { flex: 1; min-width: 0; }
+.insights-archive-tools button { padding-inline: 1em; }
+.ui-grid-item[hidden], .ui-load-more[hidden] { display: none !important; }

@@ -1,29 +1,20 @@
 ---
-import articles from '../../docs/article-index.json';
-const escapeHtml = (value) =>
-  String(value).replace(
-    /[&<>"']/g,
-    (c) =>
-      ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[
-        c
-      ]
-  );
-function renderCard(article) {
-  const title = escapeHtml(article.title);
-  const date = new Date(article.date + ' GMT').toISOString().slice(0, 10);
-
-  return `<article class="ui-swiper-slide" aria-label="${title}">
-  <div class="ui-post--inner">
-    <div class="ui-post--featured ui-item--img">
-      <a class="ui-img-link" href="${escapeHtml(article.route)}" aria-label="Read ${title}"><img src="${escapeHtml(article.image)}" alt="${title}" loading="lazy" decoding="async"></a>
-    </div>
-    <div class="ui-item-content">
-      <h3 class="ui-post--title title-hover-line"><a href="${escapeHtml(article.route)}">${title}</a></h3>
-      <div class="ui-item--excerpt">${escapeHtml(article.description)}</div>
-      <div class="ui-item-meta"><time class="ui-item--date" datetime="${date}">${escapeHtml(article.date)}</time></div>
-    </div>
-  </div>
-</article>`;
-}
+import { publishedPosts, postUrl, dateLabel } from '../lib/insights';
+const posts = (await publishedPosts()).slice(0, 6);
 ---
-<Fragment set:html={articles.slice(0, 6).map(renderCard).join('\n')} />
+{posts.map(post => (
+  <article class="ui-swiper-slide" aria-label={post.data.title}>
+    <div class="ui-post--inner">
+      <div class="ui-post--featured ui-item--img">
+        <a class="ui-img-link" href={postUrl(post)} aria-label={'Read ' + post.data.title}>
+          <img src={post.data.cover} alt={post.data.coverAlt} loading="lazy" decoding="async" />
+        </a>
+      </div>
+      <div class="ui-item-content">
+        <h3 class="ui-post--title title-hover-line"><a href={postUrl(post)}>{post.data.title}</a></h3>
+        <div class="ui-item--excerpt">{post.data.excerpt ?? post.data.description}</div>
+        <div class="ui-item-meta"><time class="ui-item--date" datetime={post.data.published.toISOString().slice(0,10)}>{dateLabel(post.data.published)}</time></div>
+      </div>
+    </div>
+  </article>
+))}

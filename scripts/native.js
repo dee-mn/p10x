@@ -131,18 +131,6 @@
       if (ev.target === box || ev.target.closest('button')) box.remove();
     });
   });
-  // Article listing uses the same initial twelve-card view and reveals the remaining eight.
-  $$(
-    '.ui-load-more,.ui-loadmore,.ui--loadmore,.ui-grid-loadmore,.ui-post-loadmore'
-  ).forEach((button) =>
-    button.addEventListener('click', (e) => {
-      e.preventDefault();
-      $$('[data-more-article]').forEach((x) => (x.hidden = false));
-      button.closest('.ui-loadmore')?.remove();
-      button.hidden = true;
-      refresh();
-    })
-  );
   // Theme-independent card sliders preserve the original three/two/one-column breakpoints.
   $$('.ui-swiper-container:not([data-home-insights])').forEach((root) => {
     root.classList.add('native-carousel');
@@ -355,17 +343,28 @@
   }
   if (document.readyState === 'complete') start();
   else addEventListener('load', start, { once: true });
-  // Both article search boxes use the local Insights collection.
+  // Keep all articles readable without JavaScript. Enhance the archive after load.
   if (location.pathname === '/insights/') {
-    const query = new URLSearchParams(location.search).get('s');
-    if (query) {
-      const words = query.toLowerCase().split(/\s+/);
-      $$('.ui-grid-item').forEach((item) => {
-        item.hidden = !words.every((w) =>
-          item.textContent.toLowerCase().includes(w)
-        );
+    const query = (new URLSearchParams(location.search).get('s') || '').trim();
+    const field = $('#archive-query');
+    if (field) field.value = query;
+    const words = query.toLowerCase().split(/\s+/).filter(Boolean);
+    const cards = $$('.ui-grid-item');
+    const more = $('.ui-load-more');
+    cards.forEach(card => {
+      card.hidden = words.length
+        ? !words.every(word => card.textContent.toLowerCase().includes(word))
+        : card.hasAttribute('data-more-article');
+    });
+    const empty = $('[data-no-insights]');
+    if (empty) empty.hidden = !words.length || cards.some(card => !card.hidden);
+    if (more && !words.length) {
+      more.hidden = false;
+      more.querySelector('button')?.addEventListener('click', () => {
+        cards.forEach(card => { card.hidden = false; });
+        more.hidden = true;
+        refresh();
       });
-      $('.ui-load-more')?.remove();
     }
   }
   // Both mail handlers return { ok, message }; the article handler also needs its page URL.

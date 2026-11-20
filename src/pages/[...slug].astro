@@ -1,7 +1,7 @@
 ---
 import SiteLayout from '../layouts/SiteLayout.astro';
 import HomeInsights from '../components/HomeInsights.astro';
-import commentForm from '../../components/comment-form.html?raw';
+import InsightsArchive from '../components/InsightsArchive.astro';
 import routes from '../../docs/routes.json';
 import pages from '../data/pages.json';
 
@@ -17,11 +17,11 @@ const fragments = import.meta.glob('../fragments/**/*.html', { eager: true, quer
 const name = Astro.params.slug ?? 'home';
 const fragment = fragments[`../fragments/${name}.html`];
 if (typeof fragment !== 'string' || !pages[route]) throw new Error(`Missing page source for ${route}`);
-const [before, marker, after] = fragment.split(/(<!-- shared:(?:comment-form|home-insights) -->)/);
+const [before, marker, after] = fragment.split(/(<!-- shared:(?:insights-archive|home-insights) -->)/);
 ---
 <SiteLayout route={route} page={pages[route]}>
   <Fragment set:html={before} />
-  {marker === '<!-- shared:comment-form -->' && <Fragment set:html={commentForm.trim()} />}
+  {marker === '<!-- shared:insights-archive -->' && <InsightsArchive />}
   {marker === '<!-- shared:home-insights -->' && <HomeInsights />}
   {after && <Fragment set:html={after} />}
 </SiteLayout>

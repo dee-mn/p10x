@@ -1,0 +1,78 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import layout from '../../data/article-layout.json';
+import commentForm from '../../../components/comment-form.html?raw';
+import { publishedPosts, postUrl, dateLabel } from '../../lib/insights';
+
+export async function getStaticPaths() {
+  const posts = await publishedPosts();
+  return posts.map(post => ({
+    params: { slug: post.slug },
+    props: { post, recent: posts.filter(other => other.slug !== post.slug).slice(0, 5) }
+  }));
+}
+const { post, recent } = Astro.props;
+const { Content } = await post.render();
+const { title, description, author, published, cover, coverAlt, seoTitle } = post.data;
+const route = postUrl(post);
+const image = new URL(cover, Astro.site).href;
+const page = { ...layout, title: seoTitle ?? title + ' | P10X Insights', socialTitle: title, description, ogType: 'article', ogImage: image };
+const schema = {
+  '@context': 'https://schema.org', '@type': 'BlogPosting', headline: title, description,
+  image, datePublished: published.toISOString().slice(0, 10),
+  author: { '@type': 'Person', name: author },
+  publisher: { '@type': 'Organization', name: 'P10X' },
+  mainEntityOfPage: new URL(route, Astro.site).href
+};
+---
+<SiteLayout {route} {page} stylesheets={layout.styles}>
+  <Fragment slot="head">
+    <meta property="article:published_time" content={published.toISOString()} />
+    <meta name="author" content={author} />
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(schema).replace(/</g, '\\u003c')}></script>
+  </Fragment>
+  <main id="ui-main" class="insights-post" tabindex="-1">
+    <div class="container">
+      <div class="row ui-content-wrap ui-has-sidebar ui-sidebar-right">
+        <div class="ui-content-area ui-content-post col-12 col-lg-9" id="ui-content-area">
+          <article class="ui---post post type-post category-p10x-insights">
+            <div class="ui-post-inner">
+              <header class="insights-post-heading">
+                <a href="/insights/">All Insights</a>
+                <h1 data-pagefind-meta="title">{title}</h1>
+                <p>By {author} <span aria-hidden="true">·</span> <time datetime={published.toISOString().slice(0,10)}>{dateLabel(published)}</time></p>
+              </header>
+              <img class="insights-post-cover" src={cover} alt={coverAlt} decoding="async" />
+              <div class="ui-item--content clearfix"><Content /></div>
+            </div>
+          </article>
+          <section class="comments-area" id="comments" data-pagefind-ignore>
+            <div class="comment-respond" id="respond">
+              <h2 class="comment-reply-title" id="reply-title">Leave A Comment</h2>
+              <Fragment set:html={commentForm} />
+            </div>
+          </section>
+        </div>
+        <aside class="ui-sidebar-area ui-sidebar-post col-12 col-lg-3" id="ui-sidebar-area" data-pagefind-ignore>
+          <div class="ui-sidebar-sticky">
+            <section class="widget widget_search">
+              <form action="/insights/" class="content-search" method="get" role="search">
+                <label for="insights-query">Search Insights</label>
+                <div class="content-search__inside-wrapper">
+                  <input class="content-search__input" id="insights-query" name="s" type="search" required />
+                  <button class="content-search__button" type="submit">Search</button>
+                </div>
+              </form>
+            </section>
+            {recent.length > 0 && <nav class="widget" aria-label="Recent articles">
+              <h2 class="content-heading">Recent Posts</h2>
+              <ul class="content-latest-posts__list content-latest-posts">
+                {recent.map(other => <li><a href={postUrl(other)}>{other.data.title}</a></li>)}
+              </ul>
+            </nav>}
+          </div>
+        </aside>
+      </div>
+    </div>
+  </main>
+</SiteLayout>

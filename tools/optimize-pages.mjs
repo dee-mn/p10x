@@ -1,3 +1,4 @@
+import { publishedRoutes } from './published-routes.mjs';
 /* Publish lightweight styles and stable media boxes without changing authored visuals. */
 import fs from 'node:fs/promises';
 import path from 'node:path';
@@ -8,7 +9,7 @@ import selectorParser from 'postcss-selector-parser';
 import valueParser from 'postcss-value-parser';
 import { addImageDimensions, attribute } from './image-dimensions.mjs';
 
-const routes = JSON.parse(await fs.readFile('docs/routes.json', 'utf8'));
+const routes = publishedRoutes('dist');
 async function readOptionalText(file) {
   try {
     return await fs.readFile(file, 'utf8');

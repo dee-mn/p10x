@@ -1,0 +1,7 @@
+.insights-post-heading { margin-block-end: 1.5rem; }
+.insights-post-heading h1 { margin-block: .45em .35em; font-size: clamp(2rem, 4.8vw, 3.75rem); line-height: 1.12; overflow-wrap: anywhere; }
+.insights-post-cover { display: block; width: 100%; height: auto; margin-block-end: 2rem; }
+.insights-post .ui-item--content { max-width: 74ch; overflow-wrap: break-word; }
+.insights-post .ui-item--content :is(h2, h3, [id]) { scroll-margin-top: 7rem; }
+.insights-post .ui-item--content img { max-width: 100%; height: auto; }
+.insights-post .ui-item--content table { display: block; max-width: 100%; overflow-x: auto; }

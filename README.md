@@ -48,7 +48,11 @@ GitHub Actions validates pushes to `main` and publishes the built files to `ples
 
 ### Writing an Insights post
 
-1. Copy the [article template](src/fragments/insights/_template.html.example) into the same folder as `your-article-slug.html`. Fill in the headline, author, date and body. The template itself stays outside the published site.
-2. When the article is ready, add `/insights/your-article-slug/` to `docs/routes.json`, `src/data/pages.json`, `docs/style-manifest.json` and `sitemap.xml`. Use an existing article as the example for scripts and styles, and set the new article’s own SEO title, description and social image.
-3. Add the published article to `docs/article-index.json` in date order and add its card to `src/fragments/insights.html`. The homepage uses the first six index entries. Pagefind picks up the new route on the next build.
-4. Run `npm run build && npm run check` and preview the article before pushing.
+Each post lives in a single Markdown file in [src/content/insights](src/content/insights). You can write it in GitHub’s file editor or your usual text editor.
+
+1. Copy [the starter](src/content/insights/_template.md) to `your-article-slug.md` in the same folder. The filename becomes `/insights/your-article-slug/`. Keep it stable after publishing.
+2. Fill in the headline, description, author, publication date, local cover image and alt text. Write the article in Markdown below the second `---`. An optional `excerpt` or `seoTitle` overrides the default card summary or search title.
+3. Keep `draft: true` while writing. To publish, set `draft: false` and commit to `main`. The next build includes the article page, archive card, recent posts, homepage carousel (latest six), sitemap, RSS and site search. Set it back to `true` to withdraw it on the next deployment.
+4. For local review, run `npm run dev` with your copy set to `draft: false` locally and open its URL. The release checks are `npm run build && npm run check`.
+
+The starter and drafts are omitted from the built website. Source files follow the repository’s access settings. Plesk serves the generated `plesk-deploy` branch.

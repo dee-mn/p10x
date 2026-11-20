@@ -4,7 +4,7 @@ Use this file for Codex or any coding agent working on this repository.
 
 ## Routine page and media edits
 
-Start from current `main`. Edit page bodies in `src/fragments/` and route metadata in `src/data/pages.json`. Locate the named section and its asset references, including other uses when a shared replacement is requested. Read the matching source excerpts and only the project notes needed for that change. Use the broader reading order in the README for work spanning components.
+Start from current `main`. Edit Insights articles in `src/content/insights/` using the publishing instructions in the README. Edit other page bodies in `src/fragments/` and route metadata in `src/data/pages.json`. Locate the named section and its asset references, including other uses when a shared replacement is requested. Read the matching source excerpts and only the project notes needed for that change. Use the broader reading order in the README for work spanning components.
 
 - Inspect images as images and transfer media as files. Keep encoded media, complete HTML pages and successful build logs out of the conversation. Report the affected paths and any actionable error.
 - Check the affected section at desktop and mobile sizes for visual changes. For an asset-only swap or an existing asset URL change, use the regular GitHub Actions run for the full build and route checks. Run the build locally when it produces tracked files required by the change, or when investigating a failure.
