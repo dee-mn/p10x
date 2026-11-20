@@ -13,12 +13,64 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+          cache: npm
       - run: npm ci
       - run: node tools/check-driver-test.mjs
-      - run: php -l driver-test.php
       - run: php tools/test-driver-test.php
-      - run: npm run check
       - run: npm run build
-      - run: P10X_CHECK_ROOT=dist npm run check
-      - run: php -l contact.php
-      - run: php -l comment.php
+      - run: npm run check
+      - run: |
+          for file in dist/*.php dist/includes/*.php; do php -l "$file"; done
+      - name: Check out the pre-migration site
+        if: github.event_name == 'pull_request' && github.head_ref == 'migration/astro-4-16'
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.base.sha }}
+          path: .baseline
+          persist-credentials: false
+      - name: Compare all pages and exercise desktop and mobile interactions
+        if: github.event_name == 'pull_request' && github.head_ref == 'migration/astro-4-16'
+        env:
+          QA_PREFIX: ${{ runner.temp }}/p10x-qa
+        run: |
+          for name in assets scripts styles includes data contact.php comment.php driver-test.php .htaccess robots.txt sitemap.xml tinting window-film window-tint; do
+            diff -qr ".baseline/$name" "dist/$name"
+          done
+          npm install --prefix "$QA_PREFIX" --no-audit --no-fund playwright-core@1.55.1
+          php -S 127.0.0.1:4173 -t dist > "$RUNNER_TEMP/preview.log" 2>&1 &
+          node tools/verify-migration.mjs
+  publish:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: verify
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    concurrency:
+      group: plesk-deploy
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci && npm run build && npm run check
+      - name: Publish built website for Plesk
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch origin main
+          if [[ "$(git rev-parse FETCH_HEAD)" != "$GITHUB_SHA" ]]; then exit 0; fi
+          publish_dir="$RUNNER_TEMP/plesk-output"
+          if git ls-remote --exit-code --heads origin plesk-deploy >/dev/null; then
+            git fetch origin refs/heads/plesk-deploy
+            git worktree add --detach "$publish_dir" FETCH_HEAD
+          else
+            git worktree add --detach "$publish_dir" HEAD
+            git -C "$publish_dir" switch --orphan initial-plesk-output
+          fi
+          rsync -a --delete --exclude='.git' dist/ "$publish_dir/"
+          git -C "$publish_dir" add --all --force
+          if git -C "$publish_dir" diff --cached --quiet; then exit 0; fi
+          git -C "$publish_dir" -c user.name=github-actions -c user.email=41898282+github-actions[bot]@users.noreply.github.com commit -qm "Build P10X from $GITHUB_SHA"
+          git -C "$publish_dir" push origin HEAD:refs/heads/plesk-deploy

@@ -1,7 +1,7 @@
 import { createServer } from 'node:http';
 import { readFile, stat } from 'node:fs/promises';
 import path from 'node:path';
-const root = process.cwd();
+const root = path.resolve('dist');
 const portFlag = process.argv.indexOf('--port');
 const port = Number(
   process.env.PORT || (portFlag >= 0 ? process.argv[portFlag + 1] : 3000)

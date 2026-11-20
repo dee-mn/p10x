@@ -1,9 +1,5 @@
-import fs from 'node:fs/promises';
-import { addImageDimensions } from './image-dimensions.mjs';
-
-const articles = JSON.parse(
-  await fs.readFile('docs/article-index.json', 'utf8')
-).slice(0, 6);
+---
+import articles from '../../docs/article-index.json';
 const escapeHtml = (value) =>
   String(value).replace(
     /[&<>"']/g,
@@ -29,20 +25,5 @@ function renderCard(article) {
   </div>
 </article>`;
 }
-
-const file = 'index.html',
-  html = await fs.readFile(file, 'utf8');
-const start = '<!-- home-insights:start -->',
-  end = '<!-- home-insights:end -->';
-const startIndex = html.indexOf(start),
-  endIndex = html.indexOf(end);
-if (startIndex < 0 || endIndex < startIndex) throw new Error('Homepage Insights markers are missing.');
-const indent = html.slice(html.lastIndexOf('\n', startIndex) + 1, startIndex).match(/^[ \t]*/)[0];
-const cards = articles
-  .map((article) => addImageDimensions(renderCard(article)))
-  .join('\n')
-  .split('\n')
-  .map((line) => indent + line)
-  .join('\n');
-const nextHtml = [html.slice(0, startIndex + start.length), cards, indent + html.slice(endIndex)].join('\n');
-if (nextHtml !== html) await fs.writeFile(file, nextHtml);
+---
+<Fragment set:html={articles.slice(0, 6).map(renderCard).join('\n')} />

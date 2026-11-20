@@ -1,0 +1,98 @@
+<main id="ui-main" tabindex="-1">
+        <article class="dpt-page" id="dpt-app" aria-label="P10X Driver Personality Test">
+          <div class="dpt-shell">
+            <div class="dpt-topline"><a href="/">P10X / Expert Match</a><span id="dpt-top-stage">Your drive. Your personality.</span></div>
+            <section class="dpt-stage dpt-welcome" id="dpt-welcome" aria-labelledby="dpt-title">
+              <div>
+                <p class="dpt-eyebrow">Driver Personality Test</p>
+                <h1 id="dpt-title">Find Your <span class="dpt-title-line">Driver Personality</span> <span class="dpt-title-line dpt-title-match">Celebrity Match</span></h1>
+                <p class="dpt-lead">Answer 25 quick questions and we'll match you with an international celebrity — and recommend the perfect PPF &amp; tint package for your car.</p>
+                <div class="dpt-welcome-action"><button class="dpt-primary" type="button" id="dpt-start">Start the Test <svg aria-hidden="true" viewBox="0 0 24 24" fill="none">
+                      <path d="M4 12h16m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg></button>
+                  <p class="dpt-duration">Takes about 3 minutes</p>
+                </div>
+              </div>
+              <div class="dpt-benefits" aria-label="Your results include">
+                <div class="dpt-benefit"><svg aria-hidden="true" viewBox="0 0 32 32" fill="none">
+                    <path d="m16 3 4 8 9 1-6.5 6.5L24 28l-8-4-8 4 1.5-9.5L3 12l9-1 4-8Z" stroke-width="1.2" />
+                  </svg>
+                  <div>Celebrity Match<small>01 / Your personality</small></div>
+                </div>
+                <div class="dpt-benefit"><svg aria-hidden="true" viewBox="0 0 32 32" fill="none">
+                    <path d="M16 3 27 8v8c0 6-5 10-11 13C10 26 5 22 5 16V8l11-5Z" stroke-width="1.2" />
+                    <path d="m10 16 4 4 8-9" stroke-width="1.2" />
+                  </svg>
+                  <div>PPF Recommendation<small>02 / Your protection</small></div>
+                </div>
+                <div class="dpt-benefit"><svg aria-hidden="true" viewBox="0 0 32 32" fill="none">
+                    <path d="M4 24V10l5-5h19v19H4Zm0-8h24M15 5v19M7 28h18" stroke-width="1.2" />
+                  </svg>
+                  <div>Tint Package<small>03 / Your comfort</small></div>
+                </div>
+              </div>
+            </section>
+            <section class="dpt-stage" id="dpt-lead" aria-labelledby="dpt-lead-title" hidden>
+              <div class="dpt-stage-head">
+                <div>
+                  <p class="dpt-eyebrow">Before we begin</p>
+                  <h2 id="dpt-lead-title" tabindex="-1">Let's personalise<br>your results</h2>
+                </div>
+                <p>We'll tailor your driver profile and protection package specifically to you and your car.</p>
+              </div>
+              <form class="dpt-form" id="dpt-lead-form">
+                <div class="dpt-fields">
+                  <div class="dpt-field"><label for="dpt-name">Your Name</label><input id="dpt-name" name="name" placeholder="e.g. Ahmad Faizal" autocomplete="name" maxlength="200" required></div>
+                  <div class="dpt-field"><label for="dpt-phone">WhatsApp / Phone Number</label><input id="dpt-phone" name="phone" type="tel" placeholder="e.g. 012-345 6789" autocomplete="tel" maxlength="80" required></div>
+                  <div class="dpt-field full"><label for="dpt-car">Your Car Brand &amp; Model</label><input id="dpt-car" name="carModel" placeholder="e.g. Toyota GR86, BMW M3, Proton X70" maxlength="200" required></div>
+                  <fieldset class="dpt-referral">
+                    <legend>Who shared this test with you?</legend>
+                    <div class="dpt-referrer-options" id="dpt-referrers"></div>
+                  </fieldset>
+                  <div class="dpt-field full" id="dpt-other-field" hidden><label for="dpt-referrer-other">Their name (optional)</label><input id="dpt-referrer-other" name="referredByOther" maxlength="200" autocomplete="off"></div>
+                </div>
+                <div class="dpt-website" aria-hidden="true"><label for="dpt-website">Website</label><input id="dpt-website" name="website" tabindex="-1" autocomplete="off"></div>
+                <p class="dpt-form-error" id="dpt-lead-error" role="alert"></p><button class="dpt-primary" type="submit">Start the Test <svg aria-hidden="true" viewBox="0 0 24 24" fill="none">
+                    <path d="M4 12h16m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg></button>
+                <p class="dpt-form-note">Your info is only used to personalise your results and for P10X to follow up with you.</p><button class="dpt-text-button" type="button" id="dpt-lead-back">← Back</button>
+              </form>
+            </section>
+            <section class="dpt-stage" id="dpt-quiz" aria-labelledby="dpt-question-title" hidden>
+              <div class="dpt-progress-row"><span id="dpt-progress-label">Question 1 of 25</span><span id="dpt-progress-percent">0%</span></div>
+              <div class="dpt-progress" role="progressbar" aria-label="Test progress" aria-valuemin="0" aria-valuemax="25" aria-valuenow="0" id="dpt-progress"><span id="dpt-progress-fill"></span></div>
+              <div class="dpt-quiz-layout">
+                <aside class="dpt-quiz-aside">
+                  <p class="dpt-eyebrow" id="dpt-section-name">Your Driving Life</p>
+                  <div class="dpt-counter" aria-hidden="true"><b id="dpt-question-number" style="font-weight:400">01</b><span> / 25</span></div>
+                  <ol class="dpt-section-list" id="dpt-section-list"></ol>
+                </aside>
+                <div class="dpt-question-panel" id="dpt-question-panel">
+                  <p class="dpt-eyebrow" id="dpt-question-kicker"></p>
+                  <h2 id="dpt-question-title" tabindex="-1"></h2>
+                  <div class="dpt-answers" id="dpt-answers" role="group" aria-labelledby="dpt-question-title"></div>
+                  <div class="dpt-controls"><button class="dpt-text-button" id="dpt-back" type="button">← Back</button><button class="dpt-primary" id="dpt-next" type="button" disabled>Continue <svg aria-hidden="true" viewBox="0 0 24 24" fill="none">
+                        <path d="M4 12h16m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                      </svg></button></div>
+                  <p class="dpt-hint">Use ↑ ↓ to choose · Enter to select · 1–7 for quick answers</p>
+                </div>
+              </div>
+            </section>
+            <section class="dpt-stage dpt-insight" id="dpt-insight" aria-labelledby="dpt-insight-title" hidden>
+              <p class="dpt-eyebrow" id="dpt-insight-progress"></p>
+              <h2 id="dpt-insight-title" tabindex="-1"></h2>
+              <p class="dpt-insight-body" id="dpt-insight-body"></p>
+              <div class="dpt-insight-extra" id="dpt-insight-extra"></div>
+              <p class="dpt-insight-hook" id="dpt-insight-hook"></p><button class="dpt-primary" id="dpt-insight-next" type="button" style="margin-top:30px">Continue <svg aria-hidden="true" viewBox="0 0 24 24" fill="none">
+                  <path d="M4 12h16m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg></button>
+            </section>
+            <section class="dpt-stage" id="dpt-result" aria-labelledby="dpt-result-title" hidden>
+              <div id="dpt-result-content"></div>
+            </section>
+            <noscript>
+              <p>Please enable JavaScript to take the Driver Personality Test.</p>
+            </noscript>
+          </div>
+        </article>
+      </main>

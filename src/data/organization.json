@@ -1,0 +1,28 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://p10x.flevor.me/#organization",
+      "name": "P10X",
+      "legalName": "P10X Sdn. Bhd.",
+      "url": "https://p10x.flevor.me/",
+      "logo": "https://p10x.flevor.me/assets/images/p10x-logo.svg",
+      "sameAs": [
+        "https://www.facebook.com/p10x.my",
+        "https://www.instagram.com/p10x.my",
+        "https://www.youtube.com/@p10x",
+        "https://www.tiktok.com/@p10x.my"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://p10x.flevor.me/#website",
+      "url": "https://p10x.flevor.me/",
+      "name": "P10X",
+      "publisher": {
+        "@id": "https://p10x.flevor.me/#organization"
+      }
+    }
+  ]
+}

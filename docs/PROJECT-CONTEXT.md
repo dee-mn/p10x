@@ -17,15 +17,15 @@ Reviewed 14 November 2026. Website implementation baseline: [`1ac36c8`](https://
 | Hosting | Hostinger VPS / Plesk; PHP and server mail are needed for form processing |
 | Pages | 32 registered routes in [docs/routes.json](routes.json) |
 | Runtime | Standalone HTML/CSS/JavaScript; local media, fonts and animation libraries. Intentional Google Maps and Vimeo embeds remain external |
-| Export | Complete site in `dist/`; the repository root can also be served directly |
+| Export | Complete site in `dist/`, published to `plesk-deploy` by CI |
 | Deployment status | A GitHub commit confirms source publication. Verify the host separately before claiming a change is live |
 
 Older checkpoint entries describe earlier stages. Later dated entries supersede earlier counts, route names, layouts and controls.
 
 ## Architecture and dependencies
 
-- Site pages are route folders containing `index.html`, plus the homepage `index.html`.
-- Shared header, footer and article comment form markup lives in `components/`. `tools/sync-layout.mjs` applies them; homepage insights also sync from `docs/article-index.json`.
+- Astro builds each registered route from `src/pages/[...slug].astro`, `src/fragments/` and `src/data/pages.json`.
+- Shared header, footer and article comment form markup lives in `components/`. The Astro layout and page template render them. Homepage insights are generated from `docs/article-index.json`.
 - Named page/section styles and interaction controllers live in `styles/` and `scripts/sections/`; use the existing controllers to avoid duplicate listeners.
 - `tools/optimize-pages.mjs` generates content-hashed CSS using `docs/style-manifest.json`. `tools/build.mjs` exports the complete site to `dist/`.
 - Enquiries and comments use `contact.php` and `comment.php`. The driver personality test uses `driver-test.php`, its JSON data, and `scripts/driver-test*.js`.
