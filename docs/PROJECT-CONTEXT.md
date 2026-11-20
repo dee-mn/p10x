@@ -17,7 +17,7 @@ Reviewed 14 November 2026. Website implementation baseline: [`1ac36c8`](https://
 | Hosting | Hostinger VPS / Plesk; PHP and server mail are needed for form processing |
 | Pages | Site pages in [docs/routes.json](routes.json) and published Markdown articles |
 | Runtime | Standalone HTML/CSS/JavaScript; local media, fonts and animation libraries. Intentional Google Maps and Vimeo embeds remain external |
-| Export | Complete site in `dist/`, published to `plesk-deploy` by CI |
+| Export | Complete site in `dist/`, published to `main-deploy` by CI |
 | Deployment status | A GitHub commit confirms source publication. Verify the host separately before claiming a change is live |
 
 Older checkpoint entries describe earlier stages. Later dated entries supersede earlier counts, route names, layouts and controls.

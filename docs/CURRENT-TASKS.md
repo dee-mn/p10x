@@ -11,7 +11,7 @@
 
 - Insights uses the Astro Markdown collection in `src/content/insights/`. Publishing one post updates the archive, article, homepage, recent posts, search, RSS and sitemap. Existing posts retain their `/insights/<slug>/` URLs. Apache redirects their former URLs permanently.
 
-- Astro 4.16.19 generates all registered routes. CI validates `dist/` and publishes `plesk-deploy` after a successful main build. Confirm the Plesk branch selection and check the public site separately.
+- Astro 4.16.19 generates all registered routes. CI validates `dist/` and publishes `main-deploy` after a successful main build. Confirm the Plesk branch selection and check the public site separately.
 
 - **Header search (20 November)** — The desktop and mobile icons open a full-screen search with photo shortcuts and live results. Pagefind indexes all 32 canonical routes after each build. Source and export checks passed. Chromium checks covered 320–1440 px, touch, keyboard, reduced motion, focus restoration, pagination and retry. Confirm the search on the production host after deployment.
 

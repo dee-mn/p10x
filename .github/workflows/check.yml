@@ -55,7 +55,7 @@ jobs:
     permissions:
       contents: write
     concurrency:
-      group: plesk-deploy
+      group: main-deploy
       cancel-in-progress: false
     steps:
       - uses: actions/checkout@v4
@@ -71,8 +71,8 @@ jobs:
           git fetch origin main
           if [[ "$(git rev-parse FETCH_HEAD)" != "$GITHUB_SHA" ]]; then exit 0; fi
           publish_dir="$RUNNER_TEMP/plesk-output"
-          if git ls-remote --exit-code --heads origin plesk-deploy >/dev/null; then
-            git fetch origin refs/heads/plesk-deploy
+          if git ls-remote --exit-code --heads origin main-deploy >/dev/null; then
+            git fetch origin refs/heads/main-deploy
             git worktree add --detach "$publish_dir" FETCH_HEAD
           else
             git worktree add --detach "$publish_dir" HEAD
@@ -82,4 +82,4 @@ jobs:
           git -C "$publish_dir" add --all --force
           if git -C "$publish_dir" diff --cached --quiet; then exit 0; fi
           git -C "$publish_dir" -c user.name=github-actions -c user.email=41898282+github-actions[bot]@users.noreply.github.com commit -qm "Build P10X from $GITHUB_SHA"
-          git -C "$publish_dir" push origin HEAD:refs/heads/plesk-deploy
+          git -C "$publish_dir" push origin HEAD:refs/heads/main-deploy

@@ -46,7 +46,7 @@ Use Node 22. Run `npm ci`, then `npm run dev` for a built preview with Pagefind 
 
 Edit page bodies in `src/fragments/`, metadata and script order in `src/data/pages.json`, and shared markup in `components/`. Astro generates the URLs in `docs/routes.json`. The build generates optimized CSS and Pagefind in `dist/` and copies original media, redirects and PHP handlers into the export.
 
-GitHub Actions validates pushes to `main` and publishes the built files to `plesk-deploy`. In Plesk Git, select that branch and deploy its root to the site's existing document root. Keep the existing PHP handler and mail configuration. Until the branch is switched, a host tracking `main` serves its previous HTML snapshot. Future edits belong in the Astro sources.
+GitHub Actions validates pushes to `main` and publishes the built files to `main-deploy`. In Plesk Git, select that branch and deploy its root to the site's existing document root. Keep the existing PHP handler and mail configuration. Until the branch is switched, a host tracking `main` serves its previous HTML snapshot. Future edits belong in the Astro sources.
 
 ### Writing an Insights post
 
@@ -57,4 +57,4 @@ Each post lives in a single Markdown file in [src/content/insights](src/content/
 3. Keep `draft: true` while writing. To publish, set `draft: false` and commit to `main`. The next build includes the article page, archive card, recent posts, homepage carousel (latest six), sitemap, RSS and site search. Set it back to `true` to withdraw it on the next deployment.
 4. For local review, run `npm run dev` with your copy set to `draft: false` locally and open its URL. The release checks are `npm run build && npm run check`.
 
-The starter and drafts are omitted from the built website. Source files follow the repository’s access settings. Plesk serves the generated `plesk-deploy` branch.
+The starter and drafts are omitted from the built website. Source files follow the repository’s access settings. Plesk serves the generated `main-deploy` branch.
