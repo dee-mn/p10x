@@ -2,3 +2,5 @@ dist/
 node_modules/
 .openai/
 qa/
+.astro/
+src/env.d.ts

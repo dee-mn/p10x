@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import vm from 'node:vm';
 import crypto from 'node:crypto';
-const root = path.resolve(process.env.P10X_CHECK_ROOT || '.'),
+const root = path.resolve(process.env.P10X_CHECK_ROOT || 'dist'),
   errors = [],
   checked = new Set();
 const routes = JSON.parse(fs.readFileSync('docs/routes.json', 'utf8'));

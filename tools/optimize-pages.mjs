@@ -9,7 +9,6 @@ import valueParser from 'postcss-value-parser';
 import { addImageDimensions, attribute } from './image-dimensions.mjs';
 
 const routes = JSON.parse(await fs.readFile('docs/routes.json', 'utf8'));
-const manifestPath = 'docs/style-manifest.json';
 async function readOptionalText(file) {
   try {
     return await fs.readFile(file, 'utf8');
@@ -18,28 +17,17 @@ async function readOptionalText(file) {
   }
 }
 
-const previousManifest = await readOptionalText(manifestPath);
-const manifest = JSON.parse(previousManifest ?? '{}');
-await fs.mkdir('styles/generated', { recursive: true });
+await fs.mkdir('dist/styles/generated', { recursive: true });
 const sourceCache = new Map(),
   stats = [];
 const checkedBundles = new Set();
 for (const { route } of routes) {
-  const file = route === '/' ? 'index.html' : route.slice(1) + 'index.html';
+  const file = path.join('dist', route, 'index.html');
   const previousHtml = await fs.readFile(file, 'utf8');
   let html = previousHtml;
   const links = [...html.matchAll(/<link\b[^>]*rel="stylesheet"[^>]*>/g)];
-  const extra = links
-    .map((m) => attribute(m[0], 'href'))
-    .filter((h) => !h.startsWith('/styles/generated/'));
-  const sources = links.some((m) => m[0].includes('/styles/generated/'))
-    ? [
-        ...(manifest[route] || []),
-        ...extra.filter((h) => !(manifest[route] || []).includes(h))
-      ]
-    : extra;
+  const sources = links.map(([tag]) => attribute(tag, 'href'));
   if (!sources.length) throw Error('No stylesheet sources for ' + route);
-  manifest[route] = sources;
   const classes = new Set(
     [...html.matchAll(/\bclass="([^"]*)"/g)].flatMap((m) => m[1].split(/\s+/))
   );
@@ -135,8 +123,8 @@ for (const { route } of routes) {
       .slice(0, 12);
     const bundle = '/styles/generated/site-' + hash + '.css';
     if (!checkedBundles.has(bundle)) {
-      const existing = await readOptionalText('.' + bundle);
-      if (existing !== code) await fs.writeFile('.' + bundle, code);
+      const existing = await readOptionalText('dist' + bundle);
+      if (existing !== code) await fs.writeFile('dist' + bundle, code);
       checkedBundles.add(bundle);
     }
     bundles.push(bundle);
@@ -188,11 +176,9 @@ for (const { route } of routes) {
 const used = new Set(
   stats.flatMap((s) => s.bundles.map((b) => path.posix.basename(b)))
 );
-for (const name of await fs.readdir('styles/generated'))
+for (const name of await fs.readdir('dist/styles/generated'))
   if (name.endsWith('.css') && !used.has(name))
-    await fs.unlink('styles/generated/' + name);
-const nextManifest = JSON.stringify(manifest, null, 2) + '\n';
-if (nextManifest !== previousManifest) await fs.writeFile(manifestPath, nextManifest);
+    await fs.unlink('dist/styles/generated/' + name);
 await fs.mkdir('qa', { recursive: true });
 await fs.writeFile(
   'qa/style-optimization.json',

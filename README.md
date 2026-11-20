@@ -1,6 +1,6 @@
 # P10X
 
-P10X's standalone company website, built with static HTML, CSS, JavaScript and local media. PHP powers enquiry, comment and driver-test submissions.
+P10X's standalone company website, built with Astro 4.16.19, CSS, JavaScript and local media. PHP powers enquiry, comment and driver-test submissions.
 
 **Public site:** https://p10x.flevor.me · **Repository:** `dee-mn/p10x` · **Working branch:** `main`
 
@@ -38,21 +38,10 @@ The route, asset, font/image-dimension, article and stylesheet manifests remain 
 - Edit source CSS and rebuild; never hand-edit `styles/generated/`.
 - Do not claim a change is deployed, visually verified or host-tested because it was committed to GitHub.
 
-## Local development
+## Development and Plesk deployment
 
-Node.js 20+ (CI runs Node.js 22):
+Use Node 22. Run `npm ci`, then `npm run dev` for a built preview with Pagefind and simulated form responses. After editing, run `npm run build && npm run check`.
 
-```sh
-npm ci
-npm run dev
-# For changes:
-npm run check
-npm run build
-P10X_CHECK_ROOT=dist npm run check
-```
+Edit page bodies in `src/fragments/`, metadata and script order in `src/data/pages.json`, and shared markup in `components/`. Astro generates the URLs in `docs/routes.json`. The build generates optimized CSS and Pagefind in `dist/` and copies original media, redirects and PHP handlers into the export.
 
-The header search uses Pagefind. Both `npm run dev` and `npm run build` index the main content of the pages in `docs/routes.json`. The build writes the static search bundle to `dist/pagefind/` and copies it to `pagefind/` for sites served from the repository root. Include the regenerated bundle when publishing content changes.
-
-The build updates shared layout and content-hashed styles. Review the generated diff and test affected desktop/mobile behaviour as needed. PHP forms and host configuration require their own verification.
-
-**Current implementation baseline:** 32 registered routes at the last reviewed checkpoint (14 November 2026). See [current tasks](docs/CURRENT-TASKS.md) for the latest verified status and outstanding checks.
+GitHub Actions validates pushes to `main` and publishes the built files to `plesk-deploy`. In Plesk Git, select that branch and deploy its root to the site's existing document root. Keep the existing PHP handler and mail configuration. Until the branch is switched, a host tracking `main` serves its previous HTML snapshot. Future edits belong in the Astro sources.

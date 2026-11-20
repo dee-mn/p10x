@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "node tools/sync-layout.mjs && node tools/optimize-pages.mjs && node tools/build-search.mjs && node tools/serve.mjs",
+    "dev": "npm run build && node tools/serve.mjs",
     "check": "node tools/check.mjs",
     "build": "node tools/build.mjs"
   },
@@ -12,6 +12,7 @@
     "node": ">=20"
   },
   "devDependencies": {
+    "astro": "4.16.19",
     "pagefind": "1.6.0",
     "postcss": "8.5.32",
     "postcss-selector-parser": "7.2.1",

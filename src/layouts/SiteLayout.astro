@@ -1,0 +1,39 @@
+---
+import header from '../../components/header.html?raw';
+import footer from '../../components/footer.html?raw';
+import afterFooter from '../../components/after-footer.html?raw';
+import organization from '../data/organization.json';
+import styles from '../../docs/style-manifest.json';
+
+const { route, page } = Astro.props;
+const canonical = new URL(route, Astro.site).href;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>{page.title}</title>
+    <meta name="description" content={page.description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/assets/images/p10x-logo.svg" />
+    {styles[route].map((href) => <link is:inline rel="stylesheet" href={href} />)}
+    <meta property="og:title" content={page.socialTitle ?? page.title} />
+    <meta property="og:description" content={page.socialDescription ?? page.description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:type" content={page.ogType} />
+    <meta property="og:image" content={page.ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preload" href="/assets/fonts/inter-normal-latin.woff2" as="font" type="font/woff2" crossorigin />
+    {route === '/' && <script is:inline type="application/ld+json" id="p10x-org-schema" set:html={JSON.stringify(organization)}></script>}
+  </head>
+  <body class={page.bodyClass}>
+    <div class="ui-wapper" id="ui-wapper">
+      <Fragment set:html={header.trim()} />
+      <slot />
+      <Fragment set:html={footer.trim()} />
+      <Fragment set:html={afterFooter.trim()} />
+    </div>
+    {page.scripts.map((src) => <script is:inline defer src={src}></script>)}
+  </body>
+</html>
