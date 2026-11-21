@@ -9,7 +9,7 @@
 
 ## Current state
 
-- All six service heroes have tighter heading spacing. In the desktop and mobile headers, Services lists PPF, Wrapping, Tinting, Detailing and Training. Automotive Window Tint and Architecture Tint sit under Tinting. The remaining check is the public site. [Browser coverage](PROJECT-CHECKPOINT.md#service-heroes-and-navigation--22-november-2026)
+- All six service heroes use equal spacing above and below the title wherever the description sits underneath. The Wrapping finish selector shows the Mercedes for Gloss and the BMW M4 for Satin. In the desktop and mobile headers, Services lists PPF, Wrapping, Tinting, Detailing and Training. Automotive Window Tint and Architecture Tint sit under Tinting. The remaining check is the public site. [Browser coverage](PROJECT-CHECKPOINT.md#service-heroes-and-navigation--22-november-2026)
 
 - Insights uses the Astro Markdown collection in `src/content/insights/`. Publishing one post updates the archive, article, homepage, recent posts, search, RSS and sitemap. Existing posts retain their `/insights/<slug>/` URLs. Apache redirects their former URLs permanently.
 
