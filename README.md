@@ -42,7 +42,7 @@ The route, asset, font/image-dimension, article and stylesheet manifests remain 
 
 ## Development and Plesk deployment
 
-Use Node 22. Run `npm ci`, then `npm run dev` for a built preview with Pagefind and simulated form responses. After editing, run `npm run build && npm run check`.
+Use Node 22 and FFmpeg with the WebP encoder. The build extracts matching covers for local background videos from the clips used in the page markup. Run `npm ci`, then `npm run dev` for a built preview with Pagefind and simulated form responses. After editing, run `npm run build && npm run check`.
 
 Edit page bodies in `src/fragments/`, metadata and script order in `src/data/pages.json`, and shared markup in `components/`. Astro generates the URLs in `docs/routes.json`. The build generates optimized CSS and Pagefind in `dist/` and copies original media, redirects and PHP handlers into the export.
 

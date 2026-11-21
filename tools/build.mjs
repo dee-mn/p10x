@@ -10,5 +10,6 @@ for (const name of [
 ]) {
   await cp(name, `dist/${name}`, { recursive: true });
 }
+await import('./video-posters.mjs');
 await import('./optimize-pages.mjs');
 await buildSearch('dist');

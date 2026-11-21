@@ -35,6 +35,7 @@
     "ogImage": "https://p10x.flevor.me/assets/images/p10x-building.jpg",
     "ogType": "website",
     "scripts": [
+      "/scripts/sections/hero-video.js",
       "/assets/lib/gsap/gsap.min.js",
       "/assets/lib/gsap/ScrollTrigger.min.js",
       "/assets/lib/gsap/SplitText.min.js",
@@ -77,6 +78,7 @@
     "ogImage": "https://p10x.flevor.me/assets/images/IMG_8049.jpg",
     "ogType": "website",
     "scripts": [
+      "/scripts/sections/hero-video.js",
       "/assets/lib/gsap/gsap.min.js",
       "/assets/lib/gsap/ScrollTrigger.min.js",
       "/assets/lib/gsap/SplitText.min.js",
@@ -95,6 +97,7 @@
     "ogImage": "https://p10x.flevor.me/assets/images/wrap-trim-wing.jpg",
     "ogType": "website",
     "scripts": [
+      "/scripts/sections/hero-video.js",
       "/assets/lib/gsap/gsap.min.js",
       "/assets/lib/gsap/ScrollTrigger.min.js",
       "/assets/lib/gsap/SplitText.min.js",

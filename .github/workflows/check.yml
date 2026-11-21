@@ -10,6 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Ensure FFmpeg is available for video covers
+        run: command -v ffmpeg || { sudo apt-get update -qq && sudo apt-get install -y ffmpeg; }
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
@@ -67,6 +69,8 @@ jobs:
       cancel-in-progress: false
     steps:
       - uses: actions/checkout@v4
+      - name: Ensure FFmpeg is available for video covers
+        run: command -v ffmpeg || { sudo apt-get update -qq && sudo apt-get install -y ffmpeg; }
       - uses: actions/setup-node@v4
         with:
           node-version: '22'

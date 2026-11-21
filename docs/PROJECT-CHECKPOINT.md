@@ -1,5 +1,9 @@
 # P10X checkpoint
 
+## Background video covers — 22 November 2026
+
+About Us, Automotive Window Tint, Wrapping, PPF and Detailing use native posters extracted from their MP4s at build time. Architecture Tint displays its Vimeo thumbnail until the embedded player advances. The homepage’s two offscreen background films defer their covers until approached. The expanding film uses a frame at 0.8 seconds because it opens on black.
+
 ## Homepage first-visit performance — 22 November 2026
 
 The shared CSS build excludes unused legacy widget classes after checking published HTML and the scripts those pages load. The homepage delays offscreen photography, films and text splitting until the visitor approaches. The hero scripts load first and reuse fixed particle phases. Header logo sizing, the Product control name and the affected heading contrast were corrected. The Archivo WOFF2 files retain the original glyph tables. Two partner logos have pixel-identical, full-size PNG copies. Original media and the established responsive photo encodings are retained. See the [PageSpeed review](SEO-AUDIT.md#homepage-first-visit--22-november-2026) for the measurements and production check.

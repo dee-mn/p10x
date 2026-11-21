@@ -24,7 +24,6 @@
     }
   }
 
-  video.addEventListener('loadeddata', () => video.removeAttribute('poster'));
   video.addEventListener('playing', () => { button.hidden = true; });
   video.addEventListener('pause', () => { button.hidden = false; });
   video.addEventListener('error', () => {
@@ -41,6 +40,5 @@
     syncPlayback();
   });
 
-  if (video.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) video.removeAttribute('poster');
   syncPlayback();
 })();

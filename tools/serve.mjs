@@ -22,6 +22,7 @@ const mime = {
   '.jpg': 'image/jpeg',
   '.jpeg': 'image/jpeg',
   '.png': 'image/png',
+  '.webp': 'image/webp',
   '.ttf': 'font/ttf',
   '.woff2': 'font/woff2',
   '.mp4': 'video/mp4',
