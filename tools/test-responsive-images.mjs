@@ -32,6 +32,8 @@ async function inspectArchive(page, dpr) {
     return files;
   }, dpr);
   assert(covers.length, 'Insights listing should select responsive covers');
+  assert(totalBytes(covers.map(c => c.selected)) < totalBytes(covers.map(c => c.original)),
+    'Insights covers should download fewer bytes at this viewport');
   return covers;
 }
 

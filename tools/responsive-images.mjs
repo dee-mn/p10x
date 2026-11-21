@@ -153,22 +153,27 @@ export async function preparePageImages(html, dir, route, variantCache) {
 
   function backgroundCss() {
     if (!backgrounds.size) return '';
-    const rules = [[null, Infinity], [2560, 2560], [1920, 1920], [1440, 1440], [960, 960], [600, 640]];
-    return '@supports (background-image:image-set(url("") 1x)){' + rules.map(([max, width]) => {
-      const values = [];
-      for (const { url, image, variable, card } of backgrounds.values()) {
-        let slot = width;
-        if (home && /Five-Pillars|IMG_0315/.test(url)) slot = 320;
-        if (card) slot = width <= 960 ? Math.min(width, 768) : 560;
-        const choices = [1, 2, 3].map(dpr => {
-          const selected = image.candidates.find(c => c.width >= slot * dpr) || image.candidates.at(-1);
-          return `url("${selected.url}") ${dpr}x`;
+    const fullWidths = [[null, Infinity], [2560, 2560], [1920, 1920], [1440, 1440], [960, 960], [600, 640]];
+    // The archive uses three columns on desktop, two on tablets and one below 768px.
+    const cardWidths = [[null, 560], [1199, 600], [959, 480], [767, 768], [600, 600], [480, 480], [400, 400], [360, 360]];
+    const assets = [...backgrounds.values()];
+    function render(group, widths) {
+      if (!group.length) return '';
+      return widths.map(([max, width]) => {
+        const values = group.map(({ url, image, variable }) => {
+          const slot = home && /Five-Pillars|IMG_0315/.test(url) ? 320 : width;
+          const choices = [1, 2, 3].map(dpr => {
+            const selected = image.candidates.find(c => c.width >= slot * dpr) || image.candidates.at(-1);
+            return `url("${selected.url}") ${dpr}x`;
+          });
+          return `${variable}:image-set(${choices.join(',')})`;
         });
-        values.push(`${variable}:image-set(${choices.join(',')})`);
-      }
-      const css = `:root{${values.join(';')}}`;
-      return max ? `@media(max-width:${max}px){${css}}` : css;
-    }).join('') + '}';
+        const css = `:root{${values.join(';')}}`;
+        return max ? `@media(max-width:${max}px){${css}}` : css;
+      }).join('');
+    }
+    return '@supports (background-image:image-set(url("") 1x)){' +
+      render(assets.filter(a => !a.card), fullWidths) + render(assets.filter(a => a.card), cardWidths) + '}';
   }
   return { html, background, backgroundCss };
 }
