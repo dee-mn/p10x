@@ -9,6 +9,8 @@
 
 ## Current state
 
+- The homepage Driver Personality Test links and shared footer open the on-site test at `/driver-personality-test/` in a new tab.
+
 - All six page heroes with background video use a cover from the corresponding film. The two homepage background films have deferred matching covers. Local checks decoded each generated cover and compared its pixels with the source frame. The five self-hosted hero videos also passed autoplay, tap-to-play and reduced-motion checks in desktop and mobile Chromium emulation. GitHub builds the covers during publication to `main-deploy`. Check the public routes after Plesk pulls the release.
 
 - The homepage PageSpeed update is based on the 22 November mobile and desktop reports. It reduces first-visit CSS, offscreen media and animation setup. The two optimized partner PNGs decode to the same RGBA pixels as the originals. GitHub publishes the checked build to `main-deploy`. Recheck the public homepage against that build before recording production scores. [Measurements](SEO-AUDIT.md#homepage-first-visit--22-november-2026)
