@@ -302,7 +302,7 @@
       title.textContent = titles[i];
       if (i === 2) {
         const a = document.createElement('a');
-        a.href = 'https://p10x.my/-driver-personality-test';
+        a.href = test.href;
         a.target = '_blank';
         a.rel = 'noopener noreferrer';
         a.textContent = titles[i];
