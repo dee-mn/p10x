@@ -732,3 +732,28 @@ body.page.page-id-7411 #ui-wapper #ui-main .ui-post--title {
     margin-right: -12px!important
   }
 }
+
+.p10x-ppf .hero-video-play,
+.p10x-detail .hero-video-play {
+  position: absolute;
+  z-index: 2;
+  top: max(7rem, 15svh);
+  right: 5%;
+  min-height: 44px;
+  padding: 0 1rem;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  background: #121415cc;
+  color: #fff;
+  font: inherit;
+  cursor: pointer
+}
+
+.hero-video-play[hidden] {
+  display: none
+}
+
+@media (max-width:767px) {
+  .p10x-ppf video.pp-hero-photo { object-position: 50% 36% }
+  .p10x-detail video.dt-hero-photo { object-position: 55% 50% }
+}

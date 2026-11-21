@@ -63,6 +63,7 @@
       "/assets/lib/gsap/SplitText.min.js",
       "/scripts/native.js",
       "/scripts/sections/navigation.js",
+      "/scripts/sections/hero-video.js",
       "/scripts/sections/ppf.js",
       "/scripts/sections/vector-icons.js",
       "/scripts/sections/products.js"
@@ -117,6 +118,7 @@
       "/assets/lib/gsap/SplitText.min.js",
       "/scripts/native.js",
       "/scripts/sections/navigation.js",
+      "/scripts/sections/hero-video.js",
       "/scripts/sections/detailing.js",
       "/scripts/sections/vector-icons.js",
       "/scripts/sections/products.js"
