@@ -385,12 +385,35 @@
     max-height: 100%!important
   }
 }
+/* Services > Tinting: the two tint services share a keyboard-accessible flyout. */
 
-/* Keep the Services dropdown open while its links have keyboard focus. */
+#ui-header-elementor .menu-p10x-main-container .p10x-tinting-group {
+  position: relative
+}
+
 #ui-header-elementor .menu-p10x-main-container li:focus-within>.sub-menu {
   visibility: visible;
   opacity: 1;
   margin-top: 0
+}
+
+#ui-header-elementor .p10x-tinting-group>.sub-menu {
+  min-width: 280px
+}
+
+#ui-header-elementor .p10x-tinting-group>a:after {
+  content: none
+}
+
+#ui-header-elementor .p10x-submenu-chevron {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  width: 14px;
+  height: 14px;
+  pointer-events: none
 }
 
 #ui-header-elementor a[role=button] {
@@ -402,6 +425,9 @@
   outline-offset: -3px
 }
 
+.p10x-menu-disclosure .p10x-submenu-chevron {
+  display: none
+}
 /* Decorative partner lettering is removed while preserving the authored section frame. */
 
 .view-20 .p10x-partner-space {
@@ -418,6 +444,17 @@
 #ui-header-elementor .menu-p10x-main-container .sub-menu a:after {
   content: none!important;
   display: none!important
+}
+
+#ui-header-elementor .p10x-submenu-chevron svg {
+  display: block;
+  width: 14px;
+  height: 14px;
+  color: inherit
+}
+
+#ui-header-elementor .p10x-submenu-chevron path {
+  stroke: currentColor!important
 }
 
 #ui-header-elementor .ui-anchor-button .ui-anchor-divider {
