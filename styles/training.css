@@ -164,7 +164,7 @@ body.page-training #ui-main {
 
 .tr-hero .tr-eyebrow {
   color: var(--tr-accent);
-  margin-bottom: clamp(8px,1vw,12px)
+  margin-bottom: var(--service-hero-text-gap)
 }
 
 .tr-hero h1 {
@@ -177,7 +177,7 @@ body.page-training #ui-main {
 }
 
 .tr-hero-lead {
-  margin-top: 16px!important;
+  margin-top: var(--service-hero-text-gap)!important;
   max-width: 380px;
   color: #ccd1d1!important
 }

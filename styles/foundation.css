@@ -35,6 +35,7 @@
 }
 
 :root {
+  --service-hero-text-gap: clamp(8px,1vw,12px);
   --primary-color: #03c4d5;
   --secondary-color: #222;
   --third-color: #03c4d5;
