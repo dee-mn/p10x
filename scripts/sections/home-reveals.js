@@ -45,36 +45,41 @@
     gsap.registerPlugin(SplitText, ScrollTrigger);
     gsap.matchMedia().add('(prefers-reduced-motion:no-preference)', () => {
       const splits = [];
-      root
-        .querySelectorAll('[data-home-reveal] .ui-slip-text-color')
-        .forEach((title) => {
-          const label = title.innerText.replace(/\s+/g, ' ').trim();
-          const split = new SplitText(title, {
-            type: 'words,chars',
-            charsClass: 'ui-char'
-          });
-          splits.push(split);
-          title.classList.add('is-splitted');
-          title.setAttribute('aria-label', label);
-          // Use the complete heading, rather than a separate trigger for every line.
-          gsap.fromTo(
-            split.chars,
-            { opacity: 0.35 },
-            {
-              opacity: 1,
-              stagger: 0.025,
-              ease: 'none',
-              scrollTrigger: {
-                trigger: title,
-                start: 'top 94%',
-                end: 'top 70%',
-                scrub: 0.25,
-                invalidateOnRefresh: true
-              }
-            }
-          );
+      const animations = [];
+      const headings = root.querySelectorAll('[data-home-reveal] .ui-slip-text-color');
+      const disconnect = p10xPrepareHeadings(headings, title => {
+        const label = title.innerText.replace(/\s+/g, ' ').trim();
+        const split = new SplitText(title, {
+          type: 'words,chars',
+          charsClass: 'ui-char'
         });
-      return () => splits.forEach((split) => split.revert());
+        splits.push(split);
+        title.classList.add('is-splitted');
+        title.setAttribute('aria-label', label);
+        // Use the complete heading, rather than a separate trigger for every line.
+        const animation = gsap.fromTo(
+          split.chars,
+          { opacity: 0.35 },
+          {
+            opacity: 1,
+            stagger: 0.025,
+            ease: 'none',
+            scrollTrigger: {
+              trigger: title,
+              start: 'top 94%',
+              end: 'top 70%',
+              scrub: 0.25,
+              invalidateOnRefresh: true
+            }
+          }
+        );
+        animations.push(animation);
+      });
+      return () => {
+        disconnect();
+        animations.forEach(animation => animation.revert());
+        splits.forEach(split => split.revert());
+      };
     });
     ScrollTrigger.refresh();
   }

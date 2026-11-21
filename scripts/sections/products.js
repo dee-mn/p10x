@@ -119,7 +119,8 @@
   triggers.forEach((trigger) => {
     trigger.setAttribute('role', 'button');
     trigger.tabIndex = 0;
-    trigger.setAttribute('aria-label', 'Products');
+    const title = trigger.querySelector('.ui-anchor-title')?.textContent.trim();
+    trigger.setAttribute('aria-label', title || 'Products');
     trigger.setAttribute('aria-controls', panel.id);
     trigger.setAttribute('aria-expanded', 'false');
     trigger.addEventListener('click', (event) => {
