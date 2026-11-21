@@ -1,6 +1,6 @@
 # Current tasks and handover
 
-**Updated:** 20 November 2026
+**Updated:** 22 November 2026
 **Working repository:** `dee-mn/p10x`
 **Primary branch:** `main`
 **Live origin:** https://p10x.flevor.me
@@ -8,6 +8,8 @@
 > Start here for a new chat or Codex task. This file is deliberately short: update it when work is finished or paused. The actual code and latest explicit user request override any stale note.
 
 ## Current state
+
+- All six service heroes have tighter heading spacing, and the Services dropdown follows their numbering in every header. Commit `9e20043` passed local build and browser checks. The remaining check is the public site. [Browser coverage](PROJECT-CHECKPOINT.md#service-heroes-and-navigation--22-november-2026)
 
 - Insights uses the Astro Markdown collection in `src/content/insights/`. Publishing one post updates the archive, article, homepage, recent posts, search, RSS and sitemap. Existing posts retain their `/insights/<slug>/` URLs. Apache redirects their former URLs permanently.
 

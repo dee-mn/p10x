@@ -1,6 +1,10 @@
 # P10X checkpoint
 
-Updated 20 November 2026. Active branch: `main`.
+Updated 22 November 2026. Active branch: `main`.
+
+## Service heroes and navigation — 22 November 2026
+
+Commit `9e20043` groups the numbered labels with their hero titles and brings stacked descriptions closer. The Services dropdown lists PPF, Wrapping, Automotive Window Tint, Detailing, Architecture Tint and Training as direct links. Chromium checks covered all six layouts at 320, 390, 768 and 1440 px, desktop keyboard order and mobile menu navigation. The checks passed for 32 routes, and both builds produced the same 469 files.
 
 ## Insights publishing — 20 November 2026
 
