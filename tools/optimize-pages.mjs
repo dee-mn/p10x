@@ -1,4 +1,4 @@
-import { prepareHomepageImages } from './homepage-images.mjs';
+import { preparePageImages } from './responsive-images.mjs';
 import { publishedRoutes } from './published-routes.mjs';
 /* Publish lightweight styles and stable media boxes without changing authored visuals. */
 import fs from 'node:fs/promises';
@@ -23,11 +23,12 @@ await fs.mkdir('dist/styles/generated', { recursive: true });
 const sourceCache = new Map(),
   stats = [];
 const checkedBundles = new Set();
-for (const { route } of routes) {
+const variantCache = new Map();
+for (const { route, isArticle } of routes) {
   const file = path.join('dist', route, 'index.html');
   const previousHtml = await fs.readFile(file, 'utf8');
-  const homeImages = route === '/' ? await prepareHomepageImages(previousHtml, 'dist') : null;
-  let html = homeImages?.html ?? previousHtml;
+  const pageImages = isArticle ? null : await preparePageImages(previousHtml, 'dist', route, variantCache);
+  let html = pageImages?.html ?? previousHtml;
   const links = [...html.matchAll(/<link\b[^>]*rel="stylesheet"[^>]*>/g)];
   const sources = links.map(([tag]) => attribute(tag, 'href'));
   if (!sources.length) throw Error('No stylesheet sources for ' + route);
@@ -70,7 +71,9 @@ for (const { route } of routes) {
       if (selectors.nodes.length) rule.selector = selectors.toString();
       else rule.remove();
     });
+    const imageDeclarations = [];
     ast.walkDecls((decl) => {
+      const references = [];
       const value = valueParser(decl.value);
       value.walk((node) => {
         if (node.type !== 'function' || node.value.toLowerCase() !== 'url')
@@ -80,16 +83,23 @@ for (const { route } of routes) {
         const url = arg.value;
         if (!/^(data:|https?:|\/|#|%23)/i.test(url))
           arg.value = path.posix.resolve(path.posix.dirname(src), url);
-        const background = homeImages?.background(arg.value);
-        if (background) {
-          node.type = 'word';
-          node.value = background;
-          delete node.nodes;
-        }
+        if (pageImages && arg.value.startsWith('/assets/images/'))
+          references.push({ node, url: arg.value });
         return false;
       });
-      decl.value = value.toString();
+      if (references.length) imageDeclarations.push({ decl, value, references });
+      else decl.value = value.toString();
     });
+    for (const { decl, value, references } of imageDeclarations) {
+      for (const { node, url } of references) {
+        const background = await pageImages.background(url);
+        if (!background) continue;
+        node.type = 'word';
+        node.value = background;
+        delete node.nodes;
+      }
+      decl.value = value.toString();
+    }
     ast.walkAtRules((n) => {
       if (n.nodes && !n.nodes.length) n.remove();
     });
@@ -97,7 +107,7 @@ for (const { route } of routes) {
     if (shared) chunk = 2;
   }
   // Compact whitespace through the syntax tree, preserving values and legacy syntax exactly.
-  if (homeImages) chunks[2] += homeImages.backgroundCss();
+  if (pageImages) chunks[2] += pageImages.backgroundCss();
   const codes = chunks.filter(Boolean).map((css) => {
     const compact = postcss.parse(css);
     compact.walk((n) => {

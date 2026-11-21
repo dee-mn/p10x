@@ -2,6 +2,10 @@
 
 Updated 22 November 2026. Active branch: `main`.
 
+## Responsive images on the main site — 22 November 2026
+
+GitHub builds responsive versions for the 12 main pages, including the 20 covers on the Insights listing. Individual articles keep their existing image delivery. Shared photos are encoded once. Originals stay available for large screens, gallery enlargement and the downloadable driver profile. JPEG settings and lossless PNG encoding follow the homepage release. The build also selects smaller video posters where possible and preserves the video files. Chromium checks compare selected image bytes at 390 px (3×) and 1440 px (1×), decode the images and exercise the Wrapping selector and driver-test opening screen.
+
 ## Homepage responsive images — 22 November 2026
 
 The homepage selects image widths for its logos, portraits, service cards, Insights covers and photographic backgrounds. The build retains the original files, includes the full-resolution source for larger screens and uses generated files only when they are smaller. The catalogue and search shortcuts on the homepage also use appropriately sized images. Browser comparisons covered paint reflections, workmanship, signage and the leadership portrait. CI checks source checksums, candidate files, route scope and image selection at 390 px (3×) and 1440 px (1×). Review the first release on the homepage before extending the build step to other pages.

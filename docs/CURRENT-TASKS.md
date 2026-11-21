@@ -9,7 +9,7 @@
 
 ## Current state
 
-- Homepage image delivery is the first responsive-image release. GitHub generates smaller JPEG and PNG files from the originals for the homepage. Review the homepage before extending this to another route. [Implementation and checks](PROJECT-CHECKPOINT.md#homepage-responsive-images--22-november-2026)
+- Responsive image delivery covers the 12 main pages, including the Insights listing. Individual Insights posts are excluded. GitHub builds the smaller files from the originals and checks mobile and desktop image selection. [Implementation and checks](PROJECT-CHECKPOINT.md#responsive-images-on-the-main-site--22-november-2026)
 
 - The product catalogue is pending client content. The desktop Product popup, mobile menu and footer show “Coming soon”. The 2022 Bangsar photo and Wrapping approach copy have been updated. [Browser checks](PROJECT-CHECKPOINT.md#product-catalogue-notice-and-service-pages--22-november-2026)
 

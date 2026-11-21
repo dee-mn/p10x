@@ -37,7 +37,7 @@ function scan(file) {
     scan(path.join(root, relative));
   }
 }
-for (const { route } of routes) {
+for (const { route, isArticle } of routes) {
   const file = path.join(root, route.slice(1), 'index.html');
   scan(file);
   if (!fs.existsSync(file)) continue;
@@ -70,19 +70,19 @@ for (const { route } of routes) {
       errors.push(`${route}: missing destination ${target}`);
   }
   if (/(?:src|poster)=""/.test(html)) errors.push(`${route}: empty media URL`);
-  if (route === '/') {
+  if (!isArticle) {
     const sets = [...html.matchAll(/<img\b[^>]*\bsrcset="([^"]+)"[^>]*>/g)];
-    if (!sets.length) errors.push('Homepage is missing responsive images');
+    if (!sets.length) errors.push(`${route}: missing responsive images`);
     for (const [tag, set] of sets) {
-      if (!tag.includes(' sizes="')) errors.push('Responsive homepage image needs sizes');
+      if (!tag.includes(' sizes="')) errors.push(`${route}: responsive image needs sizes`);
       for (const candidate of set.split(', ')) {
         const match = candidate.match(/^(\/assets\/[^ ]+) ([1-9]\d*)w$/);
         if (match) scan(path.join(root, match[1].split('?')[0]));
-        else errors.push('Invalid homepage image candidate: ' + candidate);
+        else errors.push(`${route}: invalid image candidate ${candidate}`);
       }
     }
-  } else if (/srcset=/.test(html)) {
-    errors.push(`${route}: responsive images are currently enabled only on the homepage`);
+  } else if (html.includes('/assets/responsive/')) {
+    errors.push(`${route}: individual articles are excluded from this image rollout`);
   }
 }
 for (const asset of JSON.parse(fs.readFileSync('docs/assets.json', 'utf8'))
