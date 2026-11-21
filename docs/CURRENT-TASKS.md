@@ -9,7 +9,7 @@
 
 ## Current state
 
-- All six service heroes have tighter heading spacing, and the Services dropdown follows their numbering in every header. Commit `9e20043` passed local build and browser checks. The remaining check is the public site. [Browser coverage](PROJECT-CHECKPOINT.md#service-heroes-and-navigation--22-november-2026)
+- All six service heroes have tighter heading spacing. In the desktop and mobile headers, Services lists PPF, Wrapping, Tinting, Detailing and Training. Automotive Window Tint and Architecture Tint sit under Tinting. The remaining check is the public site. [Browser coverage](PROJECT-CHECKPOINT.md#service-heroes-and-navigation--22-november-2026)
 
 - Insights uses the Astro Markdown collection in `src/content/insights/`. Publishing one post updates the archive, article, homepage, recent posts, search, RSS and sitemap. Existing posts retain their `/insights/<slug>/` URLs. Apache redirects their former URLs permanently.
 
