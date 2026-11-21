@@ -1,3 +1,4 @@
+import { prepareHomepageImages } from './homepage-images.mjs';
 import { publishedRoutes } from './published-routes.mjs';
 /* Publish lightweight styles and stable media boxes without changing authored visuals. */
 import fs from 'node:fs/promises';
@@ -25,7 +26,8 @@ const checkedBundles = new Set();
 for (const { route } of routes) {
   const file = path.join('dist', route, 'index.html');
   const previousHtml = await fs.readFile(file, 'utf8');
-  let html = previousHtml;
+  const homeImages = route === '/' ? await prepareHomepageImages(previousHtml, 'dist') : null;
+  let html = homeImages?.html ?? previousHtml;
   const links = [...html.matchAll(/<link\b[^>]*rel="stylesheet"[^>]*>/g)];
   const sources = links.map(([tag]) => attribute(tag, 'href'));
   if (!sources.length) throw Error('No stylesheet sources for ' + route);
@@ -78,6 +80,12 @@ for (const { route } of routes) {
         const url = arg.value;
         if (!/^(data:|https?:|\/|#|%23)/i.test(url))
           arg.value = path.posix.resolve(path.posix.dirname(src), url);
+        const background = homeImages?.background(arg.value);
+        if (background) {
+          node.type = 'word';
+          node.value = background;
+          delete node.nodes;
+        }
         return false;
       });
       decl.value = value.toString();
@@ -89,6 +97,7 @@ for (const { route } of routes) {
     if (shared) chunk = 2;
   }
   // Compact whitespace through the syntax tree, preserving values and legacy syntax exactly.
+  if (homeImages) chunks[2] += homeImages.backgroundCss();
   const codes = chunks.filter(Boolean).map((css) => {
     const compact = postcss.parse(css);
     compact.walk((n) => {

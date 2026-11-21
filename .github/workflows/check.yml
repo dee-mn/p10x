@@ -28,7 +28,7 @@ jobs:
             sudo apt-get install -y apache2-bin
           fi
           bash tools/test-apache-seo.sh
-      - name: Exercise Insights on mobile and desktop
+      - name: Exercise Insights and homepage images on mobile and desktop
         env:
           QA_PREFIX: ${{ runner.temp }}/p10x-qa
         run: |
@@ -37,6 +37,7 @@ jobs:
           preview_pid=$!
           trap 'kill "$preview_pid" 2>/dev/null || true' EXIT
           node tools/test-insights-browser.mjs
+          node tools/test-homepage-images.mjs
       - name: Check out the pre-migration site
         if: github.event_name == 'pull_request' && github.head_ref == 'migration/astro-4-16'
         uses: actions/checkout@v4

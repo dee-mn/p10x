@@ -70,8 +70,20 @@ for (const { route } of routes) {
       errors.push(`${route}: missing destination ${target}`);
   }
   if (/(?:src|poster)=""/.test(html)) errors.push(`${route}: empty media URL`);
-  if (/srcset=/.test(html))
-    errors.push(`${route}: image variants are not part of this work`);
+  if (route === '/') {
+    const sets = [...html.matchAll(/<img\b[^>]*\bsrcset="([^"]+)"[^>]*>/g)];
+    if (!sets.length) errors.push('Homepage is missing responsive images');
+    for (const [tag, set] of sets) {
+      if (!tag.includes(' sizes="')) errors.push('Responsive homepage image needs sizes');
+      for (const candidate of set.split(', ')) {
+        const match = candidate.match(/^(\/assets\/[^ ]+) ([1-9]\d*)w$/);
+        if (match) scan(path.join(root, match[1].split('?')[0]));
+        else errors.push('Invalid homepage image candidate: ' + candidate);
+      }
+    }
+  } else if (/srcset=/.test(html)) {
+    errors.push(`${route}: responsive images are currently enabled only on the homepage`);
+  }
 }
 for (const asset of JSON.parse(fs.readFileSync('docs/assets.json', 'utf8'))
   .files) {

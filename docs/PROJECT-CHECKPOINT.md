@@ -2,6 +2,10 @@
 
 Updated 22 November 2026. Active branch: `main`.
 
+## Homepage responsive images — 22 November 2026
+
+The homepage selects image widths for its logos, portraits, service cards, Insights covers and photographic backgrounds. The build retains the original files, includes the full-resolution source for larger screens and uses generated files only when they are smaller. The catalogue and search shortcuts on the homepage also use appropriately sized images. Browser comparisons covered paint reflections, workmanship, signage and the leadership portrait. CI checks source checksums, candidate files, route scope and image selection at 390 px (3×) and 1440 px (1×). Review the first release on the homepage before extending the build step to other pages.
+
 ## Product catalogue notice and service pages — 22 November 2026
 
 The shared Product dialog and mobile menu explain that the catalogue is coming soon. The footer shows the same status. The About timeline uses a retouched image for Bangsar in 2022, and each Wrapping approach step explains what customers can expect. Browser preview checks covered the notices, desktop dialog focus, timeline image and three step descriptions at 390 and 1440 px.
