@@ -2,6 +2,10 @@
 
 Updated 22 November 2026. Active branch: `main`.
 
+## Product catalogue notice and service pages — 22 November 2026
+
+The shared Product dialog and mobile menu explain that the catalogue is coming soon. The footer shows the same status. The About timeline uses a retouched image for Bangsar in 2022, and each Wrapping approach step explains what customers can expect. Browser preview checks covered the notices, desktop dialog focus, timeline image and three step descriptions at 390 and 1440 px.
+
 ## Service heroes and navigation — 22 November 2026
 
 Commit `9e20043` groups the numbered labels with their hero titles and brings stacked descriptions closer. The Services dropdown lists PPF, Wrapping, Automotive Window Tint, Detailing, Architecture Tint and Training as direct links. Chromium checks covered all six layouts at 320, 390, 768 and 1440 px, desktop keyboard order and mobile menu navigation. The checks passed for 32 routes, and both builds produced the same 469 files.

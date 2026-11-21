@@ -9,6 +9,8 @@
 
 ## Current state
 
+- The product catalogue is pending client content. The desktop Product popup, mobile menu and footer show “Coming soon”. The 2022 Bangsar photo and Wrapping approach copy have been updated. [Browser checks](PROJECT-CHECKPOINT.md#product-catalogue-notice-and-service-pages--22-november-2026)
+
 - All six service heroes use equal spacing above and below the title wherever the description sits underneath. The Wrapping finish selector shows the tunnel reflections photo for Gloss, the BMW M4 for Satin and the Mercedes bonnet for Matte. In the desktop and mobile headers, Services lists PPF, Wrapping, Tinting, Detailing and Training. Automotive Window Tint and Architecture Tint sit under Tinting. The remaining check is the public site. [Browser coverage](PROJECT-CHECKPOINT.md#service-heroes-and-navigation--22-november-2026)
 
 - Insights uses the Astro Markdown collection in `src/content/insights/`. Publishing one post updates the archive, article, homepage, recent posts, search, RSS and sitemap. Existing posts retain their `/insights/<slug>/` URLs. Apache redirects their former URLs permanently.
