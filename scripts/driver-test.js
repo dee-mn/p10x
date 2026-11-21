@@ -22,7 +22,7 @@
     '<svg aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M4 12h16m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
   const check =
     '<svg class="dpt-answer-check" aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="m5 12 4 4L19 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
-  const avatarPath = '/assets/images/p10x-driver-celebrity-avatars.jpg';
+  const avatarTemplate = $('#dpt-avatar-image').content.querySelector('img');
   const sections = [...new Set(M.questions.map((q) => q.section))];
   let phase = 'welcome',
     index = 0,
@@ -81,7 +81,10 @@
   function avatar(profile, hint = false) {
     const col = profile.gridIndex % 5,
       row = Math.floor(profile.gridIndex / 5);
-    return `<div class="dpt-avatar${hint ? ' is-hint' : ''}" style="--avatar-col:${col};--avatar-row:${row}"><img src="${avatarPath}" alt="${hint ? 'Celebrity hint' : esc(profile.name)}" decoding="async"></div>`;
+    const image = avatarTemplate.cloneNode();
+    image.alt = hint ? 'Celebrity hint' : profile.name;
+    if (hint) image.sizes = '425px';
+    return `<div class="dpt-avatar${hint ? ' is-hint' : ''}" style="--avatar-col:${col};--avatar-row:${row}">${image.outerHTML}</div>`;
   }
   $('#dpt-start').addEventListener('click', () => stage('lead', true));
   $('#dpt-lead-back').addEventListener('click', () => stage('welcome', true));
@@ -491,7 +494,7 @@
     try {
       await document.fonts.ready;
       const image = new Image();
-      image.src = avatarPath;
+      image.src = avatarTemplate.src;
       await image.decode();
       const c = document.createElement('canvas');
       c.width = 1080;
