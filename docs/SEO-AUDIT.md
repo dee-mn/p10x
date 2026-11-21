@@ -1,3 +1,12 @@
+# Homepage first visit — 22 November 2026
+
+The [mobile](https://pagespeed.web.dev/analysis/https-p10x-flevor-me/7u6ces8kpd?form_factor=mobile) and [desktop](https://pagespeed.web.dev/analysis/https-p10x-flevor-me/7u6ces8kpd?form_factor=desktop) saved reports scored performance 89 and 95, accessibility 97 and 97, best practices 96 and 96, and SEO 100 and 100. Lighthouse estimated 800 ms of mobile render blocking. The mobile LCP element was the hero description.
+
+- Across the three homepage CSS bundles, uncompressed code drops from 1,348,290 to approximately 534,000 bytes. Gzip drops from approximately 168,000 to 73,500 bytes. Publication still uses content-hashed stylesheets.
+- The Five Pillars backdrop, lower photographic backgrounds and the two films now load as their sections approach. The same responsive photographs, focal points and original video files are used. Backgrounds remain available without JavaScript.
+- Gyeon and KCX keep their original dimensions, resolution metadata and decoded RGBA values. The two optimized PNGs total 6,903 bytes, down from 14,264 bytes. The original files are retained. Three Archivo weights are served in WOFF2 with their glyph and layout tables preserved.
+- The public PageSpeed links above refer to the previous deployment. Run new mobile and desktop measurements after Plesk serves the published commit. Animation, hardware and network conditions influence the performance score.
+
 # Homepage PageSpeed review — 20 November 2026
 
 The supplied [mobile report](https://pagespeed.web.dev/analysis/https-p10x-flevor-me/128gndut86?form_factor=mobile) and [desktop report](https://pagespeed.web.dev/analysis/https-p10x-flevor-me/128gndut86?form_factor=desktop) measured the homepage before this change. The report contained no CrUX field data.

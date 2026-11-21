@@ -6,6 +6,8 @@
     "ogImage": "https://p10x.flevor.me/assets/images/p10x-home.jpg",
     "ogType": "website",
     "scripts": [
+      "/scripts/motion-hero.js",
+      "/scripts/hero-values.js",
       "/assets/lib/gsap/gsap.min.js",
       "/assets/lib/gsap/ScrollTrigger.min.js",
       "/assets/lib/gsap/SplitText.min.js",
@@ -20,8 +22,6 @@
       "/scripts/sections/film-expansion.js",
       "/scripts/sections/vector-icons.js",
       "/scripts/sections/products.js",
-      "/scripts/motion-hero.js",
-      "/scripts/hero-values.js",
       "/scripts/sections/service-discovery.js",
       "/scripts/sections/home-insights.js",
       "/scripts/sections/media-loading.js"

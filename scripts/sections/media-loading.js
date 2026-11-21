@@ -32,18 +32,7 @@
           observer.unobserve(entry.target);
         }
       }),
-    { rootMargin: '1200px 0px', threshold: 0 }
+    { rootMargin: '360px 0px', threshold: 0 }
   );
   videos.forEach((video) => observer.observe(video));
-  // Start both background films on the first interaction, well ahead of the later film section.
-  for (const event of ['pointerdown', 'keydown', 'touchstart'])
-    window.addEventListener(event, prepareAll, { once: true, passive: true });
-  function scrolling() {
-    if (scrollY > 0) {
-      prepareAll();
-      window.removeEventListener('scroll', scrolling);
-    }
-  }
-  window.addEventListener('scroll', scrolling, { passive: true });
-  scrolling();
 })();

@@ -632,3 +632,21 @@
   user-select: none;
   -webkit-user-select: none
 }
+
+/* With scripting disabled the authored backgrounds paint normally. */
+@media screen {
+  .defer-home-backgrounds .view-20 [data-defer-background],
+  .defer-home-backgrounds .view-20 [data-defer-background] > .surface-motion-effects-container > .surface-motion-effects-layer {
+    background-image: none !important;
+  }
+
+  .defer-home-backgrounds .p10x-collective-backdrop[data-defer-background] img {
+    display: none;
+  }
+}
+
+/* Keep the footer heading readable before and during the character reveal. */
+body.home .view-7299 .block-94ecda1 .heading-title {
+  color: #f1f3f3;
+  --ui-title-color-start: #959b9d;
+}

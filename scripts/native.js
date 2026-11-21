@@ -1,12 +1,34 @@
 /* P10X native controls. No CMS or page-builder runtime is required. */
+// Split homepage text shortly before it enters the viewport. Unsplit text is readable at every scroll position.
+function p10xPrepareHeadings(headings, prepare) {
+  if (!document.body.classList.contains('home') || !window.IntersectionObserver) {
+    headings.forEach(prepare);
+    return () => {};
+  }
+  const observer = new IntersectionObserver(entries => {
+    for (const entry of entries) {
+      if (!entry.isIntersecting) continue;
+      observer.unobserve(entry.target);
+      prepare(entry.target);
+    }
+  }, { rootMargin: '180px 0px' });
+  headings.forEach(el => observer.observe(el));
+  return () => observer.disconnect();
+}
+
 (() => {
   'use strict';
   const $ = (s, r = document) => r.querySelector(s),
     $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
   gsap.registerPlugin(ScrollTrigger, SplitText);
   const reduced = matchMedia('(prefers-reduced-motion:reduce)').matches;
+  let refreshFrame;
   function refresh() {
-    ScrollTrigger.refresh();
+    if (refreshFrame) return;
+    refreshFrame = requestAnimationFrame(() => {
+      refreshFrame = 0;
+      ScrollTrigger.refresh();
+    });
   }
   // Shared header switches from the original transparent layout to its floating capsule.
   let scheduled = false;
@@ -226,7 +248,8 @@
   else addEventListener('load', initMotion, { once: true });
   document.fonts.ready.then(refresh);
   $$('img').forEach((im) => {
-    if (!im.complete) im.addEventListener('load', refresh, { once: true });
+    if (!im.complete && !(im.hasAttribute('width') && im.hasAttribute('height')))
+      im.addEventListener('load', refresh, { once: true });
   });
 })();
 (() => {
@@ -308,36 +331,36 @@
     });
     // Restore the reference's per-character scroll colour transitions.
     if (!matchMedia('(prefers-reduced-motion:reduce)').matches) {
-      $$('.ui-slip-text-color:not(.is-splitted)')
-        .filter((x) => !x.closest('.p10x-about,[data-home-reveal]'))
-        .forEach((el) => {
-          el.classList.add('is-splitted');
-          const label = el.textContent.trim();
-          el.setAttribute('aria-label', label);
-          const lines = new SplitText(el, {
-            type: 'lines',
-            linesClass: 'ui-line'
-          }).lines;
-          lines.forEach((line) => {
-            const chars = new SplitText(line, {
-              type: 'chars',
-              charsClass: 'ui-char'
-            }).chars;
-            chars.forEach((x) => x.setAttribute('aria-hidden', 'true'));
-            gsap.set(chars, { color: 'var(--ui-title-color-start)' });
-            gsap.to(chars, {
-              color: 'var(--ui-title-color-end)',
-              stagger: 0.1,
-              ease: 'none',
-              scrollTrigger: {
-                trigger: line,
-                start: 'top center',
-                end: 'bottom center',
-                scrub: 0.3
-              }
-            });
+      const headings = $$('.ui-slip-text-color:not(.is-splitted)')
+        .filter(el => !el.closest('.p10x-about,[data-home-reveal]'));
+      p10xPrepareHeadings(headings, el => {
+        el.classList.add('is-splitted');
+        const label = el.textContent.trim();
+        el.setAttribute('aria-label', label);
+        const lines = new SplitText(el, {
+          type: 'lines',
+          linesClass: 'ui-line'
+        }).lines;
+        lines.forEach((line) => {
+          const chars = new SplitText(line, {
+            type: 'chars',
+            charsClass: 'ui-char'
+          }).chars;
+          chars.forEach((x) => x.setAttribute('aria-hidden', 'true'));
+          gsap.set(chars, { color: 'var(--ui-title-color-start)' });
+          gsap.to(chars, {
+            color: 'var(--ui-title-color-end)',
+            stagger: 0.1,
+            ease: 'none',
+            scrollTrigger: {
+              trigger: line,
+              start: 'top center',
+              end: 'bottom center',
+              scrub: 0.3
+            }
           });
         });
+      });
     }
     ScrollTrigger.refresh();
   }

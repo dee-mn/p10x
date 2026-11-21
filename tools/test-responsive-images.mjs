@@ -48,8 +48,11 @@ async function inspectPage(page, route, width, dpr) {
   if (route === '/') {
     const brand = page.locator(width < 768 ? '#ui-header-mobile .ui-header-branding img' : '.block-52f9b71 .ui-logo img');
     assert.match(await brand.evaluate(img => img.currentSrc), /\/assets\/responsive\/home\//);
-    const background = await page.locator('.view-20 .block-16c890a .ui-section-bg-parallax').first()
-      .evaluate(el => getComputedStyle(el).backgroundImage);
+    if (width < 768) await page.locator('#p10x-motion-hero .pm-more').click();
+    const layer = page.locator('.view-20 .block-16c890a .ui-section-bg-parallax').first();
+    await layer.evaluate(el => el.scrollIntoView({ behavior: 'instant', block: 'center' }));
+    await page.waitForFunction(el => !el.hasAttribute('data-defer-background'), await layer.elementHandle());
+    const background = await layer.evaluate(el => getComputedStyle(el).backgroundImage);
     assert(background.includes('/assets/responsive/home/'), 'Homepage background should use responsive sources');
   }
   if (route === '/insights/') images.push(...await inspectArchive(page, dpr));

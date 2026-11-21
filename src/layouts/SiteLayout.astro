@@ -45,6 +45,21 @@ const schema = articleSchema ?? {
     <meta name="twitter:image:alt" content={imageAlt} />
     <link rel="preload" href="/assets/fonts/inter-normal-latin.woff2" as="font" type="font/woff2" crossorigin />
     {route.startsWith('/insights/') && <link rel="alternate" type="application/rss+xml" href="/insights/feed.xml" title="P10X Insights" />}
+    {route === '/' && <script is:inline>
+      if ('IntersectionObserver' in window) {
+        const backgrounds = new IntersectionObserver(entries => {
+          for (const entry of entries) {
+            if (!entry.isIntersecting) continue;
+            entry.target.removeAttribute('data-defer-background');
+            backgrounds.unobserve(entry.target);
+          }
+        }, { rootMargin: '600px 0px' });
+        document.documentElement.classList.add('defer-home-backgrounds');
+        document.addEventListener('DOMContentLoaded', () => {
+          document.querySelectorAll('[data-defer-background]').forEach(el => backgrounds.observe(el));
+        }, { once: true });
+      }
+    </script>}
     <slot name="head" />
     <script is:inline type="application/ld+json" id={route === '/' ? 'p10x-org-schema' : undefined} set:html={JSON.stringify(schema).replace(/</g, '\\u003c')}></script>
   </head>

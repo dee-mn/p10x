@@ -9,6 +9,8 @@
 
 ## Current state
 
+- The homepage PageSpeed update is based on the 22 November mobile and desktop reports. It reduces first-visit CSS, offscreen media and animation setup. The two optimized partner PNGs decode to the same RGBA pixels as the originals. GitHub publishes the checked build to `main-deploy`. Recheck the public homepage against that build before recording production scores. [Measurements](SEO-AUDIT.md#homepage-first-visit--22-november-2026)
+
 - Responsive image delivery covers the 12 main pages, including the Insights listing. Individual Insights posts are excluded. GitHub builds the smaller files from the originals and checks mobile and desktop image selection. [Implementation and checks](PROJECT-CHECKPOINT.md#responsive-images-on-the-main-site--22-november-2026)
 
 - The product catalogue is pending client content. The desktop Product popup, mobile menu and footer show “Coming soon”. The 2022 Bangsar photo and Wrapping approach copy have been updated. [Browser checks](PROJECT-CHECKPOINT.md#product-catalogue-notice-and-service-pages--22-november-2026)

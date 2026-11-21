@@ -62,12 +62,17 @@
         ring = Math.sqrt(1 - y * y),
         a = golden * i;
       const jitter = (random(i + kind * 493) - 0.5) * 0.012;
+      const x = Math.cos(a) * ring * (r + jitter);
+      const py = y * (r + jitter);
+      const seed = random(i + kind * 92) * Math.PI * 2;
       points.push({
-        x: Math.cos(a) * ring * (r + jitter),
-        y: y * (r + jitter),
+        x,
+        y: py,
         z: Math.sin(a) * ring * (r + jitter),
         kind,
-        seed: random(i + kind * 92) * Math.PI * 2
+        sinY: Math.sin(py * 7), cosY: Math.cos(py * 7),
+        sinX: Math.sin(x * 9), cosX: Math.cos(x * 9),
+        sinSeed: Math.sin(seed), cosSeed: Math.cos(seed)
       });
     }
   }
@@ -200,6 +205,10 @@
       c = Math.cos(pitch),
       s = Math.sin(pitch);
     if (!gl) bins.forEach((b) => (b.length = 0));
+    // sin(position + time) separates into a fixed particle phase and a shared frame phase.
+    const sinInner = Math.sin(elapsed * 0.45), cosInner = Math.cos(elapsed * 0.45);
+    const sinWave = Math.sin(elapsed * 0.6), cosWave = Math.cos(elapsed * 0.6);
+    const sinLight = Math.sin(elapsed * 1.4), cosLight = Math.cos(elapsed * 1.4);
     const colourDrift = Math.sin(elapsed * 0.16) * 0.045;
     while (impacts.length && elapsed - impacts[0].time > 3.5) impacts.shift();
     let offset = 0;
@@ -216,9 +225,9 @@
         const outer = p.kind === 2;
         const wave =
           1 +
-          Math.sin(p.y * 7 + elapsed * (outer ? 0.6 : 0.45)) *
+          (outer ? p.sinY * cosWave + p.cosY * sinWave : p.sinY * cosInner + p.cosY * sinInner) *
             (outer ? 0.006 : 0.003) +
-          Math.sin(p.x * 9 + elapsed * 0.6) * (outer ? 0.004 : 0.002);
+          (p.sinX * cosWave + p.cosX * sinWave) * (outer ? 0.004 : 0.002);
         x *= wave;
         y *= wave;
         z *= wave;
@@ -258,7 +267,7 @@
         const rim = Math.pow(1 - Math.abs(nz), 1.45);
         const keySquared = key * key;
         const spec = keySquared * keySquared * key;
-        const twinkle = 0.83 + 0.17 * Math.sin(p.seed + elapsed * 1.4);
+        const twinkle = 0.83 + 0.17 * (p.sinSeed * cosLight + p.cosSeed * sinLight);
         alpha =
           (outer
             ? 0.012 + rim * rim * rim * 0.56 + spec * 0.14

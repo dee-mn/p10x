@@ -24,6 +24,18 @@ const sourceCache = new Map(),
   stats = [];
 const checkedBundles = new Set();
 const variantCache = new Map();
+const themeClasses = new Set();
+const scriptPaths = new Set();
+for (const { route } of routes) {
+  const markup = await fs.readFile(path.join('dist', route, 'index.html'), 'utf8');
+  for (const token of markup.match(/[\w-]+/g) || []) themeClasses.add(token);
+  for (const [, url] of markup.matchAll(/<script\b[^>]*\bsrc="(\/[^"]+)"/g)) scriptPaths.add(url);
+}
+for (const url of scriptPaths) {
+  const script = await fs.readFile(path.join('dist', url.split('?')[0]), 'utf8');
+  for (const token of script.match(/[\w-]+/g) || []) themeClasses.add(token);
+}
+
 for (const { route, isArticle } of routes) {
   const file = path.join('dist', route, 'index.html');
   const previousHtml = await fs.readFile(file, 'utf8');
@@ -61,7 +73,11 @@ for (const { route, isArticle } of routes) {
           if (n.parent?.parent?.type !== 'root') return;
           const pageRoot = !shared && /^(view-\d+|page-id-\d+|p10x-(about|ppf|tint|detail|window|wrap|faq))$/.test(n.value);
           const shopRoot = /^(single-product|woocommerce(?:-cart|-checkout|-page)?|widget_product_categories)$/.test(n.value);
-          if ((pageRoot || shopRoot) && !classes.has(n.value)) impossible = true;
+          const block = !shared && /^block-[0-9a-f]{6,8}$/.test(n.value);
+          const legacyWidget = src.startsWith('/styles/reference/') &&
+            /^(?:ui-|surface-|fr-style|layout-(?:post|service)-|woocommerce|widget_|twentytwenty-|woosw-|xdsoft_|mfp-)/.test(n.value);
+          if ((pageRoot || shopRoot || block) && !classes.has(n.value)) impossible = true;
+          if (legacyWidget && !themeClasses.has(n.value)) impossible = true;
         });
         if (impossible) {
           selector.remove();
