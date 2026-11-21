@@ -1191,9 +1191,9 @@ body:is(.page-id-7368,.page-id-7377,.page-id-7375,.page-id-7373,.page-id-7379) #
 .p10x-wrap .wr-hero-title .heading-title *{color:#fff!important}}
 .p10x-wrap .wr-intro-photos{display:grid;grid-template-columns:1.4fr 1fr;gap:30px!important;margin-top:52px}
 .p10x-wrap .wr-intro-shot .wr-look-photo{aspect-ratio:auto;height:430px}
-.p10x-wrap .wr-intro-car img{object-position:60% 50%}
+.p10x-wrap .wr-intro-car img{object-position:50% 73%}
 .p10x-wrap .wr-intro-hands img{object-position:30% 50%}
-.p10x-wrap .wr-work-grid{grid-template-columns:repeat(12,minmax(0,1fr));grid-template-rows:repeat(2,300px) 430px 310px 560px;gap:40px 28px!important;align-items:stretch}
+.p10x-wrap .wr-work-grid{grid-template-columns:repeat(12,minmax(0,1fr));grid-template-rows:repeat(2,300px) 430px;gap:40px 28px!important;align-items:stretch}
 .p10x-wrap .wr-work-grid>.wr-look-item{min-height:0;gap:15px!important}
 .p10x-wrap .wr-work-grid .wr-look-photo{aspect-ratio:auto;min-height:0;flex:1;height:auto}
 .p10x-wrap .wr-work-grid .wr-look-photo>.component-content{position:absolute;inset:0}
@@ -1201,21 +1201,16 @@ body:is(.page-id-7368,.page-id-7377,.page-id-7375,.page-id-7373,.page-id-7379) #
 .p10x-wrap .wr-work-main{grid-column:1/9;grid-row:1/3}
 .p10x-wrap .wr-work-detail-one{grid-column:9/13;grid-row:1}
 .p10x-wrap .wr-work-detail-two{grid-column:9/13;grid-row:2}
-.p10x-wrap .wr-work-mid-one{grid-column:1/6;grid-row:3}
-.p10x-wrap .wr-work-mid-two{grid-column:6/13;grid-row:3}
-.p10x-wrap .wr-work-small-one{grid-column:1/5;grid-row:4}
-.p10x-wrap .wr-work-small-two{grid-column:5/9;grid-row:4}
-.p10x-wrap .wr-work-small-three{grid-column:9/13;grid-row:4}
-.p10x-wrap .wr-work-wide{grid-column:1/-1;grid-row:5}
-.p10x-wrap .wr-work-main img{object-position:52% 50%}
+.p10x-wrap .wr-work-mid-one{grid-column:1/8;grid-row:3}
+.p10x-wrap .wr-work-mid-two{grid-column:8/13;grid-row:3}
+.p10x-wrap .wr-work-detail-one img{object-position:50% 62%}
 .p10x-wrap .wr-work-mid-one img{object-position:60% 42%}
-.p10x-wrap .wr-work-wide img{object-position:50% 38%}
 .p10x-wrap .wr-work-grid .wr-look-caption .text-block{font-size:11px!important}
-.p10x-wrap .wr-consult-photo img{object-position:50% 42%}
+.p10x-wrap .wr-consult-photo img{object-position:50% 71%}
 @media (max-width:1024px){.p10x-wrap .wr-intro-photos{gap:22px!important;margin-top:40px}
 .p10x-wrap .wr-intro-shot .wr-look-photo{height:330px}
 .p10x-wrap .wr-intro-shot .wr-look-caption .text-block{font-size:10px!important}
-.p10x-wrap .wr-work-grid{grid-template-rows:repeat(2,255px) 340px 280px 420px;gap:30px 20px!important}
+.p10x-wrap .wr-work-grid{grid-template-rows:repeat(2,255px) 340px;gap:30px 20px!important}
 .p10x-wrap .wr-work-grid .wr-look-caption{gap:8px!important}
 .p10x-wrap .wr-work-grid .wr-look-caption .text-block{font-size:10px!important}
 .p10x-wrap .wr-work-grid .wr-look-caption span{margin-left:4px}}
@@ -1226,12 +1221,12 @@ body:is(.page-id-7368,.page-id-7377,.page-id-7375,.page-id-7373,.page-id-7379) #
 .p10x-wrap .wr-work-grid{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:none;gap:30px 14px!important}
 .p10x-wrap .wr-work-grid>.wr-look-item{grid-column:auto;grid-row:auto;gap:12px!important}
 .p10x-wrap .wr-work-grid .wr-look-photo{flex:0 0 auto;height:auto;aspect-ratio:3/4}
-.p10x-wrap .wr-work-grid>:is(.wr-work-main,.wr-work-mid-one,.wr-work-wide){grid-column:1/-1}
-.p10x-wrap .wr-work-grid>:is(.wr-work-main,.wr-work-mid-one,.wr-work-wide) .wr-look-photo{aspect-ratio:4/3}
+.p10x-wrap .wr-work-grid>.wr-work-main{grid-column:1/-1}
+.p10x-wrap .wr-work-grid>.wr-work-main .wr-look-photo{aspect-ratio:4/3}
 .p10x-wrap .wr-work-grid .wr-look-caption>.wr-meta:last-child{display:none}
-.p10x-wrap .wr-work-grid>:is(.wr-work-main,.wr-work-mid-one,.wr-work-wide) .wr-look-caption>.wr-meta:last-child{display:block}
+.p10x-wrap .wr-work-grid>.wr-work-main .wr-look-caption>.wr-meta:last-child{display:block}
 .p10x-wrap .wr-work-grid .wr-look-caption .text-block{font-size:10px!important}
-.p10x-wrap .wr-consult-photo img{object-position:50% 45%}}
+.p10x-wrap .wr-consult-photo img{object-position:50% 71%}}
 .p10x-tint{--ti-ink:#222;--ti-muted:#626262;--ti-accent:#03c4d5;--ti-line:#d9d9d9;width:100%;font-family:Inter,sans-serif;background:#fff;color:var(--ti-ink);overflow:clip}
 .p10x-tint .layout{min-width:0;max-width:100%;gap:0;padding:0}
 .p10x-tint .component{margin:0!important;min-width:0;max-width:100%}

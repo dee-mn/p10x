@@ -92,7 +92,7 @@
     "title": "Vehicle Wrapping & Colour Change | P10X",
     "description": "Explore vehicle wrapping with P10X. See how colour, finish, material choice and installation shape a change to your car’s appearance.",
     "bodyClass": "page-template page-template-elementor_header_footer page page-id-7377 ui-redux-page heading-default-font ui-font-default bd-px-header--is-fixed site-color-gradient p10x surface-default surface-template-full-width theme-tokens surface-page surface-page-7377",
-    "ogImage": "https://p10x.flevor.me/assets/images/p10x-vibe-wrap.jpg",
+    "ogImage": "https://p10x.flevor.me/assets/images/wrap-trim-wing.jpg",
     "ogType": "website",
     "scripts": [
       "/assets/lib/gsap/gsap.min.js",
@@ -104,7 +104,7 @@
       "/scripts/sections/vector-icons.js",
       "/scripts/sections/products.js"
     ],
-    "imageAlt": "Close-up of a dark satin-finish vehicle bonnet"
+    "imageAlt": "An installer trims blue-to-purple vinyl beside the headlight"
   },
   "/detailing/": {
     "title": "Car Detailing & Interior Care | P10X",
