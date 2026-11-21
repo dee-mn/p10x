@@ -733,8 +733,7 @@ body.page.page-id-7411 #ui-wapper #ui-main .ui-post--title {
   }
 }
 
-.p10x-ppf .hero-video-play,
-.p10x-detail .hero-video-play {
+.hero-video-play {
   position: absolute;
   z-index: 2;
   top: max(7rem, 15svh);
@@ -794,4 +793,18 @@ body.page.page-id-7411 #ui-wapper #ui-main .ui-post--title {
 .p10x-footer .pf-product-notice {
   margin: 0;
   color: #edf0f0;
+}
+
+/* The expanding homepage film draws its own poster before its first frame. */
+.view-20 .deferred-film-cover {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.ui-video-sticky1 video.ui-bg-video[data-poster] {
+  opacity: 1;
 }

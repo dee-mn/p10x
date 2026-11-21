@@ -18,6 +18,46 @@
       new ResizeObserver(coverHero).observe(hero);
     const reduced = matchMedia('(prefers-reduced-motion:reduce)'),
       fine = matchMedia('(hover:hover) and (pointer:fine)');
+    const cover = hero.querySelector('.wf-video-cover');
+    const playButton = hero.querySelector('.hero-video-play');
+    const playerOrigin = new URL(heroPlayer.dataset.src).origin;
+    function send(method, value) {
+      heroPlayer.contentWindow?.postMessage({ method, value }, playerOrigin);
+    }
+    function startPlayer() {
+      if (heroPlayer.hasAttribute('src')) send('play');
+      else heroPlayer.src = heroPlayer.dataset.src;
+    }
+    function syncPlayer() {
+      cover.hidden = false;
+      playButton.hidden = !reduced.matches;
+      if (reduced.matches) heroPlayer.removeAttribute('src');
+      else startPlayer();
+    }
+    window.addEventListener('message', event => {
+      if (event.origin !== playerOrigin || event.source !== heroPlayer.contentWindow ||
+          !heroPlayer.hasAttribute('src')) return;
+      let message = event.data;
+      if (typeof message === 'string') {
+        try { message = JSON.parse(message); } catch { return; }
+      }
+      if (message?.event === 'ready' || message?.method === 'ping') {
+        send('addEventListener', 'timeupdate');
+        send('addEventListener', 'error');
+        send('play');
+      } else if (message?.event === 'timeupdate' && message.data?.seconds > 0) {
+        cover.hidden = true;
+        playButton.hidden = true;
+      } else if (message?.event === 'error') {
+        cover.hidden = false;
+        playButton.hidden = message.data?.method !== 'play';
+      }
+    });
+    heroPlayer.addEventListener('load', () => send('ping'));
+    playButton.addEventListener('click', startPlayer);
+    reduced.addEventListener('change', syncPlayer);
+    syncPlayer();
+
     const deck = root.querySelector('.wf-space-deck'),
       spaces = Array.from(root.querySelectorAll('.wf-space')),
       buttons = spaces.map((x) => x.querySelector('.wf-space-toggle'));

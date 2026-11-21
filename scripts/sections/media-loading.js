@@ -5,6 +5,7 @@
   function load(video) {
     if (video.dataset.mediaLoaded) return;
     video.dataset.mediaLoaded = 'true';
+    if (video.dataset.poster) video.poster = video.dataset.poster;
     if (video.dataset.src) {
       video.src = video.dataset.src;
       delete video.dataset.src;
