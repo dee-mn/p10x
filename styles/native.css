@@ -757,3 +757,41 @@ body.page.page-id-7411 #ui-wapper #ui-main .ui-post--title {
   .p10x-ppf video.pp-hero-photo { object-position: 50% 36% }
   .p10x-detail video.dt-hero-photo { object-position: 55% 50% }
 }
+
+.product-dialog .product-announcement {
+  margin-block: auto;
+  padding-block: clamp(24px, 5vh, 64px);
+  max-width: 42ch;
+  color: #202223;
+}
+
+.product-dialog .product-announcement h2 {
+  margin: 0 0 16px;
+  font-size: clamp(36px, 4vw, 64px);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -.05em;
+}
+
+.product-dialog .product-announcement p,
+#p10x-mobile-menu .product-menu-notice p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+#p10x-mobile-menu .product-menu-notice {
+  padding: 8px 0 16px;
+  color: #c9cbcc;
+}
+
+#p10x-mobile-menu .product-menu-notice strong {
+  display: block;
+  margin-bottom: 4px;
+  color: #fff;
+}
+
+.p10x-footer .pf-product-notice {
+  margin: 0;
+  color: #edf0f0;
+}
