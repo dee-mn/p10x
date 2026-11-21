@@ -154,7 +154,7 @@ body.page-training #ui-main {
 .tr-hero-inner {
   position: relative;
   z-index: 1;
-  padding: 160px 0 130px;
+  padding: 204px 0 130px;
   margin: 0 auto
 }
 
@@ -164,7 +164,7 @@ body.page-training #ui-main {
 
 .tr-hero .tr-eyebrow {
   color: var(--tr-accent);
-  margin-bottom: 40px
+  margin-bottom: clamp(8px,1vw,12px)
 }
 
 .tr-hero h1 {
@@ -177,7 +177,7 @@ body.page-training #ui-main {
 }
 
 .tr-hero-lead {
-  margin-top: 30px!important;
+  margin-top: 16px!important;
   max-width: 380px;
   color: #ccd1d1!important
 }
@@ -814,16 +814,13 @@ body.page-training #ui-main {
     align-items: flex-start
   }
   .tr-hero-inner {
-    padding: 145px 0 130px
+    padding: 179px 0 130px
   }
   .tr-hero-photo img {
     object-position: 46% center
   }
   .tr-hero:after {
     background: linear-gradient(180deg,#11161788 0%,#111617bb 26%,#111617ab 47%,#11161732 70%,#111617cc)
-  }
-  .tr-hero .tr-eyebrow {
-    margin-bottom: 28px
   }
   .tr-hero-lead {
     font-size: 15px;

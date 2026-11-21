@@ -110,7 +110,7 @@
           delay: 0.15,
           ease: 'power3.out'
         });
-        gsap.from(root.querySelector('.wf-hero-top'), {
+        gsap.from(root.querySelectorAll('.wf-hero-top, .wf-hero .wf-kicker'), {
           y: 16,
           opacity: 0,
           duration: 0.85,
