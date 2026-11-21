@@ -1016,7 +1016,8 @@ body:is(.page-id-7368,.page-id-7377,.page-id-7375,.page-id-7373,.page-id-7379) #
 .p10x-wrap .wr-finish-panel{display:grid;grid-template-columns:1.65fr 1fr;gap:0!important;background:#2b2b2b;min-height:510px;align-items:stretch}
 .p10x-wrap.wr-enhanced .wr-finish-panel{position:relative;grid-area:1/1;align-self:stretch;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .6s,visibility .6s}
 .p10x-wrap.wr-enhanced .wr-finish-panel.is-active{position:relative;opacity:1;visibility:visible;pointer-events:auto;z-index:1}
-.p10x-wrap .wr-finish-photo{min-height:510px}
+.p10x-wrap .wr-finish-photo{position:relative;min-height:510px}
+.p10x-wrap .wr-finish-photo>.component-content{position:absolute;inset:0}
 .p10x-wrap .wr-finish-photo img{transform:scale(1.045) translateX(1%);transition:transform 1s cubic-bezier(.2,.65,.3,1)}
 .p10x-wrap .wr-finish-panel.is-active .wr-finish-photo img{transform:scale(1) translateX(0)}
 .p10x-wrap .wr-finish-copy{padding:48px 40px;justify-content:center;gap:25px!important}
