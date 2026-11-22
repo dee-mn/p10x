@@ -795,6 +795,13 @@ body.page.page-id-7411 #ui-wapper #ui-main .ui-post--title {
   color: #edf0f0;
 }
 
+/* Reserve one extra screen of natural scrolling for the expanded film on phones. */
+@media (max-width:767px) {
+  .view-20 .ui-video-sticky1.p10x-film-scroll {
+    min-height: 360svh;
+  }
+}
+
 /* The expanding homepage film draws its own poster before its first frame. */
 .view-20 .deferred-film-cover {
   position: absolute;

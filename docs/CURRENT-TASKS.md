@@ -9,6 +9,8 @@
 
 ## Current state
 
+- On phones, the expanding homepage film below Our Partners stays pinned for one additional viewport of natural scrolling before the next section enters.
+
 - The homepage Driver Personality Test links and shared footer open the on-site test at `/driver-personality-test/` in a new tab.
 
 - All six page heroes with background video use a cover from the corresponding film. The two homepage background films have deferred matching covers. Local checks decoded each generated cover and compared its pixels with the source frame. The five self-hosted hero videos also passed autoplay, tap-to-play and reduced-motion checks in desktop and mobile Chromium emulation. GitHub builds the covers during publication to `main-deploy`. Check the public routes after Plesk pulls the release.
