@@ -123,6 +123,7 @@
     if (!inner || !frame || !video || !toggle) return;
     section.dataset.mobileFilmReady = 'true';
     const mobile = matchMedia('(max-width:1280px)'),
+      phone = matchMedia('(max-width:767px)'),
       reduced = matchMedia('(prefers-reduced-motion:reduce)');
     let running = false,
       raf = 0,
@@ -166,7 +167,9 @@
       if (!running) return;
       const r = section.getBoundingClientRect(),
         h = inner.clientHeight;
-      target = clamp(-r.top / Math.max(1, r.height - h));
+      // Keep the original expansion distance when the phone layout adds its viewing hold.
+      const expansionRange = r.height - h - (phone.matches ? h : 0);
+      target = clamp(-r.top / Math.max(1, expansionRange));
       lastVisible = r.top < h && r.bottom > 0;
       if (!lastVisible) {
         if (!video.paused) video.pause();
