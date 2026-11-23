@@ -9,6 +9,8 @@
 
 ## Current state
 
+- On mobile and tablet, vertical scrolling pins the Five Pillars panel and advances its cards. The division buttons and horizontal gestures remain available.
+
 - On phones, the expanding homepage film below Our Partners stays pinned for one additional viewport of natural scrolling before the next section enters.
 
 - The homepage Driver Personality Test links and shared footer open the on-site test at `/driver-personality-test/` in a new tab.

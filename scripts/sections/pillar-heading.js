@@ -53,6 +53,7 @@
       b.addEventListener('pointerenter', choose);
       b.addEventListener('focus', choose);
       b.addEventListener('click', choose);
+      b.addEventListener('pillarselect', choose);
       nav.appendChild(b);
     });
     caption.id = 'p10x-pillar-caption';

@@ -1,5 +1,9 @@
 # P10X checkpoint
 
+## Five Pillars scrolling — 23 November 2026
+
+Vertical scrolling now advances the five division cards in the pinned mobile and tablet panel. The selected division and caption follow the cards. Reduced-motion visitors can swipe or select a division directly. Browser emulation covered 390, 768 and 1024 px layouts, scrolling in both directions, division controls and the desktop rotation at 1440 px.
+
 ## Background video covers — 22 November 2026
 
 About Us, Automotive Window Tint, Wrapping, PPF and Detailing use native posters extracted from their MP4s at build time. Architecture Tint displays its Vimeo thumbnail until the embedded player advances. The homepage’s two offscreen background films defer their covers until approached. The expanding film uses a frame at 0.8 seconds because it opens on black.

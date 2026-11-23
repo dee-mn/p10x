@@ -192,7 +192,7 @@ function p10xPrepareHeadings(headings, prepare) {
     // Circular five-pillar names use the same radius, arc and rotation as the reference.
     const slider = $('.ui-icon-list1 .ui-inner-content');
     if (slider)
-      gsap.matchMedia().add('(min-width:992px)', () => {
+      gsap.matchMedia().add('(min-width:1025px)', () => {
         const items = $$('.ui--item-circular', slider);
         function position() {
           const r = slider.offsetWidth / 2,
@@ -256,8 +256,9 @@ function p10xPrepareHeadings(headings, prepare) {
   const $ = (s, r = document) => r.querySelector(s),
     $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
   function start() {
-    gsap.matchMedia().add('(min-width:992px)', () => {
-      $$('.ui-tabs-slip.style-1').forEach((root) => {
+    $$('.ui-tabs-slip.style-1').forEach((root) => {
+      const breakpoint = root.closest('.block-559aab1b') ? 1025 : 992;
+      gsap.matchMedia().add('(min-width:' + breakpoint + 'px)', () => {
         const items = $$('.ui-item--content', root),
           end = $('.ui-tabs--content', root);
         items.forEach((item, i) => {
