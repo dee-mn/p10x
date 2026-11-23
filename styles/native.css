@@ -826,3 +826,16 @@ body.page.page-id-7411 #ui-wapper #ui-main .ui-post--title {
 .ui-video-sticky1 video.ui-bg-video[data-poster] {
   opacity: 1;
 }
+
+
+@media (max-width:1024px) {
+  body.page-id-20 #p10x-expert-lab#p10x-expert-lab.x-scroll-ready {
+    height: var(--x-runway)!important;
+    padding: 0!important;
+  }
+  body.page-id-20 #p10x-expert-lab#p10x-expert-lab.x-scroll-ready .x-inner {
+    position: sticky!important;
+    top: var(--x-sticky-top)!important;
+    padding-block: 32px;
+  }
+}

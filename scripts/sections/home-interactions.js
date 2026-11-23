@@ -10,13 +10,6 @@
         ? Array.from(strip.querySelectorAll('.ui--item-circular'))
         : [],
       tabs = Array.from(root.querySelectorAll('.p10x-pillar-nav button'));
-    function configure() {
-      const hint = root.querySelector('#p10x-expert-lab .x-hint span');
-      if (hint)
-        hint.textContent = mq.matches
-          ? 'Tap a perspective to explore'
-          : 'Scroll to explore · or choose a perspective';
-    }
     if (strip) {
       strip.setAttribute('aria-label', 'P10X divisions');
       strip.setAttribute('role', 'region');
@@ -148,10 +141,7 @@
       video.addEventListener('pause', sync);
       sync();
     }
-    mq.addEventListener('change', configure);
-    configure();
-    setTimeout(configure, 350);
-    if (document.fonts) document.fonts.ready.then(configure);
+
   }
   if (document.readyState === 'complete') init();
   else window.addEventListener('load', init, { once: true });
@@ -404,7 +394,9 @@
       deck.style.setProperty('--rx', '0deg');
       deck.style.setProperty('--ry', '0deg');
     });
-    const inner = root.querySelector('.x-inner');
+    const inner = root.querySelector('.x-inner'),
+      compact = matchMedia('(max-width:1024px)'),
+      hint = root.querySelector('.x-hint span');
     let pinned = false,
       span = 0,
       lastBucket = -1,
@@ -422,7 +414,7 @@
     }
     function updateFromScroll() {
       queued = false;
-      if (window.innerWidth <= 1024) return;
+      if (reduced.matches) return;
       const b = bounds(),
         vh = window.innerHeight;
       const progress = pinned
@@ -437,21 +429,23 @@
     }
     function measure() {
       measureQueued = false;
-      root.classList.remove('x-scroll-ready');
-      const height = inner.getBoundingClientRect().height + 65;
-      pinned =
-        !reduced.matches &&
-        window.innerWidth > 1024 &&
-        height <= window.innerHeight - 20;
+      // On small screens pin once even the bottom of a tall card is in view.
+      const viewport = window.innerHeight;
+      const height = inner.offsetHeight;
+      const padding = getComputedStyle(inner);
+      const desktopHeight = height - parseFloat(padding.paddingTop) - parseFloat(padding.paddingBottom) + 65;
+      pinned = !reduced.matches && (compact.matches || desktopHeight <= viewport - 20);
+      root.classList.toggle('x-scroll-ready', pinned);
       if (pinned) {
-        span = window.innerHeight * 1.45;
-        root.style.setProperty(
-          '--x-sticky-top',
-          Math.max(10, (window.innerHeight - height) / 2) + 'px'
-        );
-        root.style.setProperty('--x-runway', height + span + 'px');
-        root.classList.add('x-scroll-ready');
+        const panelHeight = inner.offsetHeight;
+        span = viewport * 1.45;
+        const top = compact.matches ? Math.min(0, viewport - panelHeight)
+          : Math.max(10, (viewport - panelHeight) / 2);
+        root.style.setProperty('--x-sticky-top', top + 'px');
+        root.style.setProperty('--x-runway', panelHeight + span + 'px');
       }
+      hint.textContent = reduced.matches ? 'Choose a perspective'
+        : 'Scroll to explore · or choose a perspective';
       lastBucket = -1;
       updateFromScroll();
     }
@@ -460,7 +454,7 @@
       if (pinned) {
         const b = bounds(),
           y = window.scrollY;
-        if (y >= b.start - 120 && y <= b.start + span + 120) {
+        if (compact.matches || (y >= b.start - 120 && y <= b.start + span + 120)) {
           lastBucket = i;
           window.scrollTo({
             top: b.start + span * ((i + 0.5) / 3),
@@ -489,6 +483,11 @@
       },
       { passive: true }
     );
+    if (window.ResizeObserver) {
+      new ResizeObserver(() => {
+        if (compact.matches && !reduced.matches) measure();
+      }).observe(inner);
+    }
     reduced.addEventListener('change', measure);
     if (document.fonts) document.fonts.ready.then(measure);
     else measure();
