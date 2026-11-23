@@ -5,37 +5,12 @@
     root.dataset.mobileRepairReady = 'true';
     const mq = matchMedia('(max-width:1024px)'),
       reduced = matchMedia('(prefers-reduced-motion:reduce)');
-    const pillar = root.querySelector('.block-559aab1b'),
-      strip = root.querySelector('#home-fivepillar .ui-inner-content');
+    const strip = root.querySelector('#home-fivepillar .ui-inner-content');
     const cards = strip
         ? Array.from(strip.querySelectorAll('.ui--item-circular'))
         : [],
       tabs = Array.from(root.querySelectorAll('.p10x-pillar-nav button'));
-    const disabled = new Set();
     function configure() {
-      if (window.ScrollTrigger && pillar) {
-        if (mq.matches) {
-          ScrollTrigger.getAll().forEach((st) => {
-            if (
-              st.trigger instanceof Element &&
-              pillar.contains(st.trigger) &&
-              st.vars.id !== 'p10x-pillar-title' &&
-              !st.trigger.closest('.heading,.p10x-pillar-heading')
-            ) {
-              if (st.enabled) {
-                st.disable(true);
-                disabled.add(st);
-              }
-            }
-          });
-        } else {
-          disabled.forEach((st) => {
-            if (ScrollTrigger.getAll().includes(st)) st.enable();
-          });
-          disabled.clear();
-        }
-        ScrollTrigger.refresh();
-      }
       const hint = root.querySelector('#p10x-expert-lab .x-hint span');
       if (hint)
         hint.textContent = mq.matches
@@ -48,15 +23,83 @@
       strip.tabIndex = 0;
       const hint = document.createElement('p');
       hint.className = 'p10x-pillar-touchhint';
-      hint.textContent = 'Swipe to explore our five divisions';
       strip.closest('#home-fivepillar').append(hint);
+      const panel = strip.closest('.ui-item--content');
+      const track = document.createElement('div');
+      track.className = 'p10x-pillar-track';
+      let travel = 0;
+      let pinTop = 0;
+      let selected = -1;
+      let writtenLeft = -1;
+      function selectVisible() {
+        const last = cards.length - 1;
+        const i = Math.max(0, Math.min(last, Math.round(strip.scrollLeft / travel * last)));
+        if (i !== selected) {
+          selected = i;
+          tabs[i]?.dispatchEvent(new Event('pillarselect'));
+        }
+      }
+      function offset() {
+        return pinTop - track.getBoundingClientRect().top;
+      }
+      function followPage() {
+        if (!track.isConnected || !travel) return;
+        const x = Math.max(0, Math.min(travel, offset()));
+        strip.scrollLeft = x;
+        writtenLeft = strip.scrollLeft;
+        selectVisible();
+      }
+      function measureTrack() {
+        if (!track.isConnected) return;
+        travel = Math.max(0, strip.scrollWidth - strip.clientWidth);
+        const height = panel.offsetHeight;
+        pinTop = Math.min(0, window.innerHeight - height);
+        track.style.height = height + travel + 'px';
+        track.style.setProperty('--pillar-top', pinTop + 'px');
+        followPage();
+      }
+      function configureTrack() {
+        if (mq.matches && !reduced.matches && cards.length > 1) {
+          if (!track.isConnected) {
+            panel.before(track);
+            track.append(panel);
+          }
+          measureTrack();
+        } else if (track.isConnected) {
+          track.replaceWith(...track.childNodes);
+          strip.scrollLeft = 0;
+          selected = -1;
+        }
+        hint.textContent = track.isConnected
+          ? 'Scroll to explore our five divisions'
+          : 'Swipe to explore our five divisions';
+      }
+      function scrollToCard(x) {
+        window.scrollTo({ top: scrollY - offset() + x, behavior: 'instant' });
+      }
+      // Keep a horizontal swipe and the page at the same point in the sequence.
+      strip.addEventListener('scroll', () => {
+        if (!track.isConnected || Math.abs(strip.scrollLeft - writtenLeft) < 1) return;
+        if (offset() >= -1 && offset() <= travel + 1) scrollToCard(strip.scrollLeft);
+        selectVisible();
+      }, { passive: true });
+      window.addEventListener('scroll', followPage, { passive: true });
+      window.addEventListener('resize', measureTrack, { passive: true });
+      if (window.ResizeObserver) new ResizeObserver(measureTrack).observe(panel);
+      mq.addEventListener('change', configureTrack);
+      reduced.addEventListener('change', configureTrack);
+      configureTrack();
       tabs.forEach((b, i) =>
         b.addEventListener('click', () => {
-          if (mq.matches && cards[i])
+          if (!mq.matches || !cards[i]) return;
+          if (track.isConnected) {
+            scrollToCard(travel * i / (cards.length - 1));
+          } else {
             strip.scrollTo({
               left: cards[i].offsetLeft - cards[0].offsetLeft,
               behavior: reduced.matches ? 'instant' : 'smooth'
             });
+          }
         })
       );
       strip.addEventListener('keydown', (e) => {
@@ -77,6 +120,7 @@
           )
             current = i;
         });
+        if (track.isConnected) current = selected;
         const next =
           e.key === 'Home'
             ? 0

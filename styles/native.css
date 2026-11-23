@@ -358,6 +358,17 @@
 #ui-wapper .btn:is(:hover,:focus-visible) .ui-btn-icon :is(i,svg) {
   color: #fff!important
 }
+@media (max-width:1024px) {
+  body.page-id-20 .view-20 .block-22decf77 .p10x-pillar-track > .p10x-pillar-panel {
+    position: sticky!important;
+    top: var(--pillar-top, 0px)!important;
+  }
+  body.page-id-20 .p10x-pillar-track #home-fivepillar#home-fivepillar .ui-inner-content {
+    scroll-snap-type: none;
+    scroll-behavior: auto;
+  }
+}
+
 /* The first panel pins the film and cards together; its runway is not the film's height. */
 
 .view-20 .p10x-pillar-panel>.p10x-pillar-video {

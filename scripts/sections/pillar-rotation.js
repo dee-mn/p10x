@@ -6,7 +6,7 @@
       );
       var panel = document.querySelector('.view-20 .view-6793')?.parentElement;
       if (!slider || !panel || !window.gsap || !window.ScrollTrigger) return;
-      gsap.matchMedia().add('(min-width:992px)', function () {
+      gsap.matchMedia().add('(min-width:1025px)', function () {
         ScrollTrigger.getAll().forEach(function (st) {
           if (st.trigger === slider) {
             var animation = st.animation;
