@@ -9,6 +9,8 @@
 
 ## Current state
 
+- Expert Match advances through Workmanship, Team and the on-site Driver Personality Test while scrolling on phones and tablets. Reduced-motion visitors select a perspective using the tabs.
+
 - On mobile and tablet, vertical scrolling pins the Five Pillars panel and advances its cards. The division buttons and horizontal gestures remain available.
 
 - On phones, the expanding homepage film below Our Partners stays pinned for one additional viewport of natural scrolling before the next section enters.
