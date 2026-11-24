@@ -9,6 +9,8 @@
 
 ## Current state
 
+- The large background “Contact” on the homepage uses its original colours: translucent charcoal on desktop and light grey on mobile and tablet.
+
 - Expert Match advances through Workmanship, Team and the on-site Driver Personality Test while scrolling on phones and tablets. Reduced-motion visitors select a perspective using the tabs.
 
 - On mobile and tablet, vertical scrolling pins the Five Pillars panel and advances its cards. The division buttons and horizontal gestures remain available.
